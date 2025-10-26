@@ -147,7 +147,7 @@ size = Vector3(250, 10, 250)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="HTerrain" type="Node3D" parent="."]
+[node name="Lake" type="Node3D" parent="."]
 script = ExtResource("1_qj6ho")
 _terrain_data = ExtResource("2_cknon")
 chunk_size = 32
@@ -165,9 +165,9 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sun?" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.27245, -0.554656, 0.786211, -0.181612, 0.83208, 0.52408, -0.944875, -7.081e-09, -0.327432, 185.798, 44.0561, 149.308)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
 mesh = SubResource("BoxMesh_ejukk")
