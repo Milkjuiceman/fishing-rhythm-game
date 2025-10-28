@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://ct7l7ou4oijk5"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_dbma6"]
+[ext_resource type="Resource" uid="uid://c5sr5k7ojuh1d" path="res://audio/audio/recusive_metronome.tres" id="2_dbma6"]
+
+[resource]
+script = ExtResource("1_dbma6")
+track = ExtResource("2_dbma6")
+note_timings = PackedFloat64Array(2.666, 3.336, 3.999, 4.667, 5.333, 0)
+metadata/_custom_type_script = "uid://bpno8ianhdobd"
