@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://c5sr5k7ojuh1d"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_13t21"]
+
+[resource]
+script = ExtResource("1_13t21")
+audio_location = &"uid://cc8nietpj350i"
+artists = "Qualia"
+title = "Recursive Metronome"
+bpm = Dictionary[float, float]({
+0.0: 90.0
+})
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
