@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://5dk2fxappsxs"]
+[gd_scene load_steps=3 format=3 uid="uid://5dk2fxappsxs"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_l6msg"]
+[ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://small-lake.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://boat.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_l6msg")
+[node name="Small lake" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.630543, 0)
+
+[node name="Boat" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31866, 0.29279566, 126.45069)

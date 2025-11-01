@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bn30nhw2114d4"]
+[gd_scene load_steps=15 format=3 uid="uid://byga337ywa56i"]
 
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_qj6ho"]
-[ext_resource type="Resource" path="res://Terrain/data.hterrain" id="2_cknon"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_olawf"]
+[ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_qj6ho"]
+[ext_resource type="Resource" uid="uid://d27012kmbxr41" path="res://Terrain/data.hterrain" id="2_cknon"]
+[ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_olawf"]
 [ext_resource type="Texture2D" uid="uid://ddprscrpsofah" path="res://demo/assets/textures/ground037_alb_ht.png" id="4_unaov"]
 [ext_resource type="Texture2D" uid="uid://c88j3oj0lf6om" path="res://demo/assets/textures/rock023_alb_ht.png" id="5_rllyj"]
 [ext_resource type="Texture2D" uid="uid://c307hdmos4gtm" path="res://demo/assets/textures/rock023_nrm_rgh.png" id="6_g7qwe"]
@@ -112,38 +112,41 @@ void fragment() {
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2sp8u"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uxsxp"]
+noise = SubResource("FastNoiseLite_2sp8u")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_2sp8u")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_omh08"]
+noise = SubResource("FastNoiseLite_2sp8u")
 seamless = true
 as_normal_map = true
-noise = SubResource("FastNoiseLite_2sp8u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
 render_priority = 0
 shader = SubResource("Shader_rjg1i")
-shader_parameter/albedo = Color(0.356863, 0.756863, 0.760784, 0.619608)
+shader_parameter/albedo = Color(0.49955487, 0.6579614, 1.0222965, 0.61960787)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.03
-shader_parameter/metallic_texture_channel = null
+shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
+shader_parameter/texture_refraction = SubResource("NoiseTexture2D_omh08")
 shader_parameter/refraction = 0.08
-shader_parameter/refraction_texture_channel = null
+shader_parameter/refraction_texture_channel = Vector4(0, 0, 0, 0)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_uxsxp")
 shader_parameter/normal_scale = 1.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_refraction = SubResource("NoiseTexture2D_omh08")
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_uxsxp")
 
 [sub_resource type="BoxMesh" id="BoxMesh_ejukk"]
 material = SubResource("ShaderMaterial_xos6f")
 size = Vector3(250, 10, 250)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jp02q"]
+points = PackedVector3Array(-125, -5, -125, -125, 5, -125, 125, -5, -125, -125, -5, 125, -125, 5, 125, 125, 5, -125, 125, -5, 125, 125, 5, 125)
 
 [node name="Node3D" type="Node3D"]
 
@@ -171,3 +174,7 @@ transform = Transform3D(-0.27245, -0.554656, 0.786211, -0.181612, 0.83208, 0.524
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
 mesh = SubResource("BoxMesh_ejukk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
+shape = SubResource("ConvexPolygonShape3D_jp02q")
