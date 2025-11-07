@@ -172,7 +172,7 @@ shader_params/u_tile_reduction = null
 transform = Transform3D(-0.27245, -0.554656, 0.786211, -0.181612, 0.83208, 0.52408, -0.944875, -7.081e-09, -0.327432, 185.798, 44.0561, 149.308)
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.63396, -15.5996, 121.753)
 mesh = SubResource("BoxMesh_ejukk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
