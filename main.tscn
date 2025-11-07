@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://5dk2fxappsxs"]
+<<<<<<< HEAD
+[gd_scene load_steps=4 format=3 uid="uid://5dk2fxappsxs"]
 
-[ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://small-lake.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cqhqg384wtegh" path="res://big-lake.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://boat.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c5f57r77inv51" path="res://pause_menu.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node3D"]
 
-[node name="Small lake" parent="." instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.630543, 0)
+[node name="Node3D" parent="." instance=ExtResource("1_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.080862, 8.220764, 4.6229286)
 
 [node name="Boat" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31866, 0.29279566, 126.45069)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.45042, 0.29279566, 126.45069)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_h2yge")]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://5dk2fxappsxs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l6msg"]
+
+[node name="Main" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l6msg")
+>>>>>>> parent of a245d87 (Added boat and boat movement)
