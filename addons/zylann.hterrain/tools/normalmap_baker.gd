@@ -144,5 +144,3 @@ func _process(delta):
 
 func _has_pending_tiles():
 	return len(_pending_tiles_queue) > 0
-
-
