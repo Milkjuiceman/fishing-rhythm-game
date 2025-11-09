@@ -7,6 +7,8 @@ const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
 
+var lowest_judgment_index: int = 0
+
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
@@ -23,12 +25,16 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	# need to set this before doing the loop because the loop will emit signals with the frame_state in ti
 	frame_state.scorecard = scorecard
 	
-	var i: int = 0 # TODO! The following loop is a merely an example template 
-	while false:
+	var i: int = lowest_judgment_index - 1
+	while true:
+		i += 1
+		if i >= chart.note_timings.size(): # at end of song and all done
+			break
+			
 		var timing: float =  chart.note_timings[i]
 		
 		if timing > upper_bound: # done searching
-			continue # TODO or break depending on implementaiton
+			break
 		
 		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:
 			# already judge this one (in a previous frame)
@@ -38,8 +44,18 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			# MISS
 			scorecard.miss_note(i)
 			note_judged.emit(i, frame_state)
+			lowest_judgment_index += 1
+			
 		else:
-			# HIT
-			var temporal_difference: float = compared_t - timing
-			scorecard.hit_note(i, temporal_difference)
-			note_judged.emit(i, frame_state)
+			if frame_state.key_press:
+				# HIT
+				var temporal_difference: float = compared_t - timing
+				scorecard.hit_note(i, temporal_difference)
+				note_judged.emit(i, frame_state)
+				if i == lowest_judgment_index:
+					lowest_judgment_index +=  1;
+			
+
+
+func _on_referee_play_chart_now(chart_: Chart) -> void:
+	load_new_chart(chart_)

@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://b4n45pegjxsoy"]
+
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://temp_rhythm_section.gd" id="1_5kqse"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="1_mo77h"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_jbv76"]
+[ext_resource type="Resource" uid="uid://ct7l7ou4oijk5" path="res://audio/charts/recursive_metronome.tres" id="2_nej8h"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://note_holder.gd" id="3_jbv76"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_nej8h"]
+[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://camera_3d.gd" id="5_wi50x"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://note.tscn" id="6_m5t38"]
+[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://note.gd" id="7_uxfdm"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://input_hit.gd" id="10_dbixs"]
+[ext_resource type="Script" uid="uid://dyvmqe6ye152l" path="res://score_label.gd" id="11_rtuxy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uxfdm"]
+sky_material = SubResource("ProceduralSkyMaterial_m5t38")
+
+[sub_resource type="Environment" id="Environment_wi50x"]
+background_mode = 2
+sky = SubResource("Sky_uxfdm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rf3o7"]
+
+[node name="Temp_Rhythm_Section" type="Node3D" node_paths=PackedStringArray("referee")]
+script = ExtResource("1_5kqse")
+referee = NodePath("Referee")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.46922, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wi50x")
+
+[node name="Judge" type="Node" parent="."]
+script = ExtResource("2_jbv76")
+
+[node name="Referee" type="Node" parent="." node_paths=PackedStringArray("music_player", "input_hit", "judge")]
+script = ExtResource("1_mo77h")
+chart = ExtResource("2_nej8h")
+music_player = NodePath("../AudioStreamPlayer")
+input_hit = NodePath("../InputHit")
+judge = NodePath("../Judge")
+note_speed = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_nej8h")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9634213)
+script = ExtResource("5_wi50x")
+
+[node name="Note_Holder" type="Node3D" parent="."]
+script = ExtResource("3_jbv76")
+place_notes = ExtResource("6_m5t38")
+chart = ExtResource("2_nej8h")
+note_speed = 2.0
+
+[node name="@MeshInstance3D@72229" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.332)
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="@MeshInstance3D@72230" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.672)
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="@MeshInstance3D@72231" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.998)
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="@MeshInstance3D@72232" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.334)
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="@MeshInstance3D@72233" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.666)
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="@MeshInstance3D@72234" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("6_m5t38")]
+mesh = SubResource("BoxMesh_rf3o7")
+script = ExtResource("7_uxfdm")
+
+[node name="InputHit" type="Node" parent="."]
+script = ExtResource("10_dbixs")
+
+[node name="Score" type="Label" parent="."]
+offset_right = 575.0
+offset_bottom = 294.0
+rotation = 0.0034826885
+text = "Score:"
+script = ExtResource("11_rtuxy")
+
+[connection signal="play_chart_now" from="Referee" to="Judge" method="_on_referee_play_chart_now"]
+[connection signal="play_chart_now" from="Referee" to="AudioStreamPlayer" method="_on_referee_play_chart_now"]
+[connection signal="process" from="Referee" to="Camera3D" method="_on_referee_process"]
+[connection signal="process" from="Referee" to="Score" method="_on_referee_process"]
