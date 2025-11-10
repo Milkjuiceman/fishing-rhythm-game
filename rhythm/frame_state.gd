@@ -27,3 +27,6 @@ var seconds_per_beat: float = 1. / 60.
 # set by Judge
 # may be null
 var scorecard: Scorecard = null
+
+# set by InputHit
+var key_press: bool = false
