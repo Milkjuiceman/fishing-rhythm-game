@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmlttvumnqrrc"]
+
+[ext_resource type="Script" uid="uid://epu4m2aetsfa" path="res://water_splash.gd" id="1_63v21"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_63v21"]
+direction = Vector3(0, 1, 0)
+spread = 28.333
+initial_velocity_min = 172.41
+initial_velocity_max = 172.41
+gravity = Vector3(0, -750, 0)
+damping_min = 11.207001
+damping_max = 11.207001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63v21"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.24269927, 0.6850891, 0.9886665, 1)
+disable_receive_shadows = true
+billboard_mode = 1
+proximity_fade_distance = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_47cqg"]
+material = SubResource("StandardMaterial3D_63v21")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_47cqg"]
+
+[node name="WaterSplash" type="Area3D"]
+script = ExtResource("1_63v21")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 100
+sub_emitter = NodePath(".")
+lifetime = 1.3699999999999999
+preprocess = 0.1
+collision_base_size = 5.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_63v21")
+draw_pass_1 = SubResource("QuadMesh_47cqg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("CylinderShape3D_47cqg")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+one_shot = true

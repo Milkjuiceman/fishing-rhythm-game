@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://byga337ywa56i"]
+[gd_scene load_steps=17 format=3 uid="uid://byga337ywa56i"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_qj6ho"]
-[ext_resource type="Resource" uid="uid://d27012kmbxr41" path="res://Terrain/data.hterrain" id="2_cknon"]
+[ext_resource type="Resource" path="res://Terrain/data.hterrain" id="2_cknon"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_olawf"]
 [ext_resource type="Texture2D" uid="uid://ddprscrpsofah" path="res://demo/assets/textures/ground037_alb_ht.png" id="4_unaov"]
 [ext_resource type="Texture2D" uid="uid://c88j3oj0lf6om" path="res://demo/assets/textures/rock023_alb_ht.png" id="5_rllyj"]
 [ext_resource type="Texture2D" uid="uid://c307hdmos4gtm" path="res://demo/assets/textures/rock023_nrm_rgh.png" id="6_g7qwe"]
+[ext_resource type="Script" uid="uid://bgej3li2jxmo0" path="res://water_splash_spawner.gd" id="7_o1ypi"]
+[ext_resource type="PackedScene" uid="uid://bmlttvumnqrrc" path="res://water_splash.tscn" id="8_sjrm1"]
 
 [sub_resource type="Resource" id="Resource_unxb8"]
 script = ExtResource("3_olawf")
@@ -178,3 +180,11 @@ mesh = SubResource("BoxMesh_ejukk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
 shape = SubResource("ConvexPolygonShape3D_jp02q")
+
+[node name="WaterSplashSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -227.24823, 0, 38.04608)
+script = ExtResource("7_o1ypi")
+splash_scene = ExtResource("8_sjrm1")
+water_path = NodePath("../Water")
+
+[node name="SpawnTimer" type="Timer" parent="WaterSplashSpawner"]
