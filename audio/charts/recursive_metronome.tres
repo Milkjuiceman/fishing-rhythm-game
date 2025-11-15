@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_dbma6")
 track = ExtResource("2_dbma6")
-note_timings = PackedFloat64Array(2.666, 3.336, 3.999, 4.667, 5.333, 0)
+note_timings = PackedFloat64Array(1.334, 2, 3.332, 3.998, 4.664, 5.33, 5.996, 6.662, 7.328, 7.994, 8.66, 9.326, 9.992, 10.658, 10.991, 11.324, 12.323, 12.656, 13.988, 14.654, 15.32, -1.996)
+note_column = PackedInt64Array(0, 1, 1, 0, 1, 2, 1, 2, 0, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1, 0, 2, 1)
 metadata/_custom_type_script = "uid://bpno8ianhdobd"

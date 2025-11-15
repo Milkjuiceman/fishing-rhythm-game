@@ -3,7 +3,7 @@ class_name Judge extends Node
 var chart: Chart = null
 var scorecard: Scorecard = null
 
-const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
+const TEMPORAL_ERROR_MARGIN: float = 0.15 # 150ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
 
@@ -31,6 +31,15 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if i >= chart.note_timings.size(): # at end of song and all done
 			break
 			
+		#if frame_state.right_key_press:
+			#print("0: ", frame_state.t);
+			#
+		#if frame_state.center_key_press:
+			#print("1: ", frame_state.t);
+			#
+		#if frame_state.left_key_press:
+			#print("2: ", frame_state.t);
+			
 		var timing: float =  chart.note_timings[i]
 		
 		if timing > upper_bound: # done searching
@@ -47,7 +56,21 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			lowest_judgment_index += 1
 			
 		else:
-			if frame_state.key_press:
+			if frame_state.right_key_press && chart.note_column[i] == 0:
+				# HIT
+				var temporal_difference: float = compared_t - timing
+				scorecard.hit_note(i, temporal_difference)
+				note_judged.emit(i, frame_state)
+				if i == lowest_judgment_index:
+					lowest_judgment_index +=  1;
+			elif frame_state.center_key_press && chart.note_column[i] == 1:
+				# HIT
+				var temporal_difference: float = compared_t - timing
+				scorecard.hit_note(i, temporal_difference)
+				note_judged.emit(i, frame_state)
+				if i == lowest_judgment_index:
+					lowest_judgment_index +=  1;
+			elif frame_state.left_key_press && chart.note_column[i] == 2:
 				# HIT
 				var temporal_difference: float = compared_t - timing
 				scorecard.hit_note(i, temporal_difference)
