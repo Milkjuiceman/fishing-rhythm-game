@@ -29,6 +29,7 @@ var seconds_per_beat: float = 1. / 60.
 var scorecard: Scorecard = null
 
 # set by InputHit
-var center_key_press: bool = false
-var right_key_press: bool = false
-var left_key_press: bool = false
+var d_key_press: bool = false
+var f_key_press: bool = false
+var k_key_press: bool = false
+var j_key_press: bool = false

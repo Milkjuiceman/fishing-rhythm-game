@@ -21,7 +21,7 @@ func align_notes() -> void:
 		note = place_notes.instantiate();
 		add_child(note);
 		note.position.z = timing * note_speed;
-		note.position.x = (chart.note_column[i] - 1) * 2;
+		note.position.x = (chart.note_column[i] - 1.5) * 2;
 		i += 1;
 			
 		if Engine.is_editor_hint():
