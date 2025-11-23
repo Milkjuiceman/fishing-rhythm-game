@@ -1,16 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byga337ywa56i"]
-
-[ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_qj6ho"]
-[ext_resource type="Resource" uid="uid://d27012kmbxr41" path="res://Terrain/data.hterrain" id="2_cknon"]
-[ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_olawf"]
-[ext_resource type="Texture2D" uid="uid://ddprscrpsofah" path="res://demo/assets/textures/ground037_alb_ht.png" id="4_unaov"]
-[ext_resource type="Texture2D" uid="uid://c88j3oj0lf6om" path="res://demo/assets/textures/rock023_alb_ht.png" id="5_rllyj"]
-[ext_resource type="Texture2D" uid="uid://c307hdmos4gtm" path="res://demo/assets/textures/rock023_nrm_rgh.png" id="6_g7qwe"]
-
-[sub_resource type="Resource" id="Resource_unxb8"]
-script = ExtResource("3_olawf")
-mode = 0
-textures = [[ExtResource("4_unaov"), ExtResource("5_rllyj")], [ExtResource("5_rllyj"), ExtResource("6_g7qwe")]]
+[gd_scene load_steps=8 format=3 uid="uid://byga337ywa56i"]
 
 [sub_resource type="Shader" id="Shader_rjg1i"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -149,24 +137,6 @@ size = Vector3(250, 10, 250)
 points = PackedVector3Array(-125, -5, -125, -125, 5, -125, 125, -5, -125, -125, -5, 125, -125, 5, 125, 125, 5, -125, 125, -5, 125, 125, 5, 125)
 
 [node name="Node3D" type="Node3D"]
-
-[node name="Lake" type="Node3D" parent="."]
-script = ExtResource("1_qj6ho")
-_terrain_data = ExtResource("2_cknon")
-chunk_size = 32
-collision_enabled = true
-collision_layer = 1
-collision_mask = 1
-shader_type = "Classic4Lite"
-custom_shader = null
-custom_globalmap_shader = null
-texture_set = SubResource("Resource_unxb8")
-render_layers = 1
-cast_shadow = 1
-shader_params/u_ground_uv_scale = 20
-shader_params/u_depth_blending = true
-shader_params/u_triplanar = null
-shader_params/u_tile_reduction = null
 
 [node name="Sun?" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.27245, -0.554656, 0.786211, -0.181612, 0.83208, 0.52408, -0.944875, -7.081e-09, -0.327432, 185.798, 44.0561, 149.308)

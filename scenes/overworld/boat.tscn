@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=7 format=3 uid="uid://dfdg34vf6rofh"]
 
-[ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://boat.gd" id="1_annr2"]
+[ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/overworld/boat.gd" id="1_annr2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_viw7v"]
 
@@ -10,6 +10,9 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jsln"]
 points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
+size = Vector3(2.57312, 1, 1.2182617)
 
 [node name="Boat" type="RigidBody3D"]
 linear_damp = 1.0
@@ -51,3 +54,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8624408, 0, -0.6025252)
 
 [node name="Floaty4" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86926484, 0, 0.6121896)
+
+[node name="DetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39068604, 0, 0.008056641)
+shape = SubResource("BoxShape3D_annr2")
