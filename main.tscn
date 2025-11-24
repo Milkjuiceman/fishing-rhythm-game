@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5dk2fxappsxs"]
+[gd_scene load_steps=5 format=3 uid="uid://5dk2fxappsxs"]
 
-[ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://small-lake.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://boat.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://scenes/overworld/small-lake.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boat.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b4tkf4p7khjoq" path="res://scenes/overworld/fish_notification.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node3D"]
 
@@ -10,3 +12,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.630543, 0)
 
 [node name="Boat" parent="." instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31866, 0.29279566, 126.45069)
+
+[node name="Area3D" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.13063, 0, 116.655945)
+
+[node name="FishNotification" parent="." instance=ExtResource("4_1bvp3")]

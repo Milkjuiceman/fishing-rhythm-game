@@ -13,7 +13,7 @@ config_version=5
 config/name="fishing rhythm game"
 run/main_scene="uid://5dk2fxappsxs"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/icons/icon.svg"
 
 [editor_plugins]
 

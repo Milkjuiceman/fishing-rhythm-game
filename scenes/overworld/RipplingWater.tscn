@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d02ypoucyu1a"]
+
+[ext_resource type="Script" uid="uid://cgasxmgt7j3pq" path="res://scripts/overworld/rippling_water.gd" id="1_fnar8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o3lsl"]
+height = 1.9970703
+radius = 10.078613
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3lsl"]
+albedo_color = Color(0.10980392, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fnar8"]
+material = SubResource("StandardMaterial3D_o3lsl")
+top_radius = 10.0
+bottom_radius = 10.0
+
+[node name="RipplingWater" type="Area3D"]
+script = ExtResource("1_fnar8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0014648438, 0)
+shape = SubResource("CylinderShape3D_o3lsl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CylinderMesh_fnar8")
