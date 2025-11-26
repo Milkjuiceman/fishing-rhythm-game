@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dobb00e6psm41"]
+[gd_scene load_steps=21 format=3 uid="uid://dobb00e6psm41"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_kr2i6"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_nkh30"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="10_wjn2f"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="11_i3t07"]
 [ext_resource type="Script" uid="uid://jjnpp4w8bj6u" path="res://scripts/musiclevel/audio_offset.gd" id="12_nkh30"]
+[ext_resource type="PackedScene" uid="uid://dkrie7ouhm0se" path="res://scenes/musiclevel/control.tscn" id="13_7ace8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -323,7 +324,11 @@ value = 10.0
 allow_lesser = true
 script = ExtResource("11_i3t07")
 
-[node name="AudioOffset" type="HSlider" parent="HUD"]
+[node name="Control" parent="." instance=ExtResource("13_7ace8")]
+process_mode = 3
+
+[node name="AudioOffset" type="HSlider" parent="Control"]
+process_mode = 3
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 16.0
@@ -333,14 +338,15 @@ step = 0.01
 value = -0.020000000000000004
 script = ExtResource("12_nkh30")
 
-[node name="OffsetValue" type="Label" parent="HUD/AudioOffset"]
+[node name="OffsetValue" type="Label" parent="Control/AudioOffset"]
 layout_mode = 0
 offset_top = 15.0
 offset_right = 40.0
 offset_bottom = 38.0
 text = "Audio Offset: "
 
-[node name="InputOffset" type="HSlider" parent="HUD"]
+[node name="InputOffset" type="HSlider" parent="Control"]
+process_mode = 3
 layout_mode = 0
 offset_top = 41.0
 offset_right = 300.0
@@ -352,7 +358,7 @@ value = -0.020000000000000004
 script = ExtResource("12_nkh30")
 controls_audio_offset = false
 
-[node name="OffsetValue" type="Label" parent="HUD/InputOffset"]
+[node name="OffsetValue" type="Label" parent="Control/InputOffset"]
 layout_mode = 0
 offset_top = 19.0
 offset_right = 40.0
