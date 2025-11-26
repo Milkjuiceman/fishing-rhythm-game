@@ -1,0 +1,366 @@
+[gd_scene load_steps=20 format=3 uid="uid://dobb00e6psm41"]
+
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_kr2i6"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_nkh30"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_7ace8"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_vlupf"]
+[ext_resource type="Resource" uid="uid://ct7l7ou4oijk5" path="res://assets/audio/charts/recursive_metronome.tres" id="5_o6wfx"]
+[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/overworld/camera_3d.gd" id="6_v6oj6"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="7_3ffb3"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="8_nm25w"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="9_ttdv7"]
+[ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="10_wjn2f"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="11_i3t07"]
+[ext_resource type="Script" uid="uid://jjnpp4w8bj6u" path="res://scripts/musiclevel/audio_offset.gd" id="12_nkh30"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uxfdm"]
+sky_material = SubResource("ProceduralSkyMaterial_m5t38")
+
+[sub_resource type="Environment" id="Environment_wi50x"]
+background_mode = 2
+sky = SubResource("Sky_uxfdm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtuxy"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3hdgt"]
+material = SubResource("StandardMaterial3D_rtuxy")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rf3o7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doocs"]
+transparency = 1
+albedo_color = Color(0.3372549, 0.34901962, 0.87058824, 0.72156864)
+
+[node name="RhythmLevel" type="Node3D" node_paths=PackedStringArray("referee")]
+script = ExtResource("1_kr2i6")
+referee = NodePath("AudioStreamPlayer/Referee")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.46922, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wi50x")
+
+[node name="Judge" type="Node" parent="."]
+script = ExtResource("2_nkh30")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_7ace8")
+
+[node name="Referee" type="Node" parent="AudioStreamPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge") groups=["Rhythm"]]
+script = ExtResource("4_vlupf")
+chart = ExtResource("5_o6wfx")
+music_player = NodePath("..")
+input_hit = NodePath("../../InputHit")
+judge = NodePath("../../Judge")
+note_speed = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 6.696973e-08, -5.619428e-08, 0, 0.64278764, 0.76604444, 8.742278e-08, 0.76604444, -0.64278764, 0, 7.002, -2)
+script = ExtResource("6_v6oj6")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.3711392e-08, 0.91899997, -4.974272e-15, -0.7660445, -3.0772597e-08, 0.5907217, 0.64278746, 2.5821281e-08, 0.7039949, -1.0000001, -3.229, -6.9040003)
+mesh = SubResource("QuadMesh_3hdgt")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D5"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "F"
+font_size = 100
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.3711395e-08, 0.919, -7.1830935e-15, -0.76604456, -3.0772597e-08, 0.5907217, 0.6427875, 2.5821278e-08, 0.703995, -3, -3.229, -6.904)
+mesh = SubResource("QuadMesh_3hdgt")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "D"
+font_size = 100
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.3711395e-08, 0.919, -7.1830935e-15, -0.76604456, -3.0772597e-08, 0.5907217, 0.6427875, 2.5821278e-08, 0.703995, 3, -3.229, -6.904)
+mesh = SubResource("QuadMesh_3hdgt")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "K"
+font_size = 100
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.3711395e-08, 0.919, -7.1830935e-15, -0.76604456, -3.0772597e-08, 0.5907217, 0.6427875, 2.5821278e-08, 0.703995, 1, -3.229, -6.904)
+mesh = SubResource("QuadMesh_3hdgt")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D4"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "J"
+font_size = 100
+
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
+script = ExtResource("7_3ffb3")
+place_notes = ExtResource("8_nm25w")
+chart = ExtResource("5_o6wfx")
+referee = NodePath("../AudioStreamPlayer/Referee")
+note_speed = 2.0
+
+[node name="Note" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2.668)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78767" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78768" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6.664)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78769" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7.996)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78770" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9.328)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78771" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10.66)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78772" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11.992)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78773" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 13.324)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78774" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 14.656)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78775" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 15.988)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78776" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17.32)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78777" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 18.652)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78778" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 19.984)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78779" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 21.316)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78780" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 21.982)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78781" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 22.648)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78782" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 24.646)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78783" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 25.312)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78784" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27.976)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78785" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 29.308)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78786" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 30.64)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78787" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 32)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78788" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 33.32)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78789" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 36)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78790" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 37.334)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78791" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 40)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78792" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 41.334)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78793" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 42.666)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78794" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 44)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78795" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 45.334)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78796" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 46.666)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78797" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 49.334)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78798" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 49.334)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78799" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 50.666)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="@MeshInstance3D@78800" parent="Note_Holder" instance=ExtResource("8_nm25w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 52.666)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+
+[node name="InputHit" type="Node" parent="."]
+script = ExtResource("9_ttdv7")
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hits" type="Label" parent="HUD"]
+layout_mode = 0
+offset_top = 118.0
+offset_right = 60.0
+offset_bottom = 167.0
+scale = Vector2(3, 3)
+text = "HITS:
+MISSES:"
+script = ExtResource("10_wjn2f")
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 379.5
+offset_top = 550.0
+offset_right = 732.5
+offset_bottom = 577.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+value = 10.0
+allow_lesser = true
+script = ExtResource("11_i3t07")
+
+[node name="AudioOffset" type="HSlider" parent="HUD"]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 16.0
+min_value = -0.1
+max_value = 0.1
+step = 0.01
+value = -0.020000000000000004
+script = ExtResource("12_nkh30")
+
+[node name="OffsetValue" type="Label" parent="HUD/AudioOffset"]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 38.0
+text = "Audio Offset: "
+
+[node name="InputOffset" type="HSlider" parent="HUD"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 300.0
+offset_bottom = 57.0
+min_value = -0.1
+max_value = 0.1
+step = 0.01
+value = -0.020000000000000004
+script = ExtResource("12_nkh30")
+controls_audio_offset = false
+
+[node name="OffsetValue" type="Label" parent="HUD/InputOffset"]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 40.0
+offset_bottom = 42.0
+text = "Input Offset: "
+
+[connection signal="play_chart_now" from="AudioStreamPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
+[connection signal="play_chart_now" from="AudioStreamPlayer/Referee" to="AudioStreamPlayer" method="_on_referee_play_chart_now"]
+[connection signal="process" from="AudioStreamPlayer/Referee" to="Camera3D" method="_on_referee_process"]
+[connection signal="process" from="AudioStreamPlayer/Referee" to="HUD/Hits" method="_on_referee_process"]
+[connection signal="process" from="AudioStreamPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_process"]
