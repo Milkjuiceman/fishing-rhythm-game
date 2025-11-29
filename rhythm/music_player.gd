@@ -43,6 +43,7 @@ func _on_finished() -> void:
 func _on_referee_play_chart_now(chart: Chart) -> void:
 	_previous_t = 0.
 	play_track(chart.track)
+	print(chart)
 
 
 func _on_offset_slider_change_audio_offset(offset_: float) -> void:

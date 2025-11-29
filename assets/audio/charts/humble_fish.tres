@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://bne4ws0m7lovr"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_4geyu"]
+[ext_resource type="Resource" uid="uid://cbvic2xpeig7" path="res://assets/audio/audio/humble_fish_theme.tres" id="2_dmvsp"]
+
+[resource]
+script = ExtResource("1_4geyu")
+track = ExtResource("2_dmvsp")
+note_timings = PackedFloat64Array()
+note_column = PackedInt64Array()
+metadata/_custom_type_script = "uid://bpno8ianhdobd"
