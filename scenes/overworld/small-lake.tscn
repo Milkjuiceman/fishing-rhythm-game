@@ -1,4 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://byga337ywa56i"]
+[gd_scene load_steps=16 format=3 uid="uid://byga337ywa56i"]
+
+[ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4ax3g"]
+[ext_resource type="Resource" uid="uid://ciepm31uc33kp" path="res://terraindata/data.hterrain" id="2_4q7rr"]
+[ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_pj436"]
+[ext_resource type="Texture2D" uid="uid://q11hajbco5v5" path="res://assets/textures/Ground/small-lake_slot0_albedo_bump.png" id="4_6jghi"]
+[ext_resource type="Texture2D" uid="uid://dishvn1ey45qu" path="res://assets/textures/Ground/small-lake_slot1_albedo_bump.png" id="5_uwrd3"]
+[ext_resource type="Texture2D" uid="uid://d3up0e1llb7tp" path="res://assets/textures/Ground/small-lake_slot0_normal_roughness.png" id="6_h51pj"]
+[ext_resource type="Texture2D" uid="uid://b4q27yi17frx8" path="res://assets/textures/Ground/small-lake_slot1_normal_roughness.png" id="7_eemif"]
 
 [sub_resource type="Shader" id="Shader_rjg1i"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -136,6 +144,11 @@ size = Vector3(250, 10, 250)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jp02q"]
 points = PackedVector3Array(-125, -5, -125, -125, 5, -125, 125, -5, -125, -125, -5, 125, -125, 5, 125, 125, 5, -125, 125, -5, 125, 125, 5, 125)
 
+[sub_resource type="Resource" id="Resource_tpyh5"]
+script = ExtResource("3_pj436")
+mode = 0
+textures = [[ExtResource("4_6jghi"), ExtResource("5_uwrd3")], [ExtResource("6_h51pj"), ExtResource("7_eemif")]]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Sun?" type="DirectionalLight3D" parent="."]
@@ -148,3 +161,22 @@ mesh = SubResource("BoxMesh_ejukk")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)
 shape = SubResource("ConvexPolygonShape3D_jp02q")
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_4ax3g")
+_terrain_data = ExtResource("2_4q7rr")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_tpyh5")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://0sijhong0njw"
