@@ -6,7 +6,7 @@ class_name Referee extends Node
 @export var input_hit: InputHit
 @export var judge: Judge
 
-@export var note_speed: float = 1.
+@export var note_speed: float = 10.
 @export var input_offset: float = -0.02
 @export var audio_offset: float = -0.02
 

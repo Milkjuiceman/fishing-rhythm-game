@@ -3,7 +3,7 @@ class_name Judge extends Node
 var chart: Chart = null
 var scorecard: Scorecard = null
 
-const TEMPORAL_ERROR_MARGIN: float = 0.2 # 200ms
+const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
 
@@ -30,15 +30,19 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
 			break
-			
-		#if frame_state.right_key_press:
-			#print("0: ", frame_state.t);
-			#
-		#if frame_state.center_key_press:
-			#print("1: ", frame_state.t);
-			#
-		#if frame_state.left_key_press:
-			#print("2: ", frame_state.t);
+		
+		if i > chart.note_timings.size() - 2:
+			if frame_state.k_key_press:
+				print("k0: ", frame_state.t, "\n");
+				
+			if frame_state.j_key_press:
+				print("j1: ", frame_state.t, "\n");
+				
+			if frame_state.f_key_press:
+				print("f2: ", frame_state.t, "\n");
+				
+			if frame_state.d_key_press:
+				print("d3: ", frame_state.t, "\n");
 			
 		var timing: float =  chart.note_timings[i]
 		
