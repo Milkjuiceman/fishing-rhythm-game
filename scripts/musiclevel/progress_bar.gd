@@ -19,5 +19,5 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	prev_hit = frame_state.scorecard.hits
 	prev_miss = frame_state.scorecard.misses
 	
-	if value == 100 || value < 0:
+	if value < 0:
 		get_tree().quit()

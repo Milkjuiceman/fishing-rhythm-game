@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://cbvic2xpeig7"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_p0ce3"]
+
+[resource]
+script = ExtResource("1_p0ce3")
+audio_location = &"uid://0gnu5lv3j48o"
+artists = "Patrick de Arteaga"
+title = "Humble Match"
+bpm = Dictionary[float, float]({
+0.0: 120.0
+})
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
