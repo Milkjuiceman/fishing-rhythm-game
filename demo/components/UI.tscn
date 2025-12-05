@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2jihfohphuue"]
 
-[ext_resource type="Script" path="res://demo/src/UI.gd" id="1_why5e"]
+[ext_resource type="Script" uid="uid://c65oplyu17h4j" path="res://demo/src/UI.gd" id="1_why5e"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -64,3 +64,42 @@ offset_left = 6.0
 offset_top = 310.0
 offset_right = 246.0
 offset_bottom = 319.0
+
+[node name="dialogue" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 587.0
+offset_top = 454.0
+offset_right = 1126.39
+offset_bottom = 618.0
+
+[node name="nameplate" type="Label" parent="dialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.143
+anchor_right = 0.09
+anchor_bottom = 0.143
+offset_left = -35.545105
+offset_top = -15.452002
+offset_right = 74.454895
+offset_bottom = 15.547998
+text = "placeholder"
+
+[node name="continue" type="Label" parent="dialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.83900005
+anchor_top = 0.87500006
+anchor_right = 0.83900005
+anchor_bottom = 0.87500006
+offset_left = -74.54825
+offset_top = -12.500015
+offset_right = 74.45175
+offset_bottom = 12.499985
+text = "press A to continue"
+
+[node name="interact_prompt" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cofnhdcclon1w"]
+[gd_scene load_steps=9 format=3 uid="uid://cofnhdcclon1w"]
 
-[ext_resource type="Script" path="res://demo/src/CodeGenerated.gd" id="1_h7vyv"]
+[ext_resource type="Script" uid="uid://dahuxykw6mho0" path="res://demo/src/CodeGenerated.gd" id="1_h7vyv"]
 [ext_resource type="PackedScene" uid="uid://domhm87hbhbg1" path="res://demo/components/Player.tscn" id="2_3v2uf"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="3_71ikj"]
 [ext_resource type="PackedScene" uid="uid://di5fovhcyd7re" path="res://demo/components/Enemy.tscn" id="4_p8qry"]
 [ext_resource type="PackedScene" uid="uid://d2jihfohphuue" path="res://demo/components/UI.tscn" id="4_x5ge4"]
-[ext_resource type="Script" path="res://demo/src/RuntimeNavigationBaker.gd" id="5_445ur"]
+[ext_resource type="Script" uid="uid://bkx608ykedo05" path="res://demo/src/RuntimeNavigationBaker.gd" id="5_445ur"]
+[ext_resource type="PackedScene" uid="uid://bbxyek32r01kn" path="res://demo/components/fixed_npc.tscn" id="6_k1vcn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vs6am"]
 geometry_parsed_geometry_type = 1
@@ -26,6 +27,33 @@ target = NodePath("../Player")
 
 [node name="UI" parent="." instance=ExtResource("4_x5ge4")]
 
+[node name="dialogue" parent="UI" index="1"]
+top_level = true
+
+[node name="nameplate" parent="UI/dialogue" index="0"]
+text = ""
+
+[node name="continue" parent="UI/dialogue" index="1"]
+text = ""
+
+[node name="interact_prompt" parent="UI" index="2"]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16600001
+anchor_top = 0.94200003
+anchor_right = 0.16600001
+anchor_bottom = 0.94200003
+offset_left = -175.23201
+offset_top = -30.416016
+offset_right = 174.76799
+offset_bottom = 30.583984
+text = "Press enter to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FixedNpc" parent="." instance=ExtResource("6_k1vcn")]
+
 [node name="RuntimeNavigationBaker" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("5_445ur")
 enabled = false
@@ -40,3 +68,7 @@ fixed_size = true
 text = "Run This Scene"
 font_size = 64
 outline_size = 10
+
+[editable path="UI"]
+[editable path="FixedNpc"]
+[editable path="FixedNpc/fixed_npc"]

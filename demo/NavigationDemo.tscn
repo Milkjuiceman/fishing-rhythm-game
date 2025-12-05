@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://x34e4v60vdmy"]
 
-[ext_resource type="Script" path="res://demo/src/DemoScene.gd" id="1_po4vw"]
+[ext_resource type="Script" uid="uid://cwagsouf0hlby" path="res://demo/src/DemoScene.gd" id="1_po4vw"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://demo/components/Environment.tscn" id="2_i74wg"]
 [ext_resource type="PackedScene" uid="uid://dwnhqfjq7v1pq" path="res://demo/components/Borders.tscn" id="3_3upu0"]
 [ext_resource type="PackedScene" uid="uid://domhm87hbhbg1" path="res://demo/components/Player.tscn" id="4_fk3ul"]
@@ -27,9 +27,9 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
-seamless = true
-color_ramp = SubResource("Gradient_vr1m7")
 noise = SubResource("FastNoiseLite_d8lcj")
+color_ramp = SubResource("Gradient_vr1m7")
+seamless = true
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_s5mq5"]
 _shader_parameters = {
@@ -60,7 +60,8 @@ _shader_parameters = {
 "noise_texture": SubResource("NoiseTexture2D_bov7h"),
 "projection_angular_division": 1.436,
 "projection_threshold": 0.8,
-"tri_scale_reduction": 0.3
+"tri_scale_reduction": 0.3,
+&"world_space_normal_blend": true
 }
 world_background = 0
 auto_shader = true

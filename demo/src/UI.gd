@@ -1,10 +1,7 @@
 extends Control
 
-
 var player: Node
 var visible_mode: int = 1
-
-
 func _init() -> void:
 	RenderingServer.set_debug_generate_wireframes(true)
 
