@@ -52,18 +52,18 @@ offset_bottom = 444.0
 [node name="HSeparator" type="HSeparator" parent="Label/Panel"]
 top_level = true
 layout_mode = 0
-offset_left = 6.0
-offset_top = 129.0
-offset_right = 246.0
-offset_bottom = 138.0
+offset_left = 8.0
+offset_top = 89.0
+offset_right = 248.0
+offset_bottom = 98.0
 
 [node name="HSeparator2" type="HSeparator" parent="Label/Panel"]
 top_level = true
 layout_mode = 0
-offset_left = 6.0
-offset_top = 310.0
-offset_right = 246.0
-offset_bottom = 319.0
+offset_left = 7.0
+offset_top = 273.0
+offset_right = 247.0
+offset_bottom = 282.0
 
 [node name="dialogue" type="Control" parent="."]
 anchors_preset = 0
@@ -72,34 +72,23 @@ offset_top = 454.0
 offset_right = 1126.39
 offset_bottom = 618.0
 
-[node name="nameplate" type="Label" parent="dialogue"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.09
-anchor_top = 0.143
-anchor_right = 0.09
-anchor_bottom = 0.143
-offset_left = -35.545105
-offset_top = -15.452002
-offset_right = 74.454895
-offset_bottom = 15.547998
-text = "placeholder"
-
-[node name="continue" type="Label" parent="dialogue"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.83900005
-anchor_top = 0.87500006
-anchor_right = 0.83900005
-anchor_bottom = 0.87500006
-offset_left = -74.54825
-offset_top = -12.500015
-offset_right = 74.45175
-offset_bottom = 12.499985
-text = "press A to continue"
-
-[node name="interact_prompt" type="Label" parent="."]
-visible = false
+[node name="textbox" type="RichTextLabel" parent="dialogue"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -111.0
+offset_top = -38.0
+offset_right = 516.0
+offset_bottom = 154.0
+scroll_active = false
+
+[node name="interaction" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.87100005
+anchor_right = 0.5
+anchor_bottom = 0.873
+offset_left = 325.0
+offset_top = 4.59198
+offset_right = 498.0
+offset_bottom = 26.29596
+text = "press enter to interact"

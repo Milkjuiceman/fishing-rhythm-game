@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+var current_npc: Node = null
+@export var ui_node: NodePath
+@onready var ui = get_node(ui_node)
+
 @export var MOVE_SPEED: float = 50.0
 @export var JUMP_SPEED: float = 2.0
 @export var first_person: bool = false : 
@@ -61,6 +65,11 @@ func get_camera_relative_input() -> Vector3:
 
 
 func _input(p_event: InputEvent) -> void:
+	# NPC interaction 
+	if p_event.is_action_pressed("interact") and current_npc:
+		current_npc.try_interact()
+		return
+	
 	if p_event is InputEventMouseButton and p_event.pressed:
 		if p_event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			MOVE_SPEED = clamp(MOVE_SPEED + 5, 5, 9999)
@@ -79,3 +88,30 @@ func _input(p_event: InputEvent) -> void:
 		# Else if up/down released
 		elif p_event.keycode in [ KEY_Q, KEY_E, KEY_SPACE ]:
 			velocity.y = 0
+
+func set_current_npc(npc):
+	if current_npc == npc:
+		return
+	
+	if current_npc:
+		var old_callback = Callable(self, "_npc_interact")
+		if current_npc.is_connected("interaction_started", old_callback):
+			current_npc.disconnect("interaction_started", old_callback)
+	
+	current_npc = npc
+	
+	if current_npc:
+		var callback = Callable(self, "_npc_interact")
+		if not current_npc.is_connected("interaction_started", callback):
+			current_npc.connect("interaction_started", callback)
+		if ui:
+			ui.player_enters_interzone()
+
+func clear_current_npc(npc):
+	if current_npc == npc:
+		current_npc = null
+		if ui:
+			ui.player_exits_interzone()
+
+func _npc_interact(lines: Array):
+	ui.start_dialogue(lines)

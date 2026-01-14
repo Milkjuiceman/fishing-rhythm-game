@@ -12,8 +12,8 @@ height = 1.5
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lsqiy"]
 
-[node name="Player" type="CharacterBody3D"]
-collision_layer = 2
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 3
 script = ExtResource("1_nm1yx")
 
 [node name="CameraManager" type="Node3D" parent="."]

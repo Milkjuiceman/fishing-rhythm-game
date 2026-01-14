@@ -2,7 +2,6 @@ extends Node
 
 var terrain: Terrain3D
 
-
 func _ready() -> void:
 	$UI.player = $Player
 		
@@ -16,14 +15,14 @@ func _ready() -> void:
 	$RuntimeNavigationBaker.terrain = terrain
 	$RuntimeNavigationBaker.enabled = true
 	var frog_NPC_scene: PackedScene = load("res://demo/components/fixed_npc.tscn")
-	#print("Loaded frog scene:", frog_NPC_scene)
+
+
 	var frog = frog_NPC_scene.instantiate()
 	#position
 	var frog_pos = Vector3(15,0,15)
 	frog_pos.y = terrain.data.get_height(frog_pos)
 	frog.position = frog_pos
 	add_child(frog)
-	#print("Frog added:", frog)
 
 
 func create_terrain() -> Terrain3D:

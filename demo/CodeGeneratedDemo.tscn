@@ -20,37 +20,21 @@ script = ExtResource("1_h7vyv")
 
 [node name="Player" parent="." instance=ExtResource("2_3v2uf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+ui_node = NodePath("../UI")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_p8qry")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 50, -10)
 target = NodePath("../Player")
 
 [node name="UI" parent="." instance=ExtResource("4_x5ge4")]
+player_node = NodePath("../Player")
 
 [node name="dialogue" parent="UI" index="1"]
+visible = false
 top_level = true
 
-[node name="nameplate" parent="UI/dialogue" index="0"]
-text = ""
-
-[node name="continue" parent="UI/dialogue" index="1"]
-text = ""
-
-[node name="interact_prompt" parent="UI" index="2"]
-top_level = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.16600001
-anchor_top = 0.94200003
-anchor_right = 0.16600001
-anchor_bottom = 0.94200003
-offset_left = -175.23201
-offset_top = -30.416016
-offset_right = 174.76799
-offset_bottom = 30.583984
-text = "Press enter to interact"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="interaction" parent="UI" index="2"]
+visible = false
 
 [node name="FixedNpc" parent="." instance=ExtResource("6_k1vcn")]
 
