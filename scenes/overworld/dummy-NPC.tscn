@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgw3en671cgwv"]
+
+[ext_resource type="PackedScene" uid="uid://2rrgdq50ft47" path="res://assets/models/fixed_npc.glb" id="1_12rst"]
+[ext_resource type="Script" uid="uid://djtdtbq2isgy0" path="res://scripts/overworld/dummy_npc.gd" id="2_ui5kk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_12rst"]
+
+[node name="dummy" groups=["npc"] instance=ExtResource("1_12rst")]
+script = ExtResource("2_ui5kk")
+
+[node name="NPCzone" type="Area3D" parent="." index="3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCzone" index="0"]
+transform = Transform3D(9.92, 0, 0, 0, 9.92, 0, 0, 0, 9.92, 0, 0, 0)
+shape = SubResource("SphereShape3D_12rst")

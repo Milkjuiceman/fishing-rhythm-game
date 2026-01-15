@@ -1,19 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://5dk2fxappsxs"]
+[gd_scene load_steps=7 format=3 uid="uid://5dk2fxappsxs"]
 
 [ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://scenes/overworld/small-lake.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boat.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4tkf4p7khjoq" path="res://scenes/overworld/fish_notification.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cgw3en671cgwv" path="res://scenes/overworld/dummy-NPC.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://dlbt4fvjuvj02" path="res://scripts/ui.gd" id="6_7mycd"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Small lake" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.630543, 0)
 
-[node name="Boat" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Boat" parent="." groups=["player"] instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31866, 0.29279566, 126.45069)
+ui_node = NodePath("../UI")
 
-[node name="Area3D" parent="." instance=ExtResource("3_h2yge")]
+[node name="RipplingWaterArea" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.13063, 0, 116.655945)
 
 [node name="FishNotification" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="dummy" parent="." instance=ExtResource("5_lquwl")]
+transform = Transform3D(0.92050487, 0, -0.39073113, 0, 1, 0, 0.39073113, 0, 0.92050487, 192.47, 0.279, 28.443)
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("6_7mycd")
+player_node = NodePath("../Boat")
+
+[node name="dialoguebox" type="Control" parent="UI"]
+layout_mode = 3
+anchor_left = 0.72200006
+anchor_top = 0.75200003
+anchor_right = 0.72200006
+anchor_bottom = 0.75200003
+offset_left = -281.74408
+offset_top = -123.29602
+offset_right = 281.25592
+offset_bottom = 123.70398
+
+[node name="textbox" type="RichTextLabel" parent="UI/dialoguebox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.52000004
+anchor_top = 0.545
+anchor_right = 0.52000004
+anchor_bottom = 0.545
+offset_left = -286.76
+offset_top = -110.615005
+offset_right = 273.24
+offset_bottom = 107.384995
+
+[node name="prompt" type="Label" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.87200004
+anchor_top = 0.89400005
+anchor_right = 0.87200004
+anchor_bottom = 0.89400005
+offset_left = -86.54407
+offset_top = -11.312012
+offset_right = 86.45593
+offset_bottom = 11.687988
+text = "press enter to interact"
