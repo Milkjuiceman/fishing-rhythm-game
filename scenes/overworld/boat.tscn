@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=11 format=3 uid="uid://dfdg34vf6rofh"]
 
 [ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/overworld/boat.gd" id="1_annr2"]
+[ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
+[ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_viw7v"]
 
@@ -10,6 +12,18 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jsln"]
 points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvl5j"]
+render_priority = 0
+shader = ExtResource("2_8dbyq")
+shader_parameter/outline_offset = 0.00139999996458
+shader_parameter/outline_strength = 1000.0
+shader_parameter/fog_color = Color(0.629, 0.74, 0.74, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/fog_start = 1.0
+shader_parameter/fog_width = 0.02
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
 size = Vector3(2.57312, 1, 1.2182617)
@@ -42,6 +56,13 @@ transform = Transform3D(0.94664913, -0.32226563, 0, 0.32226563, 0.94664913, 0, 0
 
 [node name="Camera3D" type="Camera3D" parent="H/V"]
 transform = Transform3D(-4.3711385e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 6.458033, 0, 0)
+
+[node name="PostProcess" type="MeshInstance3D" parent="H/V/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4901161e-08, -0.4765098)
+visible = false
+mesh = SubResource("QuadMesh_ch1qf")
+surface_material_override/0 = SubResource("ShaderMaterial_lvl5j")
+script = ExtResource("2_sbp4s")
 
 [node name="Floaty" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6625283, 0, -0.6025252)
