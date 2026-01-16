@@ -31,22 +31,25 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if i >= chart.note_timings.size(): # at end of song and all done
 			break
 		
-		if i > chart.note_timings.size() - 2:
-			if frame_state.k_key_press:
-				print("k0: ", frame_state.t, "\n");
-				
-			if frame_state.j_key_press:
-				print("j1: ", frame_state.t, "\n");
-				
-			if frame_state.f_key_press:
-				print("f2: ", frame_state.t, "\n");
-				
-			if frame_state.d_key_press:
-				print("d3: ", frame_state.t, "\n");
+		#if i > chart.note_timings.size() - 2:
+			#if frame_state.k_key_press:
+				#print("k0: ", frame_state.t, "\n");
+				#
+			#if frame_state.j_key_press:
+				#print("j1: ", frame_state.t, "\n");
+				#
+			#if frame_state.f_key_press:
+				#print("f2: ", frame_state.t, "\n");
+				#
+			#if frame_state.d_key_press:
+				#print("d3: ", frame_state.t, "\n");
 			
 		var timing: float =  chart.note_timings[i]
 		
 		if timing > upper_bound: # done searching
+			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
+				# MISS
+				scorecard.penalty()
 			break
 		
 		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:
@@ -88,6 +91,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 				note_judged.emit(i, frame_state)
 				if i == lowest_judgment_index:
 					lowest_judgment_index +=  1;
+			break
 			
 
 
