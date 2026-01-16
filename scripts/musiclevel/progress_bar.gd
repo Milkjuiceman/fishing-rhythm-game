@@ -7,7 +7,6 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	
 	# HIT
 	if frame_state.scorecard.hits > prev_hit:
-		var accuracy = frame_state.scorecard.get_hit_accuracy()
 		if frame_state.scorecard.combo >= 10:
 			value += (frame_state.scorecard.hits - prev_hit) * 4
 		else:
