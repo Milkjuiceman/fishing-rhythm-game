@@ -15,6 +15,10 @@ run/main_scene="uid://cggvcdmnf2hee"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
 
+[autoload]
+
+PauseMenu="*res://scenes/ui/pause_menu.tscn"
+
 [dotnet]
 
 project/assembly_name="fishing rhythm game"
