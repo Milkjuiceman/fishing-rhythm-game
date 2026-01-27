@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://bosl1ktlxf3o7"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_em7en"]
+
+[resource]
+script = ExtResource("1_em7en")
+audio_location = &"uid://bq3v3on7162eg"
+artists = "Tyler Schauermann"
+title = "Calibrator Metronome"
+bpm = Dictionary[float, float]({
+0.0: 60.0
+})
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
