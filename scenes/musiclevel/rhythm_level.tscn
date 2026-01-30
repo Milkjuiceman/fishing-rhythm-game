@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/overworld/camera_3d.gd" id="6_v6oj6"]
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="7_3ffb3"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="8_nm25w"]
+[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scenes/musiclevel/combo_counter.gd" id="8_vlupf"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="9_ttdv7"]
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="10_wjn2f"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="11_i3t07"]
@@ -103,6 +104,99 @@ mesh = SubResource("QuadMesh_3hdgt")
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
 text = "J"
 font_size = 100
+
+[node name="HUD" type="CanvasLayer" parent="Camera3D"]
+follow_viewport_enabled = true
+
+[node name="UI" type="Control" parent="Camera3D/HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 650.0
+
+[node name="Hits" type="Label" parent="Camera3D/HUD/UI"]
+layout_mode = 0
+offset_top = 118.0
+offset_right = 60.0
+offset_bottom = 167.0
+scale = Vector2(3, 3)
+text = "HITS:
+MISSES:
+COMBO:"
+script = ExtResource("10_wjn2f")
+
+[node name="Control" parent="Camera3D/HUD/UI" instance=ExtResource("13_7ace8")]
+process_mode = 3
+layout_mode = 1
+
+[node name="AudioOffset" type="HSlider" parent="Camera3D/HUD/UI/Control"]
+process_mode = 3
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 16.0
+min_value = -0.1
+max_value = 0.1
+step = 0.01
+value = -0.020000000000000004
+script = ExtResource("12_nkh30")
+
+[node name="OffsetValue" type="Label" parent="Camera3D/HUD/UI/Control/AudioOffset"]
+layout_mode = 0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 38.0
+text = "Audio Offset: "
+
+[node name="InputOffset" type="HSlider" parent="Camera3D/HUD/UI/Control"]
+process_mode = 3
+layout_mode = 0
+offset_top = 41.0
+offset_right = 300.0
+offset_bottom = 57.0
+min_value = -0.1
+max_value = 0.1
+step = 0.01
+value = -0.020000000000000004
+script = ExtResource("12_nkh30")
+controls_audio_offset = false
+
+[node name="OffsetValue" type="Label" parent="Camera3D/HUD/UI/Control/InputOffset"]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 40.0
+offset_bottom = 42.0
+text = "Input Offset: "
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -48.0
+offset_right = 177.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(177, 14)
+size_flags_vertical = 8
+value = 10.0
+allow_lesser = true
+script = ExtResource("11_i3t07")
+
+[node name="Multiplier" type="Label" parent="Camera3D/HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -151.0
+offset_top = 15.000002
+offset_right = -100.66675
+offset_bottom = 38.0
+grow_horizontal = 0
+scale = Vector2(3, 3)
+text = "X1"
+script = ExtResource("8_vlupf")
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
 script = ExtResource("7_3ffb3")
@@ -1174,83 +1268,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("9_ttdv7")
 
-[node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Hits" type="Label" parent="HUD"]
-layout_mode = 0
-offset_top = 118.0
-offset_right = 60.0
-offset_bottom = 167.0
-scale = Vector2(3, 3)
-text = "HITS:
-MISSES:"
-script = ExtResource("10_wjn2f")
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 379.5
-offset_top = 550.0
-offset_right = 732.5
-offset_bottom = 577.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
-value = 10.0
-allow_lesser = true
-script = ExtResource("11_i3t07")
-
-[node name="Control" parent="." instance=ExtResource("13_7ace8")]
-process_mode = 3
-
-[node name="AudioOffset" type="HSlider" parent="Control"]
-process_mode = 3
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 16.0
-min_value = -0.1
-max_value = 0.1
-step = 0.01
-value = -0.020000000000000004
-script = ExtResource("12_nkh30")
-
-[node name="OffsetValue" type="Label" parent="Control/AudioOffset"]
-layout_mode = 0
-offset_top = 15.0
-offset_right = 40.0
-offset_bottom = 38.0
-text = "Audio Offset: "
-
-[node name="InputOffset" type="HSlider" parent="Control"]
-process_mode = 3
-layout_mode = 0
-offset_top = 41.0
-offset_right = 300.0
-offset_bottom = 57.0
-min_value = -0.1
-max_value = 0.1
-step = 0.01
-value = -0.020000000000000004
-script = ExtResource("12_nkh30")
-controls_audio_offset = false
-
-[node name="OffsetValue" type="Label" parent="Control/InputOffset"]
-layout_mode = 0
-offset_top = 19.0
-offset_right = 40.0
-offset_bottom = 42.0
-text = "Input Offset: "
-
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
-[connection signal="process" from="MusicPlayer/Referee" to="HUD/Hits" method="_on_referee_process"]
-[connection signal="process" from="MusicPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/UI/Hits" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]

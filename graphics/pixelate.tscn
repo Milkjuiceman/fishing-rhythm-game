@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cggvcdmnf2hee"]
+
+[ext_resource type="Shader" uid="uid://evfw6gl75wt3" path="res://graphics/simple_texture.gdshader" id="1_lcswi"]
+[ext_resource type="PackedScene" uid="uid://5dk2fxappsxs" path="res://main.tscn" id="2_e12hr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_80o2y"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kj7ri"]
+resource_local_to_scene = true
+shader = ExtResource("1_lcswi")
+shader_parameter/text = SubResource("ViewportTexture_80o2y")
+
+[node name="Pixelate" type="ColorRect"]
+material = SubResource("ShaderMaterial_kj7ri")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(385, 217)
+
+[node name="Main" parent="SubViewport" instance=ExtResource("2_e12hr")]

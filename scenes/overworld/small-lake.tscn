@@ -1,141 +1,49 @@
-[gd_scene load_steps=16 format=3 uid="uid://byga337ywa56i"]
+[gd_scene load_steps=15 format=3 uid="uid://byga337ywa56i"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4ax3g"]
-[ext_resource type="Resource" uid="uid://ciepm31uc33kp" path="res://terraindata/data.hterrain" id="2_4q7rr"]
+[ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="1_uwrd3"]
+[ext_resource type="Resource" uid="uid://ciepm31uc33kp" path="res://terraindata/small_lake_terrain_data/data.hterrain" id="2_4q7rr"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_pj436"]
 [ext_resource type="Texture2D" uid="uid://q11hajbco5v5" path="res://assets/textures/Ground/small-lake_slot0_albedo_bump.png" id="4_6jghi"]
 [ext_resource type="Texture2D" uid="uid://dishvn1ey45qu" path="res://assets/textures/Ground/small-lake_slot1_albedo_bump.png" id="5_uwrd3"]
 [ext_resource type="Texture2D" uid="uid://d3up0e1llb7tp" path="res://assets/textures/Ground/small-lake_slot0_normal_roughness.png" id="6_h51pj"]
 [ext_resource type="Texture2D" uid="uid://b4q27yi17frx8" path="res://assets/textures/Ground/small-lake_slot1_normal_roughness.png" id="7_eemif"]
 
+[sub_resource type="Environment" id="Environment_uwrd3"]
+ambient_light_source = 2
+ambient_light_color = Color(0.25301665, 0.33793476, 0.50212634, 1)
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="Shader" id="Shader_rjg1i"]
-code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
+code = "shader_type spatial;
+uniform sampler3D noise;
 
-shader_type spatial;
-render_mode blend_mix, depth_draw_always, cull_back, diffuse_burley, specular_schlick_ggx;
-
-uniform vec4 albedo : source_color;
-uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
-
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
-
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-
-uniform sampler2D texture_refraction : filter_linear_mipmap, repeat_enable;
-uniform float refraction : hint_range(-1.0, 1.0, 0.001);
-uniform vec4 refraction_texture_channel;
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
-
-uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
-uniform float normal_scale : hint_range(-16.0, 16.0);
-varying vec3 uv1_triplanar_pos;
-
-uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
-varying vec3 uv1_power_normal;
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-void vertex() {
-	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
-
-	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
-	TANGENT = inverse(MODEL_NORMAL_MATRIX) * normalize(TANGENT);
-
-	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
-	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
-	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
-	BINORMAL = inverse(MODEL_NORMAL_MATRIX) * normalize(BINORMAL);
-
-	// UV1 Triplanar: Enabled (with World Triplanar)
-	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset + TIME * 0.2;
-	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
-	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
-}
-
-vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
-	vec4 samp = vec4(0.0);
-	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
-	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
-	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
-	return samp;
-}
+uniform vec3 color : source_color = vec3(0.1, 0.2, 0.3);
+uniform float uv_scale = 3.;
 
 void fragment() {
-	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float sample_loc = texture(noise, vec3(UV * uv_scale * 0.353446745656, 0.456456) + TIME*vec3(0.01456, 0.02456456, 0.05456456)).r * 0.005;
+	float foo = texture(noise, vec3((UV + vec2(0.345345, sample_loc * 0.2345345 + 0.928374)) * uv_scale, 0.028934+sample_loc) + TIME*vec3(0.0456456, 0.1456456, 0.34572)).r;
+	foo += texture(noise, vec3((UV + vec2(sample_loc * 0.2345345 + 0.187236, 0.345345)) * 3. * uv_scale, 0.1345345) + TIME*vec3(0.05263547, 0.0342, 0.2456456)).r;
+	foo += texture(noise, vec3((UV + vec2(0.234534, sample_loc + 0.902734)) * 7.345345 * uv_scale, 0.2345345+sample_loc) + TIME*vec3(0.145789, 0.05235, 0.24572)).r;
+	foo += texture(noise, vec3((UV + vec2(sample_loc + 0.1235675674, 0.345345)) * 11.345345 * uv_scale, 0.3456456) + TIME*vec3(0.134, 0.278, 0.1834)).r;
+	ALBEDO = foo > 1.4 ? color : vec3(1.);
+}
 
-	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
-
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-
-	// Normal Map: Enabled
-	NORMAL_MAP = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
-	NORMAL_MAP_DEPTH = normal_scale;
-
-	// Refraction: Enabled (with normal map texture)
-	vec3 unpacked_normal = NORMAL_MAP;
-	unpacked_normal.xy = unpacked_normal.xy * 2.0 - 1.0;
-	unpacked_normal.z = sqrt(max(0.0, 1.0 - dot(unpacked_normal.xy, unpacked_normal.xy)));
-	vec3 ref_normal = normalize(mix(
-			NORMAL,
-			TANGENT * unpacked_normal.x + BINORMAL * unpacked_normal.y + NORMAL * unpacked_normal.z,
-			NORMAL_MAP_DEPTH));
-	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * dot(triplanar_texture(texture_refraction, uv1_power_normal, uv1_triplanar_pos), refraction_texture_channel) * refraction;
-
-	float ref_amount = 1.0 - albedo.a * albedo_tex.a;
-	EMISSION += textureLod(screen_texture, ref_ofs, ROUGHNESS * 8.0).rgb * ref_amount * EXPOSURE;
-	ALBEDO *= 1.0 - ref_amount;
-	// Force transparency on the material (required for refraction).
-	ALPHA = 1.0;
+void light() {
+    float lit = max(dot(NORMAL, LIGHT), 0.) * ATTENUATION;
+    lit = lit > 0. ? (lit > 0.75 ? 1. : 0.5) : 0.;
+    DIFFUSE_LIGHT += LIGHT_COLOR * lit / PI;
 }
 "
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2sp8u"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uxsxp"]
-noise = SubResource("FastNoiseLite_2sp8u")
-seamless = true
-as_normal_map = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_omh08"]
-noise = SubResource("FastNoiseLite_2sp8u")
-seamless = true
-as_normal_map = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
 render_priority = 0
 shader = SubResource("Shader_rjg1i")
-shader_parameter/albedo = Color(0.49955487, 0.6579614, 1.0222965, 0.61960787)
-shader_parameter/point_size = 1.0
-shader_parameter/roughness = 0.03
-shader_parameter/metallic_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/specular = 0.5
-shader_parameter/metallic = 0.0
-shader_parameter/texture_refraction = SubResource("NoiseTexture2D_omh08")
-shader_parameter/refraction = 0.08
-shader_parameter/refraction_texture_channel = Vector4(0, 0, 0, 0)
-shader_parameter/texture_normal = SubResource("NoiseTexture2D_uxsxp")
-shader_parameter/normal_scale = 1.0
-shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv1_scale = Vector3(0.5, 0.5, 0.5)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/noise = ExtResource("1_uwrd3")
+shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
+shader_parameter/uv_scale = 12.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_ejukk"]
 material = SubResource("ShaderMaterial_xos6f")
@@ -151,8 +59,17 @@ textures = [[ExtResource("4_6jghi"), ExtResource("5_uwrd3")], [ExtResource("6_h5
 
 [node name="Node3D" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uwrd3")
+
 [node name="Sun?" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.27245, -0.554656, 0.786211, -0.181612, 0.83208, 0.52408, -0.944875, -7.081e-09, -0.327432, 185.798, 44.0561, 149.308)
+light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
+shadow_enabled = true
+directional_shadow_split_1 = 0.064
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.4
+directional_shadow_max_distance = 150.0
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.813, -15.5996, 121.753)

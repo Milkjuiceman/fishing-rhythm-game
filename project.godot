@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="fishing rhythm game"
-run/main_scene="uid://5dk2fxappsxs"
+run/main_scene="uid://cggvcdmnf2hee"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
+
+[autoload]
+
+PauseMenu="*res://scenes/ui/pause_menu.tscn"
+
+[dotnet]
+
+project/assembly_name="fishing rhythm game"
 
 [editor_plugins]
 

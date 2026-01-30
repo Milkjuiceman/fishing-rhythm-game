@@ -1,0 +1,308 @@
+[gd_scene load_steps=2 format=3 uid="uid://pause_menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 100
+process_mode = 3
+script = ExtResource("1_pause")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.1, 0.14, 0.88)
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -180.0
+offset_right = 160.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="MainPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="ResumeButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Settings"
+
+[node name="TitleScreenButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Return to Title"
+
+[node name="Spacer" type="Control" parent="MainPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Quit Game"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -280.0
+offset_right = 220.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Divider" type="HSeparator" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="AudioLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+text = "— Audio —"
+horizontal_alignment = 1
+
+[node name="MasterVolumeContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+value = 80.0
+
+[node name="MasterValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MusicVolumeContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+value = 70.0
+
+[node name="MusicValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "70%"
+horizontal_alignment = 2
+
+[node name="SFXVolumeContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 100.0
+value = 100.0
+
+[node name="SFXValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="AudioSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="DisplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+text = "— Display —"
+horizontal_alignment = 1
+
+[node name="FullscreenContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VSyncContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSyncLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V-Sync"
+
+[node name="VSyncCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+
+[node name="ShowFPSContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ShowFPSLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Show FPS"
+
+[node name="ShowFPSCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DisplaySpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="GameplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+text = "— Gameplay —"
+horizontal_alignment = 1
+
+[node name="MouseSensContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MouseSensLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Mouse Sens."
+
+[node name="MouseSensSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.5
+max_value = 10.0
+step = 0.5
+value = 5.0
+
+[node name="MouseSensValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+text = "5.0"
+horizontal_alignment = 2
+
+[node name="InvertYContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="InvertYLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Invert Y-Axis"
+
+[node name="InvertYCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ButtonSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Back"
+
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_pressed"]
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer/MasterSlider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer/MusicSlider" to="." method="_on_music_volume_changed"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer/SFXSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer/VSyncCheck" to="." method="_on_vsync_toggled"]
+[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer/ShowFPSCheck" to="." method="_on_show_fps_toggled"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer/MouseSensSlider" to="." method="_on_mouse_sens_changed"]
+[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer/InvertYCheck" to="." method="_on_invert_y_toggled"]
+[connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]
