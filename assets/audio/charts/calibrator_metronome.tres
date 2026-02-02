@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://d22gw4d8i50df"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_sras2"]
+[ext_resource type="Resource" uid="uid://bosl1ktlxf3o7" path="res://assets/audio/audio/calibrator_metronome.tres" id="2_2aolu"]
+
+[resource]
+script = ExtResource("1_sras2")
+track = ExtResource("2_2aolu")
+note_timings = PackedFloat64Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+note_column = null
+metadata/_custom_type_script = "uid://bpno8ianhdobd"
