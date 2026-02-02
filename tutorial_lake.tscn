@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=18 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_73or5"]
+[ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://tutorial_level.gd" id="1_ohaxl"]
 [ext_resource type="Resource" uid="uid://cj2creufxwrv4" path="res://terraindata/tutorial_lake_terrain_data/data.hterrain" id="2_jldhp"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_tyy4w"]
 [ext_resource type="Texture2D" uid="uid://q11hajbco5v5" path="res://assets/textures/Ground/small-lake_slot0_albedo_bump.png" id="4_swigd"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b4q27yi17frx8" path="res://assets/textures/Ground/small-lake_slot1_normal_roughness.png" id="6_tpsgm"]
 [ext_resource type="Texture2D" uid="uid://c5p1fqngto7nh" path="res://assets/textures/Rock/Rock058_2K-JPG_NormalDX.jpg" id="7_538ju"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_jldhp"]
+[ext_resource type="Script" uid="uid://cmqhr1ijtebt2" path="res://boat_transition_area.gd" id="10_kp4fu"]
 
 [sub_resource type="Resource" id="Resource_q51th"]
 script = ExtResource("3_tyy4w")
@@ -37,7 +39,7 @@ void light() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kp4fu"]
 render_priority = 0
 shader = SubResource("Shader_tyy4w")
 shader_parameter/noise = ExtResource("8_jldhp")
@@ -45,12 +47,26 @@ shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
 shader_parameter/uv_scale = 12.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_swigd"]
-material = SubResource("ShaderMaterial_xos6f")
+material = SubResource("ShaderMaterial_kp4fu")
 size = Vector3(250, 10, 250)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyexu"]
+size = Vector3(245.74716, 20.628906, 238.35051)
+
+[sub_resource type="Environment" id="Environment_gyexu"]
+ambient_light_source = 2
+ambient_light_color = Color(0.25301665, 0.33793476, 0.50212634, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kp4fu"]
+size = Vector3(386.7661, 51.820324, 273.94922)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_ohaxl")
 
 [node name="Tutorial_HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("1_73or5")
 _terrain_data = ExtResource("2_jldhp")
 chunk_size = 32
@@ -70,6 +86,39 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.2033014, 0, 0, 0, 1, 0, 0, 0, 4.3287506, 518.8211, -10.3832245, 554.578)
+transform = Transform3D(4.2033014, 0, 0, 0, 1, 0, 0, 0, 4.3287506, 524.985, 0, 541)
 mesh = SubResource("BoxMesh_swigd")
 skeleton = NodePath("../Tutorial_HTerrain")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Water"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1891785, -5.590332, -4.6297607)
+shape = SubResource("BoxShape3D_gyexu")
+
+[node name="Sun?" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.2724499, -0.55465585, 0.78621113, -0.18161194, 0.8320799, 0.52408034, -0.94487464, 3.1517476e-07, -0.3274322, 375.4915, 194.86136, 391.9267)
+light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
+shadow_enabled = true
+directional_shadow_split_1 = 0.064
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.4
+directional_shadow_max_distance = 150.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gyexu")
+
+[node name="Boat_Collsion_Detector" type="Area3D" parent="."]
+script = ExtResource("10_kp4fu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boat_Collsion_Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 966.86365, -3.9146423, 946.9662)
+shape = SubResource("BoxShape3D_kp4fu")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="tutorial_boat_spawnpoint_a" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 820.964, 4.941, 764.772)
+
+[node name="tutorial_boat_initial_spawnpoint" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 199.77716, 4.941, 303.73965)

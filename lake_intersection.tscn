@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4i3rthdmlqxo"]
+[gd_scene load_steps=18 format=3 uid="uid://c4i3rthdmlqxo"]
 
+[ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://lake_intersection.gd" id="1_e3ujm"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_oio2t"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="2_blwe3"]
 [ext_resource type="Resource" uid="uid://bn56ufgmn3ok4" path="res://terraindata/lake_intersection_terrain_data/data.hterrain" id="2_e3ujm"]
@@ -8,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://dymkv5reg7ide" path="res://assets/textures/Ground/Ground068_2K-JPG_NormalDX.jpg" id="5_xf1v0"]
 [ext_resource type="Texture2D" uid="uid://c5p1fqngto7nh" path="res://assets/textures/Rock/Rock058_2K-JPG_NormalDX.jpg" id="6_ggo6u"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="7_h6tjq"]
+[ext_resource type="Script" uid="uid://bptumm7g6ubp5" path="res://boat_collsion_detector.gd" id="10_6pe3x"]
 
 [sub_resource type="Resource" id="Resource_8ntsp"]
 script = ExtResource("2_blwe3")
 mode = 0
 textures = [[ExtResource("3_e3ujm"), ExtResource("4_6pe3x")], [ExtResource("5_xf1v0"), ExtResource("6_ggo6u")]]
 
-[sub_resource type="Shader" id="Shader_0adyl"]
+[sub_resource type="Shader" id="Shader_blwe3"]
 code = "shader_type spatial;
 uniform sampler3D noise;
 
@@ -37,20 +39,34 @@ void light() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pe3x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
 render_priority = 0
-shader = SubResource("Shader_0adyl")
+shader = SubResource("Shader_blwe3")
 shader_parameter/noise = ExtResource("7_h6tjq")
 shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
 shader_parameter/uv_scale = 12.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_2q18p"]
-material = SubResource("ShaderMaterial_6pe3x")
+[sub_resource type="BoxMesh" id="BoxMesh_e3ujm"]
+material = SubResource("ShaderMaterial_xos6f")
 size = Vector3(250, 10, 250)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6pe3x"]
+size = Vector3(245.74716, 20.628906, 238.35051)
+
+[sub_resource type="Environment" id="Environment_e3ujm"]
+ambient_light_source = 2
+ambient_light_color = Color(0.25301665, 0.33793476, 0.50212634, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xf1v0"]
+size = Vector3(235.62561, 51.820324, 243.78357)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_e3ujm")
 
 [node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("1_oio2t")
 _terrain_data = ExtResource("2_e3ujm")
 chunk_size = 32
@@ -70,6 +86,36 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.0627575, 0, 0, 0, 1, 0, 0, 0, 4.04908, 508.92188, -16.036911, 507.20612)
-mesh = SubResource("BoxMesh_2q18p")
+transform = Transform3D(4.2033014, 0, 0, 0, 1, 0, 0, 0, 4.3287506, 524.985, 0, 541)
+mesh = SubResource("BoxMesh_e3ujm")
 skeleton = NodePath("../Tutorial_HTerrain")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Water"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1891785, -5.590332, -4.6297607)
+shape = SubResource("BoxShape3D_6pe3x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e3ujm")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 225.312, 4.91, 186.207)
+
+[node name="lake_intersection_boat_spawnpoint_a" type="Node3D" parent="SpawnPoints"]
+
+[node name="Sun?" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.20367941, -0.78297764, 0.5877591, -0.25637192, 0.6220499, 0.7398158, -0.94487464, 3.1538508e-07, -0.32743225, 523.01385, 305.47354, 578.13367)
+light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
+shadow_enabled = true
+directional_shadow_split_1 = 0.064
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.4
+directional_shadow_max_distance = 150.0
+
+[node name="Boat_Collsion_Detector" type="Area3D" parent="."]
+script = ExtResource("10_6pe3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boat_Collsion_Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.74939, -3.9146423, 29.943054)
+shape = SubResource("BoxShape3D_xf1v0")
