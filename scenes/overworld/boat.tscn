@@ -77,6 +77,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8624408, 0, -0.6025252)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86926484, 0, 0.6121896)
 
 [node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39068604, 0, 0.008056641)

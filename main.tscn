@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://5dk2fxappsxs"]
+[gd_scene load_steps=8 format=3 uid="uid://5dk2fxappsxs"]
 
 [ext_resource type="PackedScene" uid="uid://byga337ywa56i" path="res://scenes/overworld/small-lake.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boat.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b4tkf4p7khjoq" path="res://scenes/overworld/fish_notification.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cgw3en671cgwv" path="res://scenes/overworld/dummy-NPC.tscn" id="5_lquwl"]
-[ext_resource type="Script" uid="uid://dlbt4fvjuvj02" path="res://scripts/ui.gd" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://cefxkvadd5p7v" path="res://scripts/ui.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://p0huuq8kd1et" path="res://scenes/overworld/NPC-location.tscn" id="7_272bh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7mycd"]
 
 [node name="Main" type="Node3D"]
 
@@ -14,52 +16,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.630543, 0)
 
 [node name="Boat" parent="." groups=["player"] instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.31866, 0.29279566, 126.45069)
-ui_node = NodePath("../UI")
 
 [node name="RipplingWaterArea" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.13063, 0, 116.655945)
 
 [node name="FishNotification" parent="." instance=ExtResource("4_1bvp3")]
 
-[node name="dummy" parent="." instance=ExtResource("5_lquwl")]
-transform = Transform3D(0.92050487, 0, -0.39073113, 0, 1, 0, 0.39073113, 0, 0.92050487, 192.47, 0.279, 28.443)
+[node name="interactable_Dock" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(0.9634997, 0, -0.26770926, 0, 1, 0, 0.26770926, 0, 0.9634997, 169.85245, 2.430483, 23.220078)
+collision_layer = 2
+collision_mask = 0
+
+[node name="detection_zone" type="CollisionShape3D" parent="interactable_Dock"]
+transform = Transform3D(21.87, 0, 0, 0, 21.87, 0, 0, 0, 21.87, 0, 0, 0)
+shape = SubResource("SphereShape3D_7mycd")
+debug_fill = false
 
 [node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("6_7mycd")
-player_node = NodePath("../Boat")
 
 [node name="dialoguebox" type="Control" parent="UI"]
 layout_mode = 3
-anchor_left = 0.72200006
+anchor_left = 0.47700003
 anchor_top = 0.75200003
-anchor_right = 0.72200006
+anchor_right = 0.47700003
 anchor_bottom = 0.75200003
-offset_left = -281.74408
-offset_top = -123.29602
-offset_right = 281.25592
-offset_bottom = 123.70398
+offset_left = -191.50403
+offset_top = -52.29602
+offset_right = 250.49597
+offset_bottom = 108.70398
+mouse_filter = 2
 
 [node name="textbox" type="RichTextLabel" parent="UI/dialoguebox"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.52000004
-anchor_top = 0.545
-anchor_right = 0.52000004
-anchor_bottom = 0.545
-offset_left = -286.76
-offset_top = -110.615005
-offset_right = 273.24
-offset_bottom = 107.384995
+anchor_left = 0.53400004
+anchor_top = 0.65800005
+anchor_right = 0.53400004
+anchor_bottom = 0.65800005
+offset_left = -204.64203
+offset_top = -70.52602
+offset_right = 204.35791
+offset_bottom = 70.47398
+focus_mode = 0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 12
 
 [node name="prompt" type="Label" parent="UI"]
-visible = false
 anchors_preset = -1
-anchor_left = 0.87200004
-anchor_top = 0.89400005
-anchor_right = 0.87200004
-anchor_bottom = 0.89400005
-offset_left = -86.54407
-offset_top = -11.312012
-offset_right = 86.45593
-offset_bottom = 11.687988
+anchor_left = 0.5
+anchor_top = 0.799
+anchor_right = 0.5
+anchor_bottom = 0.799
+offset_left = -55.99994
+offset_top = -6.7519836
+offset_right = 117.00006
+offset_bottom = 16.247986
+scale = Vector2(0.65, 0.65)
 text = "press enter to interact"
+visible_characters_behavior = 1
+metadata/_edit_use_anchors_ = true

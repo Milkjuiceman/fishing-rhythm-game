@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://p0huuq8kd1et"]
+
+[ext_resource type="PackedScene" uid="uid://bygacfhp0rbqw" path="res://assets/models/shipping_port.glb" id="2_5ncnv"]
+[ext_resource type="Script" uid="uid://djtdtbq2isgy0" path="res://scripts/overworld/dummy_npc.gd" id="2_bmruj"]
+
+[node name="dummy" type="StaticBody3D" groups=["npc"]]
+script = ExtResource("2_bmruj")
+
+[node name="NPCzone" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Root Scene" parent="NPCzone" instance=ExtResource("2_5ncnv")]
+transform = Transform3D(2.19, 0, 0, 0, 2.19, 0, 0, 0, 2.19, 0.18657923, 0, 1.1691236)
