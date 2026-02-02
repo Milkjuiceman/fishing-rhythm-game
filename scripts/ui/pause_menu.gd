@@ -1,7 +1,6 @@
 extends CanvasLayer
 ## Pause Menu Controller
 ## Handles game pausing, settings navigation, and menu state
-## 
 ## Path: Project > Project Settings > Globals > AutoLoad
 ## Node Name: PauseMenu
 
@@ -61,8 +60,8 @@ var settings: Dictionary = {
 # Path to settings file
 const SETTINGS_PATH: String = "user://settings.cfg"
 
-# TODO: Path to title/main menu scene
-const TITLE_SCREEN_PATH: String = "res://main.tscn"
+# Path to title/main menu scene
+const TITLE_SCREEN_PATH: String = "res://scenes/ui/title_screen.tscn"
 
 
 func _ready() -> void:
@@ -75,9 +74,11 @@ func _ready() -> void:
 	_apply_settings_to_game()
 
 
-func _input(event: InputEvent) -> void:
+
+func _unhandled_input(event: InputEvent) -> void:
 	# Toggle pause with Tab key
-	if event is InputEventKey and event.pressed and event.keycode == KEY_TAB:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_TAB:
+		print("[PauseMenu] Tab key detected, toggling pause")
 		if is_in_settings:
 			_on_back_pressed()
 		else:
@@ -93,9 +94,6 @@ func toggle_pause() -> void:
 
 
 func pause_game() -> void:
-	if is_paused:
-		return
-	
 	is_paused = true
 	get_tree().paused = true
 	
@@ -160,18 +158,23 @@ func _on_title_screen_pressed() -> void:
 	# Save settings before transitioning
 	_save_settings()
 	
-	# Unpause before transitioning
-	get_tree().paused = false
+	# Hide pause menu (keep game paused for title screen)
 	is_paused = false
 	_hide_all()
 	
 	title_screen_requested.emit()
 	
-	# Change to title screen
-	if ResourceLoader.exists(TITLE_SCREEN_PATH):
-		get_tree().change_scene_to_file(TITLE_SCREEN_PATH)
+	# Try to show the title screen if it exists as an autoload
+	var title_screen = get_node_or_null("/root/TitleScreen")
+	if title_screen and title_screen.has_method("show_title"):
+		title_screen.show_title()
 	else:
-		push_warning("[PauseMenu] Title screen not found at: " + TITLE_SCREEN_PATH)
+		# Fallback: change scene if title screen is a separate scene
+		if ResourceLoader.exists(TITLE_SCREEN_PATH):
+			get_tree().paused = false
+			get_tree().change_scene_to_file(TITLE_SCREEN_PATH)
+		else:
+			push_warning("[PauseMenu] Title screen not found")
 
 
 func _on_quit_pressed() -> void:
