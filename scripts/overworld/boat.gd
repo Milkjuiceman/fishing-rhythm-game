@@ -7,6 +7,8 @@ var locked_y_position = 0.0
 @onready var detection_area = $DetectionArea
 
 func _ready():
+	detection_area.body_entered.connect(_on_area_entered)
+	detection_area.body_exited.connect(_on_area_exited)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	axis_lock_angular_x = true
@@ -14,15 +16,15 @@ func _ready():
 	
 	locked_y_position = global_transform.origin.y
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+		
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		mouse_movement += event.relative
 		
 func _physics_process(_delta):
+	if get_tree().paused:
+		return
+		
 	if mouse_movement != Vector2():
 		$H.rotation_degrees.y += -mouse_movement.x
 		mouse_movement = Vector2()

@@ -8,7 +8,7 @@ class_name Referee extends Node
 
 @export var note_speed: float = 10.
 @export var input_offset: float = -0.02
-@export var audio_offset: float = -0.02
+@export var audio_offset: float = -0.15
 
 signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
