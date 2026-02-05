@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cwfsltgcebhwi" path="res://rhythm/Calibrator/calibration_progress.gd" id="2_cq8f8"]
 [ext_resource type="Script" uid="uid://doqdud5lw0u0i" path="res://rhythm/Calibrator/calibrator_music_player.gd" id="2_psl0u"]
 [ext_resource type="Script" uid="uid://dwbkyrumvklje" path="res://rhythm/Calibrator/calibrator_referee.gd" id="3_cq8f8"]
-[ext_resource type="Script" uid="uid://bqyr7p80je748" path="res://scenes/musiclevel/calabration_offset.gd" id="3_u3vhk"]
+[ext_resource type="Script" uid="uid://bqyr7p80je748" path="res://rhythm/Calibrator/calabration_offset.gd" id="3_u3vhk"]
 [ext_resource type="Resource" uid="uid://d22gw4d8i50df" path="res://assets/audio/charts/calibrator_metronome.tres" id="4_psl0u"]
 [ext_resource type="Script" uid="uid://cx3d6kt3ecw0k" path="res://rhythm/Calibrator/calibrator_judge.gd" id="4_u3vhk"]
 [ext_resource type="Script" uid="uid://c4kk6eysopqg1" path="res://rhythm/Calibrator/calibrator_input_hit.gd" id="5_tepaq"]

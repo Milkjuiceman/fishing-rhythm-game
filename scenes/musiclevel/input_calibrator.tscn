@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://da636e4i1c2qw"]
+
+[ext_resource type="Script" uid="uid://b3n8ncreh5tnv" path="res://scenes/musiclevel/inp_calibrator_judge.gd" id="1_7aa2x"]
+[ext_resource type="Script" uid="uid://blus24585mtcv" path="res://scenes/musiclevel/inp_calibrator_camera_3d.gd" id="1_egldv"]
+
+[sub_resource type="Environment" id="Environment_kfcll"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfcll"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_egldv"]
+material = SubResource("StandardMaterial3D_kfcll")
+size = Vector2(1, 1)
+orientation = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_kfcll"]
+size = Vector3(2, 1, 1)
+
+[node name="InputCalibrator" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kfcll")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.469, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="Judge" type="Node" parent="."]
+script = ExtResource("1_7aa2x")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -6.696973e-08, 5.619428e-08, 0, 0.64278764, 0.76604444, -8.742278e-08, 0.76604444, -0.64278764, 0, 7.002, -2)
+script = ExtResource("1_egldv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.371139e-08, 2.5, -5.919218e-16, -0.76604444, -8.3712166e-08, 0.5907218, 0.6427876, 7.024284e-08, 0.70399487, 0, -3.229, -6.904)
+mesh = SubResource("PlaneMesh_egldv")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D"]
+transform = Transform3D(-2.8412401e-08, -0.65, 0, 0.65, -2.8412401e-08, 0, 0, 0, 0.65, 0, 0, 0.01)
+modulate = Color(0, 0, 0, 1)
+text = "SPACE"
+font_size = 100
+
+[node name="Note_Holder" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+mesh = SubResource("BoxMesh_kfcll")
