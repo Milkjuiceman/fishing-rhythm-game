@@ -36,6 +36,21 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_u3vhk")
 
+[node name="Instructions" type="Label" parent="Camera3D/HUD"]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.314
+anchor_right = 0.497
+anchor_bottom = 0.314
+offset_left = -20.544006
+offset_top = -11.472
+offset_right = 19.455994
+offset_bottom = 11.528
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press space to the beat of the 
+metronome 10 times"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("2_psl0u")
 

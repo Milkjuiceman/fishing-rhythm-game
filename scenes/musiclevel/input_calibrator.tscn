@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://da636e4i1c2qw"]
+[gd_scene load_steps=9 format=3 uid="uid://da636e4i1c2qw"]
 
-[ext_resource type="Script" uid="uid://b3n8ncreh5tnv" path="res://scenes/musiclevel/inp_calibrator_judge.gd" id="1_7aa2x"]
-[ext_resource type="Script" uid="uid://blus24585mtcv" path="res://scenes/musiclevel/inp_calibrator_camera_3d.gd" id="1_egldv"]
+[ext_resource type="Script" uid="uid://b3n8ncreh5tnv" path="res://rhythm/Calibrator/inp_calibrator_judge.gd" id="1_7aa2x"]
+[ext_resource type="Script" uid="uid://blus24585mtcv" path="res://rhythm/Calibrator/inp_calibrator_camera_3d.gd" id="1_egldv"]
+[ext_resource type="Script" uid="uid://iidt4y041xtj" path="res://scripts/musiclevel/input_offset.gd" id="3_mn25f"]
 
 [sub_resource type="Environment" id="Environment_kfcll"]
 
@@ -12,7 +13,12 @@ material = SubResource("StandardMaterial3D_kfcll")
 size = Vector2(1, 1)
 orientation = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aa2x"]
+transparency = 1
+albedo_color = Color(0.16159602, 0.3151125, 0.92917836, 0.72156864)
+
 [sub_resource type="BoxMesh" id="BoxMesh_kfcll"]
+material = SubResource("StandardMaterial3D_7aa2x")
 size = Vector3(2, 1, 1)
 
 [node name="InputCalibrator" type="Node3D"]
@@ -42,16 +48,105 @@ modulate = Color(0, 0, 0, 1)
 text = "SPACE"
 font_size = 100
 
+[node name="HUD" type="CanvasLayer" parent="Camera3D"]
+
+[node name="Offset" type="Label" parent="Camera3D/HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_mn25f")
+
+[node name="Instructions" type="Label" parent="Camera3D/HUD"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 41.0
+offset_top = -24.0
+offset_right = 340.0
+offset_bottom = 25.0
+grow_vertical = 2
+text = "Press space when the notes are above 
+the detection area 10 time"
+
 [node name="Note_Holder" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Note_Holder"]
-transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 mesh = SubResource("BoxMesh_kfcll")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Note_Holder"]
-transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 mesh = SubResource("BoxMesh_kfcll")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Note_Holder"]
-transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 55)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 70)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 75)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 85)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 90)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 95)
+mesh = SubResource("BoxMesh_kfcll")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Note_Holder"]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+mesh = SubResource("BoxMesh_kfcll")
+
+[connection signal="calibration_finished" from="Judge" to="Camera3D/HUD/Offset" method="_on_judge_calibration_finished"]
