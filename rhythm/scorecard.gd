@@ -33,8 +33,6 @@ func miss_note(index: int) -> void:
 	assert(index < note_status.size(), "Cant miss a note not in the chart!")
 	note_status[index] = NoteStateEnum.MISS
 	penalty()
-	# misses += 1
-	# combo = 0
 	
 	
 func penalty() -> void:

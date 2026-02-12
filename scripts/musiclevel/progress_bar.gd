@@ -14,7 +14,7 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		
 	#MISS
 	if frame_state.scorecard.misses > prev_miss:
-		value -= frame_state.scorecard.misses - prev_miss
+		value -= (frame_state.scorecard.misses - prev_miss) * 10
 		
 	prev_hit = frame_state.scorecard.hits
 	prev_miss = frame_state.scorecard.misses

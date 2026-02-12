@@ -29,6 +29,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	while true:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
+			get_tree().change_scene_to_file("res://main.tscn")
 			break
 			
 		var timing: float =  chart.note_timings[i]
