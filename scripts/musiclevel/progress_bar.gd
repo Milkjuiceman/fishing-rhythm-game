@@ -21,6 +21,3 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	
 	if value < 0:
 		get_tree().change_scene_to_file("res://main.tscn")
-	
-	if value >= 100:
-		get_tree().change_scene_to_file("res://main.tscn")
