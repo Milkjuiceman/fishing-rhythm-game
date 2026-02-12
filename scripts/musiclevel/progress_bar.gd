@@ -20,4 +20,4 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	prev_miss = frame_state.scorecard.misses
 	
 	if value < 0:
-		get_tree().change_scene_to_file("res://main.tscn")
+		get_tree().change_scene_to_file("res://graphics/pixelate.tscn")
