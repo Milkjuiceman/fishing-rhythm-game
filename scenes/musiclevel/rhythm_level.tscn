@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dobb00e6psm41"]
+[gd_scene load_steps=20 format=3 uid="uid://dobb00e6psm41"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_kr2i6"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_nkh30"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="9_ttdv7"]
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="10_wjn2f"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="11_i3t07"]
-[ext_resource type="Script" uid="uid://jjnpp4w8bj6u" path="res://scripts/musiclevel/audio_offset.gd" id="12_nkh30"]
-[ext_resource type="PackedScene" uid="uid://dkrie7ouhm0se" path="res://scenes/musiclevel/control.tscn" id="13_7ace8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -114,59 +112,6 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 650.0
 
-[node name="Hits" type="Label" parent="Camera3D/HUD/UI"]
-layout_mode = 0
-offset_top = 118.0
-offset_right = 60.0
-offset_bottom = 167.0
-scale = Vector2(3, 3)
-text = "HITS:
-MISSES:
-COMBO:"
-script = ExtResource("10_wjn2f")
-
-[node name="Control" parent="Camera3D/HUD/UI" instance=ExtResource("13_7ace8")]
-process_mode = 3
-layout_mode = 1
-
-[node name="AudioOffset" type="HSlider" parent="Camera3D/HUD/UI/Control"]
-process_mode = 3
-layout_mode = 0
-offset_right = 300.0
-offset_bottom = 16.0
-min_value = -0.1
-max_value = 0.1
-step = 0.01
-value = -0.020000000000000004
-script = ExtResource("12_nkh30")
-
-[node name="OffsetValue" type="Label" parent="Camera3D/HUD/UI/Control/AudioOffset"]
-layout_mode = 0
-offset_top = 15.0
-offset_right = 40.0
-offset_bottom = 38.0
-text = "Audio Offset: "
-
-[node name="InputOffset" type="HSlider" parent="Camera3D/HUD/UI/Control"]
-process_mode = 3
-layout_mode = 0
-offset_top = 41.0
-offset_right = 300.0
-offset_bottom = 57.0
-min_value = -0.1
-max_value = 0.1
-step = 0.01
-value = -0.020000000000000004
-script = ExtResource("12_nkh30")
-controls_audio_offset = false
-
-[node name="OffsetValue" type="Label" parent="Camera3D/HUD/UI/Control/InputOffset"]
-layout_mode = 0
-offset_top = 19.0
-offset_right = 40.0
-offset_bottom = 42.0
-text = "Input Offset: "
-
 [node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -181,7 +126,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
-value = 10.0
+value = 50.0
 allow_lesser = true
 script = ExtResource("11_i3t07")
 
@@ -197,6 +142,17 @@ grow_horizontal = 0
 scale = Vector2(3, 3)
 text = "X1"
 script = ExtResource("8_vlupf")
+
+[node name="Hits" type="Label" parent="Camera3D/HUD"]
+offset_left = 2.0
+offset_top = -0.9999924
+offset_right = 68.0
+offset_bottom = 74.00001
+scale = Vector2(3, 3)
+text = "HITS:
+MISSES:
+COMBO:"
+script = ExtResource("10_wjn2f")
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
 script = ExtResource("7_3ffb3")
@@ -1271,6 +1227,6 @@ script = ExtResource("9_ttdv7")
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
-[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/UI/Hits" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]
