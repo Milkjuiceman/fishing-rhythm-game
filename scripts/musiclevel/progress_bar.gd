@@ -14,10 +14,10 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		
 	#MISS
 	if frame_state.scorecard.misses > prev_miss:
-		value -= (frame_state.scorecard.misses - prev_miss) * 10
+		value -= (frame_state.scorecard.misses - prev_miss) * 5
 		
 	prev_hit = frame_state.scorecard.hits
 	prev_miss = frame_state.scorecard.misses
 	
-	if value < 0:
-		get_tree().change_scene_to_file("res://graphics/pixelate.tscn")
+	#if value < 0:
+		#get_tree().change_scene_to_file("res://graphics/pixelate.tscn")

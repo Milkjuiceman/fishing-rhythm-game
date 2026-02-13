@@ -32,6 +32,15 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			get_tree().change_scene_to_file("res://graphics/pixelate.tscn")
 			break
 			
+		if frame_state.k_key_press:
+			print("k press: ", i, " ", compared_t)
+		elif frame_state.j_key_press:
+			print("j press: ", i, " ", compared_t)
+		elif frame_state.f_key_press:
+			print("f press: ", i, " ", compared_t)
+		elif frame_state.d_key_press:
+			print("d press: ", i, " ", compared_t)
+			
 		var timing: float =  chart.note_timings[i]
 		
 		if timing > upper_bound: # done searching
