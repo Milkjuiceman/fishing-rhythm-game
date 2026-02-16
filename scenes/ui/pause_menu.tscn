@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://pause_menu_scene"]
+[gd_scene load_steps=2 format=3 uid="uid://cud6fc3trpc2l"]
 
-[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
+[ext_resource type="Script" uid="uid://cl8uilfeohdgt" path="res://scripts/ui/pause_menu.gd" id="1_pause"]
 
 [node name="PauseMenu" type="CanvasLayer"]
-layer = 100
 process_mode = 3
+layer = 100
 script = ExtResource("1_pause")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -61,6 +61,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 
+[node name="SaveButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Save Game"
+
+[node name="LoadButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Load Game"
+
 [node name="TitleScreenButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 45)
@@ -116,8 +130,8 @@ theme_override_constants/separation = 12
 
 [node name="AudioLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 14
 text = "— Audio —"
 horizontal_alignment = 1
 
@@ -133,7 +147,6 @@ text = "Master"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
 value = 80.0
 
 [node name="MasterValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
@@ -155,7 +168,6 @@ text = "Music"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
 value = 70.0
 
 [node name="MusicValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
@@ -177,7 +189,6 @@ text = "SFX"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-max_value = 100.0
 value = 100.0
 
 [node name="SFXValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
@@ -193,8 +204,8 @@ layout_mode = 2
 
 [node name="DisplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 14
 text = "— Display —"
 horizontal_alignment = 1
 
@@ -241,8 +252,8 @@ layout_mode = 2
 
 [node name="GameplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 14
 text = "— Gameplay —"
 horizontal_alignment = 1
 

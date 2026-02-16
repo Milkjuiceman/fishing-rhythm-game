@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://uvooa407owaq"]
+
+[ext_resource type="PackedScene" uid="uid://d3e7y4oaj1usd" path="res://assets/models/port_boat.glb" id="1_4v863"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_si0ir"]
+size = Vector3(1.7658386, 0.89208984, 1.0968704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4v863"]
+size = Vector3(0.5470886, 0.9289551, 1.9889526)
+
+[node name="Shipyard" type="StaticBody3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_4v863")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30110168, -0.05395502, -0.57700145)
+shape = SubResource("BoxShape3D_si0ir")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9130851, 0.0355224, -0.051508546)
+shape = SubResource("BoxShape3D_4v863")

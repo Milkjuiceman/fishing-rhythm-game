@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="fishing rhythm game"
-run/main_scene="uid://cggvcdmnf2hee"
+run/main_scene="uid://covxaj11k0427"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://assets/icons/icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://assets/icons/icon.svg"
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
 BoatManager="*res://scripts/overworld/boat_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="fishing rhythm game"
@@ -27,6 +31,10 @@ project/assembly_name="fishing rhythm game"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 
