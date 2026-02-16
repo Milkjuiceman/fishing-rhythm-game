@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpcosx0shws1q"]
+
+[ext_resource type="Script" uid="uid://fq6ldg2s6gdk" path="res://scripts/playerData/boats/boat_big.gd" id="1_28m0g"]
+[ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_5bfo1"]
+[ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="3_pqnko"]
+[ext_resource type="PackedScene" uid="uid://msoagscxgldc" path="res://assets/models/ship.glb" id="4_dxr8b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
+size = Vector3(2.3106852, 2.551056, 1.9288177)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvl5j"]
+render_priority = 0
+shader = ExtResource("2_5bfo1")
+shader_parameter/outline_offset = 0.00139999996458
+shader_parameter/outline_strength = 1000.0
+shader_parameter/fog_color = Color(0.629, 0.74, 0.74, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/fog_start = 1.0
+shader_parameter/fog_width = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
+size = Vector3(2.57312, 1, 1.2182617)
+
+[node name="Boat" type="RigidBody3D"]
+linear_damp = 1.0
+angular_damp = 0.5
+script = ExtResource("1_28m0g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.933, 0, 0, 0, 0.558, 0, 0, 0, 1.363, -0.38691026, 0.80633426, -0.09786371)
+shape = SubResource("BoxShape3D_henu8")
+
+[node name="H" type="Node3D" parent="."]
+
+[node name="V" type="Node3D" parent="H"]
+transform = Transform3D(0.94664913, -0.32226563, 0, 0.32226563, 0.94664913, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="H/V"]
+transform = Transform3D(-4.371139e-08, 0, 1.0000002, 0, 1.0000002, 0, -1, 0, -4.3711378e-08, 6.776001, 0.9340228, 0)
+
+[node name="PostProcess" type="MeshInstance3D" parent="H/V/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4901161e-08, -0.4765098)
+visible = false
+mesh = SubResource("QuadMesh_ch1qf")
+surface_material_override/0 = SubResource("ShaderMaterial_lvl5j")
+script = ExtResource("3_pqnko")
+
+[node name="Floaty" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6625283, 0, -0.6025252)
+
+[node name="Floaty2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6599419, 0, 0.6101974)
+
+[node name="Floaty3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8624408, 0, -0.6025252)
+
+[node name="Floaty4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86926484, 0, 0.6121896)
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39068604, 0, 0.008056641)
+shape = SubResource("BoxShape3D_annr2")
+
+[node name="Root Scene" parent="." instance=ExtResource("4_dxr8b")]
+transform = Transform3D(0.87, 0, 0, 0, 0.87, 0, 0, 0, 0.87, -0.16810465, 0.09458807, -0.07423353)

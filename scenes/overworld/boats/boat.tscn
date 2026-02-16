@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfdg34vf6rofh"]
+
+[ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/playerData/boats/boat.gd" id="1_annr2"]
+[ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
+[ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
+[ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat.glb" id="4_lvl5j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
+size = Vector3(0.9366455, 1.2938232, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jsln"]
+points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvl5j"]
+render_priority = 0
+shader = ExtResource("2_8dbyq")
+shader_parameter/outline_offset = 0.00139999996458
+shader_parameter/outline_strength = 1000.0
+shader_parameter/fog_color = Color(0.629, 0.74, 0.74, 1)
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/fog_start = 1.0
+shader_parameter/fog_width = 0.02
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
+size = Vector3(2.57312, 1, 1.2182617)
+
+[node name="Boat" type="RigidBody3D"]
+linear_damp = 1.0
+angular_damp = 0.5
+script = ExtResource("1_annr2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.933, 0, 0, 0, 0.558, 0, 0, 0, 1.363, -0.061232116, 0.16605952, 0)
+shape = SubResource("BoxShape3D_henu8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(8.757756e-08, -0.761, 2.076291e-08, 0, -3.3264367e-08, -0.475, 1.16, 5.74539e-08, -1.567556e-15, -1.2647369, 0.22609675, 0)
+shape = SubResource("ConvexPolygonShape3D_1jsln")
+
+[node name="H" type="Node3D" parent="."]
+
+[node name="V" type="Node3D" parent="H"]
+transform = Transform3D(0.94664913, -0.32226563, 0, 0.32226563, 0.94664913, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="H/V"]
+transform = Transform3D(-4.3711385e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 6.458033, 0, 0)
+
+[node name="PostProcess" type="MeshInstance3D" parent="H/V/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4901161e-08, -0.4765098)
+visible = false
+mesh = SubResource("QuadMesh_ch1qf")
+surface_material_override/0 = SubResource("ShaderMaterial_lvl5j")
+script = ExtResource("2_sbp4s")
+
+[node name="Floaty" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6625283, 0, -0.6025252)
+
+[node name="Floaty2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6599419, 0, 0.6101974)
+
+[node name="Floaty3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8624408, 0, -0.6025252)
+
+[node name="Floaty4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86926484, 0, 0.6121896)
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39068604, 0, 0.008056641)
+shape = SubResource("BoxShape3D_annr2")
+
+[node name="Root Scene" parent="." instance=ExtResource("4_lvl5j")]
+transform = Transform3D(-1.623878e-07, 0, -3.715, 0, 3.715, 0, 3.715, 0, -1.623878e-07, -0.45645863, -0.014761567, 0)

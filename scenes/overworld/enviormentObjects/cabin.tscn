@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4a0jes5hdlsu"]
+
+[ext_resource type="PackedScene" uid="uid://0l4pngi2rikq" path="res://assets/models/woods_cabin.glb" id="1_07lw1"]
+
+[node name="Cabin" type="Node3D"]
+
+[node name="woods_cabin" parent="." instance=ExtResource("1_07lw1")]

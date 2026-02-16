@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://d7lwa8p8f8x5"]
+
+[ext_resource type="Script" uid="uid://dow8ldt54t0a5" path="res://scripts/ui/boat_upgrade_store.gd" id="1_lwh51"]
+
+[node name="BoatUpgradeStore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lwh51")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.5
+offset_top = -68.5
+offset_right = 223.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Boat" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Boat"
+
+[node name="BigBoat" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Big Boat"
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Back"

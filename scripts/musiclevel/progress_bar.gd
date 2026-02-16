@@ -1,7 +1,7 @@
 extends ProgressBar
 
-var prev_hit = 0;
-var prev_miss = 0;
+var prev_hit = 0
+var prev_miss = 0
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	

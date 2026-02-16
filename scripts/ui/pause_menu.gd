@@ -61,7 +61,7 @@ var settings: Dictionary = {
 const SETTINGS_PATH: String = "user://settings.cfg"
 
 # Path to title/main menu scene
-const TITLE_SCREEN_PATH: String = "res://scenes/ui/title_screen.tscn"
+const TITLE_SCREEN_PATH: String = "res://main_menu.tscn"
 
 
 func _ready() -> void:
