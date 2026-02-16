@@ -29,20 +29,8 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	while true:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
+			get_tree().change_scene_to_file("res://graphics/pixelate.tscn")
 			break
-		
-		#if i > chart.note_timings.size() - 2:
-			#if frame_state.k_key_press:
-				#print("k0: ", frame_state.t, "\n");
-				#
-			#if frame_state.j_key_press:
-				#print("j1: ", frame_state.t, "\n");
-				#
-			#if frame_state.f_key_press:
-				#print("f2: ", frame_state.t, "\n");
-				#
-			#if frame_state.d_key_press:
-				#print("d3: ", frame_state.t, "\n");
 			
 		var timing: float =  chart.note_timings[i]
 		
