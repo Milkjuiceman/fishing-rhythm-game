@@ -1,15 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=9 format=3 uid="uid://dfdg34vf6rofh"]
 
-[ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/playerData/boats/boat.gd" id="1_annr2"]
+[ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/vehicles/boat.gd" id="1_annr2"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
 [ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat.glb" id="4_lvl5j"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
-size = Vector3(0.9366455, 1.2938232, 1)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1jsln"]
-points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
 
@@ -26,18 +20,13 @@ shader_parameter/fog_width = 0.02
 [sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
 size = Vector3(2.57312, 1, 1.2182617)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfmrw"]
+size = Vector3(2.378296, 0.5830078, 1.2022095)
+
 [node name="Boat" type="RigidBody3D"]
 linear_damp = 1.0
 angular_damp = 0.5
 script = ExtResource("1_annr2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.933, 0, 0, 0, 0.558, 0, 0, 0, 1.363, -0.061232116, 0.16605952, 0)
-shape = SubResource("BoxShape3D_henu8")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(8.757756e-08, -0.761, 2.076291e-08, 0, -3.3264367e-08, -0.475, 1.16, 5.74539e-08, -1.567556e-15, -1.2647369, 0.22609675, 0)
-shape = SubResource("ConvexPolygonShape3D_1jsln")
 
 [node name="H" type="Node3D" parent="."]
 
@@ -76,3 +65,7 @@ shape = SubResource("BoxShape3D_annr2")
 
 [node name="Root Scene" parent="." instance=ExtResource("4_lvl5j")]
 transform = Transform3D(-1.623878e-07, 0, -3.715, 0, 3.715, 0, 3.715, 0, -1.623878e-07, -0.45645863, -0.014761567, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2675817, 0.19180796, 0.013621807)
+shape = SubResource("BoxShape3D_hfmrw")

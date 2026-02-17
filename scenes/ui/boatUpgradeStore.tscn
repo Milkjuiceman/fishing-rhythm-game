@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d7lwa8p8f8x5"]
 
-[ext_resource type="Script" uid="uid://dow8ldt54t0a5" path="res://scripts/ui/boat_upgrade_store.gd" id="1_lwh51"]
+[ext_resource type="Script" uid="uid://dow8ldt54t0a5" path="res://scripts/ui/shops/boat_upgrade_store.gd" id="1_lwh51"]
 
 [node name="BoatUpgradeStore" type="Control"]
 layout_mode = 3

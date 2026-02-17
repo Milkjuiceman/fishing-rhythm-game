@@ -18,7 +18,7 @@ config/icon="res://assets/icons/icon.svg"
 [autoload]
 
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
-BoatManager="*res://scripts/overworld/boat_manager.gd"
+GameStateManager="*res://scripts/autoload/game_state_manager.gd"
 
 [display]
 

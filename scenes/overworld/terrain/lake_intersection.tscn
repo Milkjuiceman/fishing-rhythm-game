@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://c4i3rthdmlqxo"]
 
-[ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://scripts/overworld/lake_intersection.gd" id="1_pdbi5"]
+[ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://scripts/levels/lake_intersection.gd" id="1_pdbi5"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ticw3"]
 [ext_resource type="Resource" uid="uid://bn56ufgmn3ok4" path="res://terraindata/lake_intersection_terrain_data/data.hterrain" id="3_8it52"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_5sc3m"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dymkv5reg7ide" path="res://assets/textures/Ground/Ground068_2K-JPG_NormalDX.jpg" id="7_qdsx3"]
 [ext_resource type="Texture2D" uid="uid://c5p1fqngto7nh" path="res://assets/textures/Rock/Rock058_2K-JPG_NormalDX.jpg" id="8_caq17"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_0t4oa"]
-[ext_resource type="Script" uid="uid://bptumm7g6ubp5" path="res://scripts/overworld/boat_collsion_detector.gd" id="10_twurd"]
+[ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="10_pdbi5"]
 
 [sub_resource type="Resource" id="Resource_8ntsp"]
 script = ExtResource("4_5sc3m")
@@ -114,7 +114,9 @@ directional_shadow_split_3 = 0.4
 directional_shadow_max_distance = 150.0
 
 [node name="Boat_Collsion_Detector" type="Area3D" parent="."]
-script = ExtResource("10_twurd")
+script = ExtResource("10_pdbi5")
+target_scene_path = "uid://bxa7vkfck6ybn"
+target_spawn_point = "tutorial_boat_spawnpoint_a"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boat_Collsion_Detector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.74939, -3.9146423, 29.943054)

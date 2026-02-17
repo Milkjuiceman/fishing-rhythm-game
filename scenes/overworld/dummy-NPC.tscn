@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgw3en671cgwv"]
 
 [ext_resource type="PackedScene" uid="uid://2rrgdq50ft47" path="res://assets/models/fixed_npc.glb" id="1_12rst"]
-[ext_resource type="Script" uid="uid://djtdtbq2isgy0" path="res://scripts/overworld/dummy_npc.gd" id="2_ui5kk"]
+[ext_resource type="Script" uid="uid://djtdtbq2isgy0" path="res://scripts/npcs/dummy_npc.gd" id="2_ui5kk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_12rst"]
 

@@ -1,15 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp0kyqm3xjybx"]
+[gd_scene load_steps=2 format=3 uid="uid://cp0kyqm3xjybx"]
 
 [ext_resource type="PackedScene" uid="uid://cvqlfm4qo8vae" path="res://assets/models/rocks/stone_tallA.glb" id="1_5h1ly"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5h1ly"]
-size = Vector3(6.684082, 8.458496, 4.9610596)
-
-[node name="RockBig" type="StaticBody3D"]
+[node name="RockBig" type="Node3D"]
 
 [node name="stone_tallA2" parent="." instance=ExtResource("1_5h1ly")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.151123, 4.102783, 0.16689444)
-shape = SubResource("BoxShape3D_5h1ly")

@@ -1843,4 +1843,3 @@ static func convert_float_heightmap_to_rgb8(src: Image, dst: Image):
 		for x in src.get_width():
 			var h = src.get_pixel(x, y).r
 			dst.set_pixel(x, y, encode_height_to_rgb8_unorm(h))
-
