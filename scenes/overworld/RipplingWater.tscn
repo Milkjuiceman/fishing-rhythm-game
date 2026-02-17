@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d02ypoucyu1a"]
 
-[ext_resource type="Script" uid="uid://cgasxmgt7j3pq" path="res://scripts/overworld/rippling_water.gd" id="1_fnar8"]
+[ext_resource type="Script" uid="uid://cgasxmgt7j3pq" path="res://scripts/environment/rippling_water.gd" id="1_fnar8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o3lsl"]
 height = 1.9970703
@@ -16,6 +16,12 @@ bottom_radius = 10.0
 
 [node name="RipplingWater" type="Area3D"]
 script = ExtResource("1_fnar8")
+lake_min_x = null
+lake_max_x = null
+lake_min_z = null
+lake_max_z = null
+water_height = null
+respawn_delay = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0014648438, 0)

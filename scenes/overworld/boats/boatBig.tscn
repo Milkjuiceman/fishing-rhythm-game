@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bpcosx0shws1q"]
 
-[ext_resource type="Script" uid="uid://fq6ldg2s6gdk" path="res://scripts/playerData/boats/boat_big.gd" id="1_28m0g"]
+[ext_resource type="Script" uid="uid://fq6ldg2s6gdk" path="res://scripts/vehicles/boat_big.gd" id="1_28m0g"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_5bfo1"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="3_pqnko"]
 [ext_resource type="PackedScene" uid="uid://msoagscxgldc" path="res://assets/models/ship.glb" id="4_dxr8b"]

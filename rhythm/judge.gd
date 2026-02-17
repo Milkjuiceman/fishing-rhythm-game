@@ -1,20 +1,12 @@
 class_name Judge extends Node
-
 var chart: Chart = null
 var scorecard: Scorecard = null
-
 const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
-
 signal note_judged(note_index: int, frame_state: FrameState)
-
 var lowest_judgment_index: int = 0
-
-
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	scorecard = Scorecard.new(new_chart)
-
-
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	if not frame_state.playing_song: return
 	
@@ -29,7 +21,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	while true:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
-			get_tree().change_scene_to_file("res://graphics/pixelate.tscn")
+			_return_to_previous_scene()
 			break
 			
 		var timing: float =  chart.note_timings[i]
@@ -80,8 +72,29 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 				if i == lowest_judgment_index:
 					lowest_judgment_index +=  1;
 			break
+
+
+	# Return to prevoius scene logic
+func _return_to_previous_scene() -> void:
+	var return_scene = _get_return_scene()
+	print("[Judge] Song completed! Returning to: ", return_scene)
+	get_tree().change_scene_to_file(return_scene)
+
+func _get_return_scene() -> String:
+	if not has_node("/root/GameStateManager"):
+		push_warning("[Judge] GameStateManager not found - using fallback")
+		return "res://scenes/overworld/terrain/tutorial_lake.tscn"
+	
+	var gsm = get_node("/root/GameStateManager")
+	
+	if gsm.pending_transition.has("from_scene") and gsm.pending_transition.from_scene != "":
+		return gsm.pending_transition.from_scene
+	
+	if gsm.current_save_data.current_scene_path != "":
+		return gsm.current_save_data.current_scene_path
+	
+	push_warning("[Judge] No return scene found - using tutorial lake")
+	return "res://scenes/overworld/terrain/tutorial_lake.tscn"
 			
-
-
 func _on_referee_play_chart_now(chart_: Chart) -> void:
 	load_new_chart(chart_)

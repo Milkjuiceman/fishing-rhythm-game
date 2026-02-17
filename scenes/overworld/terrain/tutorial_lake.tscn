@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://bxa7vkfck6ybn"]
 
-[ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/overworld/terrainRootScripts/tutorial_level.gd" id="1_j1cte"]
+[ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
 [ext_resource type="Resource" uid="uid://cj2creufxwrv4" path="res://terraindata/tutorial_lake_terrain_data/data.hterrain" id="3_ngif8"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_6j6pq"]
@@ -12,19 +12,19 @@
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_gv44t"]
 [ext_resource type="Texture2D" uid="uid://dfensmww0soo8" path="res://assets/textures/White/Plastic013A_2K-JPG_NormalDX.jpg" id="9_yq4oh"]
 [ext_resource type="Texture2D" uid="uid://bi6o6djkqu4lh" path="res://assets/textures/Green/Plastic017A_2K-JPG_NormalDX.jpg" id="10_6j6pq"]
-[ext_resource type="Script" uid="uid://cmqhr1ijtebt2" path="res://scripts/overworld/boat_transition_area.gd" id="10_frxx6"]
 [ext_resource type="Texture2D" uid="uid://d3magfa2dvagf" path="res://assets/textures/DarkGreen/Plastic009_2K-JPG_NormalDX.jpg" id="12_hsd36"]
+[ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="14_owl05"]
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="15_yq4oh"]
-[ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/overworld/rippling_water_spawner.gd" id="16_5oyo0"]
+[ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="16_5oyo0"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="17_ywjkn"]
 [ext_resource type="PackedScene" uid="uid://c4a0jes5hdlsu" path="res://scenes/overworld/enviormentObjects/cabin.tscn" id="18_gv44t"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="19_frxx6"]
-[ext_resource type="Script" uid="uid://bbscsuhcok1ic" path="res://scripts/overworld/shop_detection_area.gd" id="19_hsd36"]
+[ext_resource type="Script" uid="uid://bbscsuhcok1ic" path="res://scripts/components/shop_detection_area.gd" id="19_hsd36"]
 [ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/enviormentObjects/tree.tscn" id="19_s87os"]
 [ext_resource type="PackedScene" uid="uid://ddxlcvb61af8h" path="res://scenes/overworld/enviormentObjects/treeFat.tscn" id="21_3ddkj"]
 [ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/enviormentObjects/treeCone.tscn" id="22_77g0c"]
 [ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/enviormentObjects/treeConeOrange.tscn" id="23_38p3g"]
-[ext_resource type="PackedScene" uid="uid://cp0kyqm3xjybx" path="res://scenes/overworld/enviormentObjects/rocks/rockBig.tscn" id="25_owl05"]
+[ext_resource type="PackedScene" uid="uid://bx4s0du0mddf1" path="res://scenes/overworld/enviormentObjects/rocks/rockWall.tscn" id="25_owl05"]
 
 [sub_resource type="Environment" id="Environment_gyexu"]
 background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
@@ -135,7 +135,9 @@ directional_shadow_split_3 = 0.4
 directional_shadow_max_distance = 150.0
 
 [node name="Boat_Collsion_Detector" type="Area3D" parent="."]
-script = ExtResource("10_frxx6")
+script = ExtResource("14_owl05")
+target_scene_path = "uid://c4i3rthdmlqxo"
+target_spawn_point = "lake_intersection_boat_spawnpoint_a"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boat_Collsion_Detector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 966.86365, -3.9146423, 946.9662)
@@ -762,14 +764,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.0782, 8.4203825, 798.4181
 
 [node name="Rocks" type="Node3D" parent="Enviorment"]
 
-[node name="RockBig" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 680.85095, 3.6004944, 264.03314)
-
-[node name="RockBig2" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 689.1205, 5.263445, 266.52216)
-
-[node name="RockBig3" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 697.4261, 4.3117285, 268.07135)
-
-[node name="RockBig4" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 702.88806, 3.1119156, 270.6126)
+[node name="RockWall" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
+transform = Transform3D(0.9788674, 0, -0.20449604, 0, 1, 0, 0.20449604, 0, 0.9788674, 690.7935, 2.6940765, 265.66217)
