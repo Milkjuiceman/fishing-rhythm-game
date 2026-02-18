@@ -3,9 +3,6 @@ extends Node
 
 @export var chart: Resource
 
-var bpm: float = chart.track.bpm[0.0]
-var song_length: float = chart.track.song_length
-var timings: PackedFloat64Array = chart.note_timings
 var current_note: float = 0.0
 
 # Exported buttons
@@ -16,6 +13,7 @@ var current_note: float = 0.0
 @export_tool_button("Generate next 1/8 beat") var generate_eighth_beat
 @export_tool_button("Generate next 1/4 beat") var generate_quarter_beat
 @export_tool_button("Generate next 1/2 beat") var generate_half_beat
+@export_tool_button("Snap Key Times") var snap_button
 
 # Subdivision constants
 const WHOLE = 1.0
@@ -36,9 +34,12 @@ func _get_property_list():
 		generate_eighth_beat = Callable(self, "generate_next_beat").bind(EIGHTH)
 		generate_quarter_beat = Callable(self, "generate_next_beat").bind(QUARTER)
 		generate_half_beat = Callable(self, "generate_next_beat").bind(HALF)
+		snap_button = Callable(self, "snap_to_grid")
 	return []
 
 func generate_next_beat(subdivision: float) -> void:
+	var bpm: float = chart.track.bpm[0.0]
+	
 	if chart.note_timings.size() > 0:
 		current_note = chart.note_timings[chart.note_timings.size() - 1]
 	else:
@@ -50,4 +51,30 @@ func generate_next_beat(subdivision: float) -> void:
 		
 	chart.note_timings.append(round(next_note / step) * step)
 	chart.note_column.append(0)
+	print(chart.note_timings)
+
+func snap_to_grid() -> void:
+	var bpm: float = chart.track.bpm[0.0]
+	var key_times = PackedFloat32Array()
+
+	
+	if not key_times:
+		push_warning("No key_times array to snap!")
+		return
+
+	var beat_length = 60.0 / bpm
+	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0, 1/4.0, 1/8.0]
+
+	for t in key_times:
+		var best_snap = t
+		var smallest_diff = INF
+		for s in subdivisions:
+			var step = beat_length * s
+			var candidate = round(t / step) * step
+			var diff = abs(t - candidate)
+			if diff < smallest_diff:
+				smallest_diff = diff
+				best_snap = candidate
+				chart.note_timings.append(best_snap)
+
 	print(chart.note_timings)

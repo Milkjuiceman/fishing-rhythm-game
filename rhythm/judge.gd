@@ -1,9 +1,15 @@
 class_name Judge extends Node
+
 var chart: Chart = null
 var scorecard: Scorecard = null
+
 const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
+
 signal note_judged(note_index: int, frame_state: FrameState)
+
 var lowest_judgment_index: int = 0
+var key_times: PackedFloat32Array = PackedFloat32Array()
+
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	scorecard = Scorecard.new(new_chart)
@@ -21,19 +27,20 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	while true:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
+			print(key_times)
 			_return_to_previous_scene()
 			break
 			
 		var timing: float =  chart.note_timings[i]
 		
 		if frame_state.k_key_press:
-			print("k: ", compared_t)
+			key_times.append(compared_t)
 		elif frame_state.j_key_press:
-			print("j: ", compared_t)
+			key_times.append(compared_t)
 		elif frame_state.f_key_press:
-			print("f: ", compared_t)
+			key_times.append(compared_t)
 		elif frame_state.d_key_press:
-			print("d: ", compared_t)
+			key_times.append(compared_t)
 		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:

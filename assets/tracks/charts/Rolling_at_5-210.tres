@@ -1,12 +1,11 @@
-[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://dmrtoqr14hpi3"]
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://c61rj13uvpjbu"]
 
 [ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_0cxy0"]
-[ext_resource type="Resource" uid="uid://d3xuaqn48js31" path="res://assets/tracks/audio/Rollin_at_5-210.tres" id="2_lt8iw"]
+[ext_resource type="Resource" uid="uid://bplew0jh0a2mk" path="res://assets/tracks/audio/Rolling at 5-210.tres" id="2_0cxy0"]
 
 [resource]
-resource_name = "Rolling at 5-210"
 script = ExtResource("1_0cxy0")
-track = ExtResource("2_lt8iw")
-note_timings = PackedFloat64Array(1.178, 1.7142857142857142, 2.2857142857142856, 2.8571428571428568, 3.4285714285714284, 4, 4.571428571428571, 5.142857142857142, 5.7142857142857135, 6.285714285714286, 6.857142857142857, 7.428571428571428, 8, 8.571428571428571, 9.142857142857142, 9.571428571428571, 10.142857142857142, 10.857142857142856, 11.142857142857142, 11.428571428571427)
-note_column = PackedInt64Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+track = ExtResource("2_0cxy0")
+note_timings = PackedFloat64Array(1.7469999999999999, 2.2857142857142856)
+note_column = PackedInt64Array(0, 0)
 metadata/_custom_type_script = "uid://bpno8ianhdobd"
