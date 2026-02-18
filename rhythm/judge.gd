@@ -26,6 +26,15 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			
 		var timing: float =  chart.note_timings[i]
 		
+		if frame_state.k_key_press:
+			print("k: ", compared_t)
+		elif frame_state.j_key_press:
+			print("j: ", compared_t)
+		elif frame_state.f_key_press:
+			print("f: ", compared_t)
+		elif frame_state.d_key_press:
+			print("d: ", compared_t)
+		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
 				# MISS

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5m0j8nuvpef"]
+
+[ext_resource type="Script" uid="uid://duemdsfi4g18n" path="res://scripts/musiclevel/beat_grid_snapper.gd" id="1_muvk2"]
+[ext_resource type="Resource" uid="uid://dmrtoqr14hpi3" path="res://assets/tracks/charts/Rolling_at_5-210.tres" id="2_c66ni"]
+
+[node name="Beat Grid Snapper" type="Node"]
+script = ExtResource("1_muvk2")
+chart = ExtResource("2_c66ni")
