@@ -6,9 +6,10 @@ var scorecard: Scorecard = null
 const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
+signal send_key_times(key_times: PackedFloat64Array)
 
 var lowest_judgment_index: int = 0
-var key_times: PackedFloat32Array = PackedFloat32Array()
+var key_times: PackedFloat64Array = PackedFloat64Array()
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
@@ -28,6 +29,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
 			print(key_times)
+			emit_signal("send_key_times", key_times)
 			_return_to_previous_scene()
 			break
 			

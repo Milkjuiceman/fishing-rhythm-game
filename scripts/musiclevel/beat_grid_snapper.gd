@@ -24,6 +24,13 @@ const EIGHTH = 1.0/8.0
 const QUARTER = 0.25
 const HALF = 0.5
 
+func _ready():
+	var sender = get_node("/root/RhythmLevel3/Judge")
+	sender.send_key_times.connect(_on_receive_key_times)
+	
+func _on_receive_key_times(key_times: PackedFloat64Array) -> void:
+	snap_to_grid_with_key_times(key_times)
+
 func _get_property_list():
 	# Assign the buttons programmatically for tool mode
 	if Engine.is_editor_hint():
@@ -55,15 +62,14 @@ func generate_next_beat(subdivision: float) -> void:
 
 func snap_to_grid() -> void:
 	var bpm: float = chart.track.bpm[0.0]
-	var key_times = PackedFloat32Array()
+	var key_times = PackedFloat64Array()
 
-	
 	if not key_times:
 		push_warning("No key_times array to snap!")
 		return
 
 	var beat_length = 60.0 / bpm
-	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0, 1/4.0, 1/8.0]
+	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
 
 	for t in key_times:
 		var best_snap = t
@@ -75,6 +81,36 @@ func snap_to_grid() -> void:
 			if diff < smallest_diff:
 				smallest_diff = diff
 				best_snap = candidate
-				chart.note_timings.append(best_snap)
+
+	print(chart.note_timings)
+
+
+func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
+	var bpm: float = chart.track.bpm[0.0]
+
+	if not key_times:
+		push_warning("No key_times array to snap!")
+		return
+
+	var beat_length = 60.0 / bpm
+	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
+	var i = 0
+
+	for t in key_times:
+		var best_snap = t
+		var smallest_diff = INF
+		for s in subdivisions:
+			var step = beat_length * s
+			var candidate = round(t / step) * step
+			var diff = abs(t - candidate)
+			if diff < smallest_diff:
+				smallest_diff = diff
+				best_snap = candidate
+		if i < chart.note_timings.size():
+			chart.note_timings[i] = best_snap
+			i += 1
+		else:
+			chart.note_timings.append(best_snap)
+			chart.note_column.append(0)
 
 	print(chart.note_timings)
