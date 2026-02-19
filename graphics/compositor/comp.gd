@@ -92,9 +92,15 @@ func _notification(what):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # rendering thread
 
+@export_range(0., 1.) var CONTROL: float = 0.1
+
+
 var rd: RenderingDevice = null
 
 var linear_sampler: RID
+
+var uniform_buffer: RID
+var uniform_buffer_size: int = -1
 
 func _render_init():
 	rd = RenderingServer.get_rendering_device()
@@ -130,48 +136,43 @@ const name_working_texture2 := &"working2"
 # texture =======> texture2			for jump16
 # Color & texture2 ===> Color		for outline
 
-func proj_to_float_array(proj: Projection):
-	var array: PackedFloat32Array = PackedFloat32Array()
-	array.push_back(proj.x.x)
-	array.push_back(proj.x.y)
-	array.push_back(proj.x.z)
-	array.push_back(proj.x.w)
-	array.push_back(proj.y.x)
-	array.push_back(proj.y.y)
-	array.push_back(proj.y.z)
-	array.push_back(proj.y.w)
-	array.push_back(proj.z.x)
-	array.push_back(proj.z.y)
-	array.push_back(proj.z.z)
-	array.push_back(proj.z.w)
-	array.push_back(proj.w.x)
-	array.push_back(proj.w.y)
-	array.push_back(proj.w.z)
-	array.push_back(proj.w.w)
-	return array
+func make_float_array_from_projection(p: Projection) -> PackedFloat32Array:
+	var r := PackedFloat32Array([
+		p.x.x, p.x.y, p.x.z, p.x.w,
+		p.y.x, p.y.y, p.y.z, p.y.w,
+		p.z.x, p.z.y, p.z.z, p.z.w,
+		p.w.x, p.w.y, p.w.z, p.w.w
+	])
+	#print("proj: ", r)
+	return r
 
-func proj_part_to_float_array(proj: Projection):
-	var array: PackedFloat32Array = PackedFloat32Array()
-	array.push_back(proj.x.x)
-	array.push_back(proj.x.y)
-	array.push_back(proj.x.z)
-	array.push_back(proj.y.x)
-	array.push_back(proj.y.y)
-	array.push_back(proj.y.z)
-	array.push_back(proj.z.x)
-	array.push_back(proj.z.y)
-	array.push_back(proj.z.z)
-	array.push_back(proj.x.w)
-	array.push_back(proj.y.w)
-	array.push_back(proj.z.w)
-	return array
+#func make_float_array_from_transform(t: Transform3D) -> PackedFloat32Array:
+	#var b := t.basis
+	#var o := t.origin
+	##print("before: ", o)
+	#o = lerp(o, b * o.inverse(), CONTROL)
+	##print("after: ", o)
+	##print()
+	#var r := PackedFloat32Array([
+		#b.x.x, b.y.x, b.z.x, 0.,
+		#b.x.y, b.y.y, b.z.y, 0.,
+		#b.x.z, b.y.z, b.z.z, 0.,
+		#o.x,  o.y,   o.z,   1.
+	#])
+	##print("trans2: ", r)
+	#return r
 
-func vec3_to_float_array(vec: Vector3):
-	var array: PackedFloat32Array = PackedFloat32Array()
-	array.push_back(vec.x)
-	array.push_back(vec.y)
-	array.push_back(vec.z)
-	return array
+func make_float_array_from_transform(t: Transform3D) -> PackedFloat32Array:
+	var b := t.basis
+	var o := t.origin * CONTROL
+	var r := PackedFloat32Array([
+		b.x.x, b.x.y, b.x.z, 0.,
+		b.y.x, b.y.y, b.y.z, 0.,
+		b.z.x, b.z.y, b.z.z, 0.,
+		o.x,  o.y,   o.z,   1.
+	])
+	#print("trans2: ", r)
+	return r
 
 # Called by the rendering thread every frame.
 func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data):
@@ -200,24 +201,12 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		1
 	)
 	
-	var projection := render_scene_data.get_cam_projection()
-	
 	# Push constant (needs to be multiple of 128 bytes aka multiple of 4 f32s)
 	var small_push_constant: PackedFloat32Array = PackedFloat32Array()
 	small_push_constant.push_back(render_size.x)
 	small_push_constant.push_back(render_size.y)
 	small_push_constant.push_back(1./render_size.x)
 	small_push_constant.push_back(1./render_size.y)
-	
-	#var push_constant: PackedFloat32Array = PackedFloat32Array()
-	#push_constant.append_array(small_push_constant)
-	#push_constant.push_back(projection.w.z)
-	#push_constant.push_back(projection.w.w)
-	#push_constant.push_back(0.)
-	#push_constant.push_back(0.)
-	
-
-	
 	
 	# If we have buffers for this viewport, check if they are the right size
 	if render_scene_buffers.has_texture(name_context, name_working_texture):
@@ -242,16 +231,10 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 			1, 1, true, false
 		)
 	
+	
 	# Loop through views just in case we're doing stereo rendering. No extra cost if this is mono.
 	var view_count = render_scene_buffers.get_view_count()
 	for view in range(view_count):
-		var view_proj := render_scene_data.get_view_projection(view)
-		
-		var push_constant_matrixes: PackedFloat32Array = PackedFloat32Array()
-		push_constant_matrixes.append_array(small_push_constant)
-		push_constant_matrixes.append_array(proj_to_float_array(projection.inverse()))
-		push_constant_matrixes.append_array(proj_part_to_float_array(view_proj))
-		push_constant_matrixes.append_array([0.,0.,0.,0.])
 		
 		# Get the RID for our images
 		var color_image := _make_image_uniform(render_scene_buffers.get_color_layer(view))
@@ -260,13 +243,26 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var norm_rough_image = _make_image_uniform(render_scene_buffers.get_texture("forward_clustered", "normal_roughness"))
 		var working_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture, view, 0, 1, 1))
 		var working2_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture2, view, 0, 1, 1))
-		
+		#var uniform_buffer_uniform = _make_uniform_buffer_uniform(render_scene_data)
+		var uniform_buffer_uniform = _make_uniform_buffer_uniform()
 		# Run our compute shader.
 		
+		var inverse_projection := render_scene_data.get_view_projection(view).inverse()
+		var inverse_view := render_scene_data.get_cam_transform().inverse()
+		#inverse_view.origin.x *= -1
+		inverse_view = inverse_view.inverse()
+		var uniform_buffer_value := PackedFloat32Array([])
+		uniform_buffer_value.append_array(make_float_array_from_projection(inverse_projection))
+		uniform_buffer_value.append_array(make_float_array_from_transform(inverse_view))
+		uniform_buffer_value.append(CONTROL)
+		uniform_buffer_value.append(0.)
+		uniform_buffer_value.append(0.)
+		uniform_buffer_value.append(0.)
+		_update_uniform_buffer(uniform_buffer_value)
 		
 		
-		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image], [push_constant_matrixes], groups)
-		_apply_pass(&"apply_outline", [working_image, color_image], [small_push_constant], groups)
+		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, uniform_buffer_uniform], small_push_constant, groups)
+		_apply_pass(&"apply_outline", [working_image, color_image], small_push_constant, groups)
 		
 		
 		## ~~~BLUR~~~
@@ -291,8 +287,41 @@ func _make_sampler_uniform(image: RID) -> RDUniform:
 	uniform.add_id(image)
 	return uniform
 
+func _update_uniform_buffer(data: PackedFloat32Array):
+	#uniform_buffer_size = -1
+	@warning_ignore("integer_division")
+	var real_size: int = (data.size() / 4) * 4
+	if (real_size != uniform_buffer_size):
+		print("updating buffer size to ", real_size, " from ", uniform_buffer_size)
+		if uniform_buffer_size != -1:
+			rd.free_rid(uniform_buffer)
+		uniform_buffer = rd.uniform_buffer_create(real_size * 4, data.to_byte_array())
+		uniform_buffer_size = real_size
+		print("updated_buffer: ", uniform_buffer)
+	else:
+		rd.buffer_update(uniform_buffer, 0, real_size * 4, data.to_byte_array())
 
-func _apply_pass(shader_name: StringName, uniforms: Array[RDUniform], push_constants: Array[PackedFloat32Array], groups: Vector3i):
+# who tf comes up with a name like uniform buffer uniform
+# its so dumb
+# buts it like standardized and now everyone uses the name
+# but like
+# sooooooo stupid
+#func _make_uniform_buffer_uniform(render_scene_data: RenderSceneDataRD) -> RDUniform:
+	#var uniform: RDUniform = RDUniform.new()
+	#uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
+	#uniform.binding = 0
+	#uniform.add_id(render_scene_data.get_uniform_buffer())
+	#return uniform
+
+func _make_uniform_buffer_uniform() -> RDUniform:
+	var uniform: RDUniform = RDUniform.new()
+	uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
+	uniform.binding = 0
+	uniform.add_id(uniform_buffer)
+	return uniform
+
+
+func _apply_pass(shader_name: StringName, uniforms: Array[RDUniform], push_constant: PackedFloat32Array, groups: Vector3i):
 	var compute_list := rd.compute_list_begin()
 	rd.compute_list_bind_compute_pipeline(compute_list, pipelines[shader_name])
 	
@@ -301,7 +330,7 @@ func _apply_pass(shader_name: StringName, uniforms: Array[RDUniform], push_const
 		var uniform_set := UniformSetCacheRD.get_cache(shaders[shader_name], set_index, [ uniform ])
 		rd.compute_list_bind_uniform_set(compute_list, uniform_set, set_index)
 		set_index += 1
-	for push_constant in push_constants:
-		rd.compute_list_set_push_constant(compute_list, push_constant.to_byte_array(), push_constant.size() * 4)
+	
+	rd.compute_list_set_push_constant(compute_list, push_constant.to_byte_array(), push_constant.size() * 4)
 	rd.compute_list_dispatch(compute_list, groups.x, groups.y, groups.z)
 	rd.compute_list_end()

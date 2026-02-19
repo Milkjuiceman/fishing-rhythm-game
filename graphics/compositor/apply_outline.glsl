@@ -23,10 +23,11 @@ void main() {
 	}
 
 	vec3 values = imageLoad(working_image, uv).xyz;
-	bool should_use = dot(values, values) > 0.0001;
-	// vec4 color = should_use ? vec4(values, 1.) : imageLoad(color_image, uv);
 
-	vec4 color = mix(vec4(values, 1.), imageLoad(color_image, uv), 0.5);
+	vec3 img = imageLoad(color_image, uv).rgb;
 
-	imageStore(color_image, uv, color);
+
+	vec3 color = (values * 0.9 + img * 0.1) / (0.1 / (img + 0.01) + 0.9);
+
+	imageStore(color_image, uv, vec4(color, 1.));
 }

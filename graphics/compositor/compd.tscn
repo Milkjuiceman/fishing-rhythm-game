@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxjdja0f3rra4"]
+[gd_scene load_steps=17 format=3 uid="uid://cxjdja0f3rra4"]
 
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="1_8stmp"]
 [ext_resource type="PackedScene" uid="uid://isrh8nhyae53" path="res://assets/models/Boat.glb" id="1_j1c5s"]
@@ -35,6 +35,7 @@ horz_blur_shader_file = ExtResource("2_rg5hn")
 vert_blur_shader_file = ExtResource("4_7tvxw")
 initial_outlines_shader_file = ExtResource("3_7tvxw")
 apply_outline_shader_file = ExtResource("1_ri8l7")
+CONTROL = 1.0
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]
@@ -46,6 +47,13 @@ albedo_color = Color(1, 0, 0, 0.78039217)
 [sub_resource type="BoxMesh" id="BoxMesh_e7g0d"]
 material = SubResource("StandardMaterial3D_jps33")
 size = Vector3(62.345, 72.93, 56.815)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ri8l7"]
+radius = 40.0
+height = 80.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ri8l7"]
+size = Vector3(60, 60, 60)
 
 [node name="Node3D" type="Node3D"]
 
@@ -62,10 +70,10 @@ environment = SubResource("Environment_7ewxr")
 compositor = SubResource("Compositor_mif2d")
 
 [node name="Boat3" parent="." instance=ExtResource("1_j1c5s")]
-transform = Transform3D(0.06875982, 0.16132909, -1.2461926, -0.02362491, 0.46954527, 0.4281744, 0.41372514, 0, 0.23156336, -185.14914, 129.42426, 27.52996)
+transform = Transform3D(0.06875982, 0.16132909, -1.2461926, -0.02362491, 0.46954527, 0.4281744, 0.41372514, 0, 0.23156336, -185.14914, -7.586212, 27.52996)
 
 [node name="Boat4" parent="." instance=ExtResource("1_j1c5s")]
-transform = Transform3D(0.28486043, 0.20644653, -0.8157166, -0.034062576, 0.44258893, 0.88057566, 0.22768329, -0.19207712, 1.152303, -185.14914, 149.2504, 126.76514)
+transform = Transform3D(0.28486043, 0.20644653, -0.8157166, -0.034062576, 0.44258893, 0.88057566, 0.22768329, -0.19207712, 1.152303, -185.14914, 12.239929, 126.76514)
 
 [node name="Boat2" parent="Boat4" instance=ExtResource("1_j1c5s")]
 transform = Transform3D(0.06727576, -0.042862777, 0.4539268, 0.18150724, 0.28488728, -8.195639e-08, -0.09315315, 0.059349697, 0.019410267, 128.31754, 242.91953, -50.10636)
@@ -76,6 +84,14 @@ transform = Transform3D(0.16819125, 0.022963982, 0.010705613, -0.03253543, 0.126
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.48837054, 0, 0, 0, 0.36279303, 0, 0, 0, 0.4598792, -87.28512, 270.58188, 47.70383)
 mesh = SubResource("BoxMesh_e7g0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, -87.28512, 241.3378, -386.2239)
+mesh = SubResource("SphereMesh_ri8l7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 440.012, 320.46298, -826.1726)
+mesh = SubResource("BoxMesh_ri8l7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.3677351, -0.33154446, 0.86882055, -3.7252903e-09, 0.93428534, 0.35652602, -0.9299306, 0.1311071, -0.3435695, 29.09267, 288.02042, 16.197895)
