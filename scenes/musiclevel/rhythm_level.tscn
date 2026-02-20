@@ -52,8 +52,9 @@ directional_shadow_max_distance = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wi50x")
 
-[node name="Judge" type="Node" parent="."]
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("2_nkh30")
+progress_bar = NodePath("../Camera3D/HUD/ProgressBar")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_7ace8")
@@ -181,7 +182,10 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
+<<<<<<< Updated upstream
 value = 10.0
+=======
+>>>>>>> Stashed changes
 allow_lesser = true
 script = ExtResource("11_i3t07")
 

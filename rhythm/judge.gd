@@ -9,6 +9,16 @@ signal note_judged(note_index: int, frame_state: FrameState)
 
 var lowest_judgment_index: int = 0
 
+signal song_finished(scorecard: Scorecard)
+
+var first_bar_full: bool = false
+
+@export var progress_bar: ProgressBar
+var can_catch := false
+
+func _ready():
+	progress_bar.catch_available.connect(_on_catch_available)
+	progress_bar.catch_failed.connect(_on_catch_failed)
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
@@ -17,6 +27,12 @@ func load_new_chart(new_chart: Chart) -> void:
 
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	if not frame_state.playing_song: return
+	
+		
+	if can_catch and frame_state.enter_key_press:
+			show_enter_prompt(false)
+			_return_to_previous_scene()
+			return
 	
 	var lower_bound := frame_state.previous_t - TEMPORAL_ERROR_MARGIN + frame_state.input_offset
 	var upper_bound := frame_state.t + TEMPORAL_ERROR_MARGIN + frame_state.input_offset
@@ -61,7 +77,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			scorecard.miss_note(i)
 			note_judged.emit(i, frame_state)
 			lowest_judgment_index += 1
-			
+	
 		else:
 			if frame_state.k_key_press && chart.note_column[i] == 0:
 				# HIT
@@ -92,8 +108,47 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 				if i == lowest_judgment_index:
 					lowest_judgment_index +=  1;
 			break
+
+
+func _on_catch_failed() -> void:
+	print("[Judge]:bar depleted, ending song")
+	_return_to_previous_scene()
+	
+func _on_catch_available() -> void:
+	print("[Judge]:bar filled, press enter to catch early")
+	can_catch = true
+	show_enter_prompt(true)
+
+	# Return to prevoius scene logic
+func _return_to_previous_scene() -> void:
+	var return_scene = _get_return_scene()
+	song_finished.emit(scorecard)
+	print("[Judge] Song completed! Returning to: ", return_scene)
+	print("[Judge] Your score was: ", scorecard)
+	get_tree().change_scene_to_file(return_scene)
+
+func _get_return_scene() -> String:
+	if not has_node("/root/GameStateManager"):
+		push_warning("[Judge] GameStateManager not found - using fallback")
+		return "res://scenes/overworld/terrain/tutorial_lake.tscn"
+	
+	var gsm = get_node("/root/GameStateManager")
+	
+	if gsm.pending_transition.has("from_scene") and gsm.pending_transition.from_scene != "":
+		return gsm.pending_transition.from_scene
+	
+	if gsm.current_save_data.current_scene_path != "":
+		return gsm.current_save_data.current_scene_path
+	
+	push_warning("[Judge] No return scene found - using tutorial lake")
+	return "res://scenes/overworld/terrain/tutorial_lake.tscn"
 			
 
 
 func _on_referee_play_chart_now(chart_: Chart) -> void:
 	load_new_chart(chart_)
+
+func show_enter_prompt(visible: bool) -> void:
+	var oops = 1
+	#if has_node("/root/UI/EnterPrompt"):
+		#$"/root/UI/EnterPrompt".visible = visible

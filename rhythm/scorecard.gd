@@ -1,6 +1,5 @@
 class_name Scorecard extends RefCounted
 
-
 enum NoteStateEnum {WAITING = 0, HIT = 1, MISS = 2}
 
 var note_status := PackedByteArray([])
@@ -12,6 +11,7 @@ var hits: int = 0
 var combo: int = 0
 var temporal_error_displacement: float = 0.
 var temporal_error_cumulative: float = 0.
+var start_buffer: int = 20
 
 
 func _init(chart_reference := Chart.new()):
@@ -27,6 +27,7 @@ func _init(chart_reference := Chart.new()):
 	combo = 0
 	temporal_error_displacement = 0.
 	temporal_error_cumulative = 0.
+	start_buffer = 20
 
 
 func miss_note(index: int) -> void:
@@ -38,8 +39,12 @@ func miss_note(index: int) -> void:
 	
 	
 func penalty() -> void:
-	misses += 1
-	combo = 0
+	if start_buffer > 0:
+		combo = 0
+		start_buffer -= 1
+	else:
+		misses += 1
+		combo = 0
 
 
 func hit_note(index: int, temportal_accuracy: float) -> void:
@@ -50,6 +55,7 @@ func hit_note(index: int, temportal_accuracy: float) -> void:
 	combo += 1
 	temporal_error_displacement += temportal_accuracy
 	temporal_error_cumulative += abs(temportal_accuracy)
+	start_buffer -= 1
 
 
 func get_hit_accuracy() -> float:
