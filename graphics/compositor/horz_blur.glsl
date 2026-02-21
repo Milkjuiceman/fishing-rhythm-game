@@ -22,14 +22,14 @@ void main() {
 	}
 
 	vec4 color = imageLoad(color_image, uv)*6.;
-    color += imageLoad(color_image, uv+ivec2(0,3))*5.;
-    color += imageLoad(color_image, uv+ivec2(0,-3))*5.;
-    color += imageLoad(color_image, uv+ivec2(0,10))*4.;
-    color += imageLoad(color_image, uv+ivec2(0,-10))*4.;
-    color += imageLoad(color_image, uv+ivec2(0,21))*2.;
-    color += imageLoad(color_image, uv+ivec2(0,-21))*2.;
-    color += imageLoad(color_image, uv+ivec2(0,36))*2.;
-    color += imageLoad(color_image, uv+ivec2(0,-36))*2.;
+    color += imageLoad(color_image, uv+ivec2(0,1))*5.;
+    color += imageLoad(color_image, uv+ivec2(0,-1))*5.;
+    color += imageLoad(color_image, uv+ivec2(0,2))*4.;
+    color += imageLoad(color_image, uv+ivec2(0,-2))*4.;
+    color += imageLoad(color_image, uv+ivec2(0,3))*3.;
+    color += imageLoad(color_image, uv+ivec2(0,-3))*3.;
+    color += imageLoad(color_image, uv+ivec2(0,4));
+    color += imageLoad(color_image, uv+ivec2(0,-4));
     color /= 32.;
 
 	imageStore(color_image, uv, color);

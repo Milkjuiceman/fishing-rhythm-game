@@ -92,7 +92,10 @@ func _notification(what):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # rendering thread
 
-@export_range(0., 1.) var CONTROL: float = 0.1
+@export_range(0., 1.) var CONTROL_A: float = 0.1
+@export_range(0., 10.) var CONTROL_B: float = 0.1
+@export_range(0., 1.) var CONTROL_C: float = 0.1
+@export_range(1., 3.999) var CONTROL_D: float = 0.1
 
 
 var rd: RenderingDevice = null
@@ -143,35 +146,18 @@ func make_float_array_from_projection(p: Projection) -> PackedFloat32Array:
 		p.z.x, p.z.y, p.z.z, p.z.w,
 		p.w.x, p.w.y, p.w.z, p.w.w
 	])
-	#print("proj: ", r)
 	return r
 
-#func make_float_array_from_transform(t: Transform3D) -> PackedFloat32Array:
-	#var b := t.basis
-	#var o := t.origin
-	##print("before: ", o)
-	#o = lerp(o, b * o.inverse(), CONTROL)
-	##print("after: ", o)
-	##print()
-	#var r := PackedFloat32Array([
-		#b.x.x, b.y.x, b.z.x, 0.,
-		#b.x.y, b.y.y, b.z.y, 0.,
-		#b.x.z, b.y.z, b.z.z, 0.,
-		#o.x,  o.y,   o.z,   1.
-	#])
-	##print("trans2: ", r)
-	#return r
 
 func make_float_array_from_transform(t: Transform3D) -> PackedFloat32Array:
 	var b := t.basis
-	var o := t.origin * CONTROL
+	var o := t.origin
 	var r := PackedFloat32Array([
 		b.x.x, b.x.y, b.x.z, 0.,
 		b.y.x, b.y.y, b.y.z, 0.,
 		b.z.x, b.z.y, b.z.z, 0.,
 		o.x,  o.y,   o.z,   1.
 	])
-	#print("trans2: ", r)
 	return r
 
 # Called by the rendering thread every frame.
@@ -244,7 +230,6 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var working_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture, view, 0, 1, 1))
 		var working2_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture2, view, 0, 1, 1))
 		#var uniform_buffer_uniform = _make_uniform_buffer_uniform(render_scene_data)
-		var uniform_buffer_uniform = _make_uniform_buffer_uniform()
 		# Run our compute shader.
 		
 		var inverse_projection := render_scene_data.get_view_projection(view).inverse()
@@ -254,22 +239,24 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var uniform_buffer_value := PackedFloat32Array([])
 		uniform_buffer_value.append_array(make_float_array_from_projection(inverse_projection))
 		uniform_buffer_value.append_array(make_float_array_from_transform(inverse_view))
-		uniform_buffer_value.append(CONTROL)
-		uniform_buffer_value.append(0.)
-		uniform_buffer_value.append(0.)
-		uniform_buffer_value.append(0.)
+		#uniform_buffer_value.append(CONTROL_A)
+		#uniform_buffer_value.append(CONTROL_B)
+		#uniform_buffer_value.append(CONTROL_C)
+		#uniform_buffer_value.append(CONTROL_D)
 		_update_uniform_buffer(uniform_buffer_value)
+		
+		var uniform_buffer_uniform = _make_uniform_buffer_uniform()
 		
 		
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, uniform_buffer_uniform], small_push_constant, groups)
-		_apply_pass(&"apply_outline", [working_image, color_image], small_push_constant, groups)
-		
 		
 		## ~~~BLUR~~~
-		#_apply_pass(&"horz_blur", [color_image], small_push_constant, groups)
-		#_apply_pass(&"vert_blur", [color_image], small_push_constant, groups)
-		#_apply_pass(&"horz_blur", [color_image], small_push_constant, groups)
-		#_apply_pass(&"vert_blur", [color_image], small_push_constant, groups)
+		#_apply_pass(&"horz_blur", [working_image], small_push_constant, groups)
+		#_apply_pass(&"vert_blur", [working_image], small_push_constant, groups)
+		#_apply_pass(&"horz_blur", [working_image], small_push_constant, groups)
+		#_apply_pass(&"vert_blur", [working_image], small_push_constant, groups)
+		
+		_apply_pass(&"apply_outline", [working_image, color_image], small_push_constant, groups)
 
 
 func _make_image_uniform(image: RID) -> RDUniform:
@@ -313,6 +300,7 @@ func _update_uniform_buffer(data: PackedFloat32Array):
 	#uniform.add_id(render_scene_data.get_uniform_buffer())
 	#return uniform
 
+## This should happen after you _update_uniform_buffer within the frame
 func _make_uniform_buffer_uniform() -> RDUniform:
 	var uniform: RDUniform = RDUniform.new()
 	uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER

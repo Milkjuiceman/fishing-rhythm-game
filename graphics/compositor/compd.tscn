@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxjdja0f3rra4"]
+[gd_scene load_steps=18 format=3 uid="uid://cxjdja0f3rra4"]
 
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="1_8stmp"]
 [ext_resource type="PackedScene" uid="uid://isrh8nhyae53" path="res://assets/models/Boat.glb" id="1_j1c5s"]
@@ -24,9 +24,7 @@ tonemap_mode = 2
 resource_local_to_scene = false
 resource_name = ""
 enabled = true
-effect_callback_type = 1
-access_resolved_color = false
-access_resolved_depth = true
+effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("1_8stmp")
@@ -35,7 +33,10 @@ horz_blur_shader_file = ExtResource("2_rg5hn")
 vert_blur_shader_file = ExtResource("4_7tvxw")
 initial_outlines_shader_file = ExtResource("3_7tvxw")
 apply_outline_shader_file = ExtResource("1_ri8l7")
-CONTROL = 1.0
+CONTROL_A = 1.0
+CONTROL_B = 2.3
+CONTROL_C = 1.0
+CONTROL_D = 1.0
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]
@@ -52,13 +53,20 @@ size = Vector3(62.345, 72.93, 56.815)
 radius = 40.0
 height = 80.0
 
+[sub_resource type="SphereMesh" id="SphereMesh_3xkl4"]
+radius = 20.0
+height = 40.0
+radial_segments = 8
+rings = 4
+
 [sub_resource type="BoxMesh" id="BoxMesh_ri8l7"]
-size = Vector3(60, 60, 60)
+size = Vector3(80, 80, 80)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
 shadow_enabled = true
 directional_shadow_split_2 = 0.21
 directional_shadow_split_3 = 0.45
@@ -73,7 +81,7 @@ compositor = SubResource("Compositor_mif2d")
 transform = Transform3D(0.06875982, 0.16132909, -1.2461926, -0.02362491, 0.46954527, 0.4281744, 0.41372514, 0, 0.23156336, -185.14914, -7.586212, 27.52996)
 
 [node name="Boat4" parent="." instance=ExtResource("1_j1c5s")]
-transform = Transform3D(0.28486043, 0.20644653, -0.8157166, -0.034062576, 0.44258893, 0.88057566, 0.22768329, -0.19207712, 1.152303, -185.14914, 12.239929, 126.76514)
+transform = Transform3D(0.28486043, 0.20644654, -0.8157169, -0.034062576, 0.4425889, 0.88057536, 0.22768329, -0.19207703, 1.152303, -185.14914, 12.239929, 126.76514)
 
 [node name="Boat2" parent="Boat4" instance=ExtResource("1_j1c5s")]
 transform = Transform3D(0.06727576, -0.042862777, 0.4539268, 0.18150724, 0.28488728, -8.195639e-08, -0.09315315, 0.059349697, 0.019410267, 128.31754, 242.91953, -50.10636)
@@ -86,11 +94,15 @@ transform = Transform3D(0.48837054, 0, 0, 0, 0.36279303, 0, 0, 0, 0.4598792, -87
 mesh = SubResource("BoxMesh_e7g0d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, -87.28512, 241.3378, -386.2239)
+transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 271.78955, 229.20105, 858.8124)
 mesh = SubResource("SphereMesh_ri8l7")
 
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 583.6403, 133.57867, 552.1282)
+mesh = SubResource("SphereMesh_3xkl4")
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 440.012, 320.46298, -826.1726)
+transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 336.7196, 357.21298, 765.7622)
 mesh = SubResource("BoxMesh_ri8l7")
 
 [node name="Camera3D" type="Camera3D" parent="."]

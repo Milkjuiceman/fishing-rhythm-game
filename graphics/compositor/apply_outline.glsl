@@ -13,6 +13,7 @@ layout(push_constant, std430) uniform Params {
 	vec2 pixel_size;
 } params;
 
+
 // The code we want to execute in each invocation
 void main() {
 	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
@@ -22,12 +23,15 @@ void main() {
 		return;
 	}
 
-	vec3 values = imageLoad(working_image, uv).xyz;
+	vec4 values = imageLoad(working_image, uv).xyzw;
 
 	vec3 img = imageLoad(color_image, uv).rgb;
 
+	float dark = values.w * 10. - 1.;
 
-	vec3 color = (values * 0.9 + img * 0.1) / (0.1 / (img + 0.01) + 0.9);
+	vec3 color = mix(img, vec3(0.), clamp(vec3(dark*0.5, dark, dark*0.25), 0., 1.));
+
+	// vec3 color = (values * 0.99 + img * 0.01) / (0.01 / (img + 0.001) + 0.99);
 
 	imageStore(color_image, uv, vec4(color, 1.));
 }
