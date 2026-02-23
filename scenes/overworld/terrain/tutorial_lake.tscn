@@ -146,13 +146,13 @@ shape = SubResource("BoxShape3D_kp4fu")
 [node name="SpawnPoints" type="Node3D" parent="."]
 
 [node name="tutorial_boat_spawnpoint_a" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 820.964, 4.941, 764.772)
+transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 820.964, 5, 764.772)
 
 [node name="tutorial_boat_initial_spawnpoint" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 199.77716, 4.941, 303.73965)
+transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 199.777, 5, 303.74)
 
 [node name="tutorial_boat_upgrade_spawnpoint" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 552.4836, 4.941, 550.86084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 552.484, 5, 550.861)
 
 [node name="FishSpawners" type="Node3D" parent="."]
 

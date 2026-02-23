@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0v6r8khup5s4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u86u"]
+albedo_color = Color(4.3317675e-07, 0.4652838, 0.4653374, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7u86u"]
+material = SubResource("StandardMaterial3D_7u86u")
+
+[node name="FillerBuilding" type="Node3D"]
+transform = Transform3D(2.59, 0, 0, 0, 2.59, 0, 0, 0, 2.59, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.305, 0, 0, 0, 10.305, 0, 0, 0, 10.305, 0, 0, 0)
+mesh = SubResource("BoxMesh_7u86u")
