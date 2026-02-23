@@ -1,6 +1,12 @@
 #[compute]
 #version 450
 
+// Our push constant
+layout(push_constant, std430) uniform Params {
+	vec2 PIXEL_SIZE;
+	ivec2 RASTER_SIZE;
+};
+
 // Invocations in the (x, y, z) dimension
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
@@ -8,20 +14,14 @@ layout(rgba16f, set = 0, binding = 0) uniform image2D WORKING_IMAGE;
 layout(set = 1, binding = 0) uniform sampler2D DEPTH_TEXTURE;
 layout(rgba16f, set = 2, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
 
-// Difference between push constant and uniform buffer
+// Difference between push constant and uniform buffer:
 // push constant is super fast and can hold 128B and only allowed one (per stage)
 // uniform buffer is fast and can hold tens of kB and there can be <100
 // storage buffer is slow and can hold many GB and allowed as much as you VRAM can handle
 
-// Our push constant
-layout(push_constant, std430) uniform Params {
-	vec2 RASTER_SIZE;
-	vec2 PIXEL_SIZE;
-};
-
 // Our uniform buffer uniform
 layout(set = 3, binding=0) uniform SceneData {
-    mat4 INV_PROJECTION_MATRIX;
+	mat4 INV_PROJECTION_MATRIX;
 	mat4 INV_VIEW_MATRIX;
 };
 
@@ -31,8 +31,7 @@ layout(set = 3, binding=0) uniform SceneData {
 // The code we want to execute in each invocation
 void main() {
 	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
-	ivec2 size = ivec2(RASTER_SIZE);
-	if (uv.x >= size.x || uv.y >= size.y) return;
+	if (uv.x >= RASTER_SIZE.x || uv.y >= RASTER_SIZE.y) return;
 	vec2 uniform_uv = vec2(uv) * PIXEL_SIZE;
 	float nonlinear_depth;
 	float depth = get_depth(uniform_uv, nonlinear_depth);
