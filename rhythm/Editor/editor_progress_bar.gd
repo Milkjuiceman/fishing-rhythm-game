@@ -24,8 +24,8 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	prev_miss = frame_state.scorecard.misses
 	
 	# Check if player hit 0% 
-	if value <= min_value:
-		_return_to_previous_scene()
+	#if value <= min_value:
+		#_return_to_previous_scene()
 
 # Return player to the scene they came from
 func _return_to_previous_scene() -> void:

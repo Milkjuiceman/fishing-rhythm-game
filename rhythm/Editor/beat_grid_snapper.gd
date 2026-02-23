@@ -25,7 +25,7 @@ const QUARTER = 0.25
 const HALF = 0.5
 
 func _ready():
-	var sender = get_node("/root/RhythmLevel3/Judge")
+	var sender = get_parent().get_node("Judge")
 	sender.send_key_times.connect(_on_receive_key_times)
 	
 func _on_receive_key_times(key_times: PackedFloat64Array) -> void:
@@ -70,6 +70,7 @@ func snap_to_grid() -> void:
 
 	var beat_length = 60.0 / bpm
 	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
+	var i = 0
 
 	for t in key_times:
 		var best_snap = t
@@ -81,8 +82,19 @@ func snap_to_grid() -> void:
 			if diff < smallest_diff:
 				smallest_diff = diff
 				best_snap = candidate
+		if i < chart.note_timings.size():
+			chart.note_timings[i] = best_snap
+			i += 1
+		else:
+			chart.note_timings.append(best_snap)
+			chart.note_column.append(0)
 
-	print(chart.note_timings)
+	chart.emit_changed()
+
+	if chart.resource_path != "":
+		ResourceSaver.save(chart, chart.resource_path)
+
+	print("snapped: ", chart.note_timings)
 
 
 func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
@@ -113,4 +125,9 @@ func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
 			chart.note_timings.append(best_snap)
 			chart.note_column.append(0)
 
-	print(chart.note_timings)
+	chart.emit_changed()
+
+	if chart.resource_path != "":
+		ResourceSaver.save(chart, chart.resource_path)
+
+	print("snapped: ", chart.note_timings)
