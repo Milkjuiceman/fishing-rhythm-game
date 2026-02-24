@@ -5,10 +5,14 @@ class_name Judge
 @export var progress_bar: CatchProgressBar
 var chart: Chart = null
 var scorecard: Scorecard = null
+
 # signals 
 signal song_finished
+signal note_judged(note_index: int, frame_state: FrameState)
+
 # state 
 var lowest_judgment_index: int = 0
+var key_times: PackedFloat64Array = PackedFloat64Array()
 
 func _ready():
 	scorecard = Scorecard.new()
@@ -44,6 +48,16 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		
 		if timing > upper_bound:
 			# late keypress is a miss
+		if frame_state.k_key_press:
+			key_times.append(compared_t)
+		elif frame_state.j_key_press:
+			key_times.append(compared_t)
+		elif frame_state.f_key_press:
+			key_times.append(compared_t)
+		elif frame_state.d_key_press:
+			key_times.append(compared_t)
+		
+		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
 					scorecard.miss_note(i)
 			break
