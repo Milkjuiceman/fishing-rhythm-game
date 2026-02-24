@@ -1,4 +1,4 @@
-class_name Judge extends Node
+class_name EditorJudge extends Node
 
 var chart: Chart = null
 var scorecard: Scorecard = null
