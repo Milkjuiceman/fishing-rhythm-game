@@ -25,8 +25,8 @@ var spawn_timer: Timer  # Timer for periodic spawning
 # ========================================
 
 func _ready():
-	print("Spawner ready!")
-	print("Scene assigned: ", rippling_water_scene != null)
+	# print("Spawner ready!")
+	# print("Scene assigned: ", rippling_water_scene != null)
 	
 	# Create and configure spawn timer
 	spawn_timer = Timer.new()
@@ -34,7 +34,7 @@ func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(spawn_timer)
 	spawn_timer.start()
-	print("Timer started with interval: ", spawn_interval)
+	# print("Timer started with interval: ", spawn_interval)
 	
 	# Spawn initial water instance
 	spawn_rippling_water()
@@ -45,16 +45,16 @@ func _ready():
 
 # Called when spawn timer completes
 func _on_spawn_timer_timeout():
-	print("Timer triggered!")
+	# print("Timer triggered!")
 	spawn_rippling_water()
 
 # Spawn a new rippling water instance at random position
 func spawn_rippling_water():
-	print("Attempting to spawn... Current count: ", active_waters.size())
+	# print("Attempting to spawn... Current count: ", active_waters.size())
 	
 	# Enforce max spawn limit
 	if active_waters.size() >= max_spawns:
-		print("Hit max spawns limit (", max_spawns, ")")
+		# print("Hit max spawns limit (", max_spawns, ")")
 		return
 	
 	# Validate scene reference
@@ -68,7 +68,7 @@ func spawn_rippling_water():
 	var offset = Vector3(cos(angle) * distance, spawn_height, sin(angle) * distance)
 	var spawn_pos = global_position + offset
 	
-	print("Spawning at position: ", spawn_pos)
+	# print("Spawning at position: ", spawn_pos)
 	
 	# Create new water instance
 	var water = rippling_water_scene.instantiate()
@@ -81,7 +81,7 @@ func spawn_rippling_water():
 	
 	# Add to tracking array
 	active_waters.append(water)
-	print("Successfully spawned! Total active: ", active_waters.size())
+	# print("Successfully spawned! Total active: ", active_waters.size())
 	
 	# Connect cleanup signal for when water is removed
 	water.tree_exiting.connect(_on_water_removed.bind(water))
@@ -92,6 +92,6 @@ func spawn_rippling_water():
 
 # Called when a water instance is removed from the scene
 func _on_water_removed(water):
-	print("Water removed from scene")
+	# print("Water removed from scene")
 	active_waters.erase(water)
-	print("Active waters now: ", active_waters.size())
+	# print("Active waters now: ", active_waters.size())

@@ -1,6 +1,5 @@
 class_name Scorecard extends RefCounted
 
-
 enum NoteStateEnum {WAITING = 0, HIT = 1, MISS = 2}
 
 var note_status := PackedByteArray([])
@@ -12,6 +11,7 @@ var hits: int = 0
 var combo: int = 0
 var temporal_error_displacement: float = 0.
 var temporal_error_cumulative: float = 0.
+var start_buffer: int = 10 # cant fail until x notes have passed
 
 
 func _init(chart_reference := Chart.new()):
@@ -21,49 +21,42 @@ func _init(chart_reference := Chart.new()):
 	note_temporal_accuracy.resize(chart_reference.note_timings.size())
 	note_status.fill(NoteStateEnum.WAITING)
 	note_temporal_accuracy.fill(0.)
-	
-	misses = 0
-	hits = 0
-	combo = 0
-	temporal_error_displacement = 0.
-	temporal_error_cumulative = 0.
 
 
 func miss_note(index: int) -> void:
-	assert(index < note_status.size(), "Cant miss a note not in the chart!")
+	if index >= note_status.size():
+		return;
 	note_status[index] = NoteStateEnum.MISS
-	penalty()
+	_penalty()
 	
 	
-func penalty() -> void:
-	misses += 1
-	combo = 0
+func _penalty() -> void:
+	if start_buffer > 0:
+		combo = 0
+		start_buffer -= 1
+	else:
+		combo = 0
+		misses += 1
 
 
-func hit_note(index: int, temportal_accuracy: float) -> void:
-	assert(index < note_status.size(), "Cant hit a note not in the chart!")
+func hit_note(index: int, temporal_accuracy: float) -> void:
+	if index >= note_status.size():
+		return;
 	note_status[index] = NoteStateEnum.HIT
-	note_temporal_accuracy[index] = temportal_accuracy
+	note_temporal_accuracy[index] = temporal_accuracy
 	hits += 1
 	combo += 1
-	temporal_error_displacement += temportal_accuracy
-	temporal_error_cumulative += abs(temportal_accuracy)
+	temporal_error_displacement += temporal_accuracy
+	temporal_error_cumulative += abs(temporal_accuracy)
+	if start_buffer > 0:
+		start_buffer -= 1
 
 
 func get_hit_accuracy() -> float:
-	if hits + misses == 0:
-		return 1.
-	else:
-		return float(hits) / (hits + misses)
+	return hits / max(hits + misses, 1)
 
 func get_average_temporal_offset() -> float:
-	if hits == 0:
-		return 0.
-	else:
-		return temporal_error_displacement / hits
+	return temporal_error_displacement / max(hits, 1)
 
 func get_average_temporal_error() -> float:
-	if hits == 0:
-		return 0.
-	else:
-		return temporal_error_cumulative / hits
+	return temporal_error_cumulative / max(hits, 1)

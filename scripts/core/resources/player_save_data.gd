@@ -39,12 +39,14 @@ class_name PlayerSaveData
 # Save file version for future migration support
 @export var save_version: int = 1
 
+# inventory data
+@export var inventory: Inventory = Inventory.new()
+
 # ========================================
 # FUTURE EXPANSION (Commented Examples)
 # ========================================
 
 # Add these as your game grows:
-# @export var inventory: Array[String] = []
 # @export var quest_flags: Dictionary = {}
 # @export var stats: Dictionary = {}
 # @export var unlocked_boats: Array[String] = []
@@ -73,21 +75,16 @@ func _init(
 # Create save data from current player state
 static func from_player(player: Player) -> PlayerSaveData:
 	var save_data = PlayerSaveData.new()
-	
 	# Capture player position and rotation
 	save_data.player_position = player.get_current_position()
 	save_data.player_rotation = player.get_current_rotation()
-	
 	# Capture current boat type
 	if player.current_vehicle and player.current_vehicle.scene_file_path:
 		save_data.current_boat_type = player.current_vehicle.scene_file_path
-	
 	# Capture current scene
 	save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
-	
 	# Update timestamp
 	save_data.last_saved = Time.get_datetime_string_from_system()
-	
 	return save_data
 
 # ========================================
