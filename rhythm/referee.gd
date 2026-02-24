@@ -4,7 +4,7 @@ class_name Referee extends Node
 @export var chart: Chart
 @export var music_player: MusicPlayer
 @export var input_hit: InputHit
-@export var judge: Judge
+@export var judge: RhythmJudge
 @export var enter_prompt: Label
 
 @export var note_speed: float = 10.

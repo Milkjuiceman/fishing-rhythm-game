@@ -1,5 +1,5 @@
 extends Node
-class_name Judge 
+class_name RhythmJudge 
 
 # node references
 @export var progress_bar: CatchProgressBar
@@ -45,8 +45,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			break
 			
 		var timing =  chart.note_timings[i]
-		
-		if timing > upper_bound:
+			
 			# late keypress is a miss
 		if frame_state.k_key_press:
 			key_times.append(compared_t)
