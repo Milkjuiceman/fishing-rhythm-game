@@ -23,4 +23,3 @@ func _process(delta: float) -> void:
 	input_hit.fill_frame_state(frame_state)
 	judge.process_and_fill_frame_state(frame_state)
 	process.emit(frame_state)
-	

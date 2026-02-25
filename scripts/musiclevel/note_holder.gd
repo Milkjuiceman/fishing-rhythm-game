@@ -54,7 +54,3 @@ func align_notes() -> void:
 			
 		if Engine.is_editor_hint():
 			note.owner = get_tree().edited_scene_root;
-			
-		#referee.process.connect(note._on_referee_process);
-		#referee.process.connect(Callable(note, "_on_referee_process"))
-		#referee.process.connect(note._on_referee_process.bind(note))
