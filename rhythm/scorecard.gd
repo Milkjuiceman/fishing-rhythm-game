@@ -1,5 +1,6 @@
 class_name Scorecard extends RefCounted
 
+signal rating_hit(rating: String)
 
 enum NoteStateEnum {WAITING = 0, HIT = 1, MISS = 2}
 
@@ -12,6 +13,7 @@ var hits: int = 0
 var combo: int = 0
 var temporal_error_displacement: float = 0.
 var temporal_error_cumulative: float = 0.
+var score: int = 0
 
 
 func _init(chart_reference := Chart.new()):
@@ -48,6 +50,7 @@ func hit_note(index: int, temportal_accuracy: float) -> void:
 	combo += 1
 	temporal_error_displacement += temportal_accuracy
 	temporal_error_cumulative += abs(temportal_accuracy)
+	update_score(abs(temportal_accuracy))
 
 
 func get_hit_accuracy() -> float:
@@ -67,3 +70,28 @@ func get_average_temporal_error() -> float:
 		return 0.
 	else:
 		return temporal_error_cumulative / hits
+		
+func update_score(accuracy: float) -> void:
+	var rating = ""
+	
+	if accuracy <= 0.03:
+		rating = "Perfect"
+		if combo < 10:
+			score += 10
+		else:
+			score += 40
+	elif accuracy <= 0.07:
+		rating = "Good"
+		if combo < 10:
+			score += 7
+		else:
+			score += 28
+	else:
+		rating = "Bad"
+		if combo < 10:
+			score += 3
+		else:
+			score += 12
+
+	# Emit the signal with the rating
+	emit_signal("rating_hit", rating)

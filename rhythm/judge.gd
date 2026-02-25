@@ -3,16 +3,30 @@ class_name Judge extends Node
 var chart: Chart = null
 var scorecard: Scorecard = null
 
-const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
+const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
 
 var lowest_judgment_index: int = 0
-var key_times: PackedFloat64Array = PackedFloat64Array()
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	scorecard = Scorecard.new(new_chart)
+	
+func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameState) -> void:
+	var temporal_difference: float = compared_t - timing
+	scorecard.hit_note(i, temporal_difference)
+	note_judged.emit(i, frame_state)
+	if i == lowest_judgment_index:
+		lowest_judgment_index +=  1;
+	if abs(temporal_difference) <= .03:
+		print("perfect")
+	elif abs(temporal_difference) <= .07:
+		print("good")
+	else:
+		print("bad")
+	
+	
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	if not frame_state.playing_song: return
 	
@@ -31,15 +45,6 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			break
 			
 		var timing: float =  chart.note_timings[i]
-		
-		if frame_state.k_key_press:
-			key_times.append(compared_t)
-		elif frame_state.j_key_press:
-			key_times.append(compared_t)
-		elif frame_state.f_key_press:
-			key_times.append(compared_t)
-		elif frame_state.d_key_press:
-			key_times.append(compared_t)
 		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
@@ -60,32 +65,60 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		else:
 			if frame_state.k_key_press && chart.note_column[i] == 0:
 				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
+				register_hit(compared_t, timing, i, frame_state)
+				#var temporal_difference: float = compared_t - timing
+				#scorecard.hit_note(i, temporal_difference)
+				#note_judged.emit(i, frame_state)
+				#if i == lowest_judgment_index:
+					#lowest_judgment_index +=  1;
+				#if abs(temporal_difference) <= .03:
+					#print("perfect")
+				#elif abs(temporal_difference) <= .07:
+					#print("good")
+				#else:
+					#print("bad")
 			elif frame_state.j_key_press && chart.note_column[i] == 1:
 				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
+				register_hit(compared_t, timing, i, frame_state)
+				#var temporal_difference: float = compared_t - timing
+				#scorecard.hit_note(i, temporal_difference)
+				#note_judged.emit(i, frame_state)
+				#if i == lowest_judgment_index:
+					#lowest_judgment_index +=  1;
+				#if abs(temporal_difference) <= .03:
+					#print("perfect")
+				#elif abs(temporal_difference) <= .07:
+					#print("good")
+				#else:
+					#print("bad")
 			elif frame_state.f_key_press && chart.note_column[i] == 2:
 				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
+				register_hit(compared_t, timing, i, frame_state)
+				#var temporal_difference: float = compared_t - timing
+				#scorecard.hit_note(i, temporal_difference)
+				#note_judged.emit(i, frame_state)
+				#if i == lowest_judgment_index:
+					#lowest_judgment_index +=  1;
+				#if abs(temporal_difference) <= .03:
+					#print("perfect")
+				#elif abs(temporal_difference) <= .07:
+					#print("good")
+				#else:
+					#print("bad")
 			elif frame_state.d_key_press && chart.note_column[i] == 3:
 				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
+				register_hit(compared_t, timing, i, frame_state)
+				#var temporal_difference: float = compared_t - timing
+				#scorecard.hit_note(i, temporal_difference)
+				#note_judged.emit(i, frame_state)
+				#if i == lowest_judgment_index:
+					#lowest_judgment_index +=  1;
+				#if abs(temporal_difference) <= .03:
+					#print("perfect")
+				#elif abs(temporal_difference) <= .07:
+					#print("good")
+				#else:
+					#print("bad")
 			break
 
 
