@@ -14,16 +14,20 @@ layout(rgba16f, set = 1, binding = 0) uniform image2D OUTPUT_IMAGE;
 
 layout(set = 2, binding=0) uniform UniformBuffer{
 	int JUMP_DISTANCE;
+	float INV_PROJECTION_MATRIX_2_3;
+	float INV_PROJECTION_MATRIX_3_3;
 	float CONTROL_A;
 };
+
+#include "linearize_depth.glsl"
+#include "outline_sdf.glsl"
+
 
 void update_best(in out vec4 best, in out float best_dis_sq, vec2 uniform_uv, ivec2 sample_uv) {
 	vec4 considered = imageLoad(INPUT_IMAGE, sample_uv);
 	if (considered.a < 0.5) return;
-	vec2 offset = considered.xy - uniform_uv;
-	offset *= vec2(RASTER_SIZE);
-	float dis_sq = abs(dot(offset, offset));
-	if (dis_sq < best_dis_sq) {
+	float dis_sq = outline_sdf_sq(considered.xyz, uniform_uv);
+	if (dis_sq > best_dis_sq) {
 		best_dis_sq = dis_sq;
 		best = considered;
 	}
@@ -38,7 +42,7 @@ void main() {
 	// return;
 
 	vec4 best = vec4(0.);
-	float best_dis_sq = 2000000000000000000000000.;
+	float best_dis_sq = -2000000000000000000000000.;
 	update_best(best, best_dis_sq, uniform_uv, uv);
 	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE,0));
 	update_best(best, best_dis_sq, uniform_uv, uv-ivec2(JUMP_DISTANCE,0));

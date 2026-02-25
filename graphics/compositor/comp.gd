@@ -11,14 +11,12 @@ class_name PostProcessShader
 
 
 # TODO:
-# Use uniform buffer instead push constants where ever possible
-
-
-
-# TODO: Outline Shader
-# make an inital outline detection shader that reads depth and normal and writes to new buffer
-# make expansion shader that does one iteration of jump fill (will be disbatched multiple times)
-# make an merge shader that apples the generated SDF to the original image as an outline
+# fix partial jump fill bug
+# fix edges
+# expose edge detection controls
+# consider making outline thickness based on N/sqrt(depth) instead of N/depth
+# consider using rg16 instead of rgba16 - then sampleing the depth during the apply stage
+# optimize the fuck outta this stuffz
 
 
 @export var basic_shader_file: RDShaderFile:
@@ -94,7 +92,7 @@ func _notification(what):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # rendering thread
 
-@export_range(0., 45.255) var CONTROL_A: float = 0.1
+@export_range(0., 1800000.0) var CONTROL_A: float = 0.1
 @export_range(0., 10.) var CONTROL_B: float = 0.1
 @export_range(0., 1.) var CONTROL_C: float = 0.1
 @export_range(1., 3.999) var CONTROL_D: float = 0.1
@@ -272,7 +270,8 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var working2_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture2, view, 0, 1, 1))
 		# Run our compute shader.
 		
-		var inverse_projection := render_scene_data.get_view_projection(view).inverse()
+		var projection := render_scene_data.get_view_projection(view)
+		var inverse_projection := projection.inverse()
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
 		inverse_view = inverse_view.inverse()
 		
@@ -282,17 +281,21 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		)
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, inital_uniform.to_ubu()], push_constant, groups)
 		
-		jump_uniform.update(rd, PackedInt32Array([32]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([128]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([16]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([64]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([8]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([32]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([4]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([16]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([2]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([8]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([CONTROL_A,0.,0.]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([4]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		jump_uniform.update(rd, PackedInt32Array([2]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
+		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
 		
 		## ~~~BLUR~~~

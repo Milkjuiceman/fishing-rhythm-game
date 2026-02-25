@@ -25,7 +25,9 @@ layout(set = 3, binding=0) uniform SceneData {
 	mat4 INV_VIEW_MATRIX;
 };
 
+
 // this needs to go after the uniforms
+#include "linearize_depth.glsl"
 #include "utils.glsl"
 
 // The code we want to execute in each invocation
@@ -90,3 +92,4 @@ void main() {
 	// 	hit_b * hit_deminished,
 	// 0.));
 }
+
