@@ -21,7 +21,35 @@ func align_notes() -> void:
 		note = place_notes.instantiate();
 		add_child(note);
 		note.position.z = timing * note_speed;
-		note.position.x = (chart.note_column[i] - 1.5) * 2;
+		var lane = chart.note_column[i]
+		note.position.x = (lane - 1.5) * 2
+		set_editable_instance(note, true)
+
+		# Apply to shader
+		var mat = note.get_surface_override_material(0).duplicate(true)
+		# Get the label
+		var label = note.get_node("Label3D") as Label3D
+		if mat:
+			mat = mat.duplicate()  # make it unique per note
+			mat.set_shader_parameter("seed", randf())
+			match lane:
+				0:
+					mat.set_shader_parameter("lane_color", Color.DARK_BLUE)
+					label.modulate = Color.DARK_BLUE
+				1:
+					mat.set_shader_parameter("lane_color", Color.DARK_GREEN)
+					label.modulate = Color.DARK_GREEN
+				2:
+					mat.set_shader_parameter("lane_color", Color.DARK_ORANGE)
+					label.modulate = Color.DARK_ORANGE
+				3:
+					mat.set_shader_parameter("lane_color", Color.DARK_RED)
+					label.modulate = Color.DARK_RED
+				_:
+					mat.set_shader_parameter("lane_color", Color.WHITE)
+					label.modulate = Color.WHITE
+			note.set_surface_override_material(0, mat)
+				
 		i += 1;
 			
 		if Engine.is_editor_hint():

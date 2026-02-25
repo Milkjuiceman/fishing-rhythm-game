@@ -1,14 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://duxiqk4m8gcax"]
+[gd_scene load_steps=9 format=3 uid="uid://duxiqk4m8gcax"]
 
 [ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="1_doocs"]
+[ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="1_nua46"]
+[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scenes/musiclevel/music_note.gd" id="3_rr1s0"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_rf3o7"]
+[sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doocs"]
-transparency = 1
-albedo_color = Color(0.3372549, 0.34901962, 0.87058824, 0.72156864)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nua46"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rr1s0"]
+render_priority = 0
+shader = ExtResource("1_nua46")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.0
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nua46"]
+albedo_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+metallic = 1.0
+roughness = 0.48
+
+[sub_resource type="SphereMesh" id="SphereMesh_nua46"]
+material = SubResource("StandardMaterial3D_nua46")
 
 [node name="Note" type="MeshInstance3D"]
-mesh = SubResource("BoxMesh_rf3o7")
-surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_kr1dr")
+surface_material_override/0 = SubResource("ShaderMaterial_rr1s0")
 script = ExtResource("1_doocs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_nua46")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+modulate = Color(0, 0, 0, 1)
+text = "♪"
+font_size = 100
+script = ExtResource("3_rr1s0")
