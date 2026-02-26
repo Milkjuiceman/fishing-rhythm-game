@@ -9,7 +9,7 @@ extends Node
 
 signal player_state_changed(save_data: PlayerSaveData)
 signal scene_transition_started(from_scene: String, to_scene: String)
-signal scene_transition_completed()
+# signal scene_transition_completed()
 signal boat_changed(boat_type: String)
 
 # ========================================
@@ -133,12 +133,17 @@ func save_player_state(player: Player) -> void:
 	if not player:
 		return
 	
-	# Create save data from current player state
-	current_save_data = PlayerSaveData.from_player(player)
-	
-	# Emit state changed signal
-	player_state_changed.emit(current_save_data)
+	current_save_data.player_position = player.global_position
+	current_save_data.player_rotation = player.rotation
+	if player.current_vehicle and player.current_vehicle.scene_file_path:
+		current_save_data.current_boat_type = player.current_vehicle.scene_file_path
+	current_save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
+	current_save_data.last_saved = Time.get_datetime_string_from_system()
 
+	# do NOT replace current_save_data, this keeps the same Inventory instance
+	player_state_changed.emit(current_save_data)
+	
+	
 # ========================================
 # SCENE TRANSITIONS
 # ========================================
