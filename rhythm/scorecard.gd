@@ -53,8 +53,6 @@ func hit_note(index: int, temporal_accuracy: float) -> void:
 	combo += 1
 	temporal_error_displacement += temporal_accuracy
 	temporal_error_cumulative += abs(temporal_accuracy)
-	if start_buffer > 0:
-		start_buffer -= 1
 
 
 func get_hit_accuracy() -> float:

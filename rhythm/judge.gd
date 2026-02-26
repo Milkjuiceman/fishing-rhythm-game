@@ -15,7 +15,7 @@ signal note_judged(note_index: int, frame_state: FrameState)
 # state 
 var lowest_judgment_index: int = 0
   
-  func load_new_chart(new_chart: Chart) -> void:
+func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	if chart != null:
 		scorecard = Scorecard.new(chart)
@@ -30,10 +30,10 @@ func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameSt
 	if i == lowest_judgment_index:
 		lowest_judgment_index +=  1;
 
-# func _ready():
-	# scorecard = Scorecard.new()
-	# if progress_bar:
-		# progress_bar.reset()
+#func _ready():
+	#scorecard = Scorecard.new()
+	#if progress_bar:
+		#progress_bar.reset()
 		
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	if not frame_state.playing_song or chart == null: 
@@ -43,10 +43,14 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	frame_state.scorecard = scorecard
 	
 	var i: int = lowest_judgment_index - 1
+	var lower_bound := frame_state.previous_t - 0.12 + frame_state.input_offset
+	var upper_bound := frame_state.t + 0.12 + frame_state.input_offset
+	var compared_t: float = lerp(frame_state.t, frame_state.previous_t, 0.5)
+	
 	while true:
 		i += 1
 		if i >= chart.note_timings.size(): # at end of song and all done
-			_return_to_previous_scene()
+			emit_signal("song_finished")
 			break
 			
 		var timing: float =  chart.note_timings[i]
@@ -56,10 +60,6 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 				# MISS
 				scorecard.penalty(chart.note_column[i])
 			break
-      
-	var lower_bound := frame_state.previous_t - 0.12 + frame_state.input_offset
-	var upper_bound := frame_state.t + 0.12 + frame_state.input_offset
-	var compared_t: float = lerp(frame_state.t, frame_state.previous_t, 0.5)
 	
 	# part 1: clean up by advancing lowest_judgement_index when notes are definitely missed
 	# while lowest_judgment_index < chart.note_timings.size():
@@ -75,22 +75,6 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			note_judged.emit(i, frame_state)
 			lowest_judgment_index += 1
 		else: # note still in hit window
-			break
-			
-	# part 2: hit detection
-	var any_key_press = frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press
-	
-	if any_key_press:
-		for i in range(lowest_judgment_index, chart.note_timings.size()):
-			var timing = chart.note_timings[i]
-			
-			if timing > upper_bound:
-				break
-				
-			if scorecard.note_status[i]  != Scorecard.NoteStateEnum.WAITING:
-				continue
-				
-			var hit = false
 			if frame_state.k_key_press && chart.note_column[i] == 0:
 				# HIT
 				register_hit(compared_t, timing, i, frame_state)
@@ -171,14 +155,4 @@ func _get_return_scene() -> String:
 	
 	push_warning("[Judge] No return scene found - using tutorial lake")
 	return "res://scenes/overworld/terrain/tutorial_lake.tscn"
-			
-			if hit:
-				scorecard.hit_note(i, compared_t - timing)
-				break
-	
-	if progress_bar != null:
-		progress_bar._update_from_scorecard(scorecard)
-		
-	if lowest_judgment_index >= chart.note_timings.size():
-		emit_signal("song_finished")
 		

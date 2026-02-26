@@ -2683,6 +2683,7 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
+value = 20.0
 allow_lesser = true
 script = ExtResource("11_i3t07")
 
@@ -2750,6 +2751,7 @@ offset_top = -124.0
 offset_right = 350.0
 offset_bottom = 176.0
 grow_vertical = 2
+
 [node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
 visible = false
 offset_left = 812.0

@@ -13,13 +13,17 @@ signal catch_failed
 signal catch_available
 signal catch_unavailable
 
+func _on_referee_process(frame_state: FrameState) -> void:
+	_update_from_scorecard(frame_state.scorecard)
+	print(value)
+
 # Update progress bar based on rhythm game performance
 func _update_from_scorecard(scorecard: Scorecard) -> void:
 	if scorecard == null:
 		return
+		
 	# process hits
 	var hits_delta = scorecard.hits - prev_hit
-	# Process hits 
 	if hits_delta > 0:
 		var multiplier = 4
 		if scorecard.combo >= 20: 
@@ -30,7 +34,7 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 
 	# Process misses 
 	var misses_delta = scorecard.misses - prev_miss
-	if misses_delta > 0 and scorecard.start_buffer <= 0:
+	if misses_delta > 0:
 		value -= misses_delta * 4
 	
 	value = clamp(value, min_value, max_value)
@@ -41,10 +45,9 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 	
 	# Check if player hit 0% AND level is failabe
 	if value <= min_value and not catchable:
-		if scorecard.start_buffer <= 0:
-			if not catchable:
-				print("[ProgressBar] depeleted, level failed")
-				emit_signal("catch_failed")
+		if not catchable:
+			print("[ProgressBar] depeleted, level failed")
+			emit_signal("catch_failed")
 		
 	if value >= max_value and not catchable:
 		catchable = true
@@ -58,5 +61,4 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 func reset():
 	prev_hit = 0
 	prev_miss = 0
-	value = min_value
 	catchable = false
