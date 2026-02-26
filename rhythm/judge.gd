@@ -19,12 +19,6 @@ func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameSt
 	note_judged.emit(i, frame_state)
 	if i == lowest_judgment_index:
 		lowest_judgment_index +=  1;
-	if abs(temporal_difference) <= .03:
-		print("perfect")
-	elif abs(temporal_difference) <= .07:
-		print("good")
-	else:
-		print("bad")
 	
 	
 func process_and_fill_frame_state(frame_state: FrameState) -> void:

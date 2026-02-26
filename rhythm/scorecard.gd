@@ -40,6 +40,7 @@ func miss_note(index: int) -> void:
 func penalty() -> void:
 	misses += 1
 	combo = 0
+	emit_signal("rating_hit", "Miss")
 
 
 func hit_note(index: int, temportal_accuracy: float) -> void:

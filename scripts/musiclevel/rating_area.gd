@@ -9,14 +9,14 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	if scorecard and not is_connected:
 		scorecard.connect("rating_hit", Callable(self, "show_rating"))
 		is_connected = true
+		
+	
 
 func show_rating(text: String):
 	var rating = rating_scene.instantiate()
 	rating.text = text
 	
 	add_child(rating)
-	
-	await get_tree().process_frame
 	
 	var area_size = size
 	var label_size = rating.size
@@ -26,11 +26,14 @@ func show_rating(text: String):
 	
 	rating.position = Vector2(rand_x, rand_y)
 	
-	# Optional color
 	if text == "Perfect":
 		rating.modulate = Color(0, 1, 0)
+	elif text == "Good":
+		rating.modulate = Color(0.0, 0.0, 2.107, 1.0)
 	elif text == "Bad":
-		rating.modulate = Color(1, 0, 0)
+		rating.modulate = Color(0.572, 0.0, 0.573, 1.0)
+	elif text == "Miss":
+		rating.modulate = Color(1.0, 0.0, 0.0, 1.0)
 	
 	animate_and_destroy(rating)
 

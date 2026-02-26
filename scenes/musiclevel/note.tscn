@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="1_doocs"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="1_nua46"]
-[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scenes/musiclevel/music_note.gd" id="3_rr1s0"]
+[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="3_rr1s0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 

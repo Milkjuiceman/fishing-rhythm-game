@@ -2737,6 +2737,16 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("11_o6wfx")
 
+[node name="AreaLeft" type="Control" parent="Camera3D/HUD/RatingArea"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AreaRigth" type="Control" parent="Camera3D/HUD/RatingArea"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
 script = ExtResource("7_3ffb3")
 place_notes = ExtResource("8_nm25w")
