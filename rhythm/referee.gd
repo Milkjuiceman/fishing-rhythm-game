@@ -25,6 +25,7 @@ func _ready() -> void:
 	if judge.progress_bar != null:
 		judge.progress_bar.catch_failed.connect(_on_catch_failed)
 		judge.progress_bar.catch_available.connect(_on_catch_available)
+		judge.progress_bar.catch_unavailable.connect(_on_catch_unavailable)
 
 func _process(delta: float) -> void:
 	var frame_state := FrameState.new()
@@ -35,7 +36,7 @@ func _process(delta: float) -> void:
 	input_hit.fill_frame_state(frame_state)
 	judge.process_and_fill_frame_state(frame_state)
 	process.emit(frame_state)
-	if enter_prompt.visible == true and Input.is_action_just_pressed("ui_accept"):
+	if catchable == true and Input.is_action_just_pressed("ui_accept"):
 		_catch_fish()
 	
 func _on_song_finished() -> void:
@@ -44,8 +45,6 @@ func _on_song_finished() -> void:
 	
 func _on_catch_failed() -> void:
 	print("[Judge]:bar depleted, ending song")
-	if enter_prompt:
-		enter_prompt.visible = false
 	fish_failed.emit()
 	
 func _on_catch_available() -> void:
@@ -53,6 +52,11 @@ func _on_catch_available() -> void:
 	print("[referee]: you hooked a fish! press enter to catch early")
 	if enter_prompt:
 		enter_prompt.visible = true
+
+func _on_catch_unavailable() -> void:
+	catchable = false
+	if enter_prompt:
+		enter_prompt.visible = false
 	
 func _calculate_performance():
 	var bar = judge.progress_bar

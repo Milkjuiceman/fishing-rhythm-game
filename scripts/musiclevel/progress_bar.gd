@@ -11,6 +11,7 @@ var prev_miss = 0  # Track previous miss count
 
 signal catch_failed
 signal catch_available
+signal catch_unavailable
 
 # Update progress bar based on rhythm game performance
 func _update_from_scorecard(scorecard: Scorecard) -> void:
@@ -49,6 +50,10 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 		catchable = true
 		print("[ProgressBar] filled, fish catchable")
 		emit_signal("catch_available")
+		
+	if value < 80 and catchable:
+		catchable = false
+		emit_signal("catch_unavailable")
 		
 func reset():
 	prev_hit = 0

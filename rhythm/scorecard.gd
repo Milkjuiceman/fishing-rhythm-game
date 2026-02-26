@@ -11,7 +11,7 @@ var hits: int = 0
 var combo: int = 0
 var temporal_error_displacement: float = 0.
 var temporal_error_cumulative: float = 0.
-var start_buffer: int = 10 # cant fail until x notes have passed
+var start_buffer: int = 5 # cant fail until x notes have passed
 
 
 func _init(chart_reference := Chart.new()):

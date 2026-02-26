@@ -12,7 +12,6 @@ signal note_judged(note_index: int, frame_state: FrameState)
 
 # state 
 var lowest_judgment_index: int = 0
-var key_times: PackedFloat64Array = PackedFloat64Array()
 
 func _ready():
 	scorecard = Scorecard.new()
@@ -37,39 +36,33 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	var upper_bound := frame_state.t + 0.12 + frame_state.input_offset
 	var compared_t: float = lerp(frame_state.t, frame_state.previous_t, 0.5)
 	
-	var i: int = lowest_judgment_index - 1
-	while true:
-		i += 1
-		if i >= chart.note_timings.size(): # at end of song
-			emit_signal("song_finished")
-			break
-			
-		var timing =  chart.note_timings[i]
-			
-			# late keypress is a miss
-		if frame_state.k_key_press:
-			key_times.append(compared_t)
-		elif frame_state.j_key_press:
-			key_times.append(compared_t)
-		elif frame_state.f_key_press:
-			key_times.append(compared_t)
-		elif frame_state.d_key_press:
-			key_times.append(compared_t)
+	# part 1: clean up by advancing lowest_judgement_index when notes are definitely missed
+	while lowest_judgment_index < chart.note_timings.size():
+		var timing = chart.note_timings[lowest_judgment_index]
 		
-		if timing > upper_bound: # done searching
-			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
-					scorecard.miss_note(i)
-			break
-		
-		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:
-			# already judge this one (in a previous frame)
+		if scorecard.note_status[lowest_judgment_index] != Scorecard.NoteStateEnum.WAITING:
+			lowest_judgment_index += 1
 			continue
 		
 		if timing < lower_bound:
-			scorecard.miss_note(i)
+			scorecard.miss_note(lowest_judgment_index)
 			lowest_judgment_index += 1
-			# print("Miss registered! Total misses:", scorecard.misses)
-		else:
+		else: # note still in hit window
+			break
+			
+	# part 2: hit detection
+	var any_key_press = frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press
+	
+	if any_key_press:
+		for i in range(lowest_judgment_index, chart.note_timings.size()):
+			var timing = chart.note_timings[i]
+			
+			if timing > upper_bound:
+				break
+				
+			if scorecard.note_status[i]  != Scorecard.NoteStateEnum.WAITING:
+				continue
+				
 			var hit = false
 			if frame_state.k_key_press && chart.note_column[i] == 0:
 				hit = true
@@ -79,11 +72,14 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 				hit = true
 			elif frame_state.d_key_press && chart.note_column[i] == 3:
 				hit = true
+			
 			if hit:
 				scorecard.hit_note(i, compared_t - timing)
-				if i == lowest_judgment_index:
-					lowest_judgment_index += 1
-				# print("Hit registered! Total hits:", scorecard.hits, "Combo:", scorecard.combo)
-			break
+				break
+	
 	if progress_bar != null:
 		progress_bar._update_from_scorecard(scorecard)
+		
+	if lowest_judgment_index >= chart.note_timings.size():
+		emit_signal("song_finished")
+		
