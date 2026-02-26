@@ -1813,18 +1813,20 @@ directional_shadow_max_distance = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wi50x")
 
-[node name="Judge" type="Node" parent="."]
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("2_vxtj7")
+progress_bar = NodePath("../Camera3D/HUD/ProgressBar")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_5drfm")
 
-[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge") groups=["Rhythm"]]
+[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
 script = ExtResource("4_51vgy")
 chart = ExtResource("5_vxtj7")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
+enter_prompt = NodePath("../../Camera3D/HUD/EnterPrompt")
 note_speed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -1952,6 +1954,14 @@ offset_top = -124.0
 offset_right = 350.0
 offset_bottom = 176.0
 grow_vertical = 2
+
+[node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
+visible = false
+offset_left = 812.0
+offset_top = 587.0
+offset_right = 1039.0
+offset_bottom = 611.0
+text = "press enter to reel it in early! "
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
 script = ExtResource("10_0qy5r")
@@ -3142,11 +3152,11 @@ script = ExtResource("12_jo8b5")
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
-[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/RatingArea" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Score" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/RatingArea" method="_on_referee_process"]
 
 [editable path="Note_Holder/@MeshInstance3D@29929"]
 [editable path="Note_Holder/@MeshInstance3D@29930"]
