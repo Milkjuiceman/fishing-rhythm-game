@@ -1,4 +1,4 @@
-[gd_scene load_steps=314 format=3 uid="uid://kc6gxomlw3bs"]
+[gd_scene load_steps=316 format=3 uid="uid://kc6gxomlw3bs"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_7antu"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_vxtj7"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_51vgy"]
 [ext_resource type="Resource" uid="uid://c63unmsa5c575" path="res://assets/tracks/charts/Lyonesse.tres" id="5_vxtj7"]
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_ayyjd"]
+[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="7_5drfm"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_ui0py"]
 [ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_5f5ri"]
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="9_1e7ru"]
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="10_0qy5r"]
+[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="10_51vgy"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_dd7r5"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="12_51vgy"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="12_jo8b5"]
@@ -1868,12 +1870,6 @@ font_size = 100
 [node name="HUD" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
 
-[node name="UI" type="Control" parent="Camera3D/HUD"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 650.0
-
 [node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
 anchors_preset = 7
 anchor_left = 0.5
@@ -1907,14 +1903,55 @@ script = ExtResource("8_5f5ri")
 
 [node name="Hits" type="Label" parent="Camera3D/HUD"]
 offset_left = 2.0
-offset_top = -0.9999924
+offset_top = 62.0
 offset_right = 68.0
-offset_bottom = 74.00001
+offset_bottom = 137.0
 scale = Vector2(3, 3)
 text = "HITS:
 MISSES:
 COMBO:"
 script = ExtResource("9_1e7ru")
+
+[node name="Score" type="Label" parent="Camera3D/HUD"]
+offset_right = 63.0
+offset_bottom = 23.333
+scale = Vector2(3, 3)
+text = "SCORE:"
+script = ExtResource("10_51vgy")
+
+[node name="RatingArea" type="Control" parent="Camera3D/HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_5drfm")
+
+[node name="AreaRight" type="Control" parent="Camera3D/HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = -124.0
+offset_right = -322.0
+offset_bottom = 176.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="AreaLeft" type="Control" parent="Camera3D/HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = -124.0
+offset_right = 350.0
+offset_bottom = 176.0
+grow_vertical = 2
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
 script = ExtResource("10_0qy5r")
@@ -3105,9 +3142,11 @@ script = ExtResource("12_jo8b5")
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/RatingArea" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Score" method="_on_referee_process"]
 
 [editable path="Note_Holder/@MeshInstance3D@29929"]
 [editable path="Note_Holder/@MeshInstance3D@29930"]
