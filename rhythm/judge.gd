@@ -16,6 +16,7 @@ func load_new_chart(new_chart: Chart) -> void:
 func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameState) -> void:
 	var temporal_difference: float = compared_t - timing
 	scorecard.hit_note(i, temporal_difference)
+	scorecard.update_score(abs(temporal_difference), chart.note_column[i])
 	note_judged.emit(i, frame_state)
 	if i == lowest_judgment_index:
 		lowest_judgment_index +=  1;
@@ -43,7 +44,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
 				# MISS
-				scorecard.penalty()
+				scorecard.penalty(chart.note_column[i])
 			break
 		
 		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:
@@ -52,7 +53,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		
 		if timing < lower_bound:
 			# MISS
-			scorecard.miss_note(i)
+			scorecard.miss_note(i, chart.note_column[i])
 			note_judged.emit(i, frame_state)
 			lowest_judgment_index += 1
 			

@@ -2725,6 +2725,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_o6wfx")
 
+[node name="AreaLeft" type="Control" parent="Camera3D/HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
 [node name="AreaRight" type="Control" parent="Camera3D/HUD/RatingArea"]
 layout_mode = 1
 anchors_preset = 6
@@ -2732,22 +2742,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -124.0
-offset_right = -322.0
-offset_bottom = 176.0
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
 grow_horizontal = 0
-grow_vertical = 2
-
-[node name="AreaLeft" type="Control" parent="Camera3D/HUD/RatingArea"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 300.0
-offset_top = -124.0
-offset_right = 350.0
-offset_bottom = 176.0
 grow_vertical = 2
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]

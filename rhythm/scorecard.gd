@@ -1,6 +1,6 @@
 class_name Scorecard extends RefCounted
 
-signal rating_hit(rating: String)
+signal rating_hit(rating: String, side: int)
 
 enum NoteStateEnum {WAITING = 0, HIT = 1, MISS = 2}
 
@@ -31,16 +31,23 @@ func _init(chart_reference := Chart.new()):
 	temporal_error_cumulative = 0.
 
 
-func miss_note(index: int) -> void:
+func miss_note(index: int, column: int) -> void:
 	assert(index < note_status.size(), "Cant miss a note not in the chart!")
 	note_status[index] = NoteStateEnum.MISS
-	penalty()
+	penalty(column)
 	
 	
-func penalty() -> void:
+func penalty(i: int) -> void:
+	var side = 0
 	misses += 1
 	combo = 0
-	emit_signal("rating_hit", "Miss")
+	
+	if i >= 2:
+		side = 1
+	else:
+		side = 0
+	
+	emit_signal("rating_hit", "Miss", side)
 
 
 func hit_note(index: int, temportal_accuracy: float) -> void:
@@ -51,7 +58,6 @@ func hit_note(index: int, temportal_accuracy: float) -> void:
 	combo += 1
 	temporal_error_displacement += temportal_accuracy
 	temporal_error_cumulative += abs(temportal_accuracy)
-	update_score(abs(temportal_accuracy))
 
 
 func get_hit_accuracy() -> float:
@@ -72,8 +78,9 @@ func get_average_temporal_error() -> float:
 	else:
 		return temporal_error_cumulative / hits
 		
-func update_score(accuracy: float) -> void:
+func update_score(accuracy: float, i: int) -> void:
 	var rating = ""
+	var side = 0
 	
 	if accuracy <= 0.03:
 		rating = "Perfect"
@@ -93,6 +100,11 @@ func update_score(accuracy: float) -> void:
 			score += 3
 		else:
 			score += 12
+			
+	if i >= 2:
+		side = 1
+	else:
+		side = 0
 
 	# Emit the signal with the rating
-	emit_signal("rating_hit", rating)
+	emit_signal("rating_hit", rating, side)

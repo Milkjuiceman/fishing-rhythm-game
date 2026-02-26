@@ -10,15 +10,15 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		scorecard.connect("rating_hit", Callable(self, "show_rating"))
 		is_connected = true
 		
-	
 
-func show_rating(text: String):
+func show_rating(text: String, side: int):
 	var rating = rating_scene.instantiate()
 	rating.text = text
+	var area = get_child(side)
 	
-	add_child(rating)
+	area.add_child(rating)
 	
-	var area_size = size
+	var area_size = area.size
 	var label_size = rating.size
 	
 	var rand_x = randf_range(0, area_size.x - label_size.x)
