@@ -3,7 +3,7 @@ class_name EditorJudge extends Node
 var chart: Chart = null
 var scorecard: Scorecard = null
 
-const TEMPORAL_ERROR_MARGIN: float = 0.1 # 100ms
+const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
 signal send_key_times(key_times: PackedFloat64Array)
@@ -30,7 +30,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if i >= chart.note_timings.size(): # at end of song and all done
 			print(key_times)
 			emit_signal("send_key_times", key_times)
-			_return_to_previous_scene()
+			get_tree().quit()
 			break
 			
 		var timing: float =  chart.note_timings[i]
