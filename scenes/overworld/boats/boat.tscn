@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=10 format=3 uid="uid://dfdg34vf6rofh"]
 
 [ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/vehicles/boat.gd" id="1_annr2"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
 [ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat.glb" id="4_lvl5j"]
+[ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_ouaro"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
 
@@ -69,3 +70,6 @@ transform = Transform3D(-1.623878e-07, 0, -3.715, 0, 3.715, 0, 3.715, 0, -1.6238
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2675817, 0.19180796, 0.013621807)
 shape = SubResource("BoxShape3D_hfmrw")
+
+[node name="BoatSFX" type="Node" parent="."]
+script = ExtResource("5_ouaro")

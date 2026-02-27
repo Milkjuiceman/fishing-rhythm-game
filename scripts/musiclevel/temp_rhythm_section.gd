@@ -1,59 +1,32 @@
 extends Node3D
+## Rhythm Level Controller
+## Manages the rhythm minigame sequence including countdown and gameplay start
 
-@export var referee: Referee;
+const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.tscn")
 
-# Called when the node enters the scene tree for the first time.
+@export var referee: Referee
+
+var _countdown_instance: RhythmCountdown = null
+
+
 func _ready() -> void:
-	# play the chart
-	referee.play_chart_now.emit(referee.chart);
-	# connect signals for when fish is caught or catch fails
-	referee.fish_caught.connect(_on_fishing_finished)
-	referee.fish_failed.connect(_on_fishing_failed)
+	# Don't start immediately - show countdown first
+	_show_countdown()
+
+
+func _show_countdown() -> void:
+	# Create countdown instance
+	_countdown_instance = COUNTDOWN_SCENE.instantiate()
+	add_child(_countdown_instance)
 	
-# called when player hooks a fish
-func _on_fishing_finished(performance: float) -> void:
-	# determine fish rarity based on performance
-	var rarity = _determine_rarity(performance)
-	# get reference to gsm
-	var gsm = get_node("/root/GameStateManager")
-	var item_id = "lake_trout"
-	# add fish w/ rarity to inventory
-	gsm.current_save_data.inventory.add_item(item_id, rarity, 1)
-	# debug statements
-	print("Reading from inventory instance:", gsm.current_save_data.inventory)
-	var count = gsm.current_save_data.inventory.get_item_count(item_id, rarity)
-	print("added: ", item_id, " | new count: ", count)
-	# return player to overworld once level ends
-	_return_to_overworld()
+	# Connect to countdown finished signal
+	_countdown_instance.countdown_finished.connect(_on_countdown_finished)
 	
-# called when progress bar dips below 0
-func _on_fishing_failed() -> void:
-	# cleanly return to overworld
-	_return_to_overworld()
-	
-# transform performance to a rarity tier
-func _determine_rarity(ratio: float) -> String:
-	if ratio > 0.9:
-		return "legendary"
-	elif ratio > 0.7:
-		return "rare"
-	elif ratio > 0.4:
-		return "uncommon"
-	else: 
-		return "common"
-	
-# ends rhythm level and returns player to overworld scene
-func _return_to_overworld() -> void:
-	set_process(false)
-	referee.set_process(false)
-	call_deferred("_safety_check")
-	
-func _safety_check() -> void:
-	var return_scene: String
-	var gsm = get_node("/root/GameStateManager")
-	if gsm.pending_transition.from_scene != "":
-		return_scene = gsm.pending_transition.from_scene
-	else: 
-		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
-	get_tree().change_scene_to_file(return_scene)
-	
+	# Start the countdown
+	_countdown_instance.start_countdown()
+
+
+func _on_countdown_finished() -> void:
+	# Countdown is done, start the rhythm gameplay
+	print("[RhythmLevel] Countdown finished, starting chart!")
+	referee.play_chart_now.emit(referee.chart)

@@ -11,6 +11,11 @@ var mouse_movement = Vector2()
 var locked_y_position = 0.0
 
 @onready var detection_area = $DetectionArea
+@onready var boat_sfx: BoatSFX = $BoatSFX if has_node("BoatSFX") else null
+
+# Impact detection
+var _previous_velocity: Vector3 = Vector3.ZERO
+const IMPACT_THRESHOLD: float = 5.0  # Minimum velocity change to trigger impact sound
 
 # ========================================
 # INITIALIZATION
@@ -42,6 +47,9 @@ func _ready():
 	angular_damp = 8.0  # Prevents wild spinning from collisions
 	linear_damp = 1.0   # Reduces bouncing
 	continuous_cd = true  # Prevents clipping through walls
+	
+	# Connect body_entered signal for collision detection
+	body_entered.connect(_on_body_entered)
 
 # ========================================
 # PUBLIC METHODS
@@ -65,6 +73,43 @@ func _unhandled_input(event):
 		mouse_movement += event.relative
 
 # ========================================
+# COLLISION DETECTION
+# ========================================
+
+func _on_body_entered(body: Node) -> void:
+	# Check if we hit something solid (environment, static body, etc.)
+	if body is StaticBody3D or body.is_in_group("environment") or body.is_in_group("obstacle"):
+		_play_impact_sound()
+
+func _check_velocity_impact() -> void:
+	# Calculate velocity change since last frame
+	var velocity_change = (linear_velocity - _previous_velocity).length()
+	
+	if velocity_change > IMPACT_THRESHOLD:
+		var intensity = clamp(velocity_change / 20.0, 0.3, 1.0)
+		_play_impact_sound(intensity)
+	
+	_previous_velocity = linear_velocity
+
+func _play_impact_sound(intensity: float = 0.7) -> void:
+	if boat_sfx:
+		boat_sfx.play_impact(intensity)
+
+# ========================================
+# SFX CONTROL
+# ========================================
+
+## Stop boat engine sounds (call when docking, entering shop, etc.)
+func stop_engine_sounds() -> void:
+	if boat_sfx:
+		boat_sfx.stop_engine()
+
+## Start boat engine sounds (call when leaving dock, exiting shop, etc.)
+func start_engine_sounds() -> void:
+	if boat_sfx:
+		boat_sfx.start_engine()
+
+# ========================================
 # PHYSICS & MOVEMENT
 # ========================================
 
@@ -72,6 +117,9 @@ func _physics_process(_delta):
 	# Skip physics when game is paused
 	if get_tree().paused:
 		return
+	
+	# Check for sudden velocity changes (impacts)
+	_check_velocity_impact()
 	
 	# --- Camera Rotation ---
 	# Apply accumulated mouse movement to camera

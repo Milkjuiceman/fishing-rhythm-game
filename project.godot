@@ -19,6 +19,8 @@ config/icon="res://assets/icons/icon.svg"
 
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
 GameStateManager="*res://scripts/autoload/game_state_manager.gd"
+OverworldMusic="*res://scenes/audio/overworld_music.tscn"
+ScreenTransition="*res://scenes/ui/transitions/screen_transition.tscn"
 
 [display]
 
