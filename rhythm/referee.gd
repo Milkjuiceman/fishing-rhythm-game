@@ -44,7 +44,7 @@ func _on_song_finished() -> void:
 	fish_caught.emit(performance)
 	
 func _on_catch_failed() -> void:
-	print("[Judge]:bar depleted, ending song")
+	print("[referee]:bar depleted, ending song")
 	fish_failed.emit()
 	
 func _on_catch_available() -> void:

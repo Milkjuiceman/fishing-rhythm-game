@@ -58,7 +58,7 @@ func generate_next_beat(subdivision: float) -> void:
 		
 	chart.note_timings.append(round(next_note / step) * step)
 	chart.note_column.append(0)
-	print(chart.note_timings)
+	print_debug(chart.note_timings)
 
 func snap_to_grid() -> void:
 	var bpm: float = chart.track.bpm[0.0]
@@ -94,7 +94,7 @@ func snap_to_grid() -> void:
 	if chart.resource_path != "":
 		ResourceSaver.save(chart, chart.resource_path)
 
-	print("snapped: ", chart.note_timings)
+	print_debug("snapped: ", chart.note_timings)
 
 
 func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
@@ -130,4 +130,4 @@ func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
 	if chart.resource_path != "":
 		ResourceSaver.save(chart, chart.resource_path)
 
-	print("snapped: ", chart.note_timings)
+	print_debug("snapped: ", chart.note_timings)

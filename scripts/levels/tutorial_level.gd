@@ -25,6 +25,9 @@ func _setup_level() -> void:
 func _post_spawn_setup() -> void:
 	print("Tutorial level ready! Player spawned successfully.")
 	
+	for obj in get_tree().get_nodes_in_group("interactable_objects"):
+		if obj.has_method("assign_quest"):
+			obj.assign_quest("tutorial_fishing_quest")
 	# Connect tutorial-specific signals to player if needed
 	if player:
 		pass  # Add tutorial-specific player event connections here

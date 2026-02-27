@@ -6,6 +6,8 @@ extends StaticBody3D
 		"Once you hook a fish,\njust tap to the rhythm.",
         "Don't worry, you'll get the hang of it!"
 ]
+		
+@export var quest_id: String = "tutorial_1"
 
-func _ready():
-	add_to_group("npc")
+
+func interact

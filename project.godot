@@ -19,6 +19,8 @@ config/icon="res://assets/icons/icon.svg"
 
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
 GameStateManager="*res://scripts/autoload/game_state_manager.gd"
+InventoryManage="*res://scripts/player/inventorymanager.gd"
+QuestManage="*res://scripts/npcs/questmanager.gd"
 
 [display]
 
@@ -35,6 +37,10 @@ enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+interactable_objects=""
 
 [input]
 

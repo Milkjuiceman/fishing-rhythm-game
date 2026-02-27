@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=36 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="15_yq4oh"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="16_5oyo0"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="17_ywjkn"]
+[ext_resource type="Script" uid="uid://0rwk7tajftlx" path="res://scripts/npcs/npc.gd" id="18_c03w6"]
 [ext_resource type="PackedScene" uid="uid://c4a0jes5hdlsu" path="res://scenes/overworld/enviormentObjects/cabin.tscn" id="18_gv44t"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="19_frxx6"]
 [ext_resource type="Script" uid="uid://bbscsuhcok1ic" path="res://scripts/components/shop_detection_area.gd" id="19_hsd36"]
@@ -80,6 +81,8 @@ size = Vector3(245.74716, 20.628906, 238.35051)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp4fu"]
 size = Vector3(386.7661, 51.820324, 273.94922)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c03w6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_38p3g"]
 height = 0.97766113
@@ -173,6 +176,15 @@ rippling_water_scene = ExtResource("15_yq4oh")
 
 [node name="Dock" parent="." instance=ExtResource("17_ywjkn")]
 transform = Transform3D(-0.5665696, 0, -7.3632345, 0, 7.385, 0, 7.3632345, 0, -0.5665696, 284.02463, 7.7461567, 399.3725)
+script = ExtResource("18_c03w6")
+npc_name = "dock"
+quest_id = "tutorial_1"
+
+[node name="interact_zone" type="Area3D" parent="Dock"]
+
+[node name="sphere" type="CollisionShape3D" parent="Dock/interact_zone"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_c03w6")
 
 [node name="Shipyard" parent="." instance=ExtResource("19_frxx6")]
 transform = Transform3D(8.27, 0, -1.4459728e-06, 0, 8.27, 0, 1.4459728e-06, 0, 8.27, 592.03064, 7.5905247, 546.5107)

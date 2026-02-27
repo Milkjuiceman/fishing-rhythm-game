@@ -5,10 +5,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_a762l"]
 size = Vector3(2.0112305, 1.1170654, 2.0856934)
 
-[node name="Dock" type="StaticBody3D"]
+[node name="Dock" type="StaticBody3D" groups=["interactable_objects"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20092773, 0.058532715, -0.049194336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20092773, 0.058532715, -0.21872139)
 shape = SubResource("BoxShape3D_a762l")
 
 [node name="Root Scene" parent="." instance=ExtResource("1_v6h7y")]

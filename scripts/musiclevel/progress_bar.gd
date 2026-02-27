@@ -15,7 +15,7 @@ signal catch_unavailable
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	_update_from_scorecard(frame_state.scorecard)
-	print(value)
+	#print(value)
 
 # Update progress bar based on rhythm game performance
 func _update_from_scorecard(scorecard: Scorecard) -> void:
