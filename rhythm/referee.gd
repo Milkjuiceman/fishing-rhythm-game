@@ -8,8 +8,8 @@ class_name Referee extends Node
 @export var enter_prompt: Label
 
 @export var note_speed: float = 10.
-@export var input_offset: float = -0.02
-@export var audio_offset: float = -0.15
+@export var input_offset: float = 0.0
+@export var audio_offset: float = 0.02
 
 # signals for high level events
 signal play_chart_now(chart: Chart)

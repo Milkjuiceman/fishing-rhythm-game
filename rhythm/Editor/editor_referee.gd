@@ -1,15 +1,16 @@
-class_name CalibratorReferee extends Node
+class_name EditorReferee extends Node
 
+# nodes and exports
 @export var chart: Chart
-
-@export var music_player: CalibratorMusicPlayer
-@export var input_hit: CalibratorInputHit
-@export var judge: CalibratorJudge
+@export var music_player: MusicPlayer
+@export var input_hit: InputHit
+@export var judge: EditorJudge
 
 @export var note_speed: float = 10.
 @export var input_offset: float = 0.0
-@export var audio_offset: float = 0.0
+@export var audio_offset: float = 0.02
 
+# signals for high level events
 signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
 
