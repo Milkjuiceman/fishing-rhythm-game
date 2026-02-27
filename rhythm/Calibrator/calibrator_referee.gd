@@ -7,7 +7,7 @@ class_name CalibratorReferee extends Node
 @export var judge: CalibratorJudge
 
 @export var note_speed: float = 10.
-@export var input_offset: float = -0.02
+@export var input_offset: float = 0.0
 @export var audio_offset: float = 0.0
 
 signal play_chart_now(chart: Chart)

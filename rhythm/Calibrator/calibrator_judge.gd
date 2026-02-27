@@ -47,7 +47,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		
 		if timing < lower_bound:
 			# MISS
-			scorecard.miss_note(i)
+			scorecard.miss_note(i, chart.note_column[i])
 			note_judged.emit(i, frame_state)
 			lowest_judgment_index += 1
 			
