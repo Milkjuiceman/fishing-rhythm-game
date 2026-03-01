@@ -22,7 +22,7 @@ func _on_fishing_finished(performance: float) -> void:
 	# debug statements
 	print("Reading from inventory instance:", gsm.current_save_data.inventory)
 	var count = gsm.current_save_data.inventory.get_item_count(item_id, rarity)
-	print("added: ", item_id, " | new count: ", count)
+	print("added: ", item_id, " | new count: ", count, " | rarity: ", rarity)
 	# return player to overworld once level ends
 	_return_to_overworld()
 	
@@ -56,4 +56,3 @@ func _safety_check() -> void:
 	else: 
 		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
 	get_tree().change_scene_to_file(return_scene)
-	

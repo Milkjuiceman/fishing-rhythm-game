@@ -16,6 +16,7 @@ signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
 signal fish_caught(performance: float)
 signal fish_failed
+signal reel_in_denied
 # signal frame_updated(frame_state: FrameState)
 var catchable := false
 
@@ -41,6 +42,7 @@ func _process(delta: float) -> void:
 	
 func _on_song_finished() -> void:
 	var performance = _calculate_performance()
+	print("something")
 	fish_caught.emit(performance)
 	
 func _on_catch_failed() -> void:
@@ -53,17 +55,21 @@ func _on_catch_available() -> void:
 	if enter_prompt:
 		enter_prompt.visible = true
 
+	await get_tree().create_timer(5.0).timeout
+	_on_catch_unavailable()
+	emit_signal("reel_in_denied")
+
 func _on_catch_unavailable() -> void:
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
-	
+
 func _calculate_performance():
 	var bar = judge.progress_bar
 	var minv = bar.min_value
 	var maxv = bar.max_value
 	return clamp((bar.value - minv) / (maxv - minv), 0.0, 1.0)
-	
+
 func _catch_fish() -> void:
 	catchable = false
 	if enter_prompt:
@@ -71,4 +77,6 @@ func _catch_fish() -> void:
 	var performance = _calculate_performance()
 	fish_caught.emit(performance)
 
-	
+func _on_judge_song_finished() -> void:
+	var performance = _calculate_performance()
+	fish_caught.emit(performance)

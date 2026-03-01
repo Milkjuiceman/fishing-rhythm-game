@@ -142,8 +142,8 @@ func save_player_state(player: Player) -> void:
 
 	# do NOT replace current_save_data, this keeps the same Inventory instance
 	player_state_changed.emit(current_save_data)
-	
-	
+
+
 # ========================================
 # SCENE TRANSITIONS
 # ========================================
