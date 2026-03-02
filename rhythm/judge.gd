@@ -3,6 +3,7 @@ class_name RhythmJudge
 
 # node references
 @export var progress_bar: CatchProgressBar
+@export var referee: Referee
 var chart: Chart = null
 var scorecard: Scorecard = null
 
@@ -19,6 +20,15 @@ var lowest_judgment_index: int = 0
 func _ready() -> void:
 	# Wire song_finished to scene return
 	song_finished.connect(_return_to_previous_scene)
+	# Connect catch outcomes to scene exit
+	print("[Judge] referee export value: ", referee)
+	if referee:
+		print("[Judge] Connecting fish_caught and fish_failed")
+		# fish_caught emits a float (performance) so use a lambda to absorb it
+		referee.fish_caught.connect(func(_performance): _return_to_previous_scene())
+		referee.fish_failed.connect(_return_to_previous_scene)
+	else:
+		push_warning("[Judge] Referee is null — cannot connect catch signals")
 
 
 func load_new_chart(new_chart: Chart) -> void:
@@ -98,8 +108,9 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 
 
 func _return_to_previous_scene() -> void:
+	print("[Judge] _return_to_previous_scene called")
 	var return_scene = _get_return_scene()
-	print("[Judge] Song completed! Returning to: ", return_scene)
+	print("[Judge] Returning to: ", return_scene)
 
 	var overworld_music = get_node_or_null("/root/OverworldMusic")
 	if overworld_music:
