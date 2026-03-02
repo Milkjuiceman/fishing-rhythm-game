@@ -34,67 +34,75 @@ layout(set = 3, binding=0) uniform SceneData {
 void main() {
 	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
 	if (uv.x >= RASTER_SIZE.x || uv.y >= RASTER_SIZE.y) return;
-	vec2 uniform_uv = vec2(uv) * PIXEL_SIZE;
-	float nonlinear_depth;
-	float depth = get_depth(uniform_uv, nonlinear_depth);
 
-	// RASTER_SIZE.y because I find that the artifacts from the effect get worse with smaller resolutions
-	// decreasing the outline sensitivity at smaller resolutions can make less outlines get detected - but its better than major artifacts 
-	float DEPTH_SENSITIVITY = 0.4 * RASTER_SIZE.y * RASTER_SIZE.y;
-	float NORMAL_SENSITIVITY = 15.;
+	vec4 result;
 
+	if (uv.x >= RASTER_SIZE.x-1 || uv.y >= RASTER_SIZE.y-1 || uv.x<= 1 || uv.y <= 1) {
+		result = vec4(0., 0., 0., 1.);
+	} else {
+		vec2 uniform_uv = vec2(uv) * PIXEL_SIZE;
+		float nonlinear_depth;
+		float depth = get_depth(uniform_uv, nonlinear_depth);
 
-	// WORLD SPACE EDGE DECTION
-	vec3 position_11 = get_world_position(uniform_uv, nonlinear_depth);
-	vec3 position_12 = get_world_position(uniform_uv+vec2(0,PIXEL_SIZE.y));
-	vec3 position_10 = get_world_position(uniform_uv-vec2(0,PIXEL_SIZE.y));
-	vec3 position_21 = get_world_position(uniform_uv+vec2(PIXEL_SIZE.x,0));
-	vec3 position_01 = get_world_position(uniform_uv-vec2(PIXEL_SIZE.x,0));
-
-	vec3 expected_centerX = (position_21 + position_01) / 2.;
-	vec3 expected_centerY = (position_12 + position_10) / 2.;
-	vec3 offsetX = position_11 - expected_centerX;
-	vec3 offsetY = position_11 - expected_centerY;
-	float offsetX_len_sq = dot(offsetX, offsetX);
-	float offsetY_len_sq = dot(offsetY, offsetY);
-	float depth_error = offsetX_len_sq + offsetY_len_sq;
-	depth_error *= DEPTH_SENSITIVITY / depth;
-
-	// NORMAL BASED EDGE DETECTION
-	vec3 normal_11 = get_view_normal(uv);
-	vec3 normal_12 = get_view_normal(uv+ivec2(0,1));
-	vec3 normal_10 = get_view_normal(uv-ivec2(0,1));
-	vec3 normal_21 = get_view_normal(uv+ivec2(1,0));
-	vec3 normal_01 = get_view_normal(uv-ivec2(1,0));
-
-	float normal_error = 0.;
-	normal_error += 1.-abs(dot(normal_11,normal_12));
-	normal_error += 1.-abs(dot(normal_11,normal_10));
-	normal_error += 1.-abs(dot(normal_11,normal_21));
-	normal_error += 1.-abs(dot(normal_11,normal_01));
-	normal_error *= NORMAL_SENSITIVITY;
-
-	// COMBINE EDGE DETECTIONS
-	float hit_a = depth_error > 1. ? 0.85 : 0.;
-	float hit_b = normal_error > 1. ? 0.85 : 0.;
-	float combined_error = depth_error + normal_error + hit_a + hit_b;
-	float hit = combined_error > 1. ? 1. : 0.;
+		// RASTER_SIZE.y because I find that the artifacts from the effect get worse with smaller resolutions
+		// decreasing the outline sensitivity at smaller resolutions can make less outlines get detected - but its better than major artifacts 
+		float DEPTH_SENSITIVITY = 0.4 * RASTER_SIZE.y * RASTER_SIZE.y;
+		float NORMAL_SENSITIVITY = 15.;
 
 
-	// // debug single pixel
-	// hit = uv == ivec2(700, 700) ? 1. : 0.;
-	// nonlinear_depth = 0.0591;
+		// WORLD SPACE EDGE DECTION
+		vec3 position_11 = get_world_position(uniform_uv, nonlinear_depth);
+		vec3 position_12 = get_world_position(uniform_uv+vec2(0,PIXEL_SIZE.y));
+		vec3 position_10 = get_world_position(uniform_uv-vec2(0,PIXEL_SIZE.y));
+		vec3 position_21 = get_world_position(uniform_uv+vec2(PIXEL_SIZE.x,0));
+		vec3 position_01 = get_world_position(uniform_uv-vec2(PIXEL_SIZE.x,0));
 
-	// SAVE RESULT
-	vec4 result = vec4(uniform_uv, nonlinear_depth, 1.) * hit;
+		vec3 expected_centerX = (position_21 + position_01) / 2.;
+		vec3 expected_centerY = (position_12 + position_10) / 2.;
+		vec3 offsetX = position_11 - expected_centerX;
+		vec3 offsetY = position_11 - expected_centerY;
+		float offsetX_len_sq = dot(offsetX, offsetX);
+		float offsetY_len_sq = dot(offsetY, offsetY);
+		float depth_error = offsetX_len_sq + offsetY_len_sq;
+		depth_error *= DEPTH_SENSITIVITY / depth;
+
+		// NORMAL BASED EDGE DETECTION
+		vec3 normal_11 = get_view_normal(uv);
+		vec3 normal_12 = get_view_normal(uv+ivec2(0,1));
+		vec3 normal_10 = get_view_normal(uv-ivec2(0,1));
+		vec3 normal_21 = get_view_normal(uv+ivec2(1,0));
+		vec3 normal_01 = get_view_normal(uv-ivec2(1,0));
+
+		float normal_error = 0.;
+		normal_error += 1.-abs(dot(normal_11,normal_12));
+		normal_error += 1.-abs(dot(normal_11,normal_10));
+		normal_error += 1.-abs(dot(normal_11,normal_21));
+		normal_error += 1.-abs(dot(normal_11,normal_01));
+		normal_error *= NORMAL_SENSITIVITY;
+
+		// COMBINE EDGE DETECTIONS
+		float hit_a = depth_error > 1. ? 0.85 : 0.;
+		float hit_b = normal_error > 1. ? 0.85 : 0.;
+		float combined_error = depth_error + normal_error + hit_a + hit_b;
+
+		// SAVE RESULT
+		result = combined_error > 1. ? vec4(uniform_uv, nonlinear_depth, 1.) : vec4(0., 0., 0., 1.);
+
+		// DEBUG
+
+		// // single pixel
+		// result = uv == ivec2(700, 700) ? vec4(uniform_uv, 0.0591, 1.) : vec4(0., 0., 0., 1.);
+
+		// // different modes
+		// float hit = combined_error > 1. ? 1. : 0.;
+		// float hit_deminished = hit * 0.5 + 0.5;
+		// imageStore(WORKING_IMAGE, uv, vec4(
+		// 	hit_a * 0.75 * hit_deminished,
+		// 	hit,
+		// 	hit_b * hit_deminished,
+		// 0.));
+	}
+
 	imageStore(WORKING_IMAGE, uv, result);
-
-	// // debug visualizing
-	// float hit_deminished = hit * 0.5 + 0.5;
-	// imageStore(WORKING_IMAGE, uv, vec4(
-	// 	hit_a * 0.75 * hit_deminished,
-	// 	hit,
-	// 	hit_b * hit_deminished,
-	// 0.));
 }
 

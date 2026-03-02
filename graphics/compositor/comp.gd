@@ -11,8 +11,7 @@ class_name PostProcessShader
 
 
 # TODO:
-# fix partial jump fill bug
-# fix edges
+# ONLY USE ONE UNIFORM
 # expose edge detection controls
 # consider making outline thickness based on N/sqrt(depth) instead of N/depth
 # consider using rg16 instead of rgba16 - then sampleing the depth during the apply stage
@@ -42,10 +41,6 @@ class_name PostProcessShader
 @export var jump_fill_shader_file: RDShaderFile:
 	set(new):
 		jump_fill_shader_file = _set_rd_shader_file(new, jump_fill_shader_file, &"jump_fill")
-		
-@export var jump_fill_alt_shader_file: RDShaderFile:
-	set(new):
-		jump_fill_alt_shader_file = _set_rd_shader_file(new, jump_fill_alt_shader_file, &"jump_fill_alt")
 
 # A helper function for the setters for the shaders to automatically connect/disconnect _shader_file_changed
 func _set_rd_shader_file(new, previous, name: StringName):
@@ -96,7 +91,7 @@ func _notification(what):
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # rendering thread
 
-@export_range(0., 1800000.0) var CONTROL_A: float = 0.1
+@export_range(0., 500000.0) var CONTROL_A: float = 0.1
 @export_range(0., 10.) var CONTROL_B: float = 0.1
 @export_range(0., 1.) var CONTROL_C: float = 0.1
 @export_range(1., 3.999) var CONTROL_D: float = 0.1
@@ -199,6 +194,9 @@ func make_float_array_from_transform(t: Transform3D) -> PackedByteArray:
 	return r.to_byte_array()
 
 
+func jump_push_constant(inital_push_constant : PackedByteArray, diag: int, stra: int) -> PackedByteArray:
+	return inital_push_constant + PackedInt32Array([diag, stra, 0, 0]).to_byte_array()
+
 # Called by the rendering thread every frame.
 func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data):
 	if not rd: return
@@ -279,32 +277,23 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
 		inverse_view = inverse_view.inverse()
 		
+		
 		inital_uniform.update(rd, 
 			make_float_array_from_projection(inverse_projection) +
 			make_float_array_from_transform(inverse_view)
 		)
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, inital_uniform.to_ubu()], push_constant, groups)
 		
-		jump_uniform.update(rd, PackedInt32Array([256]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([128]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([64]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([32]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([16]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([8]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([4]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([2]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill_alt", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		jump_uniform.update(rd, PackedFloat32Array([0., inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 191, 255), groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 95, 127), groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 47, 63), groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 23, 31), groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 11, 15), groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 5, 7), groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 2, 3), groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 1, 1), groups)
 		
 		
 		## ~~~BLUR~~~

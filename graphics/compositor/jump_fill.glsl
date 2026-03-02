@@ -4,6 +4,8 @@
 layout(push_constant, std430) uniform PushConstant{
 	vec2 PIXEL_SIZE;
 	ivec2 RASTER_SIZE;
+	int JUMP_DISTANCE_DIAG;
+	int JUMP_DISTANCE_STRA;
 };
 
 // Invocations in the (x, y, z) dimension
@@ -44,10 +46,14 @@ void main() {
 	vec4 best = vec4(0.);
 	float best_dis_sq = -2000000000000000000000000.;
 	update_best(best, best_dis_sq, uniform_uv, uv);
-	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE,JUMP_DISTANCE));
-	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE,-JUMP_DISTANCE));
-	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE,JUMP_DISTANCE));
-	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE,-JUMP_DISTANCE));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE_DIAG,JUMP_DISTANCE_DIAG));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE_DIAG,-JUMP_DISTANCE_DIAG));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE_DIAG,JUMP_DISTANCE_DIAG));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE_DIAG,-JUMP_DISTANCE_DIAG));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE_STRA,0));
+	update_best(best, best_dis_sq, uniform_uv, uv-ivec2(JUMP_DISTANCE_STRA,0));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(0,JUMP_DISTANCE_STRA));
+	update_best(best, best_dis_sq, uniform_uv, uv-ivec2(0,JUMP_DISTANCE_STRA));
 
 	imageStore(OUTPUT_IMAGE, uv, best);
 }
