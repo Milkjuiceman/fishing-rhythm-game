@@ -20,9 +20,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -160.0
-offset_top = -180.0
+offset_top = -200.0
 offset_right = 160.0
-offset_bottom = 180.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -35,7 +35,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 
 [node name="TitleLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -49,46 +49,46 @@ theme_override_constants/separation = 18
 
 [node name="ResumeButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Settings"
 
 [node name="SaveButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Save Game"
 
 [node name="LoadButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Load Game"
 
 [node name="TitleScreenButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Return to Title"
 
 [node name="Spacer" type="Control" parent="MainPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 8)
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Quit Game"
@@ -101,9 +101,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -220.0
-offset_top = -280.0
+offset_top = -340.0
 offset_right = 220.0
-offset_bottom = 280.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -162,7 +162,7 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-text = "Music"
+text = "Overworld"
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
 unique_name_in_owner = true
@@ -293,6 +293,65 @@ text = "Invert Y-Axis"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="GameplaySpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="RhythmLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "— Rhythm Calibration —"
+horizontal_alignment = 1
+
+[node name="AudioOffsetContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AudioOffsetLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Audio Offset"
+
+[node name="AudioOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -0.2
+max_value = 0.2
+step = 0.005
+value = -0.020000000000000018
+
+[node name="AudioOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "-20 ms"
+horizontal_alignment = 2
+
+[node name="InputOffsetContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="InputOffsetLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Input Offset"
+
+[node name="InputOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -0.2
+max_value = 0.2
+step = 0.005
+value = -0.020000000000000018
+
+[node name="InputOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(55, 0)
+layout_mode = 2
+text = "-20 ms"
+horizontal_alignment = 2
+
 [node name="ButtonSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -306,6 +365,8 @@ text = "Back"
 
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/LoadButton" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer/MasterSlider" to="." method="_on_master_volume_changed"]
@@ -316,4 +377,6 @@ text = "Back"
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer/ShowFPSCheck" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer/MouseSensSlider" to="." method="_on_mouse_sens_changed"]
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer/InvertYCheck" to="." method="_on_invert_y_toggled"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer/AudioOffsetSlider" to="." method="_on_audio_offset_changed"]
+[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer/InputOffsetSlider" to="." method="_on_input_offset_changed"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]
