@@ -1,9 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=15 format=3 uid="uid://dfdg34vf6rofh"]
 
 [ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/vehicles/boat.gd" id="1_annr2"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
+[ext_resource type="RDShaderFile" uid="uid://b6h46om56qnya" path="res://graphics/compositor/apply_outline.glsl" id="2_u5ihw"]
+[ext_resource type="RDShaderFile" uid="uid://dxgjtfbydddnx" path="res://graphics/compositor/inital_outlines.glsl" id="3_n7vhr"]
 [ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat.glb" id="4_lvl5j"]
+[ext_resource type="RDShaderFile" uid="uid://n24xlxbue7g6" path="res://graphics/compositor/jump_fill.glsl" id="4_rg0x2"]
+[ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="5_7nc38"]
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_5c6k0"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = true
+script = ExtResource("5_7nc38")
+initial_outlines_shader_file = ExtResource("3_n7vhr")
+apply_outline_shader_file = ExtResource("2_u5ihw")
+jump_fill_shader_file = ExtResource("4_rg0x2")
+OUTLINE_THICKNESS = 2.0
+metadata/_custom_type_script = "uid://blp70hoacldp2"
+
+[sub_resource type="Compositor" id="Compositor_qkrje"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_5c6k0")])
 
 [sub_resource type="QuadMesh" id="QuadMesh_ch1qf"]
 
@@ -37,9 +58,11 @@ transform = Transform3D(0.94664913, -0.32226563, 0, 0.32226563, 0.94664913, 0, 0
 
 [node name="Camera3D" type="Camera3D" parent="H/V"]
 transform = Transform3D(-4.3711385e-08, 0, 1, 0, 1, 0, -1, 0, -4.3711385e-08, 6.458033, 0, 0)
+compositor = SubResource("Compositor_qkrje")
 
 [node name="PostProcess" type="MeshInstance3D" parent="H/V/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4901161e-08, -0.4765098)
+visible = false
 mesh = SubResource("QuadMesh_ch1qf")
 surface_material_override/0 = SubResource("ShaderMaterial_lvl5j")
 script = ExtResource("2_sbp4s")

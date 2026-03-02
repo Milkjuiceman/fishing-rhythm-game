@@ -56,14 +56,14 @@ void fragment() {
 	
 	float j = length(test1 * test2 * vec4(screen_uv, screen_uv));
 	
+	////
+	////
+	////// OUTLINES
+	//float avg_depth;
+	//float outline_amount = compute_outline_amount(depth, screen_uv, INV_PROJECTION_MATRIX, avg_depth);
+	////vec3 outline_color = vec3(1.);// / sqrt(color.r + color.g + color.b + 1.);
 	//
-	//
-	//// OUTLINES
-	float avg_depth;
-	float outline_amount = compute_outline_amount(depth, screen_uv, INV_PROJECTION_MATRIX, avg_depth);
-	//vec3 outline_color = vec3(1.);// / sqrt(color.r + color.g + color.b + 1.);
-	
-	color = mix(color, outline_color, outline_amount);
+	//color = mix(color, outline_color, outline_amount);
 	
 	 //FOG
 	float fog_amount = clamp(compute_fog_amount(depth), 0, 1);
