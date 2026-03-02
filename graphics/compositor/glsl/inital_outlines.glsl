@@ -31,8 +31,9 @@ layout(set = 3, binding=0) uniform SceneData {
 
 
 // this needs to go after the uniforms
-#include "linearize_depth.glsl"
-#include "utils.glsl"
+#include "inc/depth_utils.glsl"
+#include "inc/norm_rough_utils.glsl"
+
 
 // The code we want to execute in each invocation
 void main() {

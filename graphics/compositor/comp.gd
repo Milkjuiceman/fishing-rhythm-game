@@ -10,10 +10,16 @@ class_name PostProcessShader
 
 
 
-# TODO:
+# TODO (outlines)
 # antialias the inital edge detection
 # optimize the fuck outta this stuffz
 # use msaa
+
+# TODO (fog)
+# make half resolution texture
+# 3d noise texture loading
+# shader to write to fog texture (does ray casting)
+# apply shader merges in the fog result
 
 
 @export var initial_outlines_shader_file: RDShaderFile:
@@ -27,6 +33,10 @@ class_name PostProcessShader
 @export var jump_fill_shader_file: RDShaderFile:
 	set(new):
 		jump_fill_shader_file = _set_rd_shader_file(new, jump_fill_shader_file, &"jump_fill")
+
+@export var fog_shader_file: RDShaderFile:
+	set(new):
+		fog_shader_file = _set_rd_shader_file(new, fog_shader_file, &"fog")
 
 # A helper function for the setters for the shaders to automatically connect/disconnect _shader_file_changed
 func _set_rd_shader_file(new, previous, name: StringName):

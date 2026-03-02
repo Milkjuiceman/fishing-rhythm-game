@@ -6,7 +6,6 @@ layout(push_constant, std430) uniform Params {
 	ivec2 RASTER_SIZE;
 };
 
-// Invocations in the (x, y, z) dimension
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
 layout(rgba16f, set = 0, binding = 0) uniform image2D WORKING_IMAGE;
@@ -18,14 +17,13 @@ layout(set = 2, binding=0) uniform UniformBuffer{
 	float OUTLINE_THICKNESS;
 	float NORMAL_SENSITIVITY;
 	float DEPTH_SENSITIVITY;
-	float CONTROL_D;
+	float SHRINK_UNCONFIDENT_LINES;
 };
 
-#include "linearize_depth.glsl"
-#include "outline_sdf.glsl"
+
+#include "inc/outline_sdf.glsl"
 
 
-// The code we want to execute in each invocation
 void main() {
 	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
 	if (uv.x >= RASTER_SIZE.x || uv.y >= RASTER_SIZE.y) return;

@@ -1,14 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://cxjdja0f3rra4"]
+[gd_scene load_steps=21 format=3 uid="uid://cxjdja0f3rra4"]
 
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="1_8stmp"]
 [ext_resource type="PackedScene" uid="uid://isrh8nhyae53" path="res://assets/models/Boat.glb" id="1_j1c5s"]
 [ext_resource type="RDShaderFile" uid="uid://b6h46om56qnya" path="res://graphics/compositor/glsl/apply_outline.glsl" id="1_ri8l7"]
+[ext_resource type="RDShaderFile" uid="uid://cltgrk0uxr7by" path="res://graphics/compositor/glsl/fog.glsl" id="2_ri8l7"]
 [ext_resource type="RDShaderFile" uid="uid://dxgjtfbydddnx" path="res://graphics/compositor/glsl/inital_outlines.glsl" id="3_7tvxw"]
 [ext_resource type="RDShaderFile" uid="uid://n24xlxbue7g6" path="res://graphics/compositor/glsl/jump_fill.glsl" id="5_3xkl4"]
+[ext_resource type="LightmapGIData" uid="uid://cxl5y32i4341y" path="res://graphics/compositor/bake.lmbake" id="6_7tvxw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jps33"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.39215687, 0.45490196, 0.77254903, 1)
+sky_horizon_color = Color(0.6627451, 0.654902, 0.8627451, 1)
+ground_bottom_color = Color(0.21568628, 0.1764706, 0.16470589, 1)
+ground_horizon_color = Color(0.6627451, 0.654902, 0.8627451, 1)
 
 [sub_resource type="Sky" id="Sky_e7g0d"]
 sky_material = SubResource("ProceduralSkyMaterial_jps33")
@@ -17,6 +21,24 @@ sky_material = SubResource("ProceduralSkyMaterial_jps33")
 background_mode = 2
 sky = SubResource("Sky_e7g0d")
 tonemap_mode = 2
+glow_enabled = true
+glow_levels/1 = 0.04
+glow_levels/2 = 0.21
+glow_levels/3 = 0.19
+glow_levels/4 = 0.46
+glow_levels/5 = 0.68
+glow_levels/6 = 1.19
+glow_levels/7 = 1.87
+glow_strength = 0.59
+glow_bloom = 0.11
+glow_blend_mode = 0
+fog_enabled = true
+fog_light_color = Color(0.5176471, 0.5529412, 0.72156864, 1)
+fog_density = 0.0007
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_rg5hn"]
 resource_local_to_scene = false
@@ -29,6 +51,8 @@ script = ExtResource("1_8stmp")
 initial_outlines_shader_file = ExtResource("3_7tvxw")
 apply_outline_shader_file = ExtResource("1_ri8l7")
 jump_fill_shader_file = ExtResource("5_3xkl4")
+fog_shader_file = ExtResource("2_ri8l7")
+OUTLINE_THICKNESS = 24.078
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]
@@ -38,27 +62,48 @@ compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_rg5h
 albedo_color = Color(1, 0, 0, 0.78039217)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e7g0d"]
+lightmap_size_hint = Vector2i(599, 1047)
 material = SubResource("StandardMaterial3D_jps33")
+add_uv2 = true
 size = Vector3(62.345, 72.93, 56.815)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg5hn"]
+albedo_color = Color(0.8666667, 0.6627451, 0.8666667, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_ri8l7"]
+lightmap_size_hint = Vector2i(1258, 630)
+material = SubResource("StandardMaterial3D_rg5hn")
+add_uv2 = true
 radius = 40.0
 height = 80.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tvxw"]
+albedo_color = Color(0.8594844, 0.86407465, 0.65325135, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_3xkl4"]
+lightmap_size_hint = Vector2i(630, 316)
+material = SubResource("StandardMaterial3D_7tvxw")
+add_uv2 = true
 radius = 20.0
 height = 40.0
 radial_segments = 8
 rings = 4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri8l7"]
+albedo_color = Color(0.6962273, 0.8835233, 0.8725708, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_ri8l7"]
+lightmap_size_hint = Vector2i(804, 1206)
+material = SubResource("StandardMaterial3D_ri8l7")
+add_uv2 = true
 size = Vector3(80, 80, 80)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-visible = false
+transform = Transform3D(-0.9396091, 0.29639694, -0.17112485, 2.7805946e-08, 0.49999994, 0.86602545, 0.34224972, 0.81372535, -0.46980453, 0, 0, 0)
+light_color = Color(0.99999994, 0.8685032, 0.7540646, 1)
+light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_split_2 = 0.21
 directional_shadow_split_3 = 0.45
@@ -86,16 +131,21 @@ transform = Transform3D(-0.5758482, 0, 6.056169e-08, 0, 0.4853503, 0, -5.034225e
 mesh = SubResource("BoxMesh_e7g0d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 271.78955, 229.20105, 858.8124)
+transform = Transform3D(-2.598642e-07, 0, 5.945, 0, 5.945, 0, -5.945, 0, -2.598642e-07, 10.836365, 415.88297, -280.07916)
 mesh = SubResource("SphereMesh_ri8l7")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 583.6403, 133.57867, 552.1282)
+transform = Transform3D(-2.598642e-07, 0, 5.945, 0, 5.945, 0, -5.945, 0, -2.598642e-07, -107.16998, 320.2606, -591.6487)
 mesh = SubResource("SphereMesh_3xkl4")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.945, 0, 0, 0, 5.945, 0, 0, 0, 5.945, 336.7196, 357.21298, 765.7622)
+transform = Transform3D(-2.598642e-07, 0, 5.945, 0, 5.945, 0, -5.945, 0, -2.598642e-07, 106.46408, 543.8949, -344.72797)
 mesh = SubResource("BoxMesh_ri8l7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.3677351, -0.33154446, 0.86882055, -3.7252903e-09, 0.93428534, 0.35652602, -0.9299306, 0.1311071, -0.3435695, 29.09267, 288.02042, 16.197895)
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 0
+texel_scale = 0.25
+light_data = ExtResource("6_7tvxw")
