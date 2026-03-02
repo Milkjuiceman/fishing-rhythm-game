@@ -26,7 +26,7 @@ layout(set = 3, binding=0) uniform SceneData {
 	float OUTLINE_THICKNESS;
 	float NORMAL_SENSITIVITY;
 	float DEPTH_SENSITIVITY;
-	float CONTROL_D;
+	float SHRINK_UNCONFIDENT_LINES;
 };
 
 
@@ -39,11 +39,9 @@ void main() {
 	ivec2 uv = ivec2(gl_GlobalInvocationID.xy);
 	if (uv.x >= RASTER_SIZE.x || uv.y >= RASTER_SIZE.y) return;
 
-	vec4 result;
+	vec4 result = vec4(0., 0., 0., 1.);
 
-	if (uv.x >= RASTER_SIZE.x-1 || uv.y >= RASTER_SIZE.y-1 || uv.x<= 1 || uv.y <= 1) {
-		result = vec4(0., 0., 0., 1.);
-	} else {
+	if (!(uv.x >= RASTER_SIZE.x-1 || uv.y >= RASTER_SIZE.y-1 || uv.x<= 1 || uv.y <= 1)) {
 		vec2 uniform_uv = vec2(uv) * PIXEL_SIZE;
 		float nonlinear_depth;
 		float depth = get_depth(uniform_uv, nonlinear_depth);
@@ -89,8 +87,18 @@ void main() {
 		float hit_b = normal_error > 1. ? 0.85 : 0.;
 		float combined_error = depth_error + normal_error + hit_a + hit_b;
 
-		// SAVE RESULT
-		result = combined_error > 1. ? vec4(uniform_uv, nonlinear_depth, 1.) : vec4(0., 0., 0., 1.);
+		// branching is ok because there will be large sections where this is false
+		if (combined_error > 1.) {
+			float confidnece = clamp((combined_error - 1.) * SHRINK_UNCONFIDENT_LINES, 0., 1.);
+			float depth_affect = 1./sqrt(sqrt(depth));
+			depth_affect *= depth_affect * depth_affect;
+
+			float width = OUTLINE_THICKNESS * confidnece * depth_affect / float(RASTER_SIZE.y);
+
+			// SAVE RESULT
+			result = vec4(uniform_uv, width, 1.);
+		}
+
 
 		// DEBUG
 

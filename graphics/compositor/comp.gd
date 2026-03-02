@@ -11,22 +11,10 @@ class_name PostProcessShader
 
 
 # TODO:
-# consider making outline thickness based on N/sqrt(depth) instead of N/depth
-# consider using rg16 instead of rgba16 - then sampleing the depth during the apply stage
+# antialias the inital edge detection
 # optimize the fuck outta this stuffz
+# use msaa
 
-
-@export var basic_shader_file: RDShaderFile:
-	set(new):
-		basic_shader_file = _set_rd_shader_file(new, basic_shader_file, &"basic")
-
-@export var horz_blur_shader_file: RDShaderFile:
-	set(new):
-		horz_blur_shader_file = _set_rd_shader_file(new, horz_blur_shader_file, &"horz_blur")
-
-@export var vert_blur_shader_file: RDShaderFile:
-	set(new):
-		vert_blur_shader_file = _set_rd_shader_file(new, vert_blur_shader_file, &"vert_blur")
 
 @export var initial_outlines_shader_file: RDShaderFile:
 	set(new):
@@ -93,10 +81,10 @@ func _notification(what):
 # ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~
 # rendering thread
 
-@export_range(0., 1000.0) var OUTLINE_THICKNESS: float = 500
+@export_range(0., 100.0) var OUTLINE_THICKNESS: float = 30
 @export_range(0., 200.) var NORMAL_SENSITIVITY: float = 100
 @export_range(0., 1.) var DEPTH_SENSITIVITY: float = 0.15
-@export_range(1., 3.999) var CONTROL_D: float = 0.1
+@export_range(1., 4.) var SHRINK_UNCONFIDENT_LINES: float = 1.5
 ## each step is roughly 30% more expensive, but allows for 4x bigger (27px, 108px, 432px)
 @export_range(4., 8., 2.) var NUM_JUMPFILL_PASSES = 6.
 
@@ -273,7 +261,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 				OUTLINE_THICKNESS * render_size.y,
 				NORMAL_SENSITIVITY / 4.,
 				DEPTH_SENSITIVITY * render_size.y * render_size.y,
-				CONTROL_D
+				1. / (SHRINK_UNCONFIDENT_LINES * SHRINK_UNCONFIDENT_LINES)
 			]).to_byte_array()
 		)
 		
