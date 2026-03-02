@@ -23,9 +23,9 @@ layout(rgba16f, set = 2, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
 layout(set = 3, binding=0) uniform SceneData {
 	mat4 INV_PROJECTION_MATRIX;
 	mat4 INV_VIEW_MATRIX;
-	float CONTROL_A;
-	float CONTROL_B;
-	float CONTROL_C;
+	float OUTLINE_THICKNESS;
+	float NORMAL_SENSITIVITY;
+	float DEPTH_SENSITIVITY;
 	float CONTROL_D;
 };
 
@@ -50,8 +50,8 @@ void main() {
 
 		// RASTER_SIZE.y because I find that the artifacts from the effect get worse with smaller resolutions
 		// decreasing the outline sensitivity at smaller resolutions can make less outlines get detected - but its better than major artifacts 
-		float DEPTH_SENSITIVITY = 0.4 * RASTER_SIZE.y * RASTER_SIZE.y;
-		float NORMAL_SENSITIVITY = 15.;
+		// float DEPTH_SENSITIVITY = 0.4 * RASTER_SIZE.y * RASTER_SIZE.y;
+		// float NORMAL_SENSITIVITY = 15.;
 
 
 		// WORLD SPACE EDGE DECTION

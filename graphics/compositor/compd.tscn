@@ -35,10 +35,6 @@ vert_blur_shader_file = ExtResource("4_7tvxw")
 initial_outlines_shader_file = ExtResource("3_7tvxw")
 apply_outline_shader_file = ExtResource("1_ri8l7")
 jump_fill_shader_file = ExtResource("5_3xkl4")
-CONTROL_A = 1500000.0
-CONTROL_B = null
-CONTROL_C = null
-CONTROL_D = 1.0
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]

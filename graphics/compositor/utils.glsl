@@ -15,7 +15,7 @@ vec3 get_world_position(vec2 uniform_uv) {
 
 float get_depth(vec2 uniform_uv, out float nonlinear_depth) {
 	nonlinear_depth = texture(DEPTH_TEXTURE, uniform_uv).x;
-	return linearize_depth(nonlinear_depth, INV_PROJECTION_MATRIX[2][3], INV_PROJECTION_MATRIX[3][3]);
+	return linearize_depth(nonlinear_depth);
 }
 
 // override

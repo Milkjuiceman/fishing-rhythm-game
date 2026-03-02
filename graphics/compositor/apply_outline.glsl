@@ -15,9 +15,9 @@ layout(rgba16f, set = 1, binding = 0) uniform image2D COLOR_IMAGE;
 layout(set = 2, binding=0) uniform UniformBuffer{
 	mat4 INV_PROJECTION_MATRIX;
 	mat4 INV_VIEW_MATRIX;
-	float CONTROL_A;
-	float CONTROL_B;
-	float CONTROL_C;
+	float OUTLINE_THICKNESS;
+	float NORMAL_SENSITIVITY;
+	float DEPTH_SENSITIVITY;
 	float CONTROL_D;
 };
 

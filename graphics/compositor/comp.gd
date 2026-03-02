@@ -11,8 +11,6 @@ class_name PostProcessShader
 
 
 # TODO:
-# ONLY USE ONE UNIFORM
-# expose edge detection controls
 # consider making outline thickness based on N/sqrt(depth) instead of N/depth
 # consider using rg16 instead of rgba16 - then sampleing the depth during the apply stage
 # optimize the fuck outta this stuffz
@@ -95,10 +93,12 @@ func _notification(what):
 # ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~
 # rendering thread
 
-@export_range(0., 1500000.0) var CONTROL_A: float = 0.1
-@export_range(20., 80., 1.) var CONTROL_B: float = 0.1
-@export_range(20., 80., 1.) var CONTROL_C: float = 0.1
+@export_range(0., 1000.0) var OUTLINE_THICKNESS: float = 500
+@export_range(0., 200.) var NORMAL_SENSITIVITY: float = 100
+@export_range(0., 1.) var DEPTH_SENSITIVITY: float = 0.15
 @export_range(1., 3.999) var CONTROL_D: float = 0.1
+## each step is roughly 30% more expensive, but allows for 4x bigger (27px, 108px, 432px)
+@export_range(4., 8., 2.) var NUM_JUMPFILL_PASSES = 6.
 
 var rd: RenderingDevice = null
 
@@ -108,7 +108,7 @@ var linear_sampler: RID
 # Using one uniform is just as fast as multiple
 # So i will only use one because its simpler
 const uniform_buffer_size: int = 144
-var newnewnew_uniform_buffer: RID
+var uniform_buffer: RID
 
 func _render_init():
 	rd = RenderingServer.get_rendering_device()
@@ -121,7 +121,7 @@ func _render_init():
 	#uniform_buffer = UniformBuffer.new()
 	var a = PackedByteArray()
 	a.resize(uniform_buffer_size)
-	newnewnew_uniform_buffer = rd.uniform_buffer_create(uniform_buffer_size, a)
+	uniform_buffer = rd.uniform_buffer_create(uniform_buffer_size, a)
 	#jump_uniform = UniformBuffer.new()
 
 ## This is so you dont need to restart the engine to update stuffz
@@ -144,7 +144,7 @@ const name_context := &"OutlineShader"
 const name_working_texture := &"working"
 const name_working_texture2 := &"working2"
 
-func create_uniform_buffer_uniform(uniform_buffer: RID) -> RDUniform:
+func create_uniform_buffer_uniform() -> RDUniform:
 	var uniform: RDUniform = RDUniform.new()
 	uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
 	uniform.binding = 0
@@ -266,21 +266,27 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
 		inverse_view = inverse_view.inverse()
 		
-		rd.buffer_update(newnewnew_uniform_buffer, 0, uniform_buffer_size,
-		#uniform_buffer.update(rd, 
+		rd.buffer_update(uniform_buffer, 0, uniform_buffer_size,
 			make_float_array_from_projection(inverse_projection) +
 			make_float_array_from_transform(inverse_view) +
-			PackedFloat32Array([CONTROL_A, CONTROL_B, CONTROL_C, CONTROL_D]).to_byte_array()
+			PackedFloat32Array([
+				OUTLINE_THICKNESS * render_size.y,
+				NORMAL_SENSITIVITY / 4.,
+				DEPTH_SENSITIVITY * render_size.y * render_size.y,
+				CONTROL_D
+			]).to_byte_array()
 		)
 		
-		var uniform_buffer_uniform := create_uniform_buffer_uniform(newnewnew_uniform_buffer)
+		var uniform_buffer_uniform := create_uniform_buffer_uniform()
 		
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, uniform_buffer_uniform], push_constant, groups)
 		
-		#_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 418, 432), groups)
-		#_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 202, 216), groups)
-		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 94, 108), groups) # 2
-		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 54, 54), groups) # 2
+		if (NUM_JUMPFILL_PASSES > 7.):
+			_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 376, 432), groups) # 2
+			_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 188, 216), groups) # 2
+		if (NUM_JUMPFILL_PASSES > 5.):
+			_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 94, 108), groups) # 2
+			_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 54, 54), groups) # 2
 		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 27, 27), groups) # 3
 		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 9, 9), groups) # 3
 		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 3, 3), groups) # 3
@@ -290,7 +296,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# starting with *3 then switching to *2 means that there are only issues on the edge of size max 13px - i think
 		# since the first diagonal offset is 94 is tead of 108 it means the maximum error is 7px - i think
 		# the maximum radius that this is a circle is 108px
-		# the maximum displable radius is roughly 30% greater
+		# the maximum display-able radius is about 20% cooler
 		
 		
 		## ~~~BLUR~~~
