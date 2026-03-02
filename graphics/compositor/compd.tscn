@@ -1,12 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxjdja0f3rra4"]
+[gd_scene load_steps=16 format=3 uid="uid://cxjdja0f3rra4"]
 
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="1_8stmp"]
 [ext_resource type="PackedScene" uid="uid://isrh8nhyae53" path="res://assets/models/Boat.glb" id="1_j1c5s"]
 [ext_resource type="RDShaderFile" uid="uid://b6h46om56qnya" path="res://graphics/compositor/apply_outline.glsl" id="1_ri8l7"]
-[ext_resource type="RDShaderFile" uid="uid://ccqjilylkpnsw" path="res://graphics/compositor/basic.glsl" id="2_nm8b1"]
-[ext_resource type="RDShaderFile" uid="uid://cdl41pq5q1vs6" path="res://graphics/compositor/horz_blur.glsl" id="2_rg5hn"]
 [ext_resource type="RDShaderFile" uid="uid://dxgjtfbydddnx" path="res://graphics/compositor/inital_outlines.glsl" id="3_7tvxw"]
-[ext_resource type="RDShaderFile" uid="uid://c1dq4olcqixij" path="res://graphics/compositor/vert_blur.glsl" id="4_7tvxw"]
 [ext_resource type="RDShaderFile" uid="uid://n24xlxbue7g6" path="res://graphics/compositor/jump_fill.glsl" id="5_3xkl4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jps33"]
@@ -29,9 +26,6 @@ effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("1_8stmp")
-basic_shader_file = ExtResource("2_nm8b1")
-horz_blur_shader_file = ExtResource("2_rg5hn")
-vert_blur_shader_file = ExtResource("4_7tvxw")
 initial_outlines_shader_file = ExtResource("3_7tvxw")
 apply_outline_shader_file = ExtResource("1_ri8l7")
 jump_fill_shader_file = ExtResource("5_3xkl4")
