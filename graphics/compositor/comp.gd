@@ -91,6 +91,7 @@ func _notification(what):
 # ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~
 # rendering thread
 
+
 @export_range(0., 100.0) var OUTLINE_THICKNESS: float = 30
 @export_range(0., 200.) var NORMAL_SENSITIVITY: float = 100
 @export_range(0., 1.) var DEPTH_SENSITIVITY: float = 0.15
@@ -107,20 +108,28 @@ var linear_sampler: RID
 # So i will only use one because its simpler
 const uniform_buffer_size: int = 144
 var uniform_buffer: RID
+var uniform_buffer_uniform: RDUniform
 
 func _render_init():
 	rd = RenderingServer.get_rendering_device()
 	
+	# LINEAR SAMPLER
 	var sampler_state = RDSamplerState.new()
 	sampler_state.min_filter = RenderingDevice.SAMPLER_FILTER_LINEAR
 	sampler_state.mag_filter = RenderingDevice.SAMPLER_FILTER_LINEAR
 	linear_sampler = rd.sampler_create(sampler_state)
 	
-	#uniform_buffer = UniformBuffer.new()
+	# UNIFORM BUFFER
 	var a = PackedByteArray()
 	a.resize(uniform_buffer_size)
 	uniform_buffer = rd.uniform_buffer_create(uniform_buffer_size, a)
-	#jump_uniform = UniformBuffer.new()
+	
+	# UNIFORM BUFFER UNIFORM
+	uniform_buffer_uniform = RDUniform.new()
+	uniform_buffer_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
+	uniform_buffer_uniform.binding = 0
+	uniform_buffer_uniform.add_id(uniform_buffer)
+
 
 ## This is so you dont need to restart the engine to update stuffz
 ## this will probably leak memory - but thats ok cause its only in editor
@@ -128,8 +137,10 @@ func _render_init():
 func re_init_action():
 	RenderingServer.call_on_render_thread(_render_init)
 
+
 var shaders: Dictionary[StringName, RID]
 var pipelines: Dictionary[StringName, RID]
+
 
 func _shader_file_changed_render_thread(shader_spirv: RDShaderSPIRV, name: StringName):
 	var new_shader = rd.shader_create_from_spirv(shader_spirv)
@@ -159,6 +170,7 @@ func create_uniform_buffer_uniform() -> RDUniform:
 # texture =======> texture2			for jump16
 # Color & texture2 ===> Color		for outline
 
+
 func make_float_array_from_projection(p: Projection) -> PackedByteArray:
 	var r := PackedFloat32Array([
 		p.x.x, p.x.y, p.x.z, p.x.w,
@@ -183,6 +195,7 @@ func make_float_array_from_transform(t: Transform3D) -> PackedByteArray:
 
 func jumpfill_push_constant(inital_push_constant : PackedByteArray, diag: int, stra: int) -> PackedByteArray:
 	return inital_push_constant + PackedInt32Array([diag, stra, 0, 0]).to_byte_array()
+
 
 # Called by the rendering thread every frame.
 func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data):
@@ -243,7 +256,6 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 			1, 1, true, false
 		)
 	
-	
 	rd.draw_command_begin_label("Outline", Color(1.0, 1.0, 1.0, 1.0))
 	
 	# Loop through views just in case we're doing stereo rendering. No extra cost if this is mono.
@@ -275,20 +287,18 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 			]).to_byte_array()
 		)
 		
-		var uniform_buffer_uniform := create_uniform_buffer_uniform()
-		
-		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, uniform_buffer_uniform], push_constant, groups)
+		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image], push_constant, groups)
 		
 		if (NUM_JUMPFILL_PASSES > 7.):
-			_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 376, 432), groups) # 2
-			_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 188, 216), groups) # 2
+			_apply_pass(&"jump_fill", [working_image, working2_image], jumpfill_push_constant(push_constant, 376, 432), groups) # 2
+			_apply_pass(&"jump_fill", [working2_image, working_image], jumpfill_push_constant(push_constant, 188, 216), groups) # 2
 		if (NUM_JUMPFILL_PASSES > 5.):
-			_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 94, 108), groups) # 2
-			_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 54, 54), groups) # 2
-		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 27, 27), groups) # 3
-		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 9, 9), groups) # 3
-		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 3, 3), groups) # 3
-		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 1, 1), groups)
+			_apply_pass(&"jump_fill", [working_image, working2_image], jumpfill_push_constant(push_constant, 94, 108), groups) # 2
+			_apply_pass(&"jump_fill", [working2_image, working_image], jumpfill_push_constant(push_constant, 54, 54), groups) # 2
+		_apply_pass(&"jump_fill", [working_image, working2_image], jumpfill_push_constant(push_constant, 27, 27), groups) # 3
+		_apply_pass(&"jump_fill", [working2_image, working_image], jumpfill_push_constant(push_constant, 9, 9), groups) # 3
+		_apply_pass(&"jump_fill", [working_image, working2_image], jumpfill_push_constant(push_constant, 3, 3), groups) # 3
+		_apply_pass(&"jump_fill", [working2_image, working_image], jumpfill_push_constant(push_constant, 1, 1), groups)
 		# * 3 is the maximum to allow space to continue
 		# *2 is the maximum to allow going to the edge
 		# starting with *3 then switching to *2 means that there are only issues on the edge of size max 13px - i think
@@ -296,14 +306,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# the maximum radius that this is a circle is 108px
 		# the maximum display-able radius is about 20% cooler
 		
-		
-		## ~~~BLUR~~~
-		#_apply_pass(&"horz_blur", [working_image], push_constant_raster_pixel, groups)
-		#_apply_pass(&"vert_blur", [working_image], push_constant_raster_pixel, groups)
-		#_apply_pass(&"horz_blur", [working_image], push_constant_raster_pixel, groups)
-		#_apply_pass(&"vert_blur", [working_image], push_constant_raster_pixel, groups)
-		
-		_apply_pass(&"apply_outline", [working_image, color_image, uniform_buffer_uniform], push_constant, groups)
+		_apply_pass(&"apply_outline", [working_image, color_image], push_constant, groups)
 	
 	rd.draw_command_end_label()
 
@@ -330,7 +333,10 @@ func _apply_pass(shader_name: StringName, uniforms: Array[RDUniform], push_const
 	var compute_list := rd.compute_list_begin()
 	rd.compute_list_bind_compute_pipeline(compute_list, pipelines[shader_name])
 	
-	var set_index: int = 0
+	# bind uniform_buffer_uniform in set 0 always
+	rd.compute_list_bind_uniform_set(compute_list, UniformSetCacheRD.get_cache(shaders[shader_name], 0, [uniform_buffer_uniform]), 0)
+	
+	var set_index: int = 1
 	for uniform in uniforms:
 		var uniform_set := UniformSetCacheRD.get_cache(shaders[shader_name], set_index, [ uniform ])
 		rd.compute_list_bind_uniform_set(compute_list, uniform_set, set_index)

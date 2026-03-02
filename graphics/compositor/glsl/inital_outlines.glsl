@@ -10,24 +10,15 @@ layout(push_constant, std430) uniform Params {
 // Invocations in the (x, y, z) dimension
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
-layout(rgba16f, set = 0, binding = 0) uniform image2D WORKING_IMAGE;
-layout(set = 1, binding = 0) uniform sampler2D DEPTH_TEXTURE;
-layout(rgba16f, set = 2, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
-
 // Difference between push constant and uniform buffer:
 // push constant is super fast and can hold 128B and only allowed one (per stage)
 // uniform buffer is fast and can hold tens of kB and there can be <100
 // storage buffer is slow and can hold many GB and allowed as much as you VRAM can handle
 
-// Our uniform buffer uniform
-layout(set = 3, binding=0) uniform SceneData {
-	mat4 INV_PROJECTION_MATRIX;
-	mat4 INV_VIEW_MATRIX;
-	float OUTLINE_THICKNESS;
-	float NORMAL_SENSITIVITY;
-	float DEPTH_SENSITIVITY;
-	float SHRINK_UNCONFIDENT_LINES;
-};
+#include "inc/uniform_buffer.glsl"
+layout(rgba16f, set = 1, binding = 0) uniform image2D WORKING_IMAGE;
+layout(set = 2, binding = 0) uniform sampler2D DEPTH_TEXTURE;
+layout(rgba16f, set = 3, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
 
 
 // this needs to go after the uniforms

@@ -1,11 +1,11 @@
-
+// faster than sqrt(outline_sdf_sq)
 float outline_sdf(vec3 value, vec2 uniform_uv) {
     float dis = length((value.xy - uniform_uv) * vec2(RASTER_SIZE));
     float width = value.z * float(RASTER_SIZE.y);
     return width - dis;
 }
 
-
+// faster than outline_sdf
 float outline_sdf_sq(vec3 value, vec2 uniform_uv) {
     vec2 a = (value.xy - uniform_uv) * vec2(RASTER_SIZE);
     float dis_sq = dot(a,a);

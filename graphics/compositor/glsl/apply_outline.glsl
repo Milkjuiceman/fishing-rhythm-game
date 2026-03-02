@@ -8,17 +8,9 @@ layout(push_constant, std430) uniform Params {
 
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
-layout(rgba16f, set = 0, binding = 0) uniform image2D WORKING_IMAGE;
-layout(rgba16f, set = 1, binding = 0) uniform image2D COLOR_IMAGE;
-
-layout(set = 2, binding=0) uniform UniformBuffer{
-	mat4 INV_PROJECTION_MATRIX;
-	mat4 INV_VIEW_MATRIX;
-	float OUTLINE_THICKNESS;
-	float NORMAL_SENSITIVITY;
-	float DEPTH_SENSITIVITY;
-	float SHRINK_UNCONFIDENT_LINES;
-};
+#include "inc/uniform_buffer.glsl"
+layout(rgba16f, set = 1, binding = 0) uniform image2D WORKING_IMAGE;
+layout(rgba16f, set = 2, binding = 0) uniform image2D COLOR_IMAGE;
 
 
 #include "inc/outline_sdf.glsl"

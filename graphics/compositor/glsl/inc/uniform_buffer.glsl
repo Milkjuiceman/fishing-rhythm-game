@@ -1,0 +1,8 @@
+layout(set = 0, binding=0) uniform UniformBuffer{
+	mat4 INV_PROJECTION_MATRIX;
+	mat4 INV_VIEW_MATRIX;
+	float OUTLINE_THICKNESS;
+	float NORMAL_SENSITIVITY;
+	float DEPTH_SENSITIVITY;
+	float SHRINK_UNCONFIDENT_LINES;
+};
