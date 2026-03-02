@@ -80,6 +80,11 @@ void main() {
 	float combined_error = depth_error + normal_error + hit_a + hit_b;
 	float hit = combined_error > 1. ? 1. : 0.;
 
+
+	// // debug single pixel
+	// hit = uv == ivec2(700, 700) ? 1. : 0.;
+	// nonlinear_depth = 0.0591;
+
 	// SAVE RESULT
 	vec4 result = vec4(uniform_uv, nonlinear_depth, 1.) * hit;
 	imageStore(WORKING_IMAGE, uv, result);

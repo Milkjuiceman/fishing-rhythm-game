@@ -42,6 +42,10 @@ class_name PostProcessShader
 @export var jump_fill_shader_file: RDShaderFile:
 	set(new):
 		jump_fill_shader_file = _set_rd_shader_file(new, jump_fill_shader_file, &"jump_fill")
+		
+@export var jump_fill_alt_shader_file: RDShaderFile:
+	set(new):
+		jump_fill_alt_shader_file = _set_rd_shader_file(new, jump_fill_alt_shader_file, &"jump_fill_alt")
 
 # A helper function for the setters for the shaders to automatically connect/disconnect _shader_file_changed
 func _set_rd_shader_file(new, previous, name: StringName):
@@ -281,22 +285,27 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		)
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, inital_uniform.to_ubu()], push_constant, groups)
 		
+		jump_uniform.update(rd, PackedInt32Array([256]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([128]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([64]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([32]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([16]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([8]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([4]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
-		jump_uniform.update(rd, PackedInt32Array([2]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		jump_uniform.update(rd, PackedInt32Array([4]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
+		jump_uniform.update(rd, PackedInt32Array([2]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		_apply_pass(&"jump_fill_alt", [working_image, working2_image, jump_uniform.to_ubu()], push_constant, groups)
 		jump_uniform.update(rd, PackedInt32Array([1]).to_byte_array() + PackedFloat32Array([inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
 		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], push_constant, groups)
+		
 		
 		## ~~~BLUR~~~
 		#_apply_pass(&"horz_blur", [working_image], push_constant_raster_pixel, groups)

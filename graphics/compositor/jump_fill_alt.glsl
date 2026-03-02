@@ -48,6 +48,10 @@ void main() {
 	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE,-JUMP_DISTANCE));
 	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE,JUMP_DISTANCE));
 	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(-JUMP_DISTANCE,-JUMP_DISTANCE));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(JUMP_DISTANCE,0));
+	update_best(best, best_dis_sq, uniform_uv, uv-ivec2(JUMP_DISTANCE,0));
+	update_best(best, best_dis_sq, uniform_uv, uv+ivec2(0,JUMP_DISTANCE));
+	update_best(best, best_dis_sq, uniform_uv, uv-ivec2(0,JUMP_DISTANCE));
 
 	imageStore(OUTPUT_IMAGE, uv, best);
 }
