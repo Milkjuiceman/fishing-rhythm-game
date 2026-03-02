@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://81q13ru41tle"]
+
+[ext_resource type="PackedScene" uid="uid://cdrx31ni1ai5h" path="res://assets/models/trees/tree_cone_fall.glb" id="1_0hj32"]
+
+[node name="TreeConeOrange" type="Node3D"]
+
+[node name="tree_cone_fall2" parent="." instance=ExtResource("1_0hj32")]
+transform = Transform3D(8.09, 0, 0, 0, 8.09, 0, 0, 0, 8.09, 0, 0, 0)

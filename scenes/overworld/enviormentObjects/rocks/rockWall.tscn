@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx4s0du0mddf1"]
+
+[ext_resource type="PackedScene" uid="uid://cp0kyqm3xjybx" path="res://scenes/overworld/enviormentObjects/rocks/rockBig.tscn" id="1_vccvm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h24pw"]
+size = Vector3(36.302216, 11.916504, 4.514744)
+
+[node name="RockWall" type="StaticBody3D"]
+
+[node name="RockBig" parent="." instance=ExtResource("1_vccvm")]
+
+[node name="RockBig2" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.750469, 0, 0)
+
+[node name="RockBig3" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.856511, 0, 0)
+
+[node name="RockBig4" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.943422, 0, 0)
+
+[node name="RockBig5" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.296866, 0, 0)
+
+[node name="RockBig6" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.610167, 0, 0)
+
+[node name="RockBig7" parent="." instance=ExtResource("1_vccvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.607699, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9903717, 5.385498, 0.72899437)
+shape = SubResource("BoxShape3D_h24pw")

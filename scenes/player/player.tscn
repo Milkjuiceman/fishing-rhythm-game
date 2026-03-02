@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba5pn273rh2x8"]
+
+[ext_resource type="Script" uid="uid://cw7gkvsh0us33" path="res://scripts/player/player.gd" id="1_dovo2"]
+[ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boats/boat.tscn" id="2_gmlin"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_dovo2")
+
+[node name="Boat" parent="." instance=ExtResource("2_gmlin")]

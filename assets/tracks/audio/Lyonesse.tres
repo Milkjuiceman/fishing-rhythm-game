@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://c535luhmscafe"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_i88bk"]
+
+[resource]
+script = ExtResource("1_i88bk")
+audio_location = &"uid://cjvmuyr4ers7s"
+artists = "Patrick de Arteaga"
+title = "Lyonesse"
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

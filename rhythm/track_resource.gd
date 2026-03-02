@@ -7,14 +7,16 @@ extends Resource
 @export var artists: String
 @export var title: String
 @export var bpm: Dictionary[float, float]
+@export var song_length: float
 
 
-func _init(_audio_location := "", _cover_location := "", _artists := "", _title := "", _bpm: Dictionary[float, float] = {0.: 60.}):
+func _init(_audio_location := "", _cover_location := "", _artists := "", _title := "", _bpm: Dictionary[float, float] = {0.: 60.}, _song_length := 0.0):
 	audio_location = _audio_location
 	#cover_location = _cover_location
 	artists = _artists
 	title = _title
 	bpm = _bpm
+	song_length = _song_length
 
 
 func _to_string() -> String:

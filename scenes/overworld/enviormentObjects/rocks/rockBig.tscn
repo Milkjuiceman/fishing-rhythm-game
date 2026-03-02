@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp0kyqm3xjybx"]
+
+[ext_resource type="PackedScene" uid="uid://cvqlfm4qo8vae" path="res://assets/models/rocks/stone_tallA.glb" id="1_5h1ly"]
+
+[node name="RockBig" type="Node3D"]
+
+[node name="stone_tallA2" parent="." instance=ExtResource("1_5h1ly")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

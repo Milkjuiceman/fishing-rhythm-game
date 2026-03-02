@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byga337ywa56i"]
+[gd_scene load_steps=16 format=3 uid="uid://byga337ywa56i"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_4ax3g"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="1_uwrd3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dishvn1ey45qu" path="res://assets/textures/Ground/small-lake_slot1_albedo_bump.png" id="5_uwrd3"]
 [ext_resource type="Texture2D" uid="uid://d3up0e1llb7tp" path="res://assets/textures/Ground/small-lake_slot0_normal_roughness.png" id="6_h51pj"]
 [ext_resource type="Texture2D" uid="uid://b4q27yi17frx8" path="res://assets/textures/Ground/small-lake_slot1_normal_roughness.png" id="7_eemif"]
+[ext_resource type="PackedScene" uid="uid://bpcosx0shws1q" path="res://scenes/overworld/boats/boatBig.tscn" id="9_h51pj"]
 
 [sub_resource type="Environment" id="Environment_uwrd3"]
 ambient_light_source = 2
@@ -97,3 +98,6 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
+
+[node name="Boat" parent="." instance=ExtResource("9_h51pj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.51175, -11.156295, 61.93171)

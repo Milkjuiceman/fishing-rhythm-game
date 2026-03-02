@@ -1,14 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4n45pegjxsoy"]
+[gd_scene load_steps=20 format=3 uid="uid://b4n45pegjxsoy"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_7m467"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_xamac"]
 [ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_c4aol"]
 [ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_hwpl6"]
-[ext_resource type="Resource" uid="uid://ct7l7ou4oijk5" path="res://assets/audio/charts/recursive_metronome.tres" id="5_8v0rf"]
-[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/overworld/camera_3d.gd" id="6_s1sje"]
+[ext_resource type="Resource" uid="uid://ct7l7ou4oijk5" path="res://assets/tracks/charts/recursive_metronome.tres" id="5_8v0rf"]
+[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_s1sje"]
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="7_gedgv"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="8_2m8lo"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="9_arvvn"]
+[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="9_xamac"]
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="10_mrjur"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="11_4gx6w"]
 
@@ -110,180 +111,221 @@ chart = ExtResource("5_8v0rf")
 referee = NodePath("../AudioStreamPlayer/Referee")
 note_speed = 2.0
 
-[node name="Note" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41474" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2.668)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78767" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41475" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78768" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41476" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6.664)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78769" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41477" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7.996)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78770" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41478" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9.328)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78771" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41479" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 10.66)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78772" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41480" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 11.992)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78773" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41481" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 13.324)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78774" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41482" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 14.656)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78775" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41483" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 15.988)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78776" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41484" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 17.32)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78777" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41485" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 18.652)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78778" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41486" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 19.984)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78779" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41487" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 21.316)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78780" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41488" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 21.982)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78781" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41489" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 22.648)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78782" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41490" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 24.646)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78783" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41491" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 25.312)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78784" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41492" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 27.976)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78785" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41493" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 29.308)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78786" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41494" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 30.64)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78787" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41495" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 32)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78788" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41496" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 33.32)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78789" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41497" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 36)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78790" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41498" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 37.334)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78791" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41499" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 40)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78792" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41500" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 41.334)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78793" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41501" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 42.666)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78794" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41502" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 44)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78795" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41503" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 45.334)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78796" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41504" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 46.666)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78797" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41505" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 49.334)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78798" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41506" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 49.334)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78799" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41507" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 50.666)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
-[node name="@MeshInstance3D@78800" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+[node name="@MeshInstance3D@41508" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 52.666)
 mesh = SubResource("BoxMesh_rf3o7")
 surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
+
+[node name="@MeshInstance3D@41509" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("8_2m8lo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 54)
+mesh = SubResource("BoxMesh_rf3o7")
+surface_material_override/0 = SubResource("StandardMaterial3D_doocs")
+script = ExtResource("9_xamac")
 
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("9_arvvn")

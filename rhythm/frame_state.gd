@@ -33,3 +33,4 @@ var d_key_press: bool = false
 var f_key_press: bool = false
 var k_key_press: bool = false
 var j_key_press: bool = false
+var enter_key_press: bool = false
