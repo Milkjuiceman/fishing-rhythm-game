@@ -23,6 +23,10 @@ layout(rgba16f, set = 2, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
 layout(set = 3, binding=0) uniform SceneData {
 	mat4 INV_PROJECTION_MATRIX;
 	mat4 INV_VIEW_MATRIX;
+	float CONTROL_A;
+	float CONTROL_B;
+	float CONTROL_C;
+	float CONTROL_D;
 };
 
 

@@ -15,10 +15,12 @@ layout(rgba16f, set = 0, binding = 0) uniform image2D INPUT_IMAGE;
 layout(rgba16f, set = 1, binding = 0) uniform image2D OUTPUT_IMAGE;
 
 layout(set = 2, binding=0) uniform UniformBuffer{
-	int JUMP_DISTANCE;
-	float INV_PROJECTION_MATRIX_2_3;
-	float INV_PROJECTION_MATRIX_3_3;
+	mat4 INV_PROJECTION_MATRIX;
+	mat4 INV_VIEW_MATRIX;
 	float CONTROL_A;
+	float CONTROL_B;
+	float CONTROL_C;
+	float CONTROL_D;
 };
 
 #include "linearize_depth.glsl"

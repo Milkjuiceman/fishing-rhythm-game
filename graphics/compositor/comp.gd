@@ -88,24 +88,27 @@ func _notification(what):
 
 
 # main thread
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ |
+#   |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |
+# /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /   \   /  
+#       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |       |    
+# ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~~~ | ~~~
 # rendering thread
 
-@export_range(0., 500000.0) var CONTROL_A: float = 0.1
-@export_range(0., 10.) var CONTROL_B: float = 0.1
-@export_range(0., 1.) var CONTROL_C: float = 0.1
+@export_range(0., 1500000.0) var CONTROL_A: float = 0.1
+@export_range(20., 80., 1.) var CONTROL_B: float = 0.1
+@export_range(20., 80., 1.) var CONTROL_C: float = 0.1
 @export_range(1., 3.999) var CONTROL_D: float = 0.1
-
 
 var rd: RenderingDevice = null
 
 var linear_sampler: RID
 
-var inital_uniform: UniformBuffer = UniformBuffer.new()
-var jump_uniform: UniformBuffer = UniformBuffer.new()
-
-var uniform_buffer2: RID
-var uniform_buffer_size2: int = -1
+# According to: https://youtu.be/7bSzp-QildA
+# Using one uniform is just as fast as multiple
+# So i will only use one because its simpler
+const uniform_buffer_size: int = 144
+var newnewnew_uniform_buffer: RID
 
 func _render_init():
 	rd = RenderingServer.get_rendering_device()
@@ -115,8 +118,17 @@ func _render_init():
 	sampler_state.mag_filter = RenderingDevice.SAMPLER_FILTER_LINEAR
 	linear_sampler = rd.sampler_create(sampler_state)
 	
-	inital_uniform = UniformBuffer.new()
-	jump_uniform = UniformBuffer.new()
+	#uniform_buffer = UniformBuffer.new()
+	var a = PackedByteArray()
+	a.resize(uniform_buffer_size)
+	newnewnew_uniform_buffer = rd.uniform_buffer_create(uniform_buffer_size, a)
+	#jump_uniform = UniformBuffer.new()
+
+## This is so you dont need to restart the engine to update stuffz
+## this will probably leak memory - but thats ok cause its only in editor
+@export_tool_button("Re init") var re_init_button = re_init_action
+func re_init_action():
+	RenderingServer.call_on_render_thread(_render_init)
 
 var shaders: Dictionary[StringName, RID]
 var pipelines: Dictionary[StringName, RID]
@@ -132,35 +144,12 @@ const name_context := &"OutlineShader"
 const name_working_texture := &"working"
 const name_working_texture2 := &"working2"
 
-
-class UniformBuffer:
-	var size: int = -1
-	var buffer: RID = RID()
-	
-	## ubu stands for Uniform Buffer Uniform
-	## which means a uniform (value that is the same accross all pixels in the compute shader)
-	## that is of a buffer (a set of values)
-	## which holds a set of varribles that each indivually more or less a uniform
-	func to_ubu() -> RDUniform:
-		var uniform: RDUniform = RDUniform.new()
-		uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
-		uniform.binding = 0
-		uniform.add_id(buffer)
-		return uniform
-	
-	## Make sure you call this before to_ubu within a frame
-	func update(rd: RenderingDevice, data: PackedByteArray):
-		#uniform_buffer_size = -1
-		@warning_ignore("integer_division")
-		if (data.size() != size):
-			print("updating buffer size to ", data.size(), " from ", size)
-			if size != -1:
-				rd.free_rid(buffer)
-			buffer = rd.uniform_buffer_create(data.size(), data)
-			size = data.size()
-			print("updated_buffer: ", buffer)
-		else:
-			rd.buffer_update(buffer, 0, data.size(), data)
+func create_uniform_buffer_uniform(uniform_buffer: RID) -> RDUniform:
+	var uniform: RDUniform = RDUniform.new()
+	uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
+	uniform.binding = 0
+	uniform.add_id(uniform_buffer)
+	return uniform
 
 
 # STEPS:
@@ -194,7 +183,7 @@ func make_float_array_from_transform(t: Transform3D) -> PackedByteArray:
 	return r.to_byte_array()
 
 
-func jump_push_constant(inital_push_constant : PackedByteArray, diag: int, stra: int) -> PackedByteArray:
+func jumpfill_push_constant(inital_push_constant : PackedByteArray, diag: int, stra: int) -> PackedByteArray:
 	return inital_push_constant + PackedInt32Array([diag, stra, 0, 0]).to_byte_array()
 
 # Called by the rendering thread every frame.
@@ -277,23 +266,31 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
 		inverse_view = inverse_view.inverse()
 		
-		
-		inital_uniform.update(rd, 
+		rd.buffer_update(newnewnew_uniform_buffer, 0, uniform_buffer_size,
+		#uniform_buffer.update(rd, 
 			make_float_array_from_projection(inverse_projection) +
-			make_float_array_from_transform(inverse_view)
+			make_float_array_from_transform(inverse_view) +
+			PackedFloat32Array([CONTROL_A, CONTROL_B, CONTROL_C, CONTROL_D]).to_byte_array()
 		)
-		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, inital_uniform.to_ubu()], push_constant, groups)
 		
-		jump_uniform.update(rd, PackedFloat32Array([0., inverse_projection.z.w, inverse_projection.w.w, CONTROL_A]).to_byte_array())
+		var uniform_buffer_uniform := create_uniform_buffer_uniform(newnewnew_uniform_buffer)
 		
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 191, 255), groups)
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 95, 127), groups)
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 47, 63), groups)
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 23, 31), groups)
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 11, 15), groups)
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 5, 7), groups)
-		_apply_pass(&"jump_fill", [working_image, working2_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 2, 3), groups)
-		_apply_pass(&"jump_fill", [working2_image, working_image, jump_uniform.to_ubu()], jump_push_constant(push_constant, 1, 1), groups)
+		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image, uniform_buffer_uniform], push_constant, groups)
+		
+		#_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 418, 432), groups)
+		#_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 202, 216), groups)
+		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 94, 108), groups) # 2
+		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 54, 54), groups) # 2
+		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 27, 27), groups) # 3
+		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 9, 9), groups) # 3
+		_apply_pass(&"jump_fill", [working_image, working2_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 3, 3), groups) # 3
+		_apply_pass(&"jump_fill", [working2_image, working_image, uniform_buffer_uniform], jumpfill_push_constant(push_constant, 1, 1), groups)
+		# * 3 is the maximum to allow space to continue
+		# *2 is the maximum to allow going to the edge
+		# starting with *3 then switching to *2 means that there are only issues on the edge of size max 13px - i think
+		# since the first diagonal offset is 94 is tead of 108 it means the maximum error is 7px - i think
+		# the maximum radius that this is a circle is 108px
+		# the maximum displable radius is roughly 30% greater
 		
 		
 		## ~~~BLUR~~~
@@ -302,7 +299,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		#_apply_pass(&"horz_blur", [working_image], push_constant_raster_pixel, groups)
 		#_apply_pass(&"vert_blur", [working_image], push_constant_raster_pixel, groups)
 		
-		_apply_pass(&"apply_outline", [working_image, color_image, jump_uniform.to_ubu()], push_constant, groups)
+		_apply_pass(&"apply_outline", [working_image, color_image, uniform_buffer_uniform], push_constant, groups)
 	
 	rd.draw_command_end_label()
 

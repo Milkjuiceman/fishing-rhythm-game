@@ -1,7 +1,7 @@
 
 float outline_sdf(vec3 value, vec2 uniform_uv) {
     float dis = length((value.xy - uniform_uv) * vec2(RASTER_SIZE));
-    float depth = linearize_depth(value.z, INV_PROJECTION_MATRIX_2_3, INV_PROJECTION_MATRIX_3_3);
+    float depth = linearize_depth(value.z, INV_PROJECTION_MATRIX[2][3], INV_PROJECTION_MATRIX[3][3]);
     return CONTROL_A / depth - dis;
     // return CONTROL_A - dis;
 
