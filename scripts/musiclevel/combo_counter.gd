@@ -1,6 +1,9 @@
 extends Label
 
 func _on_referee_process(frame_state: FrameState) -> void:
+	if frame_state.scorecard == null:
+		return
+		
 	var combo = frame_state.scorecard.combo
 	var multiplier = 1
 	var new_scale = Vector2(2,2)
@@ -18,4 +21,4 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		multiplier = 1
 		new_scale = Vector2(2, 2)
 	scale = new_scale
-	text = str("X", multiplier);
+	text = str("X", multiplier)

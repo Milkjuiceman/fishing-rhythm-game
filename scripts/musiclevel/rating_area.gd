@@ -6,7 +6,10 @@ var is_connected = false
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	var scorecard = frame_state.scorecard
-	if scorecard and not is_connected:
+	if scorecard == null:
+		return
+		
+	if not is_connected:
 		scorecard.connect("rating_hit", Callable(self, "show_rating"))
 		is_connected = true
 		

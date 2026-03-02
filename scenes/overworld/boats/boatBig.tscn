@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpcosx0shws1q"]
+[gd_scene load_steps=10 format=3 uid="uid://bpcosx0shws1q"]
 
 [ext_resource type="Script" uid="uid://fq6ldg2s6gdk" path="res://scripts/vehicles/boat_big.gd" id="1_28m0g"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_5bfo1"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="3_pqnko"]
 [ext_resource type="PackedScene" uid="uid://msoagscxgldc" path="res://assets/models/ship.glb" id="4_dxr8b"]
+[ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_5bfo1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
 size = Vector3(2.3106852, 2.551056, 1.9288177)
@@ -69,3 +70,6 @@ shape = SubResource("BoxShape3D_annr2")
 
 [node name="Root Scene" parent="." instance=ExtResource("4_dxr8b")]
 transform = Transform3D(0.87, 0, 0, 0, 0.87, 0, 0, 0, 0.87, -0.16810465, 0.09458807, -0.07423353)
+
+[node name="BoatSFX" type="Node" parent="."]
+script = ExtResource("5_5bfo1")

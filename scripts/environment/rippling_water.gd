@@ -71,8 +71,18 @@ func _start_rhythm_minigame(player: Player) -> void:
 	# Prepare transition (stores current scene for return navigation)
 	GameStateManager.prepare_transition(RHYTHM_SCENE_PATH)
 	
-	# Execute scene change (deferred to avoid physics conflicts)
-	call_deferred("_change_scene")
+	# Fade out overworld music
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+	if overworld_music:
+		overworld_music.on_enter_rhythm_level()
+	
+	# Use screen transition if available
+	var screen_transition = get_node_or_null("/root/ScreenTransition")
+	if screen_transition:
+		screen_transition.transition_to_scene(RHYTHM_SCENE_PATH)
+	else:
+		# Fallback to direct scene change
+		call_deferred("_change_scene")
 
 # Change to rhythm minigame scene
 func _change_scene() -> void:
