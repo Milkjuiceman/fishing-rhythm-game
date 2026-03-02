@@ -1,0 +1,18 @@
+[gd_resource type="NoiseTexture3D" load_steps=2 format=3 uid="uid://cv2nq77qu2haq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bsvmg"]
+seed = 10
+frequency = 0.045
+fractal_octaves = 3
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_frequency = -0.03
+domain_warp_fractal_type = 0
+domain_warp_fractal_octaves = 1
+
+[resource]
+noise = SubResource("FastNoiseLite_bsvmg")
+seamless = true
+seamless_blend_skirt = 0.2
