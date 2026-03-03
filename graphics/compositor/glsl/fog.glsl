@@ -1,6 +1,7 @@
 #[compute]
 #version 450
 
+// these are the size of the FOG_IMAGE (which may be different resolution that COLOR_IMAGE)
 layout(push_constant, std430) uniform Params {
 	vec2 PIXEL_SIZE;
 	ivec2 RASTER_SIZE;
@@ -10,8 +11,8 @@ layout(push_constant, std430) uniform Params {
 layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 
 #include "inc/uniform_buffer.glsl"
-layout(rg16f, set = 1, binding = 0) uniform image2D FOG_IMAGE;
-layout(set = 2, binding = 0) uniform sampler2D DEPTH_TEXTURE;
+layout(set = 1, binding = 0) uniform sampler2D DEPTH_TEXTURE;
+layout(rg16f, set = 2, binding = 0) uniform image2D FOG_IMAGE;
 
 
 #include "inc/depth_utils.glsl"

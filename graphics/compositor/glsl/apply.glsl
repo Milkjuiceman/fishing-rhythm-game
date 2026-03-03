@@ -11,6 +11,8 @@ layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 #include "inc/uniform_buffer.glsl"
 layout(rgba16f, set = 1, binding = 0) uniform image2D WORKING_IMAGE;
 layout(rgba16f, set = 2, binding = 0) uniform image2D COLOR_IMAGE;
+// TODO: get the fog as a sampler
+layout(rgba16f, set = 3, binding = 0) uniform image2D FOG_IMAGE;
 
 
 #include "inc/outline_sdf.glsl"

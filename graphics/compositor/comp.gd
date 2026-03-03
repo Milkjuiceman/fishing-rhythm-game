@@ -9,14 +9,13 @@ class_name PostProcessShader
 # How Jump Fill works for thickening outlines: https://bgolus.medium.com/the-quest-for-very-wide-outlines-ba82ed442cd9
 
 
-
 # TODO (outlines)
 # antialias the inital edge detection
 # optimize the fuck outta this stuffz
 # use msaa
 
 # TODO (fog)
-# make half resolution texture
+# use sampler for fog in apply shader
 # 3d noise texture loading
 # shader to write to fog texture (does ray casting)
 # apply shader merges in the fog result
@@ -26,9 +25,9 @@ class_name PostProcessShader
 	set(new):
 		initial_outlines_shader_file = _set_rd_shader_file(new, initial_outlines_shader_file, &"initial_outlines")
 
-@export var apply_outline_shader_file: RDShaderFile:
+@export var apply_shader_file: RDShaderFile:
 	set(new):
-		apply_outline_shader_file = _set_rd_shader_file(new, apply_outline_shader_file, &"apply_outline")
+		apply_shader_file = _set_rd_shader_file(new, apply_shader_file, &"apply")
 
 @export var jump_fill_shader_file: RDShaderFile:
 	set(new):
@@ -37,6 +36,7 @@ class_name PostProcessShader
 @export var fog_shader_file: RDShaderFile:
 	set(new):
 		fog_shader_file = _set_rd_shader_file(new, fog_shader_file, &"fog")
+
 
 # A helper function for the setters for the shaders to automatically connect/disconnect _shader_file_changed
 func _set_rd_shader_file(new, previous, name: StringName):
@@ -63,7 +63,6 @@ func _shader_file_changed(shader_file: RDShaderFile, name: StringName):
 		return
 	
 	RenderingServer.call_on_render_thread(_shader_file_changed_render_thread.bind(shader_spirv, name))
-
 
 
 # Called when this resource is constructed.
@@ -130,7 +129,6 @@ func _render_init():
 	uniform_buffer_uniform.binding = 0
 	uniform_buffer_uniform.add_id(uniform_buffer)
 
-
 ## This is so you dont need to restart the engine to update stuffz
 ## this will probably leak memory - but thats ok cause its only in editor
 @export_tool_button("Re init") var re_init_button = re_init_action
@@ -152,6 +150,7 @@ func _shader_file_changed_render_thread(shader_spirv: RDShaderSPIRV, name: Strin
 const name_context := &"OutlineShader"
 const name_working_texture := &"working"
 const name_working_texture2 := &"working2"
+const name_fog_texture := &"fog"
 
 func create_uniform_buffer_uniform() -> RDUniform:
 	var uniform: RDUniform = RDUniform.new()
@@ -162,13 +161,29 @@ func create_uniform_buffer_uniform() -> RDUniform:
 
 
 # STEPS:
-# RoughNorm & Depth => texture		for outline with normals and depth
-# texture =======> texture2			for jump1
-# texture2 =======> texture			for jump2
-# texture =======> texture2			for jump4
-# texture2 =======> texture			for jump8
-# texture =======> texture2			for jump16
-# Color & texture2 ===> Color		for outline
+# RoughNorm & Depth =====> working		for edge detection
+# working ==============> working2		for large jump
+# working2 ==============> working		for medium jump
+# working ==============> working2		for small jump
+# working2 ==============> working		for tiny jump
+# etc
+# Depth  ====================> fog		Ray Marched Volumentric Fog
+# Color & working & fog ===> Color		apply outline and fog
+
+# TEXTURE DETAILS:
+# working & working2:
+#	normalized float
+#	full resolution
+#	rgba16
+#		r&g source location
+#		b is outline thickness (linearly between 1 is RASTER.y and 0 is 0)
+# 		a is unused
+# fog:
+# 	normalized float
+#	half resolution
+#	rg16
+#		r is densitity of fog
+#		g is color of fog
 
 
 func make_float_array_from_projection(p: Projection) -> PackedByteArray:
@@ -224,7 +239,8 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		1
 	)
 	
-	# Push constant (needs to be multiple of 16 bytes aka multiple of 4 f32s)
+	# Push constant (like pretty much everything we give to the GPU,
+	# it needs to be multiple of 16 bytes aka multiple of 4 f32s/i32s)
 	var push_constant := PackedByteArray()
 	push_constant.resize(16)
 	push_constant.encode_float(0, 1./render_size.x)
@@ -232,45 +248,53 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 	push_constant.encode_s32(8, render_size.x)
 	push_constant.encode_s32(12, render_size.y)
 	
+	@warning_ignore("integer_division")
+	var half_render_size := render_size / 2
 	
-	# If we have buffers for this viewport, check if they are the right size
+	@warning_ignore("integer_division")
+	var half_groups  := Vector3i(
+		(half_render_size.x - 1) / 8 + 1,
+		(half_render_size.y - 1) / 8 + 1,
+		1
+	)
+	
+	var half_push_constant := PackedByteArray()
+	half_push_constant.resize(16)
+	half_push_constant.encode_float(0, 1./half_render_size.x)
+	half_push_constant.encode_float(4, 1./half_render_size.y)
+	half_push_constant.encode_s32(8, half_render_size.x)
+	half_push_constant.encode_s32(12, half_render_size.y)
+	
+	
+	# DELETE ALL THE TEXTURES
+	# all textures under name_context at least
 	if render_scene_buffers.has_texture(name_context, name_working_texture):
 		var texture_format : RDTextureFormat = render_scene_buffers.get_texture_format(name_context, name_working_texture)
 		if texture_format.width != render_size.x or texture_format.height != render_size.y:
-			# This will clear all textures for this viewport under this context
 			render_scene_buffers.clear_context(name_context)
 	
-	# Create texture and texture2 on the GPU
-	if !render_scene_buffers.has_texture(name_context, name_working_texture):
-		var usage_bits : int = RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT
-		render_scene_buffers.create_texture(
-			name_context, name_working_texture,
-			RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM, usage_bits,
-			RenderingDevice.TEXTURE_SAMPLES_1, render_size,
-			1, 1, true, false
-		)
-		render_scene_buffers.create_texture(
-			name_context, name_working_texture2,
-			RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM, usage_bits,
-			RenderingDevice.TEXTURE_SAMPLES_1, render_size,
-			1, 1, true, false
-		)
+	# CREATE TEXTURES (if they dont exist)
+	create_texture_if_dne(render_scene_buffers, name_working_texture, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
+	create_texture_if_dne(render_scene_buffers, name_working_texture2, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
+	create_texture_if_dne(render_scene_buffers, name_fog_texture, half_render_size, RenderingDevice.DATA_FORMAT_R16G16_UNORM)
 	
-	rd.draw_command_begin_label("Outline", Color(1.0, 1.0, 1.0, 1.0))
+	
+	rd.draw_command_begin_label("Outline & Fog", Color(1.0, 1.0, 1.0, 1.0))
 	
 	# Loop through views just in case we're doing stereo rendering. No extra cost if this is mono.
 	var view_count = render_scene_buffers.get_view_count()
 	for view in range(view_count):
 		
-		# Get the RID for our images
+		# GET RIDs OF OUR IMAGES
 		var color_image := _make_image_uniform(render_scene_buffers.get_color_layer(view))
 		## using a sampler instead of an image (because bug https://github.com/godotengine/godot/issues/96737 make using it as an image not work)
 		var depth_image := _make_sampler_uniform(render_scene_buffers.get_depth_layer(view))
 		var norm_rough_image = _make_image_uniform(render_scene_buffers.get_texture("forward_clustered", "normal_roughness"))
 		var working_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture, view, 0, 1, 1))
 		var working2_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture2, view, 0, 1, 1))
-		# Run our compute shader.
+		var fog_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_fog_texture, view, 0, 1, 1))
 		
+		# UPDATE UNIFORE BUFFER UNIFORM
 		var projection := render_scene_data.get_view_projection(view)
 		var inverse_projection := projection.inverse()
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
@@ -287,6 +311,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 			]).to_byte_array()
 		)
 		
+		# APPLY PASSES
 		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image], push_constant, groups)
 		
 		if (NUM_JUMPFILL_PASSES > 7.):
@@ -306,10 +331,21 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# the maximum radius that this is a circle is 108px
 		# the maximum display-able radius is about 20% cooler
 		
-		_apply_pass(&"apply_outline", [working_image, color_image], push_constant, groups)
+		_apply_pass(&"fog", [depth_image, fog_image], half_push_constant, half_groups)
+		
+		_apply_pass(&"apply", [working_image, color_image, fog_image], push_constant, groups)
 	
 	rd.draw_command_end_label()
 
+
+func create_texture_if_dne(render_scene_buffers: RenderSceneBuffersRD, name: StringName, size: Vector2i, format: int):
+	if !render_scene_buffers.has_texture(name_context, name):
+		render_scene_buffers.create_texture(
+			name_context, name, format,
+			RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT | RenderingDevice.TEXTURE_USAGE_STORAGE_BIT,
+			RenderingDevice.TEXTURE_SAMPLES_1, size,
+			1, 1, true, false
+		)
 
 func _make_image_uniform(image: RID) -> RDUniform:
 	var uniform: RDUniform = RDUniform.new()
