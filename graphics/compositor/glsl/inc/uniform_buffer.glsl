@@ -5,4 +5,10 @@ layout(set = 0, binding=0) uniform UniformBuffer{
 	float NORMAL_SENSITIVITY;
 	float DEPTH_SENSITIVITY;
 	float SHRINK_UNCONFIDENT_LINES;
+	float FOG_DENSITY;
+	float CONTROL_A;
+	float CONTROL_C;
+	float CONTROL_D;
+	vec4 FOG_COLOR_A;
+	vec4 FOG_COLOR_B;
 };

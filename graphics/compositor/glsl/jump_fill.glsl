@@ -20,7 +20,6 @@ layout(rgba16f, set = 2, binding = 0) uniform image2D OUTPUT_IMAGE;
 
 void update_best(in out vec4 best, in out float best_dis_sq, vec2 uniform_uv, ivec2 sample_uv) {
 	vec4 considered = imageLoad(INPUT_IMAGE, sample_uv);
-	if (considered.a < 0.5) return;
 	float dis_sq = outline_sdf_sq(considered.xyz, uniform_uv);
 	if (dis_sq > best_dis_sq) {
 		best_dis_sq = dis_sq;

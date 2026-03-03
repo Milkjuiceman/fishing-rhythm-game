@@ -22,6 +22,7 @@ layout(rgba16f, set = 3, binding = 0) uniform image2D NORM_ROUGH_IMAGE;
 
 
 // this needs to go after the uniforms
+#include "inc/linearize_depth.glsl"
 #include "inc/depth_utils.glsl"
 #include "inc/norm_rough_utils.glsl"
 
@@ -88,7 +89,7 @@ void main() {
 			float width = OUTLINE_THICKNESS * confidnece * depth_affect / float(RASTER_SIZE.y);
 
 			// SAVE RESULT
-			result = vec4(uniform_uv, width, 1.);
+			result = vec4(uniform_uv, width, nonlinear_depth);
 		}
 
 
@@ -109,4 +110,3 @@ void main() {
 
 	imageStore(WORKING_IMAGE, uv, result);
 }
-

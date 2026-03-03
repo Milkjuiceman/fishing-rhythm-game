@@ -32,7 +32,6 @@ glow_levels/7 = 1.87
 glow_strength = 0.59
 glow_bloom = 0.11
 glow_blend_mode = 0
-fog_enabled = true
 fog_light_color = Color(0.5176471, 0.5529412, 0.72156864, 1)
 fog_density = 0.0007
 adjustment_enabled = true
@@ -48,11 +47,7 @@ effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("1_8stmp")
-initial_outlines_shader_file = ExtResource("3_7tvxw")
-apply_shader_file = ExtResource("1_ri8l7")
-jump_fill_shader_file = ExtResource("5_3xkl4")
-fog_shader_file = ExtResource("2_ri8l7")
-OUTLINE_THICKNESS = 24.078
+FOG_DENSITY = 1.07776
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]

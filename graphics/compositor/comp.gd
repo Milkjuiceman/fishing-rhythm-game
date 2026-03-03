@@ -21,19 +21,22 @@ class_name PostProcessShader
 # apply shader merges in the fog result
 
 
-@export var initial_outlines_shader_file: RDShaderFile:
+@export_group("Main Thread")
+
+
+@export var initial_outlines_shader_file: RDShaderFile = preload("uid://dxgjtfbydddnx"):
 	set(new):
 		initial_outlines_shader_file = _set_rd_shader_file(new, initial_outlines_shader_file, &"initial_outlines")
 
-@export var apply_shader_file: RDShaderFile:
+@export var apply_shader_file: RDShaderFile = preload("uid://b6h46om56qnya"):
 	set(new):
 		apply_shader_file = _set_rd_shader_file(new, apply_shader_file, &"apply")
 
-@export var jump_fill_shader_file: RDShaderFile:
+@export var jump_fill_shader_file: RDShaderFile = preload("uid://n24xlxbue7g6"):
 	set(new):
 		jump_fill_shader_file = _set_rd_shader_file(new, jump_fill_shader_file, &"jump_fill")
 
-@export var fog_shader_file: RDShaderFile:
+@export var fog_shader_file: RDShaderFile = preload("uid://cltgrk0uxr7by"):
 	set(new):
 		fog_shader_file = _set_rd_shader_file(new, fog_shader_file, &"fog")
 
@@ -70,6 +73,13 @@ func _init():
 	RenderingServer.call_on_render_thread(_render_init)
 
 
+## This is so you dont need to restart the engine to update stuffz
+## this will probably leak memory - but thats ok cause its only in editor
+@export_tool_button("Re init") var re_init_button = re_init_action
+func re_init_action():
+	RenderingServer.call_on_render_thread(_render_init)
+
+
 # System notifications, we want to react on the notification that
 # alerts us we are about to be destroyed.
 # this happens after the rendering thread is done using about this
@@ -91,12 +101,21 @@ func _notification(what):
 # rendering thread
 
 
+@export_group("Render Thread")
+
+
 @export_range(0., 100.0) var OUTLINE_THICKNESS: float = 30
 @export_range(0., 200.) var NORMAL_SENSITIVITY: float = 100
 @export_range(0., 1.) var DEPTH_SENSITIVITY: float = 0.15
 @export_range(1., 4.) var SHRINK_UNCONFIDENT_LINES: float = 1.5
 ## each step is roughly 30% more expensive, but allows for 4x bigger (27px, 108px, 432px)
 @export_range(4., 8., 2.) var NUM_JUMPFILL_PASSES = 6.
+@export_color_no_alpha var FOG_COLOR_A: Color = Color.ALICE_BLUE
+@export_color_no_alpha var FOG_COLOR_B: Color = Color.CADET_BLUE
+@export_range(0.1, 10., 0.00001, "exp") var FOG_DENSITY: float = 1.
+@export_range(0., 1.) var CONTROL_A: float = 0.5
+@export_range(0., 1.) var CONTROL_C: float = 0.5
+@export_range(0., 1.) var CONTROL_D: float = 0.5
 
 var rd: RenderingDevice = null
 
@@ -105,7 +124,8 @@ var linear_sampler: RID
 # According to: https://youtu.be/7bSzp-QildA
 # Using one uniform is just as fast as multiple
 # So i will only use one because its simpler
-const uniform_buffer_size: int = 144
+## in bytes (f32/i32 are 4 bytes)
+const uniform_buffer_size: int = (16 + 16 + 8 + 4 + 4) * 4
 var uniform_buffer: RID
 var uniform_buffer_uniform: RDUniform
 
@@ -129,12 +149,6 @@ func _render_init():
 	uniform_buffer_uniform.binding = 0
 	uniform_buffer_uniform.add_id(uniform_buffer)
 
-## This is so you dont need to restart the engine to update stuffz
-## this will probably leak memory - but thats ok cause its only in editor
-@export_tool_button("Re init") var re_init_button = re_init_action
-func re_init_action():
-	RenderingServer.call_on_render_thread(_render_init)
-
 
 var shaders: Dictionary[StringName, RID]
 var pipelines: Dictionary[StringName, RID]
@@ -151,13 +165,6 @@ const name_context := &"OutlineShader"
 const name_working_texture := &"working"
 const name_working_texture2 := &"working2"
 const name_fog_texture := &"fog"
-
-func create_uniform_buffer_uniform() -> RDUniform:
-	var uniform: RDUniform = RDUniform.new()
-	uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
-	uniform.binding = 0
-	uniform.add_id(uniform_buffer)
-	return uniform
 
 
 # STEPS:
@@ -177,7 +184,7 @@ func create_uniform_buffer_uniform() -> RDUniform:
 #	rgba16
 #		r&g source location
 #		b is outline thickness (linearly between 1 is RASTER.y and 0 is 0)
-# 		a is unused
+# 		a is depth of the source (un used for SDF, but later used instead of depth texture for the fog shader)
 # fog:
 # 	normalized float
 #	half resolution
@@ -186,7 +193,7 @@ func create_uniform_buffer_uniform() -> RDUniform:
 #		g is color of fog
 
 
-func make_float_array_from_projection(p: Projection) -> PackedByteArray:
+func make_byte_array_from_projection(p: Projection) -> PackedByteArray:
 	var r := PackedFloat32Array([
 		p.x.x, p.x.y, p.x.z, p.x.w,
 		p.y.x, p.y.y, p.y.z, p.y.w,
@@ -195,8 +202,7 @@ func make_float_array_from_projection(p: Projection) -> PackedByteArray:
 	])
 	return r.to_byte_array()
 
-
-func make_float_array_from_transform(t: Transform3D) -> PackedByteArray:
+func make_byte_array_from_transform(t: Transform3D) -> PackedByteArray:
 	var b := t.basis
 	var o := t.origin
 	var r := PackedFloat32Array([
@@ -206,6 +212,9 @@ func make_float_array_from_transform(t: Transform3D) -> PackedByteArray:
 		o.x,  o.y,   o.z,   1.
 	])
 	return r.to_byte_array()
+
+func _make_byte_array_from_color(c: Color) -> PackedByteArray:
+	return PackedFloat32Array([c.r, c.g, c.b, c.a]).to_byte_array()
 
 
 func jumpfill_push_constant(inital_push_constant : PackedByteArray, diag: int, stra: int) -> PackedByteArray:
@@ -273,10 +282,11 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		if texture_format.width != render_size.x or texture_format.height != render_size.y:
 			render_scene_buffers.clear_context(name_context)
 	
+	
 	# CREATE TEXTURES (if they dont exist)
-	create_texture_if_dne(render_scene_buffers, name_working_texture, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
-	create_texture_if_dne(render_scene_buffers, name_working_texture2, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
-	create_texture_if_dne(render_scene_buffers, name_fog_texture, half_render_size, RenderingDevice.DATA_FORMAT_R16G16_UNORM)
+	_create_texture_if_dne(render_scene_buffers, name_working_texture, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
+	_create_texture_if_dne(render_scene_buffers, name_working_texture2, render_size, RenderingDevice.DATA_FORMAT_R16G16B16A16_UNORM)
+	_create_texture_if_dne(render_scene_buffers, name_fog_texture, half_render_size, RenderingDevice.DATA_FORMAT_R16G16_UNORM)
 	
 	
 	rd.draw_command_begin_label("Outline & Fog", Color(1.0, 1.0, 1.0, 1.0))
@@ -288,11 +298,14 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# GET RIDs OF OUR IMAGES
 		var color_image := _make_image_uniform(render_scene_buffers.get_color_layer(view))
 		## using a sampler instead of an image (because bug https://github.com/godotengine/godot/issues/96737 make using it as an image not work)
-		var depth_image := _make_sampler_uniform(render_scene_buffers.get_depth_layer(view))
+		var depth_sampler := _make_sampler_uniform(render_scene_buffers.get_depth_layer(view))
 		var norm_rough_image = _make_image_uniform(render_scene_buffers.get_texture("forward_clustered", "normal_roughness"))
 		var working_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture, view, 0, 1, 1))
+		var working_sampler = _make_sampler_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture, view, 0, 1, 1))
 		var working2_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_working_texture2, view, 0, 1, 1))
+		# using a sampler to read it because will be changing resolutions
 		var fog_image = _make_image_uniform(render_scene_buffers.get_texture_slice(name_context, name_fog_texture, view, 0, 1, 1))
+		var fog_sampler = _make_sampler_uniform(render_scene_buffers.get_texture_slice(name_context, name_fog_texture, view, 0, 1, 1))
 		
 		# UPDATE UNIFORE BUFFER UNIFORM
 		var projection := render_scene_data.get_view_projection(view)
@@ -300,19 +313,28 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		var inverse_view := render_scene_data.get_cam_transform().inverse()
 		inverse_view = inverse_view.inverse()
 		
-		rd.buffer_update(uniform_buffer, 0, uniform_buffer_size,
-			make_float_array_from_projection(inverse_projection) +
-			make_float_array_from_transform(inverse_view) +
+		# If you ever change the size of this make sure you:
+		# 1. update the uniform_buffer_size constant
+		# 2. press the 're init' button
+		_update_uniform_buffer([
+			make_byte_array_from_projection(inverse_projection),
+			make_byte_array_from_transform(inverse_view),
 			PackedFloat32Array([
 				OUTLINE_THICKNESS * render_size.y,
 				NORMAL_SENSITIVITY / 4.,
 				DEPTH_SENSITIVITY * render_size.y * render_size.y,
-				1. / (SHRINK_UNCONFIDENT_LINES * SHRINK_UNCONFIDENT_LINES)
-			]).to_byte_array()
-		)
+				1. / (SHRINK_UNCONFIDENT_LINES * SHRINK_UNCONFIDENT_LINES),
+				FOG_DENSITY * 0.000001,
+				CONTROL_A,
+				CONTROL_C,
+				CONTROL_D
+			]).to_byte_array(),
+			_make_byte_array_from_color(FOG_COLOR_A),
+			_make_byte_array_from_color(FOG_COLOR_B)
+		])
 		
 		# APPLY PASSES
-		_apply_pass(&"initial_outlines", [working_image, depth_image, norm_rough_image], push_constant, groups)
+		_apply_pass(&"initial_outlines", [working_image, depth_sampler, norm_rough_image], push_constant, groups)
 		
 		if (NUM_JUMPFILL_PASSES > 7.):
 			_apply_pass(&"jump_fill", [working_image, working2_image], jumpfill_push_constant(push_constant, 376, 432), groups) # 2
@@ -331,14 +353,14 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# the maximum radius that this is a circle is 108px
 		# the maximum display-able radius is about 20% cooler
 		
-		_apply_pass(&"fog", [depth_image, fog_image], half_push_constant, half_groups)
+		_apply_pass(&"fog", [working_sampler, depth_sampler, fog_image], half_push_constant, half_groups)
 		
-		_apply_pass(&"apply", [working_image, color_image, fog_image], push_constant, groups)
+		_apply_pass(&"apply", [working_image, color_image, fog_sampler], push_constant, groups)
 	
 	rd.draw_command_end_label()
 
 
-func create_texture_if_dne(render_scene_buffers: RenderSceneBuffersRD, name: StringName, size: Vector2i, format: int):
+func _create_texture_if_dne(render_scene_buffers: RenderSceneBuffersRD, name: StringName, size: Vector2i, format: int):
 	if !render_scene_buffers.has_texture(name_context, name):
 		render_scene_buffers.create_texture(
 			name_context, name, format,
@@ -346,6 +368,7 @@ func create_texture_if_dne(render_scene_buffers: RenderSceneBuffersRD, name: Str
 			RenderingDevice.TEXTURE_SAMPLES_1, size,
 			1, 1, true, false
 		)
+
 
 func _make_image_uniform(image: RID) -> RDUniform:
 	var uniform: RDUniform = RDUniform.new()
@@ -361,6 +384,14 @@ func _make_sampler_uniform(image: RID) -> RDUniform:
 	uniform.add_id(linear_sampler)
 	uniform.add_id(image)
 	return uniform
+
+
+func _update_uniform_buffer(values: Array[PackedByteArray]) -> void:
+	var uniform_buffer_data := PackedByteArray()
+	for value in values:
+		uniform_buffer_data.append_array(value)
+	rd.buffer_update(uniform_buffer, 0, uniform_buffer_size, uniform_buffer_data)
+
 
 
 func _apply_pass(shader_name: StringName, uniforms: Array[RDUniform], push_constant: PackedByteArray, groups: Vector3i):

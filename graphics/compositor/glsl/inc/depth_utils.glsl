@@ -1,8 +1,3 @@
-float linearize_depth(float nonlinear_depth) {
-	float linear_depth = (nonlinear_depth == 0. ? 10000000000. : INV_PROJECTION_MATRIX[2][3] / nonlinear_depth) + INV_PROJECTION_MATRIX[3][3];
-	return linear_depth;
-}
-
 // returns the position in camera space
 vec3 get_world_position(vec2 uniform_uv, float nonlinear_depth) {
 	// in foward+ depth is 0 to 1 while compatability is -1 to 1 (this took 6 hours of debuging to figure out)
