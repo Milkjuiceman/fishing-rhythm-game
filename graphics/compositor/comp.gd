@@ -353,7 +353,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# the maximum radius that this is a circle is 108px
 		# the maximum display-able radius is about 20% cooler
 		
-		_apply_pass(&"fog", [working_sampler, depth_sampler, fog_image], half_push_constant, half_groups)
+		#_apply_pass(&"fog", [working_sampler, depth_sampler, fog_image], half_push_constant, half_groups)
 		
 		_apply_pass(&"apply", [working_image, color_image, fog_sampler], push_constant, groups)
 	

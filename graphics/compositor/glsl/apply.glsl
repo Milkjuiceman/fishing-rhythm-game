@@ -34,14 +34,14 @@ void main() {
 	// if (strength <= 0.) return;
 
 	imageStore(COLOR_IMAGE, uv, //values
-		mix(
+		// mix(
 			mix(
 				img,
 				vec4(0., 0., 0., 1.),
 				sqrt(strength)
-			),
-			mix(FOG_COLOR_A, FOG_COLOR_B, fog.y),
-			fog.x
+			// ),
+			// mix(FOG_COLOR_A, FOG_COLOR_B, fog.y),
+			// fog.x
 		)
 	);
 

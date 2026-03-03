@@ -47,7 +47,7 @@ effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("1_8stmp")
-FOG_DENSITY = 1.07776
+FOG_DENSITY = 0.1
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
 [sub_resource type="Compositor" id="Compositor_mif2d"]
