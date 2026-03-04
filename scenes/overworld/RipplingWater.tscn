@@ -16,12 +16,6 @@ bottom_radius = 10.0
 
 [node name="RipplingWater" type="Area3D"]
 script = ExtResource("1_fnar8")
-lake_min_x = null
-lake_max_x = null
-lake_min_z = null
-lake_max_z = null
-water_height = null
-respawn_delay = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0014648438, 0)

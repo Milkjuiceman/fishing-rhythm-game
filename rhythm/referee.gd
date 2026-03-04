@@ -76,6 +76,10 @@ func _on_catch_available() -> void:
 		enter_prompt.visible = true
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
+	
+	#await get_tree().create_timer(5.0).timeout
+	#_on_catch_unavailable()
+	#emit_signal("reel_in_denied")
 
 
 func _on_catch_unavailable() -> void:
