@@ -116,7 +116,8 @@ func _return_to_previous_scene() -> void:
 	if overworld_music:
 		overworld_music.on_exit_rhythm_level()
 
-	get_tree().change_scene_to_file(return_scene)
+	ScreenTransition.transition_to_scene(return_scene)
+	# get_tree().change_scene_to_file(return_scene)
 
 
 func _get_return_scene() -> String:
