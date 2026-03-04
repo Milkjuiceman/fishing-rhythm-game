@@ -64,11 +64,6 @@ func _process(delta: float) -> void:
 		_catch_fish()
 
 
-func _on_song_finished() -> void:
-	var performance = _calculate_performance()
-	fish_caught.emit(performance)
-
-
 func _on_catch_failed() -> void:
 	print("[Referee] Bar depleted, emitting fish_failed")
 	fish_failed.emit()
@@ -102,5 +97,10 @@ func _catch_fish() -> void:
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
+	var performance = _calculate_performance()
+	fish_caught.emit(performance)
+
+
+func _on_judge_song_finished() -> void:
 	var performance = _calculate_performance()
 	fish_caught.emit(performance)

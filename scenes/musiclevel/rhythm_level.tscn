@@ -4468,6 +4468,7 @@ modulate = Color(1, 0.54901963, 0, 1)
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("9_ttdv7")
 
+[connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]

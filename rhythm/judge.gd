@@ -16,10 +16,8 @@ signal note_judged(note_index: int, frame_state: FrameState)
 # state
 var lowest_judgment_index: int = 0
 
-
 func _ready() -> void:
 	# Wire song_finished to scene return
-	song_finished.connect(_return_to_previous_scene)
 	# Connect catch outcomes to scene exit
 	print("[Judge] referee export value: ", referee)
 	if referee:
@@ -117,7 +115,6 @@ func _return_to_previous_scene() -> void:
 		overworld_music.on_exit_rhythm_level()
 
 	ScreenTransition.transition_to_scene(return_scene)
-	# get_tree().change_scene_to_file(return_scene)
 
 
 func _get_return_scene() -> String:
