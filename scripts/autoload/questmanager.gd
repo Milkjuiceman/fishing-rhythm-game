@@ -1,4 +1,5 @@
 extends Node
+class_name QuestManager
 
 signal quest_started(id: String)
 signal quest_completed(id: String)
@@ -14,7 +15,7 @@ enum QuestState {
 var quests: Dictionary = {} # id -> quest
 
 func _ready():
-	ManageInventory.item_changed.connect(update_state)
+	InventoryManage.item_changed.connect(update_state)
 
 func init_quest(id: String) -> void:
 	if not quests.has(id):

@@ -10,4 +10,5 @@ extends StaticBody3D
 @export var quest_id: String = "tutorial_1"
 
 
-func interact
+func interact() -> void:
+	var i = 1
