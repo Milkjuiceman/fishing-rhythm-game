@@ -13,8 +13,8 @@ var player_in_area: bool = false
 var player_instance: Player = null
 
 func _ready() -> void:
-	if quest_id != "" and QuestManage.has_quest(quest_id):
-		current_quest = QuestManage.get_quest(quest_id)
+	if quest_id != "" and ManageQuests.has_quest(quest_id):
+		current_quest = ManageQuests.get_quest(quest_id)
 	var area = $interact_zone
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
@@ -51,7 +51,7 @@ func give_rewards(player):
 		return
 
 	if current_quest.reward_currency > 0:
-		InventoryManage.add_currency(current_quest.reward_currency)
+		ManageInventory.add_currency(current_quest.reward_currency)
 		print("[NPC Reward] Added currency:", current_quest.reward_currency)
 
 	for reward in current_quest.reward_items:
@@ -59,5 +59,5 @@ func give_rewards(player):
 		var rarity = reward.get("rarity", "")
 		var amount = reward.get("amount", 1)
 		if item_id != "":
-			InventoryManage.add_item(item_id, rarity, amount)
+			ManageInventory.add_item(item_id, rarity, amount)
 			print("[npc reward] addde item:", item_id, "| rarity:", rarity, "| amount:", amount)

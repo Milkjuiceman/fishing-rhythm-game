@@ -20,7 +20,7 @@ config/icon="res://assets/icons/icon.svg"
 PauseMenu="*res://scenes/ui/pause_menu.tscn"
 GameStateManager="*res://scripts/autoload/game_state_manager.gd"
 ManageInventory="*res://scripts/autoload/inventorymanager.gd"
-ManageQuest="*res://scripts/autoload/questmanager.gd"
+ManageQuests="*res://scripts/autoload/questmanager.gd"
 
 [display]
 
