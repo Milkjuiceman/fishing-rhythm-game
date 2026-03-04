@@ -4477,6 +4477,7 @@ script = ExtResource("9_ttdv7")
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Score" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/RatingArea" method="_on_referee_process"]
+[connection signal="reel_in_denied" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_reel_in_denied"]
 
 [editable path="Note_Holder/@MeshInstance3D@192540"]
 [editable path="Note_Holder/@MeshInstance3D@192541"]

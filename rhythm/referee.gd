@@ -17,6 +17,7 @@ signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
 signal fish_caught(performance: float)
 signal fish_failed
+signal reel_in_denied
 
 var catchable := false
 
@@ -77,9 +78,9 @@ func _on_catch_available() -> void:
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
 	
-	#await get_tree().create_timer(5.0).timeout
-	#_on_catch_unavailable()
-	#emit_signal("reel_in_denied")
+	await get_tree().create_timer(5.0).timeout
+	_on_catch_unavailable()
+	emit_signal("reel_in_denied")
 
 
 func _on_catch_unavailable() -> void:
