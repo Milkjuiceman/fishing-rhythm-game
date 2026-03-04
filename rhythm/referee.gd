@@ -81,6 +81,7 @@ func _on_catch_available() -> void:
 	await get_tree().create_timer(5.0).timeout
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
+	judge.scorecard.score += 1000
 
 
 func _on_catch_unavailable() -> void:

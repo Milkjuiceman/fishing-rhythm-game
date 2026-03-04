@@ -19,6 +19,7 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		return
 	_update_from_scorecard(frame_state.scorecard)
 
+
 # Update progress bar based on rhythm game performance
 func _update_from_scorecard(scorecard: Scorecard) -> void:
 	# process hits
@@ -49,7 +50,8 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 	if value < 80 and catchable:
 		catchable = false
 		emit_signal("catch_unavailable")
-		
+
+
 func reset():
 	prev_hit = 0
 	prev_miss = 0
