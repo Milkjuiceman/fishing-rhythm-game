@@ -33,6 +33,10 @@ var current_save_data: PlayerSaveData = PlayerSaveData.new()
 var player_instance: Player = null
 var is_first_spawn: bool = true
 
+var spawnable: bool = false
+var first_quest_started
+signal first_quest_assigned
+
 # Scene transition tracking
 var pending_transition: Dictionary = {
 	"target_scene": "",
@@ -51,6 +55,14 @@ func _ready() -> void:
 	
 	# Load autosave if available
 	load_autosave()
+	
+	if QuestManager:
+		QuestManager.quest_started.connect(_on_quest_started)
+		
+func _on_quest_started(quest_id: String) -> void:
+	print_debug("[GSM] Received quest_started signal for:", quest_id)
+	first_quest_started = true
+	emit_signal("first_quest_assigned") 
 
 # ========================================
 # PLAYER MANAGEMENT
@@ -277,3 +289,8 @@ func reset_inventory() -> void:
 	InventoryManager.items.clear()
 	InventoryManager.inventory_changed.emit(InventoryManager.items)
 	current_save_data.inventory = {}
+
+func assign_first_quest():
+	spawnable = true
+	print_debug("[GameStateManager] first quest assigned")
+	emit_signal("first_quest_assigned")

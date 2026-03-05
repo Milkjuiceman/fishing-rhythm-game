@@ -18,7 +18,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		next_line()
 
-func start_dialogue(new_lines: Array) -> void:
+func show_dialogue(new_lines: Array) -> void:
 	lines = new_lines
 	current_index = 0
 	active = true
@@ -32,9 +32,9 @@ func next_line() -> void:
 	if current_index < lines.size():
 		_show_line()
 	else:
-		end_dialogue()
+		hide_dialogue()
 	
-func end_dialogue() -> void: 
+func hide_dialogue() -> void: 
 	active = false
 	hide()
 	lines.clear()

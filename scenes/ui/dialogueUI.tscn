@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://carq5mcy70d6"]
+[gd_scene load_steps=5 format=3 uid="uid://carq5mcy70d6"]
 
 [ext_resource type="Script" uid="uid://bwffufa60sqiq" path="res://scripts/ui/dialogue_ui.gd" id="1_nb7lm"]
+[ext_resource type="Texture2D" uid="uid://ddcsblhx6pmkw" path="res://assets/ui/blank_dialogue_box.png" id="2_yxtxj"]
+[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="3_yxtxj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxtxj"]
+texture = ExtResource("2_yxtxj")
 
 [node name="dialogue_ui" type="CanvasLayer"]
 script = ExtResource("1_nb7lm")
@@ -11,20 +16,27 @@ anchor_left = 0.47900003
 anchor_top = 0.67700005
 anchor_right = 0.47900003
 anchor_bottom = 0.67700005
-offset_left = -399.80804
-offset_top = -173.69604
-offset_right = 400.19196
-offset_bottom = 174.30396
+offset_left = -401.88336
+offset_top = -158.92944
+offset_right = 398.11664
+offset_bottom = 174.15881
+theme_override_styles/panel = SubResource("StyleBoxTexture_yxtxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49600002
-anchor_top = 0.504
-anchor_right = 0.49600002
-anchor_bottom = 0.504
-offset_left = -396.80002
-offset_top = -175.392
-offset_right = 396.19998
-offset_bottom = 175.608
+anchor_left = 0.52400005
+anchor_top = 0.5
+anchor_right = 0.52400005
+anchor_bottom = 0.5
+offset_left = -260.12473
+offset_top = -80.31074
+offset_right = 228.87527
+offset_bottom = 90.68924
+theme_override_colors/default_color = Color(0.27324143, 0.05124119, 0.06433046, 1)
+theme_override_fonts/normal_font = ExtResource("3_yxtxj")
+theme_override_font_sizes/normal_font_size = 32
+fit_content = true
 scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

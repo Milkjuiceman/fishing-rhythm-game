@@ -3,16 +3,19 @@ extends LevelBase
 ## First level of the game with automatic player spawning and boat setup
 ## Extends LevelBase for streamlined level management
 
-@onready var inventory_ui = preload("res://scenes/ui/inventoryUI.tscn").instantiate()
+@onready var inventoryGUI = preload("res://scenes/ui/inventoryUI.tscn").instantiate()
+@onready var questGUI = preload("res://scenes/ui/questsUI.tscn").instantiate()
 
 func _ready():
 	super._ready()
-	add_child(inventory_ui)
+	add_child(inventoryGUI)
+	add_child(questGUI)
 	
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"):
-		inventory_ui.toggle()
-		
+		inventoryGUI.toggle()
+	if event.is_action_pressed("questlist_toggle"):
+		questGUI.toggle()
 
 # ========================================
 # INITIALIZATION

@@ -4,6 +4,7 @@ class_name NPC
 @export var npc_id: String = "NPC"
 @export var quest_id: String = ""
 @export var dialogueUI: CanvasLayer
+@export var questPopup: CanvasLayer
 
 @onready var interaction_area: Area3D = $Area3D
 @onready var prompt_ui: Sprite3D = $Prompt
@@ -11,19 +12,25 @@ class_name NPC
 
 var player_in_range: bool = false
 
-signal requested(quest_id: String)
-
 func _ready():
 	interaction_area.body_entered.connect(_on_body_entered)
 	interaction_area.body_exited.connect(_on_body_exited)
-	indicator.visible = true
+	QuestManager.quest_started.connect(_on_quest_assigned)
+	QuestManager.active_quests_changed.connect(_update_indicator)
+
 	prompt_ui.visible = false
+	indicator.visible = true
 	
 func _process(delta: float) -> void:
-	if dialogueUI.active: 
+	if questPopup.visible:
+		_update_indicator()
 		return
 	if player_in_range and Input.is_action_just_pressed("ui_accept"):
-		_start_dialogue()
+		prompt_ui.visible = false
+		if DialogueManager.active:
+			DialogueManager.next_line(npc_id)
+		else:
+			DialogueManager.start_dialogue(npc_id)
 
 func _on_body_entered(body: Node3D) -> void:
 	if not body is Boat:
@@ -33,7 +40,6 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	player_in_range = true
 	prompt_ui.visible = true
-	indicator.visible = false
 	
 func _on_body_exited(body: Node3D) -> void:
 	if not body is Boat:
@@ -43,13 +49,16 @@ func _on_body_exited(body: Node3D) -> void:
 		return
 	player_in_range = false
 	prompt_ui.visible = false
-	indicator.visible = true
-	
-func _start_dialogue():
-	var lines = DialogueManager.get_dialogue(npc_id, "")
-	if lines.size() > 0:
-		DialogueManager.start_dialogue(lines)
-		request_quest()
 
-func request_quest():
-	return
+func _on_quest_assigned(qid) -> void:
+	if qid != quest_id:
+		return
+	var quest = QuestManager.get_quest(qid)
+	if quest:
+		print_debug("[NPC]: assigned quest: ", quest.title)
+		if questPopup != null:
+			questPopup.show_quest(quest.title, quest.description)
+
+func _update_indicator(active_quests = null):
+	if indicator.visible == true:
+		indicator.visible = false
