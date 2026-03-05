@@ -1,13 +1,15 @@
 extends Resource
 class_name Quest
 
-@export var npc_id: String
+@export var quest_id: String
+@export var title: String
+@export var description: String
+@export var completed: bool = false
+@export var reward_items: Dictionary = {}
 
-var state = ManageQuests.QuestState.NOT_STARTED
+var state = QuestManager.QuestState.NOT_STARTED
 var requirements: Array = []
-var rewards: Array = []
 @export var reward_currency: int = 0
-@export var reward_items: Array[Dictionary] = []
 
 func check_requirements() -> bool:
 	for requirement in requirements:
@@ -16,6 +18,6 @@ func check_requirements() -> bool:
 	return true
 
 func apply_rewards() -> void:
-	for reward in rewards:
+	for reward in reward_items:
 		reward.apply()
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=40 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/environmentObjects/treeConeOrange.tscn" id="23_38p3g"]
 [ext_resource type="PackedScene" uid="uid://bx4s0du0mddf1" path="res://scenes/overworld/environmentObjects/rocks/rockWall.tscn" id="25_owl05"]
 [ext_resource type="PackedScene" uid="uid://bl2v6k16pm4qj" path="res://scenes/ui/inventoryUI.tscn" id="27_1kwnl"]
+[ext_resource type="PackedScene" uid="uid://carq5mcy70d6" path="res://scenes/ui/dialogueUI.tscn" id="30_c4giv"]
 
 [sub_resource type="Environment" id="Environment_gyexu"]
 background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
@@ -177,9 +178,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528.29974, 5, 577.40405)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 
-[node name="Dock" parent="." instance=ExtResource("17_ywjkn")]
+[node name="Dock" parent="." node_paths=PackedStringArray("dialogueUI") instance=ExtResource("17_ywjkn")]
 transform = Transform3D(-0.5665696, 0, -7.3632345, 0, 7.385, 0, 7.3632345, 0, -0.5665696, 276.20355, 7.8072414, 399.3725)
 script = ExtResource("18_c03w6")
+npc_id = "dock_npc"
+dialogueUI = NodePath("../dialogue_ui")
 
 [node name="Area3D" type="Area3D" parent="Dock"]
 
@@ -794,3 +797,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.0782, 8.4203825, 798.4181
 transform = Transform3D(0.9788674, 0, -0.20449604, 0, 1, 0, 0.20449604, 0, 0.9788674, 690.7935, 2.6940765, 265.66217)
 
 [node name="inventory_ui" parent="." instance=ExtResource("27_1kwnl")]
+visible = false
+
+[node name="dialogue_ui" parent="." instance=ExtResource("30_c4giv")]

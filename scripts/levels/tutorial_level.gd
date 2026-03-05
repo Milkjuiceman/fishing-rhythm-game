@@ -12,6 +12,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"):
 		inventory_ui.toggle()
+		
 
 # ========================================
 # INITIALIZATION
