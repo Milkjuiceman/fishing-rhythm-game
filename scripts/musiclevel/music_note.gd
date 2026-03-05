@@ -1,6 +1,6 @@
 extends Label3D
 
-func _process(delta):
+func _process(_delta):
 	var cam = get_viewport().get_camera_3d()
 	if cam:
 		var dir = (cam.global_transform.origin - global_transform.origin)

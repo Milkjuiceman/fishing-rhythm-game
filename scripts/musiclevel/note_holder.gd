@@ -5,6 +5,7 @@ extends Node3D
 @export var place_notes: PackedScene;
 @export var chart: Chart;
 @export var referee: Referee;
+@export var judge: RhythmJudge;
 @export var note_speed: float;
 
 @export_tool_button("Place notes") var place_notes_action = align_notes;
@@ -19,6 +20,7 @@ func align_notes() -> void:
 	for timing in chart.note_timings:
 		var note: PlaceNotes;
 		note = place_notes.instantiate();
+		referee.connect("process", Callable(note, "_on_referee_process"))
 		add_child(note);
 		note.position.z = timing * note_speed;
 		var lane = chart.note_column[i]

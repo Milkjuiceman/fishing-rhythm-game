@@ -1,5 +1,4 @@
-class_name Referee
-extends Node
+class_name Referee extends Node
 
 # nodes and exports
 @export var chart: Chart
