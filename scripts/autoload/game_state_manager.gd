@@ -139,6 +139,8 @@ func save_player_state(player: Player) -> void:
 		current_save_data.current_boat_type = player.current_vehicle.scene_file_path
 	current_save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
 	current_save_data.last_saved = Time.get_datetime_string_from_system()
+	
+	current_save_data.inventory = InventoryManager.items.duplicate(true)
 
 	# do NOT replace current_save_data, this keeps the same Inventory instance
 	player_state_changed.emit(current_save_data)
@@ -185,7 +187,7 @@ func save_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 	
 	# Log result
 	if error == OK:
-		print("Game saved successfully to: %s" % save_path)
+		print_debug("Game saved successfully to: %s" % save_path)
 	else:
 		push_error("Failed to save game: %s" % error)
 	
@@ -208,7 +210,9 @@ func load_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 	
 	# Apply loaded data to current state
 	current_save_data = loaded_data
-	print("Game loaded successfully from: %s" % save_path)
+	print_debug("Game loaded successfully from: %s" % save_path)
+	
+	InventoryManager.load_from_save(current_save_data.inventory)
 	
 	return OK
 
@@ -241,8 +245,15 @@ func get_save_files() -> Array[String]:
 			if not dir.current_is_dir() and file_name.ends_with(".tres"):
 				saves.append(SAVE_DIR + file_name)
 			file_name = dir.get_next()
-	
 	return saves
+	
+func start_new_game() -> void: 
+	if FileAccess.file_exists(AUTO_SAVE_FILE):
+		delete_save(AUTO_SAVE_FILE)
+		print_debug("[gamestatemanager]: deleted old autosave for fresh start")
+		current_save_data = PlayerSaveData.new()
+		is_first_spawn = true
+		reset_inventory()
 
 # ========================================
 # HELPER FUNCTIONS
@@ -261,3 +272,8 @@ func set_initial_spawn(position: Vector3, rotation_y: float) -> void:
 # Check if this is the first time spawning player
 func is_first_time_spawn() -> bool:
 	return is_first_spawn
+	
+func reset_inventory() -> void:
+	InventoryManager.items.clear()
+	InventoryManager.inventory_changed.emit(InventoryManager.items)
+	current_save_data.inventory = {}

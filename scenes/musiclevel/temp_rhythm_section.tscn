@@ -318,8 +318,6 @@ value = 10.0
 allow_lesser = true
 script = ExtResource("11_4gx6w")
 
-[connection signal="play_chart_now" from="AudioStreamPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
-[connection signal="play_chart_now" from="AudioStreamPlayer/Referee" to="AudioStreamPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="AudioStreamPlayer/Referee" to="Camera3D" method="_on_referee_process"]
 [connection signal="process" from="AudioStreamPlayer/Referee" to="Hits" method="_on_referee_process"]
 [connection signal="process" from="AudioStreamPlayer/Referee" to="ProgressBar" method="_on_referee_process"]

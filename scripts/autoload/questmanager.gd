@@ -19,4 +19,4 @@ func _ready():
 	pass
 	
 func init_quests():
-	var dir = DirAccess.open()
+	pass

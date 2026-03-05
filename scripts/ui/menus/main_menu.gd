@@ -48,9 +48,9 @@ func _update_load_button_state():
 		load_button.disabled = not save_exists
 		
 		if save_exists:
-			print("[MainMenu] Save file found - Load Game enabled")
+			print_debug("[MainMenu] Save file found - Load Game enabled")
 		else:
-			print("[MainMenu] No save file - Load Game disabled")
+			print_debug("[MainMenu] No save file - Load Game disabled")
 
 # ========================================
 # BUTTON HANDLERS
@@ -58,52 +58,44 @@ func _update_load_button_state():
 
 # Start a fresh playthrough (resets all progress)
 func _on_start_button_pressed():
-	print("[MainMenu] Start Game pressed - Starting NEW playthrough")
-	
-	# Reset GameStateManager to default state
-	GameStateManager.current_save_data = PlayerSaveData.new()
-	GameStateManager.is_first_spawn = true
-	
-	# Delete existing save file to ensure clean slate
-	if FileAccess.file_exists("user://saves/autosave.tres"):
-		DirAccess.remove_absolute("user://saves/autosave.tres")
-		print("[MainMenu] Deleted old save file for fresh start")
+	print_debug("[MainMenu] Start Game pressed - Starting NEW playthrough")
+	GameStateManager.start_new_game()
 	
 	# Begin new game at starting scene
 	get_tree().change_scene_to_file(GAME_SCENE)
 
 # Load existing save file and continue playthrough
 func _on_load_button_pressed():
-	print("[MainMenu] Load Game pressed - Continuing from save")
+	print_debug("[MainMenu] Load Game pressed - Continuing from save")
 	
 	# Attempt to load save file
 	var result = GameStateManager.load_game()
 	
 	if result == OK:
-		print("[MainMenu] Save loaded successfully!")
+		print_debug("[MainMenu] Save loaded successfully!")
 		
 		# Retrieve saved scene path from save data
 		var saved_scene = GameStateManager.current_save_data.current_scene_path
 		
 		# Load saved scene if it exists
 		if saved_scene != "" and ResourceLoader.exists(saved_scene):
-			print("[MainMenu] Loading saved scene: ", saved_scene)
+			print_debug("[MainMenu] Loading saved scene: ", saved_scene)
 			get_tree().change_scene_to_file(saved_scene)
 		else:
 			# Fallback to starting scene if saved scene is missing
-			print("[MainMenu] Saved scene not found, starting at beginning")
+			print_debug("[MainMenu] Saved scene not found, starting at beginning")
 			get_tree().change_scene_to_file(GAME_SCENE)
 	else:
 		# Handle load failure by starting new game
-		print("[MainMenu] Failed to load save file!")
+		print_debug("[MainMenu] Failed to load save file!")
 		_on_start_button_pressed()
 
 # Open options menu (placeholder for future implementation)
 func _on_options_button_pressed():
-	print("[MainMenu] Options pressed")
+	print_debug("[MainMenu] Options pressed")
 	# TODO: Open options menu scene or panel
 
 # Exit the game
 func _on_quit_button_pressed():
-	print("[MainMenu] Quit pressed")
+	print_debug("[MainMenu] Quit pressed")
 	get_tree().quit()

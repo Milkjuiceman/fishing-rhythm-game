@@ -2,7 +2,6 @@ extends Resource
 class_name Quest
 
 @export var npc_id: String
-var npc = 
 
 var state = ManageQuests.QuestState.NOT_STARTED
 var requirements: Array = []
