@@ -115,16 +115,13 @@ func _catch_fish() -> void:
 	if rarity != "":
 		InventoryManager.add_item("fish", rarity, 1)
 		# print_debug("granted 1 %s fish, inventory now %s" % [rarity, InventoryManager.items])
-	fish_caught.emit()
+	fish_caught.emit(performance)
 	
-func _on_fishing_finished() -> void:
-	var performance = _calculate_performance()
-	var rarity = _performance_to_rarity(performance)
+func _on_fishing_finished(_performance: float) -> void:
 	for qid in QuestManager.get_active_quests().keys():
 		var quest = QuestManager.get_quest(qid)
 		# Example matching by quest description; can extend to rarity-specific quests
 		if quest.desc == "catch a fish":
 			QuestManager.update_progress(qid, 1)
-		elif quest.desc == "catch a rare fish" and rarity in ["rare", "legendary"]:
-			QuestManager.update_progress(qid, 1)
+	
 	

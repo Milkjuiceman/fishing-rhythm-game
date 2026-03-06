@@ -8,28 +8,23 @@ const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.ts
 
 var _countdown_instance: RhythmCountdown = null
 
-
 func _ready() -> void:
-  _show_countdown()
-  
- 
+	_show_countdown()
+	
 func _show_countdown() -> void:
 	# Create countdown instance
 	_countdown_instance = COUNTDOWN_SCENE.instantiate()
 	add_child(_countdown_instance)
-	
 	# Connect to countdown finished signal
 	_countdown_instance.countdown_finished.connect(_on_countdown_finished)
-	
 	# Start the countdown
 	_countdown_instance.start_countdown()
-
-
+	
 func _on_countdown_finished() -> void:
 	# Countdown is done, start the rhythm gameplay
 	print("[RhythmLevel] Countdown finished, starting chart!")
 	referee.play_chart_now.emit(referee.chart)
-
+	
 	# connect signals for when fish is caught or catch fails
 	referee.fish_caught.connect(_on_fishing_finished)
 	referee.fish_failed.connect(_on_fishing_failed)
