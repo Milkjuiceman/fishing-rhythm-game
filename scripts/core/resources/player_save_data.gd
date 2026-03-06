@@ -40,7 +40,7 @@ class_name PlayerSaveData
 @export var save_version: int = 1
 
 # inventory data
-@export var inventory: Inventory = Inventory.new()
+@export var inventory: Dictionary = {}
 
 # ========================================
 # FUTURE EXPANSION (Commented Examples)

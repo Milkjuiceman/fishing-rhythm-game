@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx4s0du0mddf1"]
 
-[ext_resource type="PackedScene" uid="uid://cp0kyqm3xjybx" path="res://scenes/overworld/enviormentObjects/rocks/rockBig.tscn" id="1_vccvm"]
+[ext_resource type="PackedScene" uid="uid://cp0kyqm3xjybx" path="res://scenes/overworld/environmentObjects/rocks/rockBig.tscn" id="1_vccvm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h24pw"]
 size = Vector3(36.302216, 11.916504, 4.514744)

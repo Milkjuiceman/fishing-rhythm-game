@@ -30,13 +30,13 @@ func show_rating(text: String, side: int):
 	rating.position = Vector2(rand_x, rand_y)
 	
 	if text == "Perfect":
-		rating.modulate = Color(0, 1, 0)
+		rating.modulate = Color(0.569, 0.859, 0.439, 1.0)
 	elif text == "Good":
-		rating.modulate = Color(0.0, 0.0, 2.107, 1.0)
+		rating.modulate = Color(0.439, 0.71, 0.859, 1.0)
 	elif text == "Bad":
-		rating.modulate = Color(0.572, 0.0, 0.573, 1.0)
+		rating.modulate = Color(0.706, 0.439, 0.859, 1.0)
 	elif text == "Miss":
-		rating.modulate = Color(1.0, 0.0, 0.0, 1.0)
+		rating.modulate = Color(0.859, 0.439, 0.459, 1.0)
 	
 	animate_and_destroy(rating)
 
