@@ -17,6 +17,7 @@ var shop_scene = preload("res://scenes/ui/boatUpgradeStore.tscn")
 var popup = null  # Current popup instance
 var shop = null  # Current shop instance
 var player_in_area = false  # Track if player is in shop range
+var _current_boat: Boat = null  # Reference to boat for SFX control
 
 # ========================================
 # INITIALIZATION
@@ -35,6 +36,7 @@ func _ready():
 func _on_body_entered(body):
 	# Only respond to boat collisions
 	if body is Boat:
+		_current_boat = body
 		# Display interaction popup
 		popup = popup_scene.instantiate()
 		get_tree().root.add_child(popup)
@@ -44,6 +46,7 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	# Only respond to boat collisions
 	if body is Boat:
+		_current_boat = null
 		# Remove popup if it exists
 		if popup != null:
 			popup.queue_free()
@@ -66,6 +69,10 @@ func _process(_delta):
 # Open the boat upgrade shop UI
 func open_shop():
 	print("Opening shop!")
+	
+	# Stop boat engine sounds when entering shop
+	if _current_boat:
+		_current_boat.stop_engine_sounds()
 	
 	# Hide interaction popup
 	if popup != null:
@@ -96,6 +103,19 @@ func _on_shop_closed():
 	if shop != null:
 		shop.queue_free()
 		shop = null
+	
+	# Start boat engine sounds when exiting shop
+	if _current_boat:
+		_current_boat.start_engine_sounds()
+	# Also check if boat changed (from shop purchase)
+	elif player_in_area:
+		# Try to find the new boat
+		var bodies = get_overlapping_bodies()
+		for body in bodies:
+			if body is Boat:
+				_current_boat = body
+				_current_boat.start_engine_sounds()
+				break
 	
 	# Restore interaction prompt if player still in area
 	if player_in_area and popup == null:

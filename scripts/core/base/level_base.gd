@@ -32,6 +32,7 @@ func _ready() -> void:
 	_setup_level()      # Pre-spawn setup
 	_spawn_player()     # Spawn and configure player
 	_post_spawn_setup() # Post-spawn setup
+	_start_boat_audio() # Start boat sounds after everything is ready
 
 # ========================================
 # LIFECYCLE HOOKS (Override in Child Classes)
@@ -82,6 +83,33 @@ func _setup_initial_spawn() -> void:
 		)
 	else:
 		push_warning("Initial spawn point '%s' not found!" % initial_spawn_point_name)
+
+# ========================================
+# AUDIO MANAGEMENT
+# ========================================
+
+# Start boat engine sounds after player is fully spawned
+func _start_boat_audio() -> void:
+	# Wait a frame to ensure everything is initialized
+	await get_tree().process_frame
+	
+	if not player:
+		return
+	
+	# Get the boat from the player
+	var boat = player.current_vehicle
+	if boat and boat is Boat and boat.has_method("start_engine_sounds"):
+		# Check if boat SFX exists and engine isn't already running
+		var boat_sfx = boat.get_node_or_null("BoatSFX")
+		if boat_sfx and boat_sfx.has_method("is_engine_running"):
+			if not boat_sfx.is_engine_running():
+				boat.start_engine_sounds()
+		elif boat_sfx:
+			# BoatSFX exists but might auto-start, so don't double-start
+			pass
+		else:
+			# No BoatSFX node, nothing to start
+			pass
 
 # ========================================
 # LEVEL EXIT

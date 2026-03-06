@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc074d7d4wf6t"]
+
+[ext_resource type="PackedScene" uid="uid://dg0wost80ics4" path="res://assets/models/gray_factory.glb" id="1_trp44"]
+
+[node name="Factory1" type="Node3D"]
+
+[node name="gray_factory" parent="." instance=ExtResource("1_trp44")]
+transform = Transform3D(45.66, 0, 0, 0, 45.66, 0, 0, 0, 45.66, -0.3357321, 0, -0.64592385)

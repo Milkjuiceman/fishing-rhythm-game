@@ -20,4 +20,4 @@ func _on_referee_process(frame_state: FrameState) -> void:
 		multiplier = 1
 		new_scale = Vector2(2, 2)
 	scale = new_scale
-	text = str("X", multiplier);
+	text = str("X", multiplier)

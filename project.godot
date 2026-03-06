@@ -22,6 +22,8 @@ GameStateManager="*res://scripts/autoload/game_state_manager.gd"
 InventoryManager="*res://scripts/autoload/inventorymanager.gd"
 QuestManager="*res://scripts/autoload/questmanager.gd"
 DialogueManager="*res://scripts/autoload/dialoguemanager.gd"
+OverworldMusic="*res://scenes/audio/overworld_music.tscn"
+ScreenTransition="*res://scenes/ui/transitions/screen_transition.tscn"
 
 [display]
 

@@ -1,10 +1,35 @@
 extends Node3D
+## Rhythm Level Controller
+## Manages the rhythm minigame sequence including countdown and gameplay start
 
-@export var referee: Referee;
+const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.tscn")
 
-# Called when the node enters the scene tree for the first time.
+@export var referee: Referee
+
+var _countdown_instance: RhythmCountdown = null
+
+
 func _ready() -> void:
+  _show_countdown()
+  
+ 
+func _show_countdown() -> void:
+	# Create countdown instance
+	_countdown_instance = COUNTDOWN_SCENE.instantiate()
+	add_child(_countdown_instance)
+	
+	# Connect to countdown finished signal
+	_countdown_instance.countdown_finished.connect(_on_countdown_finished)
+	
+	# Start the countdown
+	_countdown_instance.start_countdown()
+
+
+func _on_countdown_finished() -> void:
+	# Countdown is done, start the rhythm gameplay
+	print("[RhythmLevel] Countdown finished, starting chart!")
 	referee.play_chart_now.emit(referee.chart)
+
 	# connect signals for when fish is caught or catch fails
 	referee.fish_caught.connect(_on_fishing_finished)
 	referee.fish_failed.connect(_on_fishing_failed)
@@ -36,13 +61,5 @@ func _return_to_overworld() -> void:
 	set_process(false)
 	referee.set_process(false)
 	call_deferred("_safety_check")
-	
-func _safety_check() -> void:
-	var return_scene: String
-	var gsm = get_node("/root/GameStateManager")
-	if gsm.pending_transition.from_scene != "":
-		return_scene = gsm.pending_transition.from_scene
-	else: 
-		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
-	get_tree().change_scene_to_file(return_scene)
-	
+	# Don't start immediately - show countdown first
+	_show_countdown()

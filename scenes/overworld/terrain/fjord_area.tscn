@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1gbvvjs6x8n1"]
+
+[ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_7hpc0"]
+[ext_resource type="Resource" uid="uid://c70j7120nb423" path="res://terraindata/area1_terrain_data/data.hterrain" id="2_rvple"]
+[ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_kdwto"]
+[ext_resource type="PackedScene" uid="uid://dc074d7d4wf6t" path="res://scenes/overworld/enviormentObjects/buildings/Factory1.tscn" id="5_cd0kg"]
+[ext_resource type="PackedScene" uid="uid://bpcosx0shws1q" path="res://scenes/overworld/boats/boatBig.tscn" id="6_gir7d"]
+[ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_id4fg"]
+
+[sub_resource type="Resource" id="Resource_et6te"]
+script = ExtResource("3_kdwto")
+mode = 0
+textures = [[null, null], [null, null]]
+
+[sub_resource type="Shader" id="Shader_fhkaf"]
+code = "shader_type spatial;
+uniform sampler3D noise;
+
+uniform vec3 color : source_color = vec3(0.1, 0.2, 0.3);
+uniform float uv_scale = 3.;
+
+void fragment() {
+	float sample_loc = texture(noise, vec3(UV * uv_scale * 0.353446745656, 0.456456) + TIME*vec3(0.01456, 0.02456456, 0.05456456)).r * 0.005;
+	float foo = texture(noise, vec3((UV + vec2(0.345345, sample_loc * 0.2345345 + 0.928374)) * uv_scale, 0.028934+sample_loc) + TIME*vec3(0.0456456, 0.1456456, 0.34572)).r;
+	foo += texture(noise, vec3((UV + vec2(sample_loc * 0.2345345 + 0.187236, 0.345345)) * 3. * uv_scale, 0.1345345) + TIME*vec3(0.05263547, 0.0342, 0.2456456)).r;
+	foo += texture(noise, vec3((UV + vec2(0.234534, sample_loc + 0.902734)) * 7.345345 * uv_scale, 0.2345345+sample_loc) + TIME*vec3(0.145789, 0.05235, 0.24572)).r;
+	foo += texture(noise, vec3((UV + vec2(sample_loc + 0.1235675674, 0.345345)) * 11.345345 * uv_scale, 0.3456456) + TIME*vec3(0.134, 0.278, 0.1834)).r;
+	ALBEDO = foo > 1.4 ? color : vec3(1.);
+}
+
+void light() {
+    float lit = max(dot(NORMAL, LIGHT), 0.) * ATTENUATION;
+    lit = lit > 0. ? (lit > 0.75 ? 1. : 0.5) : 0.;
+    DIFFUSE_LIGHT += LIGHT_COLOR * lit / PI;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
+render_priority = 0
+shader = SubResource("Shader_fhkaf")
+shader_parameter/noise = ExtResource("8_id4fg")
+shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
+shader_parameter/uv_scale = 12.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_stgkv"]
+material = SubResource("ShaderMaterial_xos6f")
+size = Vector3(250, 10, 250)
+
+[sub_resource type="Environment" id="Environment_7hpc0"]
+background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
+background_energy_multiplier = 2.13
+ambient_light_source = 2
+ambient_light_color = Color(0.89059, 0.89059, 0.8905901, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.84
+tonemap_white = 0.52
+fog_mode = 1
+fog_light_color = Color(0.4029321, 0.43353698, 0.48598647, 1)
+fog_light_energy = 0.68
+fog_sun_scatter = 0.11
+fog_density = 0.106
+
+[node name="Node3D" type="Node3D"]
+
+[node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, 0, 10, 0)
+script = ExtResource("1_7hpc0")
+_terrain_data = ExtResource("2_rvple")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_et6te")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://0sijhong0njw"
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.935, 0, 0, 0, 1.65, 0, 0, 0, 6.681, 877.70654, 7, 772.1234)
+mesh = SubResource("BoxMesh_stgkv")
+skeleton = NodePath("../Tutorial_HTerrain")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7hpc0")
+
+[node name="Sun?" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.11162496, 0.5119581, -0.85172695, -0.18144372, 0.8321761, 0.5239859, 0.9770456, 0.21303041, -3.7230166e-08, 580.6832, 194.86136, 373.576)
+light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
+directional_shadow_split_1 = 0.064
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.4
+directional_shadow_max_distance = 150.0
+
+[node name="Boat" parent="." instance=ExtResource("6_gir7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1443.7917, 15.00045, 1413.3704)
+
+[node name="Buildings" type="Node3D" parent="."]
+transform = Transform3D(0.20278734, 0, 0.9792228, 0, 1, 0, -0.9792228, 0, 0.20278734, 337.68497, 69.906944, 1117.3365)
+
+[node name="Factory1" parent="Buildings" instance=ExtResource("5_cd0kg")]
+transform = Transform3D(0.62796307, 0, -0.77824306, 0, 1, 0, 0.77824306, 0, 0.62796307, 990.91956, -1.3486481, 481.77032)
+
+[node name="Factory2" parent="Buildings" instance=ExtResource("5_cd0kg")]
+transform = Transform3D(0.8562671, 0, -0.5165333, 0, 1, 0, 0.5165333, 0, 0.8562671, 868.0133, -1.2618027, -221.64551)
+
+[node name="Factory3" parent="Buildings" instance=ExtResource("5_cd0kg")]

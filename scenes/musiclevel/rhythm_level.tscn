@@ -2611,9 +2611,10 @@ directional_shadow_max_distance = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wi50x")
 
-[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar")]
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
 script = ExtResource("2_nkh30")
 progress_bar = NodePath("../Camera3D/HUD/ProgressBar")
+referee = NodePath("../MusicPlayer/Referee")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_7ace8")

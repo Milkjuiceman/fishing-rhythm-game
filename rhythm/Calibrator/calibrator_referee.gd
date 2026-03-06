@@ -14,6 +14,21 @@ signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
 
 
+func _ready() -> void:
+	# Add to Rhythm group so PauseMenu can find this
+	add_to_group("Rhythm")
+	
+	# Load offsets from PauseMenu settings if available
+	var pause_menu = get_node_or_null("/root/PauseMenu")
+	if pause_menu:
+		var saved_audio_offset = pause_menu.get_setting("audio_offset")
+		var saved_input_offset = pause_menu.get_setting("input_offset")
+		if saved_audio_offset != null:
+			audio_offset = saved_audio_offset
+		if saved_input_offset != null:
+			input_offset = saved_input_offset
+
+
 func _process(delta: float) -> void:
 	var frame_state := FrameState.new()
 	frame_state.note_speed = note_speed
