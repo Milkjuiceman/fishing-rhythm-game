@@ -17,18 +17,31 @@ func _ready():
 	interaction_area.body_exited.connect(_on_body_exited)
 	QuestManager.quest_started.connect(_on_quest_assigned)
 	QuestManager.active_quests_changed.connect(_update_indicator)
-
 	prompt_ui.visible = false
 	indicator.visible = true
 	
 func _process(delta: float) -> void:
+	if not player_in_range:
+		prompt_ui.visible = false
+		return
 	if questPopup.visible:
 		_update_indicator()
 		return
-	if player_in_range and Input.is_action_just_pressed("ui_accept"):
+	if not DialogueManager.active:
+		prompt_ui.visible = DialogueManager.has_new_lines(npc_id)
+		DialogueManager.dialogueUI.hide_interaction_prompt()
+	else:
 		prompt_ui.visible = false
+		indicator.visible = false
+	if Input.is_action_just_pressed("ui_accept"):
+		get_viewport().set_input_as_handled()
 		if DialogueManager.active:
-			DialogueManager.next_line(npc_id)
+			# finish typing if still typing
+			if DialogueManager.dialogueUI.typing:
+				DialogueManager.dialogueUI.finish_line()
+			# otherwise advance dialogue
+			else:
+				DialogueManager.next_line(npc_id)
 		else:
 			DialogueManager.start_dialogue(npc_id)
 
@@ -39,7 +52,9 @@ func _on_body_entered(body: Node3D) -> void:
 	if not player:
 		return
 	player_in_range = true
-	prompt_ui.visible = true
+	if not DialogueManager.active and DialogueManager.has_new_lines(npc_id):
+		prompt_ui.visible = true
+		DialogueManager.dialogueUI.show_interaction_prompt()
 	
 func _on_body_exited(body: Node3D) -> void:
 	if not body is Boat:
@@ -49,6 +64,7 @@ func _on_body_exited(body: Node3D) -> void:
 		return
 	player_in_range = false
 	prompt_ui.visible = false
+	DialogueManager.dialogueUI.hide_interaction_prompt()
 
 func _on_quest_assigned(qid) -> void:
 	if qid != quest_id:
@@ -59,6 +75,6 @@ func _on_quest_assigned(qid) -> void:
 		if questPopup != null:
 			questPopup.show_quest(quest.title, quest.description)
 
-func _update_indicator(active_quests = null):
+func _update_indicator(_active_quests = null):
 	if indicator.visible == true:
 		indicator.visible = false

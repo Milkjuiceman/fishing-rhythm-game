@@ -15,7 +15,7 @@ var quests := {
 		"title": "your first catch",
 		"description": "hook a fish in the lake and reel it in!",
 		"desc": "catch a fish",
-		"from": "dock_npc",
+		"turnitin": "go back to the dock\nand show off your catch!",
 		"goal": 1
 	}
 }
@@ -71,7 +71,6 @@ func get_quest(quest_id: String):
 		"title": quest["title"],
 		"description": quest["description"],
 		"desc": quest["desc"],
-		"from": quest["from"],
 		"goal": quest["goal"],
 		"progress": state["progress"],
 		"state": state["state"]
@@ -89,13 +88,27 @@ func get_active_quests() -> Dictionary:
 	for qid in quests.keys():
 		var quest = quests[qid]
 		var state = quest_states[qid]
-		if state["state"] == states.ACTIVE:
+		if state["state"] in [states.ACTIVE, states.COMPLETED]:
+			var ui_description = quest["desc"]
+			if state["state"] == states.COMPLETED and quest.has("turnitin"):
+				ui_description = " - %s (%d/%d)\n> %s" % [quest["desc"], state["progress"], quest["goal"], quest["turnitin"]]
+			else:
+				ui_description = "> %s (%d/%d)" % [quest["desc"], state["progress"], quest["goal"]]
 			result[qid] = {
 				"title": quest["title"],
 				"description": quest["description"],
-				"desc": quest["desc"],
-				"from": quest["from"],
+				"desc": ui_description,
 				"progress": state["progress"],
 				"goal": quest["goal"]
 			}
 	return result
+
+
+func turn_in_quest(quest_id: String):
+	if not quest_states.has(quest_id):
+		return
+	var state = quest_states[quest_id]
+	if state["state"] == states.COMPLETED:
+		state["state"] = states.TURNEDIN
+	print_debug("Quest turned in: ", quests[quest_id]["title"])
+	emit_signal("active_quests_changed", get_active_quests())

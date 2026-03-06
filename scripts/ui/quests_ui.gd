@@ -22,5 +22,5 @@ func _refresh(active_quests: Dictionary):
 	for quest_id in active_quests.keys():
 		var quest_info = active_quests[quest_id]
 		var label = Label.new()
-		label.text = "%s:\n ~ %s (%d/%d)" % [quest_info.title, quest_info.desc, quest_info.progress, quest_info.goal]
+		label.text = "%s:\n%s" % [quest_info.title, quest_info.desc]
 		quest_list_container.add_child(label)

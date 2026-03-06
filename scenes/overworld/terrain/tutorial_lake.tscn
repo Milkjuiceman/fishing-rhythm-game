@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=44 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -29,8 +29,10 @@
 [ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/environmentObjects/treeConeOrange.tscn" id="23_38p3g"]
 [ext_resource type="PackedScene" uid="uid://bx4s0du0mddf1" path="res://scenes/overworld/environmentObjects/rocks/rockWall.tscn" id="25_owl05"]
 [ext_resource type="PackedScene" uid="uid://bl2v6k16pm4qj" path="res://scenes/ui/inventoryUI.tscn" id="27_1kwnl"]
+[ext_resource type="PackedScene" uid="uid://b0djdglch8rvh" path="res://scenes/ui/tutorialUI.tscn" id="30_5aefc"]
 [ext_resource type="PackedScene" uid="uid://carq5mcy70d6" path="res://scenes/ui/dialogueUI.tscn" id="30_c4giv"]
 [ext_resource type="PackedScene" uid="uid://dybxaunemw6te" path="res://scenes/ui/questsUI.tscn" id="31_klb0h"]
+[ext_resource type="Script" uid="uid://g2m52b80n6cd" path="res://scripts/ui/tutorial_ui.gd" id="31_pnbm0"]
 [ext_resource type="PackedScene" uid="uid://w7ptyjv51a2m" path="res://scenes/ui/assignmentPopupUI.tscn" id="32_5aefc"]
 
 [sub_resource type="Environment" id="Environment_gyexu"]
@@ -194,13 +196,13 @@ transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
 shape = SubResource("SphereShape3D_c03w6")
 
 [node name="Indicator" type="Sprite3D" parent="Dock"]
-transform = Transform3D(0.21800001, 0, -1.8626451e-09, 0, 0.21800001, 0, 1.8626451e-09, 0, 0.21800001, 0.195, 0.32, 0.063)
+transform = Transform3D(0.21800001, 0, -1.8626451e-09, 0, 0.21800001, 0, 1.8626451e-09, 0, 0.21800001, 0.195, 0.67114735, 0.063)
 billboard = 2
 render_priority = 1
 texture = ExtResource("19_6e2sr")
 
 [node name="Prompt" type="Sprite3D" parent="Dock"]
-transform = Transform3D(0.118, 0, -2.0164417e-09, 0, 0.118, 0, 2.0164417e-09, 0, 0.118, 0.195, -0.131, 0.793)
+transform = Transform3D(0.118, 0, -2.0164417e-09, 0, 0.118, 0, 2.0164417e-09, 0, 0.118, 0.195, -0.16109943, 1.0200427)
 pixel_size = 0.012
 billboard = 2
 render_priority = 1
@@ -800,9 +802,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.0782, 8.4203825, 798.4181
 transform = Transform3D(0.9788674, 0, -0.20449604, 0, 1, 0, 0.20449604, 0, 0.9788674, 690.7935, 2.6940765, 265.66217)
 
 [node name="inventory_ui" parent="." instance=ExtResource("27_1kwnl")]
+visible = false
+
+[node name="tutorial_ui" parent="." instance=ExtResource("30_5aefc")]
+visible = false
+script = ExtResource("31_pnbm0")
 
 [node name="dialogue_ui" parent="." instance=ExtResource("30_c4giv")]
+visible = false
 
 [node name="quests_ui" parent="." instance=ExtResource("31_klb0h")]
+visible = false
 
 [node name="assignment_popup_ui" parent="." instance=ExtResource("32_5aefc")]
+visible = false

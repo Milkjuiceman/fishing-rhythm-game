@@ -14,8 +14,12 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("inventory_toggle"):
 		inventoryGUI.toggle()
+		if questGUI.visible:
+			questGUI.toggle()
 	if event.is_action_pressed("questlist_toggle"):
 		questGUI.toggle()
+		if inventoryGUI.visible:
+			inventoryGUI.toggle()
 
 # ========================================
 # INITIALIZATION
