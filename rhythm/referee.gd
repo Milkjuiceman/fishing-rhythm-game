@@ -15,7 +15,7 @@ extends Node
 # signals for high level events
 signal process(frame_state: FrameState)
 signal play_chart_now(chart: Chart)
-signal fish_caught(performance: float)
+signal fish_caught(performance: float, rarity: String)
 signal fish_failed
 
 var catchable := false
@@ -48,7 +48,6 @@ func _ready() -> void:
 		judge.progress_bar.catch_failed.connect(_on_catch_failed)
 		judge.progress_bar.catch_available.connect(_on_catch_available)
 		judge.progress_bar.catch_unavailable.connect(_on_catch_unavailable)
-	fish_caught.connect(_on_fishing_finished)
 
 
 func _process(delta: float) -> void:
@@ -62,11 +61,16 @@ func _process(delta: float) -> void:
 	process.emit(frame_state)
 	if catchable and frame_state.enter_key_press:
 		print("[Referee] Enter pressed — catchable: true, calling _catch_fish")
-		_catch_fish()
+		var performance = _calculate_performance()
+		var rarity = _performance_to_rarity(performance)
+		_catch_fish(performance, rarity)
+		
 
 
 func _on_song_finished() -> void:
-	_catch_fish()
+	var performance = _calculate_performance()
+	var rarity = _performance_to_rarity(performance)
+	_catch_fish(performance, rarity)
 	
 func _on_catch_failed() -> void:
 	print_debug("[referee]: bar depleted, ending song")
@@ -105,23 +109,12 @@ func _performance_to_rarity(performance: float) -> String:
 	else: 
 		return "common"
 	
-func _catch_fish() -> void:
+func _catch_fish(performance: float, rarity: String) -> void:
 	print("[Referee] _catch_fish called — emitting fish_caught")
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
-	var performance = _calculate_performance()
-	var rarity = _performance_to_rarity(performance)
 	if rarity != "":
 		InventoryManager.add_item("fish", rarity, 1)
 		# print_debug("granted 1 %s fish, inventory now %s" % [rarity, InventoryManager.items])
-	fish_caught.emit(performance)
-	
-func _on_fishing_finished(_performance: float) -> void:
-	for qid in QuestManager.get_active_quests().keys():
-		var quest = QuestManager.get_quest(qid)
-		# Example matching by quest description; can extend to rarity-specific quests
-		if quest.desc == "catch a fish":
-			QuestManager.update_progress(qid, 1)
-	
-	
+	fish_caught.emit(performance, rarity)

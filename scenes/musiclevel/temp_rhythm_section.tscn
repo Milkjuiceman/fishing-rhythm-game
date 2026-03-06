@@ -37,9 +37,10 @@ material = SubResource("StandardMaterial3D_rtuxy")
 transparency = 1
 albedo_color = Color(0.3372549, 0.34901962, 0.87058824, 0.72156864)
 
-[node name="Temp_Rhythm_Section" type="Node3D" node_paths=PackedStringArray("referee")]
+[node name="Temp_Rhythm_Section" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("1_7m467")
 referee = NodePath("AudioStreamPlayer/Referee")
+judge = NodePath("Judge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.46922, 0)
@@ -49,8 +50,10 @@ directional_shadow_max_distance = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wi50x")
 
-[node name="Judge" type="Node" parent="."]
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
 script = ExtResource("2_xamac")
+progress_bar = NodePath("../ProgressBar")
+referee = NodePath("../AudioStreamPlayer/Referee")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_c4aol")
