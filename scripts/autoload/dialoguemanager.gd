@@ -15,10 +15,10 @@ var npc_quest_order: Dictionary = {
 #structure: { npc_id: {quest_id: [dialogue_lines] } }
 var dialogue_data: Dictionary = {
 	"dock_npc": {
-		"": [ "Have you gotten a hang of steering that boat yet?",
-				"I know it's a rickety old thing, but it's good enough to keep you afloat in calm waters like these.",
-				"That's not what you're here for, though, huh? I promised to teach you the basics!",
-				"We'll start with something small - just try to catch a fish in this here lake.",
+		"": [   "Congrats on your first boat! Have you gotten a hang of steering that old thing yet?",
+				"I know it's nothing special, but it's good enough to keep you afloat in calm waters like these.",
+				"But you're not here for a sailing lesson, though, huh? I promised to show you how to use that old fishing rod!",
+				"We'll start with something easy - just try to catch a fish in this here lake.",
 				"Talk to me again once you've gotten something to show for it!"
 		],
 		"tutorial_01": {
