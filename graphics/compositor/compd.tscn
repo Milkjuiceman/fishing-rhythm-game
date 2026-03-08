@@ -47,6 +47,10 @@ effect_callback_type = 4
 needs_motion_vectors = false
 needs_normal_roughness = true
 script = ExtResource("1_8stmp")
+initial_outlines_shader_file = ExtResource("3_7tvxw")
+apply_shader_file = ExtResource("1_ri8l7")
+jump_fill_shader_file = ExtResource("5_3xkl4")
+fog_shader_file = ExtResource("2_ri8l7")
 FOG_DENSITY = 0.1
 metadata/_custom_type_script = "uid://blp70hoacldp2"
 
@@ -54,6 +58,7 @@ metadata/_custom_type_script = "uid://blp70hoacldp2"
 compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_rg5hn")])
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jps33"]
+diffuse_mode = 3
 albedo_color = Color(1, 0, 0, 0.78039217)
 
 [sub_resource type="BoxMesh" id="BoxMesh_e7g0d"]
@@ -62,12 +67,12 @@ material = SubResource("StandardMaterial3D_jps33")
 add_uv2 = true
 size = Vector3(62.345, 72.93, 56.815)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg5hn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xkl4"]
 albedo_color = Color(0.8666667, 0.6627451, 0.8666667, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ri8l7"]
 lightmap_size_hint = Vector2i(1258, 630)
-material = SubResource("StandardMaterial3D_rg5hn")
+material = SubResource("StandardMaterial3D_3xkl4")
 add_uv2 = true
 radius = 40.0
 height = 80.0

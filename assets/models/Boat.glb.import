@@ -40,7 +40,7 @@ materials/extract_path=""
 _subresources={
 "materials": {
 "lambert3SG": {
-"use_external/enabled": true,
+"use_external/enabled": false,
 "use_external/fallback_path": "res://assets/models/boat_material.tres",
 "use_external/path": "uid://c076yjkc7v521"
 }

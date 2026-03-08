@@ -24,19 +24,19 @@ class_name PostProcessShader
 @export_group("Main Thread")
 
 
-@export var initial_outlines_shader_file: RDShaderFile = preload("uid://dxgjtfbydddnx"):
+@export var initial_outlines_shader_file: RDShaderFile:
 	set(new):
 		initial_outlines_shader_file = _set_rd_shader_file(new, initial_outlines_shader_file, &"initial_outlines")
 
-@export var apply_shader_file: RDShaderFile = preload("uid://b6h46om56qnya"):
+@export var apply_shader_file: RDShaderFile:
 	set(new):
 		apply_shader_file = _set_rd_shader_file(new, apply_shader_file, &"apply")
 
-@export var jump_fill_shader_file: RDShaderFile = preload("uid://n24xlxbue7g6"):
+@export var jump_fill_shader_file: RDShaderFile:
 	set(new):
 		jump_fill_shader_file = _set_rd_shader_file(new, jump_fill_shader_file, &"jump_fill")
 
-@export var fog_shader_file: RDShaderFile = preload("uid://cltgrk0uxr7by"):
+@export var fog_shader_file: RDShaderFile:
 	set(new):
 		fog_shader_file = _set_rd_shader_file(new, fog_shader_file, &"fog")
 
@@ -221,15 +221,23 @@ func jumpfill_push_constant(inital_push_constant : PackedByteArray, diag: int, s
 	return inital_push_constant + PackedInt32Array([diag, stra, 0, 0]).to_byte_array()
 
 
+func _is_pipeline_invalid(name: StringName) -> bool:
+	if not pipelines.has(name):
+		push_error(name, " not found")
+		return true
+	if not pipelines[name].is_valid():
+		push_error(name, " invalid")
+		return true
+	return false
+
+
 # Called by the rendering thread every frame.
 func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data):
 	if not rd: return
-	if not pipelines[&"initial_outlines"].is_valid():
-		push_error("initial_outlines invalid")
-		return
-	if not pipelines[&"apply_outline"].is_valid():
-		push_error("apply_outline invalid")
-		return
+	if _is_pipeline_invalid(&"initial_outlines"): return
+	if _is_pipeline_invalid(&"jump_fill"): return
+	if _is_pipeline_invalid(&"fog"): return
+	if _is_pipeline_invalid(&"apply"): return
 	
 	# Get our render scene buffers object, this gives us access to our render buffers.
 	# Note that implementation differs per renderer hence the need for the cast.
@@ -353,7 +361,7 @@ func _render_callback(_p_effect_callback_type: EffectCallbackType, p_render_data
 		# the maximum radius that this is a circle is 108px
 		# the maximum display-able radius is about 20% cooler
 		
-		#_apply_pass(&"fog", [working_sampler, depth_sampler, fog_image], half_push_constant, half_groups)
+		_apply_pass(&"fog", [working_sampler, depth_sampler, fog_image], half_push_constant, half_groups)
 		
 		_apply_pass(&"apply", [working_image, color_image, fog_sampler], push_constant, groups)
 	
