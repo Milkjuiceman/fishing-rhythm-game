@@ -10,6 +10,9 @@ extends Node3D
 
 @export_tool_button("Place notes") var place_notes_action = align_notes;
 
+func _ready() -> void:
+	for note in get_children():
+		judge.connect("note_judged", Callable(note, "_on_note_judged"))
 
 func align_notes() -> void:
 	for note in get_children():
@@ -20,11 +23,12 @@ func align_notes() -> void:
 	for timing in chart.note_timings:
 		var note: PlaceNotes;
 		note = place_notes.instantiate();
-		referee.connect("process", Callable(note, "_on_referee_process"))
 		add_child(note);
 		note.position.z = timing * note_speed;
 		var lane = chart.note_column[i]
 		note.position.x = (lane - 1.5) * 2
+		note.index = i
+		print(note.index)
 		set_editable_instance(note, true)
 
 		# Apply to shader
@@ -51,7 +55,6 @@ func align_notes() -> void:
 					mat.set_shader_parameter("lane_color", Color.WHITE)
 					label.modulate = Color.WHITE
 			note.set_surface_override_material(0, mat)
-				
 		i += 1;
 			
 		if Engine.is_editor_hint():
