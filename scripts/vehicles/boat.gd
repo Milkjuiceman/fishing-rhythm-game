@@ -27,7 +27,7 @@ func _ready():
 	# Configure boat performance stats
 	forward_speed = 30
 	boost_speed = 100
-	turn_strength = 3.5
+	turn_strength = 6
 	
 	# Capture mouse for camera control
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -136,8 +136,8 @@ func _setup_audio_players() -> void:
 
 func _initialize_audio() -> void:
 	# Play engine start sound with fade in
-	if _engine_start_stream:
-		_play_oneshot_with_fade(_engine_start_stream, engine_volume_db, 0.15)
+	#if _engine_start_stream:
+		#_play_oneshot_with_fade(_engine_start_stream, engine_volume_db, 0.15) #Removed for now
 	
 	# Start idle loop
 	if _idle_player.stream:
