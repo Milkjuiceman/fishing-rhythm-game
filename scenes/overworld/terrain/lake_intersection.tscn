@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="20_kpg5x"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="21_k1cpa"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="22_ckqto"]
-[ext_resource type="PackedScene" uid="uid://d0v6r8khup5s4" path="res://scenes/overworld/enviormentObjects/buildings/FillerBuilding.tscn" id="24_hwo30"]
+[ext_resource type="PackedScene" uid="uid://d0v6r8khup5s4" path="res://scenes/overworld/environmentObjects/buildings/FillerBuilding.tscn" id="24_hwo30"]
 
 [sub_resource type="Resource" id="Resource_8ntsp"]
 script = ExtResource("4_5sc3m")

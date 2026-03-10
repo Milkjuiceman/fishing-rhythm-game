@@ -3,6 +3,24 @@ extends LevelBase
 ## First level of the game with automatic player spawning and boat setup
 ## Extends LevelBase for streamlined level management
 
+@onready var inventoryGUI = preload("res://scenes/ui/inventoryUI.tscn").instantiate()
+@onready var questGUI = preload("res://scenes/ui/questsUI.tscn").instantiate()
+
+func _ready():
+	super._ready()
+	add_child(inventoryGUI)
+	add_child(questGUI)
+	
+func _input(event):
+	if event.is_action_pressed("inventory_toggle"):
+		inventoryGUI.toggle()
+		if questGUI.visible:
+			questGUI.toggle()
+	if event.is_action_pressed("questlist_toggle"):
+		questGUI.toggle()
+		if inventoryGUI.visible:
+			inventoryGUI.toggle()
+
 # ========================================
 # INITIALIZATION
 # ========================================
@@ -25,6 +43,9 @@ func _setup_level() -> void:
 func _post_spawn_setup() -> void:
 	print("Tutorial level ready! Player spawned successfully.")
 	
+	for obj in get_tree().get_nodes_in_group("interactable_objects"):
+		if obj.has_method("assign_quest"):
+			obj.assign_quest("tutorial_fishing_quest")
 	# Connect tutorial-specific signals to player if needed
 	if player:
 		pass  # Add tutorial-specific player event connections here

@@ -32,8 +32,9 @@ func _ready():
 	add_child(spawn_timer)
 	spawn_timer.start()
 	
-	# Spawn initial water instance
-	spawn_rippling_water()
+	if GameStateManager.spawnable:
+		enable_spawning()
+	GameStateManager.first_quest_assigned.connect(_on_quest_assigned)
 
 # ========================================
 # SPAWNING SYSTEM
@@ -51,7 +52,7 @@ func spawn_rippling_water():
 	
 	# Validate scene reference
 	if rippling_water_scene == null:
-		print("ERROR: No rippling water scene assigned!")
+		#print_debug("ERROR: No rippling water scene assigned!")
 		return
 	
 	# Calculate random position within spawn radius

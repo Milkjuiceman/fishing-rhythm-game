@@ -133,6 +133,9 @@ func _physics_process(_delta):
 	pos.y = locked_y_position
 	global_transform.origin = pos
 	
+	if DialogueManager.active:
+		return
+	
 	# --- Collision Spin Prevention ---
 	# Limit how fast the boat can spin from impacts
 	var max_angular_velocity = 3.0

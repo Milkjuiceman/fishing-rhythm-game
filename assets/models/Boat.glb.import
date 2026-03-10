@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://2rrgdq50ft47"
-path="res://.godot/imported/fixed_npc.glb-13df4660dd78e29873a4a4b2c97f9d11.scn"
+uid="uid://isrh8nhyae53"
+path="res://.godot/imported/Boat.glb-a86ee57e809d921e6f33261b8061bff0.scn"
 
 [deps]
 
-source_file="res://assets/models/fixed_npc.glb"
-dest_files=["res://.godot/imported/fixed_npc.glb-13df4660dd78e29873a4a4b2c97f9d11.scn"]
+source_file="res://assets/models/Boat.glb"
+dest_files=["res://.godot/imported/Boat.glb-a86ee57e809d921e6f33261b8061bff0.scn"]
 
 [params]
 
@@ -37,6 +37,14 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"lambert3SG": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/boat_material.tres",
+"use_external/path": "uid://c076yjkc7v521"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
