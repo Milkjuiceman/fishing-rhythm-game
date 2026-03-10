@@ -11,7 +11,7 @@ const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
 # signals
 signal song_finished
-signal note_judged(note_index: int, frame_state: FrameState)
+signal note_judged(note_index: int, frame_state: FrameState, status: String)
 
 # state
 var lowest_judgment_index: int = 0
@@ -42,7 +42,7 @@ func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameSt
 	var temporal_difference: float = compared_t - timing
 	scorecard.hit_note(i, temporal_difference)
 	scorecard.update_score(abs(temporal_difference), chart.note_column[i])
-	note_judged.emit(i, frame_state)
+	note_judged.emit(i, frame_state, "hit")
 	if i == lowest_judgment_index:
 		lowest_judgment_index += 1
 
@@ -87,7 +87,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		# Note is past its window — MISS
 		if timing < lower_bound:
 			scorecard.miss_note(i, chart.note_column[i])
-			note_judged.emit(i, frame_state)
+			note_judged.emit(i, frame_state, "miss")
 			lowest_judgment_index += 1
 			continue
 
