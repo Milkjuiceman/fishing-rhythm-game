@@ -25,7 +25,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_rr1s0")
 script = ExtResource("1_doocs")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 modulate = Color(0, 0, 0, 1)
 text = "♪"
 font_size = 100
