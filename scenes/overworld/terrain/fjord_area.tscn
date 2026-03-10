@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1gbvvjs6x8n1"]
+[gd_scene load_steps=14 format=3 uid="uid://d1gbvvjs6x8n1"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_7hpc0"]
+[ext_resource type="Script" uid="uid://bdglj5osoy1y" path="res://scripts/levels/fjord_level.gd" id="1_q6ibi"]
 [ext_resource type="Resource" uid="uid://c70j7120nb423" path="res://terraindata/area1_terrain_data/data.hterrain" id="2_rvple"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_kdwto"]
 [ext_resource type="PackedScene" uid="uid://dc074d7d4wf6t" path="res://scenes/overworld/enviormentObjects/buildings/Factory1.tscn" id="5_cd0kg"]
-[ext_resource type="PackedScene" uid="uid://bpcosx0shws1q" path="res://scenes/overworld/boats/boatBig.tscn" id="6_gir7d"]
+[ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="6_gir7d"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_id4fg"]
 
 [sub_resource type="Resource" id="Resource_et6te"]
@@ -61,7 +62,11 @@ fog_light_energy = 0.68
 fog_sun_scatter = 0.11
 fog_density = 0.106
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_q6ibi"]
+size = Vector3(235.62561, 51.820324, 243.78357)
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_q6ibi")
 
 [node name="HTerrain" type="Node3D" parent="."]
 transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, 0, 10, 0)
@@ -99,9 +104,6 @@ directional_shadow_split_2 = 0.16
 directional_shadow_split_3 = 0.4
 directional_shadow_max_distance = 150.0
 
-[node name="Boat" parent="." instance=ExtResource("6_gir7d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1443.7917, 15.00045, 1413.3704)
-
 [node name="Buildings" type="Node3D" parent="."]
 transform = Transform3D(0.20278734, 0, 0.9792228, 0, 1, 0, -0.9792228, 0, 0.20278734, 337.68497, 69.906944, 1117.3365)
 
@@ -112,3 +114,22 @@ transform = Transform3D(0.62796307, 0, -0.77824306, 0, 1, 0, 0.77824306, 0, 0.62
 transform = Transform3D(0.8562671, 0, -0.5165333, 0, 1, 0, 0.5165333, 0, 0.8562671, 868.0133, -1.2618027, -221.64551)
 
 [node name="Factory3" parent="Buildings" instance=ExtResource("5_cd0kg")]
+
+[node name="BoatTransitions" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2702637, 0, 0)
+
+[node name="Area1" type="Area3D" parent="BoatTransitions"]
+transform = Transform3D(0.8151278, 0, -0.57928115, 0, 1, 0, 0.57928115, 0, 0.8151278, 1460.5841, 0, 1414.761)
+script = ExtResource("6_gir7d")
+target_scene_path = "uid://c4i3rthdmlqxo"
+target_spawn_point = "lake_intersection_boat_spawnpoint_b"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoatTransitions/Area1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.74939, -3.9146423, 29.943054)
+shape = SubResource("BoxShape3D_q6ibi")
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(0.8151278, 0, -0.57928115, 0, 1, 0, 0.57928115, 0, 0.8151278, 1455.3138, 0, 1414.761)
+
+[node name="fjord_boat_spawnpoint_a" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, -136.89368, 15.499186, -38.05481)

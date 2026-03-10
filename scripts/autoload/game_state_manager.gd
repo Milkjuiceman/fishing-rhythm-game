@@ -141,20 +141,28 @@ func switch_boat(boat_scene_path: String, player: Player) -> void:
 	boat_changed.emit(boat_scene_path)
 
 # Save current player state to memory
+# Save current player state to memory
 func save_player_state(player: Player) -> void:
 	if not player:
 		return
 	
-	current_save_data.player_position = player.global_position
-	current_save_data.player_rotation = player.rotation
+	# Get current position
+	var saved_position = player.get_current_position()
+	
+	# Lock Y coordinate to water surface to prevent submerged spawns
+	const WATER_SURFACE_Y: float = 5.0  # Water Level
+	saved_position.y = WATER_SURFACE_Y
+	
+	current_save_data.player_position = saved_position
+	current_save_data.player_rotation = player.get_current_rotation()
+	
 	if player.current_vehicle and player.current_vehicle.scene_file_path:
 		current_save_data.current_boat_type = player.current_vehicle.scene_file_path
+	
 	current_save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
 	current_save_data.last_saved = Time.get_datetime_string_from_system()
 	
-	current_save_data.inventory = InventoryManager.items.duplicate(true)
-
-	# do NOT replace current_save_data, this keeps the same Inventory instance
+	# Emit signal (keeps same inventory instance)
 	player_state_changed.emit(current_save_data)
 	
 	
@@ -205,26 +213,20 @@ func save_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 	
 	return error
 
-# Load game state from file
 func load_game(save_path: String = AUTO_SAVE_FILE) -> Error:
-	# Validate save file exists
 	if not FileAccess.file_exists(save_path):
 		push_warning("Save file not found: %s" % save_path)
 		return ERR_FILE_NOT_FOUND
 	
-	# Load resource from disk
 	var loaded_data = ResourceLoader.load(save_path, "PlayerSaveData")
 	
-	# Validate loaded data
 	if not loaded_data or not loaded_data is PlayerSaveData:
 		push_error("Failed to load save data from: %s" % save_path)
 		return ERR_FILE_CORRUPT
 	
-	# Apply loaded data to current state
 	current_save_data = loaded_data
-	print_debug("Game loaded successfully from: %s" % save_path)
-	
-	InventoryManager.load_from_save(current_save_data.inventory)
+	is_first_spawn = false  # ✅ ADD THIS LINE!
+	print("Game loaded successfully from: %s" % save_path)
 	
 	return OK
 

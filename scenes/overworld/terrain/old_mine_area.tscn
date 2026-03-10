@@ -1,20 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://qf68cvoclw5k"]
+[gd_scene load_steps=10 format=3 uid="uid://qf68cvoclw5k"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_kk0cs"]
 [ext_resource type="Resource" uid="uid://vqqccwyid0i5" path="res://terraindata/area2_terrain_data/data.hterrain" id="2_8hfmb"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_v0au8"]
-[ext_resource type="Texture2D" uid="uid://ca7oil35v174" path="res://assets/textures/Ground/Ground068_2K-JPG_Color.jpg" id="4_griwf"]
-[ext_resource type="Texture2D" uid="uid://c38ymysrlwk48" path="res://assets/textures/Rock/Rock058_2K-JPG_Color.jpg" id="5_8ou8l"]
-[ext_resource type="Texture2D" uid="uid://dymkv5reg7ide" path="res://assets/textures/Ground/Ground068_2K-JPG_NormalDX.jpg" id="6_jabo0"]
-[ext_resource type="Texture2D" uid="uid://c5p1fqngto7nh" path="res://assets/textures/Rock/Rock058_2K-JPG_NormalDX.jpg" id="7_qfefa"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_8hfmb"]
 
 [sub_resource type="Resource" id="Resource_uxa3i"]
 script = ExtResource("3_v0au8")
 mode = 0
-textures = [[ExtResource("4_griwf"), ExtResource("5_8ou8l")], [ExtResource("6_jabo0"), ExtResource("7_qfefa")]]
+textures = [[null], [null]]
 
-[sub_resource type="Shader" id="Shader_v0au8"]
+[sub_resource type="Shader" id="Shader_b257o"]
 code = "shader_type spatial;
 uniform sampler3D noise;
 
@@ -37,20 +33,36 @@ void light() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pe3x"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xos6f"]
 render_priority = 0
-shader = SubResource("Shader_v0au8")
+shader = SubResource("Shader_b257o")
 shader_parameter/noise = ExtResource("8_8hfmb")
 shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
 shader_parameter/uv_scale = 12.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_griwf"]
-material = SubResource("ShaderMaterial_6pe3x")
+[sub_resource type="BoxMesh" id="BoxMesh_brkqy"]
+material = SubResource("ShaderMaterial_xos6f")
 size = Vector3(250, 10, 250)
+
+[sub_resource type="Environment" id="Environment_b257o"]
+background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
+background_energy_multiplier = 2.13
+ambient_light_source = 2
+ambient_light_color = Color(0.89059, 0.89059, 0.8905901, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.84
+tonemap_white = 0.52
+fog_mode = 1
+fog_light_color = Color(0.4029321, 0.43353698, 0.48598647, 1)
+fog_light_energy = 0.68
+fog_sun_scatter = 0.11
+fog_density = 0.106
 
 [node name="Node3D" type="Node3D"]
 
 [node name="HTerrain" type="Node3D" parent="."]
+transform = Transform3D(1.515, 0, 0, 0, 1.515, 0, 0, 0, 1.515, 0, 0, 0)
 script = ExtResource("1_kk0cs")
 _terrain_data = ExtResource("2_8hfmb")
 chunk_size = 32
@@ -70,6 +82,17 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.0627575, 0, 0, 0, 1, 0, 0, 0, 4.04908, 508.92188, -16.036911, 507.20612)
-mesh = SubResource("BoxMesh_griwf")
+transform = Transform3D(6.935, 0, 0, 0, 1.65, 0, 0, 0, 6.681, 792.0536, -8.744385, 772.1234)
+mesh = SubResource("BoxMesh_brkqy")
 skeleton = NodePath("../Tutorial_HTerrain")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b257o")
+
+[node name="Sun?" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.11162496, 0.5119581, -0.85172695, -0.18144372, 0.8321761, 0.5239859, 0.9770456, 0.21303041, -3.7230166e-08, 580.6832, 194.86136, 373.576)
+light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
+directional_shadow_split_1 = 0.064
+directional_shadow_split_2 = 0.16
+directional_shadow_split_3 = 0.4
+directional_shadow_max_distance = 150.0
