@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://uytjfr8ssdc8"]
+[gd_scene load_steps=129 format=3 uid="uid://uytjfr8ssdc8"]
 
 [ext_resource type="Script" uid="uid://i1juk7dsw1th" path="res://rhythm/Editor/rhythm_level_editor.gd" id="1_syn7g"]
 [ext_resource type="Script" uid="uid://bo51tsvfo2v28" path="res://rhythm/Editor/editor_judge.gd" id="2_syn7g"]
@@ -12,10 +12,8 @@
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="10_almbp"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_strij"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="12_4r7wg"]
-[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="12_4udw2"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="13_asvrw"]
 [ext_resource type="PackedScene" uid="uid://ba5m0j8nuvpef" path="res://rhythm/Editor/beat_grid_snapper.tscn" id="14_74rbk"]
-[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="14_lstnr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -813,703 +811,433 @@ note_speed = 7.0
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 8)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_lstnr")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52081" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52082" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 12)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_27h43")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52082" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52083" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 16)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_ecu1r")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52083" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52084" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 20)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_almbp")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52084" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52085" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 24)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_4udw2")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52085" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52086" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 28)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_74rbk")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52086" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52087" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 32)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_73umy")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52087" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52088" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 36)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_mj0fb")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52088" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52089" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 40)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_v8iwx")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52089" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52090" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 44)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_khgh5")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52090" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52091" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 48)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_p1uol")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52091" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52092" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 52)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_nsf8w")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52092" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52093" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 56)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_adxm0")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52093" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52094" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 60)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_0bkux")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52094" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52095" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 64)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_m1x4d")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52095" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52096" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 68)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_d2w34")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52096" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52097" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 70.666664)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_3puvt")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52097" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52098" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 76)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_f56d1")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52098" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52099" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 78.666664)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_aofdm")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52099" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52100" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 80)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_hatjc")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52100" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52101" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 97.333336)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_qxgii")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52101" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52102" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 100)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_rc3rt")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52102" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52103" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 102.666664)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_uthhf")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52103" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52104" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 108)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_qor4p")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52104" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52105" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 110.666664)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_ka15d")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52105" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52106" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 112)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_843t0")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52106" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52107" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 130)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_og3hn")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52107" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52108" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 132)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_afwgl")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52108" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52109" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 134.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_i20h3")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52109" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52110" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 140)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_7n6e7")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52110" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52111" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 142)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_phwye")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52111" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52112" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 142.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_0w0oo")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52112" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52113" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 160)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_vtfqi")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52113" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52114" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 164)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_nrstw")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52114" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52115" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 166.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_s10so")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52115" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52116" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 173.33333)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_2odyi")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52116" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52117" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 174.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_ej0eh")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52117" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52118" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 174.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_4s3ue")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52118" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52119" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 176)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_wxoxh")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52119" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52120" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 192)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_cjilo")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52120" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52121" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 193.33333)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_kdo0c")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52121" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52122" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 196)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_mli1a")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52122" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52123" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 200)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_v04hi")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52123" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52124" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 204)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_ptb3r")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52124" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52125" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 208)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_li6sd")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52125" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52126" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 218)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_b1w10")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52126" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52127" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 222.66667)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_fdv7f")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52127" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52128" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 228)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_3dgt3")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52128" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52129" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 237.33333)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_gl520")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52129" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52130" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 250)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_2bcmv")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52130" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52131" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 254)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_plwea")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52131" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52132" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 261.33334)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_u6gte")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52132" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52133" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 268)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_08ebm")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52133" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="@MeshInstance3D@52134" parent="Note_Holder" instance=ExtResource("11_strij")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 272)
 mesh = SubResource("SphereMesh_kr1dr")
 surface_material_override/0 = SubResource("ShaderMaterial_nv4gy")
-script = ExtResource("12_4udw2")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@52134" index="0"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("14_lstnr")
 
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("13_asvrw")

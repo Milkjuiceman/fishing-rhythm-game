@@ -1,5 +1,4 @@
-class_name Referee
-extends Node
+class_name Referee extends Node
 
 # nodes and exports
 @export var chart: Chart
@@ -17,6 +16,7 @@ signal process(frame_state: FrameState)
 signal play_chart_now(chart: Chart)
 signal fish_caught(performance: float, rarity: String)
 signal fish_failed
+signal reel_in_denied
 
 var catchable := false
 
@@ -83,6 +83,11 @@ func _on_catch_available() -> void:
 		enter_prompt.visible = true
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
+	
+	await get_tree().create_timer(5.0).timeout
+	_on_catch_unavailable()
+	emit_signal("reel_in_denied")
+	judge.scorecard.score += 1000
 
 
 func _on_catch_unavailable() -> void:
