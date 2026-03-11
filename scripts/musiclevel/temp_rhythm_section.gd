@@ -17,6 +17,7 @@ const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.ts
 
 # Reference to the Referee node
 @export var referee: Referee
+@export var judge: RhythmJudge
 
 # ========================================
 # RUNTIME STATE VARIABLES

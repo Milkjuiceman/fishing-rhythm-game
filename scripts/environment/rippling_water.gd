@@ -71,7 +71,8 @@ func _start_rhythm_minigame(player: Player) -> void:
 	GameStateManager.save_player_state(player)
 	
 	# Prepare transition (stores current scene for return navigation)
-	GameStateManager.prepare_transition(LEVELS[index])
+	# CRITICAL: Pass empty string to clear spawn_point, so it uses saved position
+	GameStateManager.prepare_transition(RHYTHM_SCENE_PATH, "")
 	
 	# Fade out overworld music
 	var overworld_music = get_node_or_null("/root/OverworldMusic")

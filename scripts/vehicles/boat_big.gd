@@ -13,7 +13,7 @@ func _ready():
 	# Configure big boat performance (slower but stronger)
 	forward_speed = 40   # Reduced speed for larger vessel
 	boost_speed = 80     # Lower max speed compared to small boat
-	turn_strength = 7    # Increased turning power to compensate for size
+	turn_strength = 9    # Increased turning power to compensate for size
 
 # ========================================
 # PHYSICS & MOVEMENT

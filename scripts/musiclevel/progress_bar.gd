@@ -18,6 +18,7 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	if frame_state.scorecard == null:
 		return
 	_update_from_scorecard(frame_state.scorecard)
+	#print(value)
 
 
 # Update progress bar based on rhythm game performance

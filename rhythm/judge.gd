@@ -4,6 +4,7 @@ class_name RhythmJudge
 # node references
 @export var progress_bar: CatchProgressBar
 @export var referee: Referee
+
 var chart: Chart = null
 var scorecard: Scorecard = null
 
@@ -65,7 +66,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 
 		# End of chart — song complete
 		if i >= chart.note_timings.size():
-			emit_signal("song_finished")
+			song_finished.emit()
 			break
 
 		var timing: float = chart.note_timings[i]

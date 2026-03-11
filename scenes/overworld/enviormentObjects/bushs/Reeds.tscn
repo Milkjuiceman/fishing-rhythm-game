@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://moe2awwkueun"]
+
+[ext_resource type="PackedScene" uid="uid://bnbfsue47nfxq" path="res://assets/models/bush's/crops_wheatStageA.glb" id="1_g06pw"]
+
+[node name="Reeds" type="Node3D"]
+
+[node name="crops_wheatStageA2" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, -0.040304184)
