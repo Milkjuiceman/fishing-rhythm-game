@@ -58,9 +58,9 @@ func _update_load_button_state():
 		load_button.disabled = not save_exists
 		
 		if save_exists:
-			print("[MainMenu] Save file found - Load Game enabled")
+			print_debug("[MainMenu] Save file found - Load Game enabled")
 		else:
-			print("[MainMenu] No save file - Load Game disabled")
+			print_debug("[MainMenu] No save file - Load Game disabled")
 
 # ========================================
 # BUTTON HANDLERS
@@ -68,19 +68,8 @@ func _update_load_button_state():
 
 # Start a fresh playthrough (resets all progress)
 func _on_start_button_pressed():
-	print("[MainMenu] Start Game pressed - Starting NEW playthrough")
-	
-	# Disable buttons to prevent double-clicks
-	_disable_all_buttons()
-	
-	# Reset GameStateManager to default state
-	GameStateManager.current_save_data = PlayerSaveData.new()
-	GameStateManager.is_first_spawn = true
-	
-	# Delete existing save file to ensure clean slate
-	if FileAccess.file_exists("user://saves/autosave.tres"):
-		DirAccess.remove_absolute("user://saves/autosave.tres")
-		print("[MainMenu] Deleted old save file for fresh start")
+	print_debug("[MainMenu] Start Game pressed - Starting NEW playthrough")
+	GameStateManager.start_new_game()
 	
 	# Start overworld music with fade-in
 	var overworld_music = get_node_or_null("/root/OverworldMusic")
@@ -97,7 +86,7 @@ func _on_start_button_pressed():
 
 # Load existing save file and continue playthrough
 func _on_load_button_pressed():
-	print("[MainMenu] Load Game pressed - Continuing from save")
+	print_debug("[MainMenu] Load Game pressed - Continuing from save")
 	
 	# Disable buttons to prevent double-clicks
 	_disable_all_buttons()
@@ -106,7 +95,7 @@ func _on_load_button_pressed():
 	var result = GameStateManager.load_game()
 	
 	if result == OK:
-		print("[MainMenu] Save loaded successfully!")
+		print_debug("[MainMenu] Save loaded successfully!")
 		
 		# Start overworld music with fade-in
 		var overworld_music = get_node_or_null("/root/OverworldMusic")
@@ -132,7 +121,7 @@ func _on_load_button_pressed():
 			get_tree().change_scene_to_file(target_scene)
 	else:
 		# Handle load failure by starting new game
-		print("[MainMenu] Failed to load save file!")
+		print_debug("[MainMenu] Failed to load save file!")
 		_on_start_button_pressed()
 
 # Open options/settings menu
@@ -148,7 +137,7 @@ func _on_options_button_pressed():
 
 # Exit the game
 func _on_quit_button_pressed():
-	print("[MainMenu] Quit pressed")
+	print_debug("[MainMenu] Quit pressed")
 	get_tree().quit()
 
 

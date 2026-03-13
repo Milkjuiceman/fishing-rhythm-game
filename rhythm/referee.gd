@@ -1,5 +1,4 @@
-class_name Referee
-extends Node
+class_name Referee extends Node
 
 # nodes and exports
 @export var chart: Chart
@@ -13,10 +12,11 @@ extends Node
 @export var audio_offset: float = 0.02
 
 # signals for high level events
-signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
-signal fish_caught(performance: float)
+signal play_chart_now(chart: Chart)
+signal fish_caught(performance: float, rarity: String)
 signal fish_failed
+signal reel_in_denied
 
 var catchable := false
 
@@ -61,26 +61,33 @@ func _process(delta: float) -> void:
 	process.emit(frame_state)
 	if catchable and frame_state.enter_key_press:
 		print("[Referee] Enter pressed — catchable: true, calling _catch_fish")
-		_catch_fish()
+		var performance = _calculate_performance()
+		var rarity = _performance_to_rarity(performance)
+		_catch_fish(performance, rarity)
+		
 
 
 func _on_song_finished() -> void:
 	var performance = _calculate_performance()
-	fish_caught.emit(performance)
-
-
+	var rarity = _performance_to_rarity(performance)
+	_catch_fish(performance, rarity)
+	
 func _on_catch_failed() -> void:
-	print("[Referee] Bar depleted, emitting fish_failed")
+	print_debug("[referee]: bar depleted, ending song")
 	fish_failed.emit()
 
 
 func _on_catch_available() -> void:
 	catchable = true
-	print("[Referee] _on_catch_available fired — catchable is now: true")
 	if enter_prompt:
 		enter_prompt.visible = true
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
+	
+	await get_tree().create_timer(5.0).timeout
+	_on_catch_unavailable()
+	emit_signal("reel_in_denied")
+	judge.scorecard.score += 1000
 
 
 func _on_catch_unavailable() -> void:
@@ -95,12 +102,24 @@ func _calculate_performance() -> float:
 	var minv = bar.min_value
 	var maxv = bar.max_value
 	return clamp((bar.value - minv) / (maxv - minv), 0.0, 1.0)
-
-
-func _catch_fish() -> void:
+	
+func _performance_to_rarity(performance: float) -> String:
+	print_debug("performance: ", performance)
+	if performance >= 0.99:
+		return "legendary"
+	elif performance >= 0.90:
+		return "rare"
+	elif performance >= 0.80:
+		return "uncommon"
+	else: 
+		return "common"
+	
+func _catch_fish(performance: float, rarity: String) -> void:
 	print("[Referee] _catch_fish called — emitting fish_caught")
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
-	var performance = _calculate_performance()
-	fish_caught.emit(performance)
+	if rarity != "":
+		InventoryManager.add_item("fish", rarity, 1)
+		# print_debug("granted 1 %s fish, inventory now %s" % [rarity, InventoryManager.items])
+	fish_caught.emit(performance, rarity)

@@ -34,3 +34,4 @@ var f_key_press: bool = false
 var k_key_press: bool = false
 var j_key_press: bool = false
 var enter_key_press: bool = false
+var space_key_press: bool = false

@@ -1,19 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://c4i3rthdmlqxo"]
+[gd_scene load_steps=22 format=3 uid="uid://c4i3rthdmlqxo"]
 
 [ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://scripts/levels/lake_intersection.gd" id="1_pdbi5"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ticw3"]
 [ext_resource type="Resource" uid="uid://bn56ufgmn3ok4" path="res://terraindata/lake_intersection_terrain_data/data.hterrain" id="3_8it52"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_5sc3m"]
-[ext_resource type="Texture2D" uid="uid://cknxk2lbvf5lv" path="res://assets/textures/Grey/Plastic011_2K-JPG_Color.jpg" id="5_pdbi5"]
-[ext_resource type="Texture2D" uid="uid://dj8xokhe4t63" path="res://assets/textures/Green/Plastic017A_2K-JPG_Color.jpg" id="6_8it52"]
-[ext_resource type="Texture2D" uid="uid://c8qtyh1oluv6r" path="res://assets/textures/DarkGreen/Plastic009_2K-JPG_Color.jpg" id="6_pdbi5"]
-[ext_resource type="Texture2D" uid="uid://cjst4yv2kc4vf" path="res://assets/textures/Grey/Plastic011_2K-JPG_NormalGL.jpg" id="7_ticw3"]
-[ext_resource type="Texture2D" uid="uid://cuaasj8idsido" path="res://assets/textures/Blue/Plastic015A_2K-JPG_Color.jpg" id="8_6hhe6"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_0t4oa"]
-[ext_resource type="Texture2D" uid="uid://bi6o6djkqu4lh" path="res://assets/textures/Green/Plastic017A_2K-JPG_NormalDX.jpg" id="9_5sc3m"]
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="10_pdbi5"]
-[ext_resource type="Texture2D" uid="uid://d3magfa2dvagf" path="res://assets/textures/DarkGreen/Plastic009_2K-JPG_NormalDX.jpg" id="10_pfe1l"]
-[ext_resource type="Texture2D" uid="uid://d16tnj813rlpl" path="res://assets/textures/Blue/Plastic015A_2K-JPG_NormalDX.jpg" id="12_qdsx3"]
 [ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/enviormentObjects/tree.tscn" id="16_qdsx3"]
 [ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/enviormentObjects/treeCone.tscn" id="17_twurd"]
 [ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/enviormentObjects/treeConeOrange.tscn" id="18_kpg5x"]
@@ -21,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="20_kpg5x"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="21_k1cpa"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="22_ckqto"]
-[ext_resource type="PackedScene" uid="uid://d0v6r8khup5s4" path="res://scenes/overworld/enviormentObjects/buildings/FillerBuilding.tscn" id="24_hwo30"]
+[ext_resource type="PackedScene" uid="uid://d0v6r8khup5s4" path="res://scenes/overworld/environmentObjects/buildings/FillerBuilding.tscn" id="24_hwo30"]
 
 [sub_resource type="Resource" id="Resource_8ntsp"]
 script = ExtResource("4_5sc3m")
 mode = 0
-textures = [[ExtResource("5_pdbi5"), ExtResource("6_8it52"), ExtResource("6_pdbi5"), ExtResource("8_6hhe6")], [ExtResource("7_ticw3"), ExtResource("9_5sc3m"), ExtResource("10_pfe1l"), ExtResource("12_qdsx3")]]
+textures = [[null], [null]]
 
 [sub_resource type="Shader" id="Shader_blwe3"]
 code = "shader_type spatial;
@@ -121,7 +113,10 @@ shape = SubResource("BoxShape3D_6pe3x")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.19922, 4.263556, 214.83836)
 
 [node name="lake_intersection_boat_spawnpoint_a" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.951, -1.7, 87.982)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -9.951, -1.7, 87.982)
+
+[node name="lake_intersection_boat_spawnpoint_b" type="Node3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 568.4847, -1.7, -10.652237)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pdbi5")
@@ -149,8 +144,8 @@ shape = SubResource("BoxShape3D_xf1v0")
 [node name="Area2" type="Area3D" parent="BoatTransitions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 822.226, 0, -31.862)
 script = ExtResource("10_pdbi5")
-target_scene_path = "uid://bxa7vkfck6ybn"
-target_spawn_point = "tutorial_boat_spawnpoint_a"
+target_scene_path = "uid://d1gbvvjs6x8n1"
+target_spawn_point = "fjord_boat_spawnpoint_a"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoatTransitions/Area2"]
 transform = Transform3D(0.91636276, 0, -0.40034902, 0, 1, 0, 0.40034902, 0, 0.91636276, 93.58667, -3.9146423, 29.943054)
