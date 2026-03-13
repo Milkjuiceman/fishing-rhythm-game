@@ -2,48 +2,41 @@ extends Node3D
 ## Rippling Water Spawner
 ## Periodically spawns rippling water fishing spots in a radius around the spawner
 ## Manages active water instances and respawns when removed
-
 # ========================================
 # CONFIGURATION
 # ========================================
-
 @export var spawn_interval: float = 10.0  # Time between spawns (seconds)
 @export var max_spawns: int = 1  # Maximum concurrent water pools per spawner
 @export var rippling_water_scene: PackedScene  # Water scene to spawn
 @export var spawn_radius: float = 100.0  # Radius around spawner to place water
 @export var spawn_height: float = 4.4 # Absolute Y coordinate for spawns
-
 # ========================================
 # VARIABLES
 # ========================================
-
 var active_waters: Array = []  # Track currently spawned water instances
 var spawn_timer: Timer  # Timer for periodic spawning
-
+var spawnable: bool = false  # Local spawnable flag
 # ========================================
 # INITIALIZATION
 # ========================================
-
 func _ready():
 	# Create and configure spawn timer
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_interval
+	spawn_timer.one_shot = false
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(spawn_timer)
-	spawn_timer.start()
-	
+	# Don't start timer here — wait for quest assignment
+
 	if GameStateManager.spawnable:
 		enable_spawning()
 	GameStateManager.first_quest_assigned.connect(_on_quest_assigned)
-
 # ========================================
 # SPAWNING SYSTEM
 # ========================================
-
 # Called when spawn timer completes
 func _on_spawn_timer_timeout():
 	spawn_rippling_water()
-
 # Spawn a new rippling water instance at random position
 func spawn_rippling_water():
 	# Enforce max spawn limit
@@ -76,11 +69,26 @@ func spawn_rippling_water():
 	
 	# Connect cleanup signal for when water is removed
 	water.tree_exiting.connect(_on_water_removed.bind(water))
-
 # ========================================
 # CLEANUP
 # ========================================
-
 # Called when a water instance is removed from the scene
 func _on_water_removed(water):
 	active_waters.erase(water)
+	# Trigger a respawn after a short delay to let the node fully exit the tree
+	if spawnable:
+		get_tree().create_timer(1.0).timeout.connect(spawn_rippling_water)
+
+func _on_quest_assigned():
+	enable_spawning()
+
+func enable_spawning():
+	spawnable = true  # Set local flag so _on_water_removed can respawn
+	if spawn_timer.is_stopped():
+		spawn_timer.start()
+	# Defer initial spawn so any pending tree_exiting signals finish first
+	call_deferred("spawn_rippling_water")
+
+func disable_spawning():
+	spawnable = false
+	spawn_timer.stop()
