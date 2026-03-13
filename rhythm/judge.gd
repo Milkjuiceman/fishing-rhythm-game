@@ -24,7 +24,7 @@ func _ready() -> void:
 	if referee:
 		print("[Judge] Connecting fish_caught and fish_failed")
 		# fish_caught emits a float (performance) so use a lambda to absorb it
-		referee.fish_caught.connect(func(_performance): _return_to_previous_scene())
+		referee.fish_caught.connect(func(_performance, _rarity): _return_to_previous_scene())
 		referee.fish_failed.connect(_return_to_previous_scene)
 	else:
 		push_warning("[Judge] Referee is null — cannot connect catch signals")
