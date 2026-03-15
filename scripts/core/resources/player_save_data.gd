@@ -1,8 +1,8 @@
 extends Resource
 class_name PlayerSaveData
 ## Player Save Data Resource
-## Stores all persistent player data for save/load functionality
-## Designed for easy expansion - add new @export variables as game features grow
+## Stores all persistent player data for save/load functionality.
+## Designed for easy expansion - add new @export variables as game features grow.
 
 # ========================================
 # PLAYER STATE
@@ -30,28 +30,25 @@ class_name PlayerSaveData
 @export var target_spawn_point: String = ""
 
 # ========================================
-# METADATA
+# ECONOMY
 # ========================================
 
-# Timestamp of last save
-@export var last_saved: String = ""
+## Player's coin balance. Persisted on every save.
+@export var currency: int = 0
 
-# Save file version for future migration support
-@export var save_version: int = 1
+# ========================================
+# INVENTORY
+# ========================================
 
 # inventory data
 @export var inventory: Dictionary = {}
 
 # ========================================
-# FUTURE EXPANSION (Commented Examples)
+# METADATA
 # ========================================
 
-# Add these as your game grows:
-# @export var quest_flags: Dictionary = {}
-# @export var stats: Dictionary = {}
-# @export var unlocked_boats: Array[String] = []
-# @export var currency: int = 0
-# @export var fish_caught: Dictionary = {}
+@export var last_saved: String = ""
+@export var save_version: int = 1
 
 # ========================================
 # INITIALIZATION
@@ -63,8 +60,8 @@ func _init(
 	p_rotation: Vector3 = Vector3.ZERO,
 	p_boat_type: String = "res://scenes/overworld/boats/boat.tscn"
 ):
-	player_position = p_position
-	player_rotation = p_rotation
+	player_position  = p_position
+	player_rotation  = p_rotation
 	current_boat_type = p_boat_type
 	last_saved = Time.get_datetime_string_from_system()
 
@@ -74,11 +71,9 @@ func _init(
 
 # Create save data from current player state
 static func from_player(player: Player) -> PlayerSaveData:
-	var save_data = PlayerSaveData.new()
-	# Capture player position and rotation
-	save_data.player_position = player.get_current_position()
-	save_data.player_rotation = player.get_current_rotation()
-	# Capture current boat type
+	var save_data := PlayerSaveData.new()
+	save_data.player_position  = player.get_current_position()
+	save_data.player_rotation  = player.get_current_rotation()
 	if player.current_vehicle and player.current_vehicle.scene_file_path:
 		save_data.current_boat_type = player.current_vehicle.scene_file_path
 	# Capture current scene

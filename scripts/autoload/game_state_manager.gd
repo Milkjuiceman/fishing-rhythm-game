@@ -1,7 +1,6 @@
 extends Node
-## Game State Manager (Autoload Singleton)
-## Centralized management of player state, scene transitions, and save/load operations
-## Replaces old BoatManager with scalable, persistent state management across entire game
+## Game State Manager (AutoLoad: GameStateManager)
+## Centralized management of player state, scene transitions, and save/load operations.
 
 # ========================================
 # SIGNALS
@@ -16,16 +15,13 @@ signal boat_changed(boat_type: String)
 # CONSTANTS
 # ========================================
 
-# Scene paths
-const PLAYER_SCENE: String = "res://scenes/player/player.tscn"
-const DEFAULT_BOAT: String = "res://scenes/overworld/boats/boat.tscn"
-
-# Save system paths
-const SAVE_DIR: String = "user://saves/"
-const AUTO_SAVE_FILE: String = "user://saves/autosave.tres"
+const PLAYER_SCENE:    String = "res://scenes/player/player.tscn"
+const DEFAULT_BOAT:    String = "res://scenes/overworld/boats/boat.tscn"
+const SAVE_DIR:        String = "user://saves/"
+const AUTO_SAVE_FILE:  String = "user://saves/autosave.tres"
 
 # ========================================
-# STATE VARIABLES
+# STATE
 # ========================================
 
 # Current game state
@@ -35,13 +31,14 @@ var is_first_spawn: bool = true
 
 var spawnable: bool = false
 var first_quest_started
+
 signal first_quest_assigned
 
 # Scene transition tracking
 var pending_transition: Dictionary = {
 	"target_scene": "",
-	"spawn_point": "",
-	"from_scene": ""
+	"spawn_point":  "",
+	"from_scene":   ""
 }
 
 # ========================================
@@ -58,11 +55,11 @@ func _ready() -> void:
 	
 	if QuestManager:
 		QuestManager.quest_started.connect(_on_quest_started)
-		
+
 func _on_quest_started(quest_id: String) -> void:
 	print_debug("[GSM] Received quest_started signal for:", quest_id)
 	first_quest_started = true
-	emit_signal("first_quest_assigned") 
+	emit_signal("first_quest_assigned")
 
 # ========================================
 # PLAYER MANAGEMENT
@@ -73,22 +70,20 @@ func spawn_player(spawn_points_parent: Node) -> Player:
 	# Clean up existing player instance
 	if player_instance and is_instance_valid(player_instance):
 		player_instance.queue_free()
-	
-	# Create new player from scene
-	var player_scene = load(PLAYER_SCENE) as PackedScene
+
+	var player_scene := load(PLAYER_SCENE) as PackedScene
 	player_instance = player_scene.instantiate() as Player
-	
-	# Determine spawn position and rotation
+
 	var spawn_position: Vector3
 	var spawn_rotation: float
-	
+
 	if pending_transition.spawn_point != "":
 		# Use specific spawn point from scene transition
 		var spawn_node = spawn_points_parent.get_node_or_null(pending_transition.spawn_point)
 		if spawn_node:
 			spawn_position = spawn_node.global_position
 			spawn_rotation = spawn_node.rotation.y
-			pending_transition.spawn_point = ""  # Clear after use
+			pending_transition.spawn_point = ""
 		else:
 			push_warning("Spawn point '%s' not found!" % pending_transition.spawn_point)
 			spawn_position = current_save_data.player_position
@@ -97,9 +92,8 @@ func spawn_player(spawn_points_parent: Node) -> Player:
 		# Use saved position from save data
 		spawn_position = current_save_data.player_position
 		spawn_rotation = current_save_data.player_rotation.y
-	
-	# Apply spawn transform
-	player_instance.position = spawn_position
+
+	player_instance.position   = spawn_position
 	player_instance.rotation.y = spawn_rotation
 	
 	# Mark that first spawn has occurred
@@ -113,59 +107,47 @@ func switch_boat(boat_scene_path: String, player: Player) -> void:
 	if not ResourceLoader.exists(boat_scene_path):
 		push_error("Boat scene not found: %s" % boat_scene_path)
 		return
-	
-	var boat_scene = load(boat_scene_path) as PackedScene
-	
-	# Remove old boat
+
+	var boat_scene := load(boat_scene_path) as PackedScene
 	if player.current_vehicle:
 		player.current_vehicle.queue_free()
-	
-	# Create and attach new boat
-	var new_boat = boat_scene.instantiate() as VehicleBase
+
+	var new_boat := boat_scene.instantiate() as VehicleBase
 	player.add_child(new_boat)
-	
-	# Update player references
-	player.current_vehicle = new_boat
-	player.current_vehicle.player = player
-	player.detection_area = new_boat.get_detection_area()
-	
-	# Update save data with new boat type
+	player.current_vehicle          = new_boat
+	player.current_vehicle.player   = player
+	player.detection_area           = new_boat.get_detection_area()
 	current_save_data.current_boat_type = boat_scene_path
-	
-	# Fix water height after spawning
+
 	if new_boat.has_method("update_water_lock"):
 		await player.get_tree().process_frame
 		new_boat.update_water_lock()
-	
-	# Emit boat changed signal
+
 	boat_changed.emit(boat_scene_path)
 
-# Save current player state to memory
 # Save current player state to memory
 func save_player_state(player: Player) -> void:
 	if not player:
 		return
-	
-	# Get current position
-	var saved_position = player.get_current_position()
-	
-	# Lock Y coordinate to water surface to prevent submerged spawns
-	const WATER_SURFACE_Y: float = 5.0  # Water Level
+
+	var saved_position := player.get_current_position()
+	const WATER_SURFACE_Y: float = 5.0
 	saved_position.y = WATER_SURFACE_Y
-	
+
 	current_save_data.player_position = saved_position
 	current_save_data.player_rotation = player.get_current_rotation()
-	
+
 	if player.current_vehicle and player.current_vehicle.scene_file_path:
 		current_save_data.current_boat_type = player.current_vehicle.scene_file_path
-	
+
 	current_save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
-	current_save_data.last_saved = Time.get_datetime_string_from_system()
-	
-	# Emit signal (keeps same inventory instance)
+	current_save_data.last_saved         = Time.get_datetime_string_from_system()
+
+	# Persist currency from InventoryManager into save data
+	current_save_data.currency = InventoryManager.get_currency()
+
 	player_state_changed.emit(current_save_data)
-	
-	
+
 # ========================================
 # SCENE TRANSITIONS
 # ========================================
@@ -174,10 +156,8 @@ func save_player_state(player: Player) -> void:
 func prepare_transition(target_scene: String, spawn_point: String = "") -> void:
 	# Store transition parameters
 	pending_transition.target_scene = target_scene
-	pending_transition.spawn_point = spawn_point
-	pending_transition.from_scene = get_tree().current_scene.scene_file_path
-	
-	# Save current player state before transition
+	pending_transition.spawn_point  = spawn_point
+	pending_transition.from_scene   = get_tree().current_scene.scene_file_path
 	if player_instance:
 		save_player_state(player_instance)
 	
@@ -193,7 +173,7 @@ func transition_to_scene(target_scene: String, spawn_point: String = "") -> void
 	get_tree().change_scene_to_file(target_scene)
 
 # ========================================
-# SAVE/LOAD SYSTEM
+# SAVE / LOAD
 # ========================================
 
 # Save current game state to file
@@ -201,11 +181,7 @@ func save_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 	# Ensure player state is current
 	if player_instance:
 		save_player_state(player_instance)
-	
-	# Write save data to disk as resource
-	var error = ResourceSaver.save(current_save_data, save_path)
-	
-	# Log result
+	var error := ResourceSaver.save(current_save_data, save_path)
 	if error == OK:
 		print_debug("Game saved successfully to: %s" % save_path)
 	else:
@@ -217,15 +193,22 @@ func load_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 	if not FileAccess.file_exists(save_path):
 		push_warning("Save file not found: %s" % save_path)
 		return ERR_FILE_NOT_FOUND
-	
+
 	var loaded_data = ResourceLoader.load(save_path, "PlayerSaveData")
 	
 	if not loaded_data or not loaded_data is PlayerSaveData:
 		push_error("Failed to load save data from: %s" % save_path)
 		return ERR_FILE_CORRUPT
-	
+
 	current_save_data = loaded_data
-	is_first_spawn = false  # ✅ ADD THIS LINE!
+	is_first_spawn    = false
+
+	# Restore currency into InventoryManager
+	InventoryManager.load_from_save(
+		current_save_data.inventory,
+		current_save_data.currency
+	)
+
 	print("Game loaded successfully from: %s" % save_path)
 	
 	return OK
@@ -248,29 +231,26 @@ func delete_save(save_path: String) -> Error:
 # Get list of all save files in save directory
 func get_save_files() -> Array[String]:
 	var saves: Array[String] = []
-	var dir = DirAccess.open(SAVE_DIR)
-	
+	var dir := DirAccess.open(SAVE_DIR)
 	if dir:
 		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		# Iterate through all files in save directory
+		var file_name := dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir() and file_name.ends_with(".tres"):
 				saves.append(SAVE_DIR + file_name)
 			file_name = dir.get_next()
 	return saves
-	
-func start_new_game() -> void: 
+
+func start_new_game() -> void:
 	if FileAccess.file_exists(AUTO_SAVE_FILE):
 		delete_save(AUTO_SAVE_FILE)
-		print_debug("[gamestatemanager]: deleted old autosave for fresh start")
-		current_save_data = PlayerSaveData.new()
-		is_first_spawn = true
-		reset_inventory()
+		print_debug("[GSM] Deleted old autosave for fresh start")
+	current_save_data = PlayerSaveData.new()
+	is_first_spawn    = true
+	reset_inventory()
 
 # ========================================
-# HELPER FUNCTIONS
+# HELPERS
 # ========================================
 
 # Get currently equipped boat type path
@@ -283,14 +263,16 @@ func set_initial_spawn(position: Vector3, rotation_y: float) -> void:
 		current_save_data.player_position = position
 		current_save_data.player_rotation = Vector3(0, rotation_y, 0)
 
-# Check if this is the first time spawning player
 func is_first_time_spawn() -> bool:
 	return is_first_spawn
-	
+
 func reset_inventory() -> void:
 	InventoryManager.items.clear()
+	InventoryManager.currency = 0
 	InventoryManager.inventory_changed.emit(InventoryManager.items)
+	InventoryManager.currency_changed.emit(0)
 	current_save_data.inventory = {}
+	current_save_data.currency  = 0
 
 func assign_first_quest():
 	spawnable = true

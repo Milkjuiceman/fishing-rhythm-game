@@ -74,14 +74,16 @@ var settings: Dictionary = {
 # Path to settings file
 const SETTINGS_PATH: String = "user://settings.cfg"
 
-# Path to title/main menu scene
+# Path to title/main menu scene.
+# Must match run/main_scene in project.godot (uid://covxaj11k0427).
+# Update this string if the file is ever moved.
 const TITLE_SCREEN_PATH: String = "res://main_menu.tscn"
 
 
 func _ready() -> void:
 	# Start hidden
 	_hide_all()
-	
+
 	# Load saved settings
 	_load_settings()
 	_apply_settings_to_ui()
@@ -108,38 +110,38 @@ func toggle_pause() -> void:
 func pause_game() -> void:
 	is_paused = true
 	get_tree().paused = true
-	
+
 	# Store current mouse mode to restore later
 	_previous_mouse_mode = Input.mouse_mode
-	
+
 	# Show menu
 	background.visible = true
 	main_panel.visible = true
 	settings_panel.visible = false
 	is_in_settings = false
-	
+
 	# Show cursor for menu navigation
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+
 	# Focus first button for controller/keyboard navigation
 	if resume_button:
 		resume_button.grab_focus()
-	
+
 	game_paused.emit()
 
 
 func resume_game() -> void:
 	if not is_paused:
 		return
-	
+
 	is_paused = false
 	is_in_settings = false
-	
+
 	_hide_all()
-	
+
 	# Restore previous mouse mode
 	Input.mouse_mode = _previous_mouse_mode
-	
+
 	# Check if we're in a rhythm section (look for Referee in Rhythm group)
 	var referees = get_tree().get_nodes_in_group("Rhythm")
 	if referees.size() > 0:
@@ -155,13 +157,13 @@ func _show_rhythm_countdown() -> void:
 	# Create countdown instance (it will handle unpausing when done)
 	var countdown = COUNTDOWN_SCENE.instantiate()
 	countdown.start_from_white = false  # Don't start from white, just fade in dark
-	
+
 	# Add to scene tree
 	get_tree().root.add_child(countdown)
-	
+
 	# Connect to know when countdown finishes
 	countdown.countdown_finished.connect(_on_rhythm_countdown_finished)
-	
+
 	# Start the countdown (game stays paused, countdown handles unpause)
 	countdown.start_countdown()
 
@@ -187,10 +189,10 @@ func show_settings_only() -> void:
 	background.visible = true
 	main_panel.visible = false
 	settings_panel.visible = true
-	
+
 	# Show cursor for menu navigation
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+
 	if back_button:
 		back_button.grab_focus()
 
@@ -199,7 +201,7 @@ func show_settings_only() -> void:
 func hide_settings() -> void:
 	is_in_settings = false
 	settings_panel.visible = false
-	
+
 	# If we were paused, show main panel; otherwise hide everything
 	if is_paused:
 		main_panel.visible = true
@@ -207,7 +209,7 @@ func hide_settings() -> void:
 			settings_button.grab_focus()
 	else:
 		_hide_all()
-	
+
 	# Save settings when leaving
 	_save_settings()
 
@@ -239,31 +241,40 @@ func _on_settings_pressed() -> void:
 func _on_title_screen_pressed() -> void:
 	# Save game before going to title
 	_save_game_before_exit()
-	
+
 	# Save settings before transitioning
 	_save_settings()
-	
+
 	# Hide pause menu
 	is_paused = false
 	_hide_all()
-	
+
 	title_screen_requested.emit()
-	
-	# Change to title screen
-	if ResourceLoader.exists(TITLE_SCREEN_PATH):
-		get_tree().paused = false
-		get_tree().change_scene_to_file(TITLE_SCREEN_PATH)
-	else:
+
+	# Validate title screen path and transition
+	if not ResourceLoader.exists(TITLE_SCREEN_PATH):
 		push_warning("[PauseMenu] Title screen not found at: " + TITLE_SCREEN_PATH)
+		return
+
+	get_tree().paused = false
+
+	# Use ScreenTransition for a clean fade — the destination main_menu.tscn
+	# will start its own TitleCinematicDirector fresh on _ready(), so no
+	# cleanup is needed here (there's no director in the current gameplay scene).
+	var screen_transition = get_node_or_null("/root/ScreenTransition")
+	if screen_transition:
+		screen_transition.transition_to_scene(TITLE_SCREEN_PATH)
+	else:
+		get_tree().change_scene_to_file(TITLE_SCREEN_PATH)
 
 
 func _on_quit_pressed() -> void:
 	# Save game before quitting
 	_save_game_before_exit()
-	
+
 	# Save settings before quitting
 	_save_settings()
-	
+
 	get_tree().quit()
 
 
@@ -276,13 +287,13 @@ func _perform_save() -> void:
 	if not GameStateManager.player_instance:
 		push_warning("[PauseMenu] No player instance to save!")
 		return
-	
+
 	# Save current player state
 	GameStateManager.save_player_state(GameStateManager.player_instance)
-	
+
 	# Save to file
 	var result = GameStateManager.save_game()
-	
+
 	if result == OK:
 		print("[PauseMenu] Game saved successfully")
 		game_saved.emit()
@@ -295,20 +306,20 @@ func _perform_load() -> void:
 	if not FileAccess.file_exists("user://saves/autosave.tres"):
 		push_warning("[PauseMenu] No save file found!")
 		return
-	
+
 	# Load from file
 	var result = GameStateManager.load_game()
-	
+
 	if result == OK:
 		# Close pause menu
 		resume_game()
-		
+
 		# Wait a frame then reload scene
 		await get_tree().process_frame
-		
+
 		# Reload the current scene to apply loaded state
 		get_tree().reload_current_scene()
-		
+
 		game_loaded.emit()
 	else:
 		push_error("[PauseMenu] Failed to load game! Error: " + str(result))
@@ -371,7 +382,7 @@ func _apply_volume(bus_name: String, value: float) -> void:
 func _on_fullscreen_toggled(button_pressed: bool) -> void:
 	settings["fullscreen"] = button_pressed
 	settings_changed.emit("fullscreen", button_pressed)
-	
+
 	if button_pressed:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
@@ -381,7 +392,7 @@ func _on_fullscreen_toggled(button_pressed: bool) -> void:
 func _on_vsync_toggled(button_pressed: bool) -> void:
 	settings["vsync"] = button_pressed
 	settings_changed.emit("vsync", button_pressed)
-	
+
 	if button_pressed:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
@@ -442,51 +453,51 @@ func _apply_offsets_to_referees() -> void:
 func _load_settings() -> void:
 	var config := ConfigFile.new()
 	var err := config.load(SETTINGS_PATH)
-	
+
 	if err != OK:
 		# No saved settings, use defaults
 		return
-	
+
 	# Load audio settings
-	settings["master_volume"] = config.get_value("audio", "master_volume", settings["master_volume"])
-	settings["music_volume"] = config.get_value("audio", "music_volume", settings["music_volume"])
-	settings["sfx_volume"] = config.get_value("audio", "sfx_volume", settings["sfx_volume"])
-	
+	settings["master_volume"]    = config.get_value("audio",    "master_volume",    settings["master_volume"])
+	settings["music_volume"]     = config.get_value("audio",    "music_volume",     settings["music_volume"])
+	settings["sfx_volume"]       = config.get_value("audio",    "sfx_volume",       settings["sfx_volume"])
+
 	# Load display settings
-	settings["fullscreen"] = config.get_value("display", "fullscreen", settings["fullscreen"])
-	settings["vsync"] = config.get_value("display", "vsync", settings["vsync"])
-	settings["show_fps"] = config.get_value("display", "show_fps", settings["show_fps"])
-	
+	settings["fullscreen"]       = config.get_value("display",  "fullscreen",       settings["fullscreen"])
+	settings["vsync"]            = config.get_value("display",  "vsync",            settings["vsync"])
+	settings["show_fps"]         = config.get_value("display",  "show_fps",         settings["show_fps"])
+
 	# Load gameplay settings
 	settings["mouse_sensitivity"] = config.get_value("gameplay", "mouse_sensitivity", settings["mouse_sensitivity"])
-	settings["invert_y"] = config.get_value("gameplay", "invert_y", settings["invert_y"])
-	
+	settings["invert_y"]          = config.get_value("gameplay", "invert_y",          settings["invert_y"])
+
 	# Load rhythm calibration settings
-	settings["audio_offset"] = config.get_value("rhythm", "audio_offset", settings["audio_offset"])
-	settings["input_offset"] = config.get_value("rhythm", "input_offset", settings["input_offset"])
+	settings["audio_offset"]     = config.get_value("rhythm",   "audio_offset",     settings["audio_offset"])
+	settings["input_offset"]     = config.get_value("rhythm",   "input_offset",     settings["input_offset"])
 
 
 func _save_settings() -> void:
 	var config := ConfigFile.new()
-	
+
 	# Save audio settings
-	config.set_value("audio", "master_volume", settings["master_volume"])
-	config.set_value("audio", "music_volume", settings["music_volume"])
-	config.set_value("audio", "sfx_volume", settings["sfx_volume"])
-	
+	config.set_value("audio",    "master_volume",    settings["master_volume"])
+	config.set_value("audio",    "music_volume",     settings["music_volume"])
+	config.set_value("audio",    "sfx_volume",       settings["sfx_volume"])
+
 	# Save display settings
-	config.set_value("display", "fullscreen", settings["fullscreen"])
-	config.set_value("display", "vsync", settings["vsync"])
-	config.set_value("display", "show_fps", settings["show_fps"])
-	
+	config.set_value("display",  "fullscreen",       settings["fullscreen"])
+	config.set_value("display",  "vsync",            settings["vsync"])
+	config.set_value("display",  "show_fps",         settings["show_fps"])
+
 	# Save gameplay settings
 	config.set_value("gameplay", "mouse_sensitivity", settings["mouse_sensitivity"])
-	config.set_value("gameplay", "invert_y", settings["invert_y"])
-	
+	config.set_value("gameplay", "invert_y",          settings["invert_y"])
+
 	# Save rhythm calibration settings
-	config.set_value("rhythm", "audio_offset", settings["audio_offset"])
-	config.set_value("rhythm", "input_offset", settings["input_offset"])
-	
+	config.set_value("rhythm",   "audio_offset",     settings["audio_offset"])
+	config.set_value("rhythm",   "input_offset",     settings["input_offset"])
+
 	var err := config.save(SETTINGS_PATH)
 	if err != OK:
 		push_error("[PauseMenu] Failed to save settings: " + str(err))
@@ -494,67 +505,49 @@ func _save_settings() -> void:
 
 func _apply_settings_to_ui() -> void:
 	# Apply loaded settings to UI elements
-	if master_slider:
-		master_slider.value = settings["master_volume"]
-	if master_value:
-		master_value.text = "%d%%" % int(settings["master_volume"])
-	
-	if music_slider:
-		music_slider.value = settings["music_volume"]
-	if music_value:
-		music_value.text = "%d%%" % int(settings["music_volume"])
-	
-	if sfx_slider:
-		sfx_slider.value = settings["sfx_volume"]
-	if sfx_value:
-		sfx_value.text = "%d%%" % int(settings["sfx_volume"])
-	
-	if fullscreen_check:
-		fullscreen_check.button_pressed = settings["fullscreen"]
-	
-	if vsync_check:
-		vsync_check.button_pressed = settings["vsync"]
-	
-	if show_fps_check:
-		show_fps_check.button_pressed = settings["show_fps"]
-	
-	if mouse_sens_slider:
-		mouse_sens_slider.value = settings["mouse_sensitivity"]
-	if mouse_sens_value:
-		mouse_sens_value.text = "%.1f" % settings["mouse_sensitivity"]
-	
-	if invert_y_check:
-		invert_y_check.button_pressed = settings["invert_y"]
-	
+	if master_slider:    master_slider.value   = settings["master_volume"]
+	if master_value:     master_value.text     = "%d%%" % int(settings["master_volume"])
+
+	if music_slider:     music_slider.value    = settings["music_volume"]
+	if music_value:      music_value.text      = "%d%%" % int(settings["music_volume"])
+
+	if sfx_slider:       sfx_slider.value      = settings["sfx_volume"]
+	if sfx_value:        sfx_value.text        = "%d%%" % int(settings["sfx_volume"])
+
+	if fullscreen_check: fullscreen_check.button_pressed = settings["fullscreen"]
+	if vsync_check:      vsync_check.button_pressed      = settings["vsync"]
+	if show_fps_check:   show_fps_check.button_pressed   = settings["show_fps"]
+
+	if mouse_sens_slider: mouse_sens_slider.value = settings["mouse_sensitivity"]
+	if mouse_sens_value:  mouse_sens_value.text   = "%.1f" % settings["mouse_sensitivity"]
+
+	if invert_y_check:   invert_y_check.button_pressed = settings["invert_y"]
+
 	# Rhythm calibration settings
-	if audio_offset_slider:
-		audio_offset_slider.value = settings["audio_offset"]
-	if audio_offset_value:
-		audio_offset_value.text = "%.0f ms" % (settings["audio_offset"] * 1000.0)
-	
-	if input_offset_slider:
-		input_offset_slider.value = settings["input_offset"]
-	if input_offset_value:
-		input_offset_value.text = "%.0f ms" % (settings["input_offset"] * 1000.0)
+	if audio_offset_slider: audio_offset_slider.value = settings["audio_offset"]
+	if audio_offset_value:  audio_offset_value.text   = "%.0f ms" % (settings["audio_offset"] * 1000.0)
+
+	if input_offset_slider: input_offset_slider.value = settings["input_offset"]
+	if input_offset_value:  input_offset_value.text   = "%.0f ms" % (settings["input_offset"] * 1000.0)
 
 
 func _apply_settings_to_game() -> void:
 	# Apply all settings that affect the game immediately
-	_apply_volume("Master", settings["master_volume"])
+	_apply_volume("Master",          settings["master_volume"])
 	_apply_volume("Overworld Music", settings["music_volume"])
-	_apply_volume("SFX", settings["sfx_volume"])
-	
+	_apply_volume("SFX",             settings["sfx_volume"])
+
 	# Apply display settings
 	if settings["fullscreen"]:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	
+
 	if settings["vsync"]:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	
+
 	# Apply rhythm offsets to any active referees
 	_apply_offsets_to_referees()
 

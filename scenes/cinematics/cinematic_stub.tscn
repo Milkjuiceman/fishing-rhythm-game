@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cinematic_stub"]
+
+[ext_resource type="Script" path="res://scripts/ui/menus/title_cinematic_director.gd" id="1_stub"]
+
+; Minimal stub used until per-area cinematic scenes are authored.
+; Structure: Node3D root → Camera3D (default position) + AnimationPlayer (no clips yet).
+; TitleCinematicDirector handles an empty AnimationPlayer gracefully — it just holds
+; the camera at its default transform until a "cinematic_*" animation is added here.
+
+[node name="CinematicStub" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866, 0.5, 0, -0.5, 0.866, 0, 3, 8)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+; Add animations here with names starting with "cinematic_" to activate clip cycling.
+; Example: "cinematic_lake_pan", "cinematic_dock_approach", etc.

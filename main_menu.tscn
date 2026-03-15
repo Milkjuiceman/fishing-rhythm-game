@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://covxaj11k0427"]
+[gd_scene load_steps=7 format=3 uid="uid://covxaj11k0427"]
 
 [ext_resource type="Script" uid="uid://dnm12ppe1u68w" path="res://scripts/ui/menus/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://ccajagxrsluey" path="res://scripts/ui/menus/title_cinematic_director.gd" id="2_director"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
 bg_color = Color(1, 1, 1, 1)
@@ -33,6 +34,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06t4h")
+
+[node name="CinematicBackground" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="CinematicViewport" type="SubViewport" parent="CinematicBackground"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="DissolveRect" type="TextureRect" parent="CinematicBackground"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -130,3 +152,8 @@ theme_override_font_sizes/font_size = 70
 text = "Reel to the Rhythm"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TitleCinematicDirector" type="Node" parent="." node_paths=PackedStringArray("viewport", "dissolve_rect")]
+script = ExtResource("2_director")
+viewport = NodePath("../CinematicBackground/CinematicViewport")
+dissolve_rect = NodePath("../CinematicBackground/DissolveRect")
