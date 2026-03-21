@@ -56,15 +56,14 @@ func _on_countdown_finished() -> void:
 # ========================================
 
 # Handles successful fishing results and awards inventory items
-func _on_fishing_finished(performance: float) -> void:
-	var rarity = _determine_rarity(performance) # determine fish rarity based on performance
+func _on_fishing_finished(performance: float, rarity: String) -> void:
 	var item_id = "lake_trout"
-	GameStateManager.current_save_data.inventory.add_item(item_id, rarity, 1) # add fish w/ rarity to inventory
+		# GameStateManager.current_save_data.inventory.add_item(item_id, rarity, 1) # add fish w/ rarity to inventory
 	
 	# debug statements
 	print("Reading from inventory instance:", GameStateManager.current_save_data.inventory)
-	var count = GameStateManager.current_save_data.inventory.get_item_count(item_id, rarity)
-	print("added: ", item_id, " | new count: ", count, " | rarity: ", rarity)
+	# var count = GameStateManager.current_save_data.inventory.get_item_count(item_id, rarity)
+	# print("added: ", item_id, " | new count: ", count, " | rarity: ", rarity)
 
 	_return_to_overworld() # return player to overworld once level ends
 
@@ -105,3 +104,4 @@ func _safety_check() -> void:
 		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
 	
 	ScreenTransition.transition_to_scene(return_scene)
+	

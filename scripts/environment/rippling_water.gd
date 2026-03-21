@@ -9,8 +9,7 @@ class_name RipplingWater
 # ========================================
 
 # const RHYTHM_SCENE_PATH: String = "res://scenes/musiclevel/rhythm_level.tscn"
-const LEVELS: Array = ["res://scenes/musiclevel/rhythm_level.tscn", "res://scenes/musiclevel/rhythm_level2.tscn"]
-var index = randi_range(0, LEVELS.size() - 1)
+const RHYTHM_SCENE_PATH: String = "res://scenes/musiclevel/rhythm_level.tscn"
 
 # ========================================
 # CONFIGURATION
@@ -63,8 +62,8 @@ func _start_rhythm_minigame(player: Player) -> void:
 	print("Starting rhythm minigame...")
 	
 	# Validate minigame scene exists
-	if not ResourceLoader.exists(LEVELS[index]):
-		push_error("Rhythm scene not found: %s" % LEVELS[index])
+	if not ResourceLoader.exists(RHYTHM_SCENE_PATH):
+		push_error("Rhythm scene not found: %s" % RHYTHM_SCENE_PATH)
 		return
 	
 	# Save current player state for return
@@ -82,14 +81,14 @@ func _start_rhythm_minigame(player: Player) -> void:
 	# Use screen transition if available
 	var screen_transition = get_node_or_null("/root/ScreenTransition")
 	if screen_transition:
-		screen_transition.transition_to_scene(LEVELS[index])
+		screen_transition.transition_to_scene(RHYTHM_SCENE_PATH)
 	else:
 		# Fallback to direct scene change
 		call_deferred("_change_scene")
 
 # Change to rhythm minigame scene
 func _change_scene() -> void:
-	get_tree().change_scene_to_file(LEVELS[index])
+	get_tree().change_scene_to_file(RHYTHM_SCENE_PATH)
 
 # ========================================
 # RESPAWN SYSTEM

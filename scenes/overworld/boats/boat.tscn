@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="2_sbp4s"]
 [ext_resource type="RDShaderFile" uid="uid://dxgjtfbydddnx" path="res://graphics/compositor/inital_outlines.glsl" id="3_rg0x2"]
 [ext_resource type="RDShaderFile" uid="uid://n24xlxbue7g6" path="res://graphics/compositor/jump_fill.glsl" id="4_7nc38"]
-[ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat.glb" id="4_lvl5j"]
+[ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat_small.glb" id="4_lvl5j"]
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="5_5c6k0"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_ouaro"]
 
