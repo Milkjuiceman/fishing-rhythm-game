@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://ccnq48yx74pv6" path="res://assets/tracks/charts/Rolling_at_5-210.tres" id="5_trr87"]
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_27h43"]
 [ext_resource type="Script" uid="uid://di61sgnwlebsy" path="res://rhythm/Editor/editor_progress_bar.gd" id="7_syn7g"]
-[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_ecu1r"]
+[ext_resource type="Script" uid="uid://cutbe70v346ck" path="res://rhythm/Editor/edit_display.gd" id="8_4r7wg"]
 [ext_resource type="Script" uid="uid://cplx12eoiuqiy" path="res://scripts/musiclevel/hits.gd" id="9_jdxih"]
 [ext_resource type="Script" uid="uid://buismt86y3qa4" path="res://rhythm/Editor/editor_note_holder.gd" id="10_x0nua"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_strij"]
@@ -664,8 +664,8 @@ environment = SubResource("Environment_wi50x")
 
 [node name="Judge" type="Node" parent="."]
 script = ExtResource("2_syn7g")
-testing = true
-finish = 30.0
+start = 10.0
+finish = 20.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_4r7wg")
@@ -744,7 +744,7 @@ value = 50.0
 allow_lesser = true
 script = ExtResource("7_syn7g")
 
-[node name="Multiplier" type="Label" parent="Camera3D/HUD"]
+[node name="EditingDisplay" type="Label" parent="Camera3D/HUD" node_paths=PackedStringArray("judge")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -754,8 +754,8 @@ offset_right = -100.66675
 offset_bottom = 38.0
 grow_horizontal = 0
 scale = Vector2(3, 3)
-text = "X1"
-script = ExtResource("8_ecu1r")
+script = ExtResource("8_4r7wg")
+judge = NodePath("../../../Judge")
 
 [node name="Hits" type="Label" parent="Camera3D/HUD"]
 offset_left = 2.0
@@ -1496,7 +1496,7 @@ script = ExtResource("13_asvrw")
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
-[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/EditingDisplay" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
 
 [editable path="Note_Holder/Note"]
