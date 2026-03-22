@@ -61,40 +61,41 @@ func generate_next_beat(subdivision: float) -> void:
 	print_debug(chart.note_timings)
 
 func snap_to_grid() -> void:
-	var bpm: float = chart.track.bpm[0.0]
-	var key_times = PackedFloat64Array()
-
-	if not key_times:
-		push_warning("No key_times array to snap!")
-		return
-
-	var beat_length = 60.0 / bpm
-	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
-	var i = 0
-
-	for t in key_times:
-		var best_snap = t
-		var smallest_diff = INF
-		for s in subdivisions:
-			var step = beat_length * s
-			var candidate = round(t / step) * step
-			var diff = abs(t - candidate)
-			if diff < smallest_diff:
-				smallest_diff = diff
-				best_snap = candidate
-		if i < chart.note_timings.size():
-			chart.note_timings[i] = best_snap
-			i += 1
-		else:
-			chart.note_timings.append(best_snap)
-			chart.note_column.append(0)
-
-	chart.emit_changed()
-
-	if chart.resource_path != "":
-		ResourceSaver.save(chart, chart.resource_path)
-
-	print_debug("snapped: ", chart.note_timings)
+	return
+	#var bpm: float = chart.track.bpm[0.0]
+	#var key_times = PackedFloat64Array()
+#
+	#if not key_times:
+		#push_warning("No key_times array to snap!")
+		#return
+#
+	#var beat_length = 60.0 / bpm
+	#var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
+	#var i = 0
+#
+	#for t in key_times:
+		#var best_snap = t
+		#var smallest_diff = INF
+		#for s in subdivisions:
+			#var step = beat_length * s
+			#var candidate = round(t / step) * step
+			#var diff = abs(t - candidate)
+			#if diff < smallest_diff:
+				#smallest_diff = diff
+				#best_snap = candidate
+		#if i < chart.note_timings.size():
+			#chart.note_timings[i] = best_snap
+			#i += 1
+		#else:
+			#chart.note_timings.append(best_snap)
+			#chart.note_column.append(0)
+#
+	#chart.emit_changed()
+#
+	#if chart.resource_path != "":
+		#ResourceSaver.save(chart, chart.resource_path)
+#
+	#print_debug("snapped: ", chart.note_timings)
 
 
 func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
@@ -118,13 +119,12 @@ func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
 			if diff < smallest_diff:
 				smallest_diff = diff
 				best_snap = candidate
-		if i < chart.note_timings.size():
-			chart.note_timings[i] = best_snap
+		if i < key_times.size():
+			key_times[i] = best_snap
 			i += 1
-		else:
-			chart.note_timings.append(best_snap)
-			chart.note_column.append(0)
 
+	chart.note_timings = key_times
+	chart.note_column.resize(chart.note_timings.size())
 	chart.emit_changed()
 
 	if chart.resource_path != "":

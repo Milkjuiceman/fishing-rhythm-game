@@ -1,5 +1,9 @@
 class_name EditorJudge extends Node
 
+@export var testing = false
+@export var start = 0.0
+@export var finish = 0.0
+
 var chart: Chart = null
 var scorecard: Scorecard = null
 
@@ -27,21 +31,22 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	var i: int = lowest_judgment_index - 1
 	while true:
 		i += 1
+		var in_editing_window = compared_t > start and compared_t < finish
 		if i >= chart.note_timings.size(): # at end of song and all done
-			#print(key_times)
-			emit_signal("send_key_times", key_times)
+			if not testing:
+				emit_signal("send_key_times", key_times)
 			get_tree().quit()
 			break
 			
 		var timing: float =  chart.note_timings[i]
 		
-		if frame_state.k_key_press:
+		if frame_state.k_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.j_key_press:
+		elif frame_state.j_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.f_key_press:
+		elif frame_state.f_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.d_key_press:
+		elif frame_state.d_key_press and in_editing_window:
 			key_times.append(compared_t)
 		
 		if timing > upper_bound: # done searching
