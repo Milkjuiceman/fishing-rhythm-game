@@ -14,6 +14,7 @@ signal send_key_times(key_times: PackedFloat64Array)
 
 var lowest_judgment_index: int = 0
 var key_times: PackedFloat64Array = PackedFloat64Array()
+var key_columns: PackedInt64Array = PackedInt64Array()
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
@@ -34,7 +35,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		var in_editing_window = compared_t > start and compared_t < finish
 		if i >= chart.note_timings.size(): # at end of song and all done
 			if not testing:
-				emit_signal("send_key_times", key_times)
+				emit_signal("send_key_times", key_times, key_columns)
 			get_tree().quit()
 			break
 			
@@ -42,12 +43,16 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		
 		if frame_state.k_key_press and in_editing_window:
 			key_times.append(compared_t)
+			key_columns.append(0)
 		elif frame_state.j_key_press and in_editing_window:
 			key_times.append(compared_t)
+			key_columns.append(1)
 		elif frame_state.f_key_press and in_editing_window:
 			key_times.append(compared_t)
+			key_columns.append(2)
 		elif frame_state.d_key_press and in_editing_window:
 			key_times.append(compared_t)
+			key_columns.append(3)
 		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:

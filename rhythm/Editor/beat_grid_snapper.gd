@@ -28,8 +28,8 @@ func _ready():
 	var sender = get_parent().get_node("Judge")
 	sender.send_key_times.connect(_on_receive_key_times)
 	
-func _on_receive_key_times(key_times: PackedFloat64Array) -> void:
-	snap_to_grid_with_key_times(key_times)
+func _on_receive_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array) -> void:
+	snap_to_grid_with_key_times(key_times, key_columns)
 
 func _get_property_list():
 	# Assign the buttons programmatically for tool mode
@@ -98,7 +98,7 @@ func snap_to_grid() -> void:
 	#print_debug("snapped: ", chart.note_timings)
 
 
-func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
+func snap_to_grid_with_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array) -> void:
 	var bpm: float = chart.track.bpm[0.0]
 
 	if not key_times:
@@ -124,6 +124,7 @@ func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
 			i += 1
 
 	chart.note_timings = key_times
+	chart.note_column = key_columns
 	chart.note_column.resize(chart.note_timings.size())
 	chart.emit_changed()
 
@@ -131,3 +132,4 @@ func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
 		ResourceSaver.save(chart, chart.resource_path)
 
 	print_debug("snapped: ", chart.note_timings)
+	print_debug("columns: ", chart.note_column)
