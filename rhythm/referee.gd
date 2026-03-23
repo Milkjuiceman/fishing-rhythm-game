@@ -65,13 +65,11 @@ func _process(delta: float) -> void:
 		var rarity = _performance_to_rarity(performance)
 		_catch_fish(performance, rarity)
 		
-
-
-func _on_song_finished() -> void:
+func _on_judge_song_finished() -> void:
 	var performance = _calculate_performance()
 	var rarity = _performance_to_rarity(performance)
 	_catch_fish(performance, rarity)
-	
+
 func _on_catch_failed() -> void:
 	print_debug("[referee]: bar depleted, ending song")
 	fish_failed.emit()
