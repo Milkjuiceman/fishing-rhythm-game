@@ -10,7 +10,7 @@ var scorecard: Scorecard = null
 const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
-signal send_key_times(key_times: PackedFloat64Array)
+signal send_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array, start: float, finish: float)
 
 var lowest_judgment_index: int = 0
 var key_times: PackedFloat64Array = PackedFloat64Array()
@@ -35,7 +35,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		var in_editing_window = compared_t > start and compared_t < finish
 		if i >= chart.note_timings.size(): # at end of song and all done
 			if not testing:
-				emit_signal("send_key_times", key_times, key_columns)
+				emit_signal("send_key_times", key_times, key_columns, start, finish)
 			get_tree().quit()
 			break
 			

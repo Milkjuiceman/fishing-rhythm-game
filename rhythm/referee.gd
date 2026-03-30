@@ -6,7 +6,7 @@ class_name Referee extends Node
 @export var music_player: MusicPlayer
 @export var input_hit: InputHit
 @export var judge: RhythmJudge
-@export var enter_prompt: Label
+@export var enter_prompt: Label3D
 @export var note_speed: float = 10.
 @export var input_offset: float = 0.0
 @export var audio_offset: float = 0.02

@@ -2633,7 +2633,7 @@ chart = ExtResource("5_vlupf")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
-enter_prompt = NodePath("../../Camera3D/HUD/EnterPrompt")
+enter_prompt = NodePath("../../Camera3D/Background/RealInNotification")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 6.696973e-08, -5.619428e-08, 0, 0.64278764, 0.76604444, 8.742278e-08, 0.76604444, -0.64278764, 0, 7.002, -2)
@@ -2774,9 +2774,9 @@ text = "press enter to reel it in early! "
 transform = Transform3D(58, 5.357192e-07, 3.5049244e-08, -1.8221194e-06, 26.963133, 0.4384182, -1.3729932e-06, -13.152548, 0.89877135, 4.497753e-06, 5.813774, -28.311403)
 mesh = SubResource("PlaneMesh_o6wfx")
 
-[node name="Description" type="Label3D" parent="Camera3D/Background"]
+[node name="RealInNotification" type="Label3D" parent="Camera3D/Background"]
 visible = false
-text = "Transparent Water"
+text = "REAL IN"
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("7_3ffb3")
