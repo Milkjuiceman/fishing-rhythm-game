@@ -2776,7 +2776,7 @@ mesh = SubResource("PlaneMesh_o6wfx")
 
 [node name="RealInNotification" type="Label3D" parent="Camera3D/Background"]
 visible = false
-text = "REAL IN"
+text = "REEL IN"
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("7_3ffb3")

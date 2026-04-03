@@ -1,22 +1,53 @@
 extends Node
 class_name RhythmJudge
+## Handles note timing judgment and scoring for the rhythm gameplay system.
+## Integrates with Referee gameplay logic, Scorecard scoring system, and CatchProgressBar UI.
+## Author: Tyler Schauermann
+## Date of last update: 04/02/2026
+## Designed to remain modular so alternate rhythm charts, judges, or scoring systems
+## can reuse this logic without modifying the core gameplay controller.
 
-# node references
+# ========================================
+# CONSTANTS AND EXPORTED VARIABLES
+# ========================================
+
+# Reference to the catch progress bar UI
 @export var progress_bar: CatchProgressBar
+
+# Reference to the rhythm referee
 @export var referee: Referee
 
-var chart: Chart = null
-var scorecard: Scorecard = null
-
+# Allowed timing error window in seconds
 const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
-# signals
-signal song_finished
-signal note_judged(note_index: int, frame_state: FrameState, status: String)
+# ========================================
+# RUNTIME STATE VARIABLES
+# ========================================
 
-# state
+# Currently loaded rhythm chart
+var chart: Chart = null
+
+# Score tracking object for the active chart
+var scorecard: Scorecard = null
+
+# Index of the earliest note that can still be judged
 var lowest_judgment_index: int = 0
 
+# ========================================
+# SIGNALS
+# ========================================
+
+# Emitted when the chart finishes playing
+signal song_finished
+
+# Emitted whenever a note receives a judgment
+signal note_judged(note_index: int, frame_state: FrameState, status: String)
+
+# ========================================
+# INITIALIZATION
+# ========================================
+
+# Initializes judge and connects referee signals
 func _ready() -> void:
 	# Wire song_finished to scene return
 	# Connect catch outcomes to scene exit
@@ -30,6 +61,7 @@ func _ready() -> void:
 		push_warning("[Judge] Referee is null — cannot connect catch signals")
 
 
+# Loads a new chart and resets scoring state
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	if chart != null:
@@ -38,7 +70,11 @@ func load_new_chart(new_chart: Chart) -> void:
 		if progress_bar:
 			progress_bar.reset()
 
+# ========================================
+# FRAME JUDGMENT PROCESSING
+# ========================================
 
+# Registers a successful note hit
 func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameState) -> void:
 	var temporal_difference: float = compared_t - timing
 	scorecard.hit_note(i, temporal_difference)
@@ -48,6 +84,7 @@ func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameSt
 		lowest_judgment_index += 1
 
 
+# Processes input and timing windows for note judgments
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	# Guard: need both a playing song and an initialized scorecard
 	if not frame_state.playing_song or chart == null or scorecard == null:
@@ -105,7 +142,11 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		# Whether hit or not, stop here — can only judge one in-window note per frame
 		break
 
+# ========================================
+# SCENE RETURN LOGIC
+# ========================================
 
+# Returns the player to the previous scene
 func _return_to_previous_scene() -> void:
 	print("[Judge] _return_to_previous_scene called")
 	var return_scene = _get_return_scene()
@@ -118,6 +159,7 @@ func _return_to_previous_scene() -> void:
 	ScreenTransition.transition_to_scene(return_scene)
 
 
+# Determines which scene should be loaded after rhythm gameplay
 func _get_return_scene() -> String:
 	if not has_node("/root/GameStateManager"):
 		push_warning("[Judge] GameStateManager not found - using fallback")
@@ -134,6 +176,10 @@ func _get_return_scene() -> String:
 	push_warning("[Judge] No return scene found - using tutorial lake")
 	return "res://scenes/overworld/terrain/tutorial_lake.tscn"
 
+# ========================================
+# SIGNAL HANDLERS
+# ========================================
 
+# Receives signal to load a new chart from the referee
 func _on_referee_play_chart_now(chart_: Chart) -> void:
 	load_new_chart(chart_)
