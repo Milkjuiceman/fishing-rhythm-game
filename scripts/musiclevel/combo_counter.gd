@@ -1,6 +1,7 @@
 extends Label
 
 func _on_referee_process(frame_state: FrameState) -> void:
+	
 	if not frame_state.scorecard:
 		return
 	var combo = frame_state.scorecard.combo

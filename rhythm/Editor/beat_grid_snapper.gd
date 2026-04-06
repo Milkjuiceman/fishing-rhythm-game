@@ -28,8 +28,10 @@ func _ready():
 	var sender = get_parent().get_node("Judge")
 	sender.send_key_times.connect(_on_receive_key_times)
 	
-func _on_receive_key_times(key_times: PackedFloat64Array) -> void:
-	snap_to_grid_with_key_times(key_times)
+func _on_receive_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array, start: float, finish: float) -> void:
+	snap_key_times(key_times)
+	key_times = create_key_times(key_times, start, finish)
+	snap_to_grid_with_key_times(key_times, key_columns)
 
 func _get_property_list():
 	# Assign the buttons programmatically for tool mode
@@ -61,17 +63,81 @@ func generate_next_beat(subdivision: float) -> void:
 	print_debug(chart.note_timings)
 
 func snap_to_grid() -> void:
-	var bpm: float = chart.track.bpm[0.0]
-	var key_times = PackedFloat64Array()
+	return
+	#var bpm: float = chart.track.bpm[0.0]
+	#var key_times = PackedFloat64Array()
+#
+	#if not key_times:
+		#push_warning("No key_times array to snap!")
+		#return
+#
+	#var beat_length = 60.0 / bpm
+	#var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
+	#var i = 0
+#
+	#for t in key_times:
+		#var best_snap = t
+		#var smallest_diff = INF
+		#for s in subdivisions:
+			#var step = beat_length * s
+			#var candidate = round(t / step) * step
+			#var diff = abs(t - candidate)
+			#if diff < smallest_diff:
+				#smallest_diff = diff
+				#best_snap = candidate
+		#if i < chart.note_timings.size():
+			#chart.note_timings[i] = best_snap
+			#i += 1
+		#else:
+			#chart.note_timings.append(best_snap)
+			#chart.note_column.append(0)
+#
+	#chart.emit_changed()
+#
+	#if chart.resource_path != "":
+		#ResourceSaver.save(chart, chart.resource_path)
+#
+	#print_debug("snapped: ", chart.note_timings)
 
+
+func snap_to_grid_with_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array) -> void:
 	if not key_times:
 		push_warning("No key_times array to snap!")
 		return
 
+	chart.note_timings = key_times
+	chart.note_column = key_columns
+	chart.note_column.resize(chart.note_timings.size())
+	chart.note_timings.sort()
+	chart.emit_changed()
+
+	if chart.resource_path != "":
+		ResourceSaver.save(chart, chart.resource_path)
+
+	print_debug("snapped: ", chart.note_timings)
+	print_debug("columns: ", chart.note_column)
+
+
+func create_key_times(key_times: PackedFloat64Array, start: float, finish: float) -> PackedFloat64Array:
+	var result := PackedFloat64Array()
+	
+	# Keep values OUTSIDE the range
+	for value in chart.note_timings:
+		if value < start or value > finish:
+			result.append(value)
+
+	# Add the new values (already in range)
+	result.append_array(key_times)
+	
+	return result
+	
+func snap_key_times(key_times: PackedFloat64Array) -> void:
+	var bpm: float = chart.track.bpm[0.0]
+	
 	var beat_length = 60.0 / bpm
 	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
 	var i = 0
-
+	
 	for t in key_times:
 		var best_snap = t
 		var smallest_diff = INF
@@ -82,52 +148,8 @@ func snap_to_grid() -> void:
 			if diff < smallest_diff:
 				smallest_diff = diff
 				best_snap = candidate
-		if i < chart.note_timings.size():
-			chart.note_timings[i] = best_snap
+		if i < key_times.size():
+			key_times[i] = best_snap
 			i += 1
-		else:
-			chart.note_timings.append(best_snap)
-			chart.note_column.append(0)
-
-	chart.emit_changed()
-
-	if chart.resource_path != "":
-		ResourceSaver.save(chart, chart.resource_path)
-
-	print_debug("snapped: ", chart.note_timings)
-
-
-func snap_to_grid_with_key_times(key_times: PackedFloat64Array) -> void:
-	var bpm: float = chart.track.bpm[0.0]
-
-	if not key_times:
-		push_warning("No key_times array to snap!")
-		return
-
-	var beat_length = 60.0 / bpm
-	var subdivisions = [1.0, 1/2.0, 1/3.0, 2/3.0]
-	var i = 0
-
-	for t in key_times:
-		var best_snap = t
-		var smallest_diff = INF
-		for s in subdivisions:
-			var step = beat_length * s
-			var candidate = round(t / step) * step
-			var diff = abs(t - candidate)
-			if diff < smallest_diff:
-				smallest_diff = diff
-				best_snap = candidate
-		if i < chart.note_timings.size():
-			chart.note_timings[i] = best_snap
-			i += 1
-		else:
-			chart.note_timings.append(best_snap)
-			chart.note_column.append(0)
-
-	chart.emit_changed()
-
-	if chart.resource_path != "":
-		ResourceSaver.save(chart, chart.resource_path)
-
-	print_debug("snapped: ", chart.note_timings)
+	
+	return

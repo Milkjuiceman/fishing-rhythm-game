@@ -1,15 +1,20 @@
 class_name EditorJudge extends Node
 
+@export var testing = false
+@export var start = 0.0
+@export var finish = 0.0
+
 var chart: Chart = null
 var scorecard: Scorecard = null
 
 const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
 
 signal note_judged(note_index: int, frame_state: FrameState)
-signal send_key_times(key_times: PackedFloat64Array)
+signal send_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Array, start: float, finish: float)
 
 var lowest_judgment_index: int = 0
 var key_times: PackedFloat64Array = PackedFloat64Array()
+var key_columns: PackedInt64Array = PackedInt64Array()
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
@@ -27,22 +32,27 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	var i: int = lowest_judgment_index - 1
 	while true:
 		i += 1
+		var in_editing_window = compared_t > start and compared_t < finish
 		if i >= chart.note_timings.size(): # at end of song and all done
-			#print(key_times)
-			emit_signal("send_key_times", key_times)
+			if not testing:
+				emit_signal("send_key_times", key_times, key_columns, start, finish)
 			get_tree().quit()
 			break
 			
 		var timing: float =  chart.note_timings[i]
 		
-		if frame_state.k_key_press:
+		if frame_state.k_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.j_key_press:
+			key_columns.append(0)
+		elif frame_state.j_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.f_key_press:
+			key_columns.append(1)
+		elif frame_state.f_key_press and in_editing_window:
 			key_times.append(compared_t)
-		elif frame_state.d_key_press:
+			key_columns.append(2)
+		elif frame_state.d_key_press and in_editing_window:
 			key_times.append(compared_t)
+			key_columns.append(3)
 		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
