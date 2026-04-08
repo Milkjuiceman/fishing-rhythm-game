@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=49 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="14_owl05"]
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="15_yq4oh"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="16_5oyo0"]
+[ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="17_cdd1p"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="17_ywjkn"]
 [ext_resource type="Script" uid="uid://0rwk7tajftlx" path="res://scripts/npcs/npc.gd" id="18_c03w6"]
 [ext_resource type="PackedScene" uid="uid://c4a0jes5hdlsu" path="res://scenes/overworld/environmentObjects/cabin.tscn" id="18_gv44t"]
@@ -89,6 +90,29 @@ size = Vector3(245.74716, 20.628906, 238.35051)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp4fu"]
 size = Vector3(386.7661, 51.820324, 273.94922)
+
+[sub_resource type="Resource" id="Resource_1it6v"]
+resource_name = "Basic Fish"
+script = ExtResource("17_cdd1p")
+scene_path = "uid://dobb00e6psm41"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_cdd1p"]
+script = ExtResource("17_cdd1p")
+scene_path = "uid://kc6gxomlw3bs"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_uanvt"]
+script = ExtResource("17_cdd1p")
+scene_path = "uid://dobb00e6psm41"
+chance = 50.0
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_ogh25"]
+script = ExtResource("17_cdd1p")
+scene_path = "uid://kc6gxomlw3bs"
+chance = 50.0
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c03w6"]
 
@@ -171,16 +195,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 552.484, 5, 550.861)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 602.4725, 5, 419.60556)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
+rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_1it6v")])
 
 [node name="RipplingWaterSpawner2" type="Node3D" parent="FishSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.89978, 5, 276.07565)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
+rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_cdd1p")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="FishSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528.29974, 5, 577.40405)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
+rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="Dock" parent="." node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
 transform = Transform3D(-0.5665696, 0, -7.3632345, 0, 7.385, 0, 7.3632345, 0, -0.5665696, 276.20355, 7.8072414, 399.3725)

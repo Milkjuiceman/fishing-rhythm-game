@@ -2,6 +2,7 @@ extends Node3D
 ## Rippling Water Spawner
 ## Periodically spawns rippling water fishing spots in a radius around the spawner
 ## Manages active water instances and respawns when removed
+
 # ========================================
 # CONFIGURATION
 # ========================================
@@ -9,86 +10,115 @@ extends Node3D
 @export var max_spawns: int = 1  # Maximum concurrent water pools per spawner
 @export var rippling_water_scene: PackedScene  # Water scene to spawn
 @export var spawn_radius: float = 100.0  # Radius around spawner to place water
-@export var spawn_height: float = 4.4 # Absolute Y coordinate for spawns
+@export var spawn_height: float = 4.4  # Absolute Y coordinate for spawns
+
+# ========================================
+# RHYTHM LEVEL CONFIGURATION
+# ========================================
+
+## One entry per rhythm level this spawner can send the player to.
+## Set the scene path and chance (0-100). All chances should add up to 100.
+@export var rhythm_levels: Array[RhythmLevelEntry] = []
+
 # ========================================
 # VARIABLES
 # ========================================
 var active_waters: Array = []  # Track currently spawned water instances
 var spawn_timer: Timer  # Timer for periodic spawning
-var spawnable: bool = false  # Local spawnable flag
+
 # ========================================
 # INITIALIZATION
 # ========================================
 func _ready():
-	# Create and configure spawn timer
+	_validate_rhythm_levels()
+
 	spawn_timer = Timer.new()
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.one_shot = false
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(spawn_timer)
-	# Don't start timer here — wait for quest assignment
 
-	if GameStateManager.spawnable:
-		enable_spawning()
-	GameStateManager.first_quest_assigned.connect(_on_quest_assigned)
+	enable_spawning()
+
+# ========================================
+# VALIDATION
+# ========================================
+
+func _validate_rhythm_levels() -> void:
+	if rhythm_levels.is_empty():
+		push_warning("[RipplingWaterSpawner] No rhythm levels configured on %s." % name)
+		return
+
+	var total: float = 0.0
+	for entry in rhythm_levels:
+		total += entry.chance
+
+	if not is_equal_approx(total, 100.0):
+		push_warning(
+			"[RipplingWaterSpawner] Rhythm level chances on '%s' add up to %.1f%% — they should add up to 100%%." % [name, total]
+		)
+
 # ========================================
 # SPAWNING SYSTEM
 # ========================================
-# Called when spawn timer completes
+
 func _on_spawn_timer_timeout():
 	spawn_rippling_water()
-# Spawn a new rippling water instance at random position
+
 func spawn_rippling_water():
-	# Enforce max spawn limit
 	if active_waters.size() >= max_spawns:
 		return
-	
-	# Validate scene reference
+
 	if rippling_water_scene == null:
-		#print_debug("ERROR: No rippling water scene assigned!")
 		return
-	
-	# Calculate random position within spawn radius
+
+	var chosen_level := _pick_rhythm_level()
+
 	var angle = randf() * TAU
 	var distance = randf() * spawn_radius
 	var offset = Vector3(cos(angle) * distance, 0, sin(angle) * distance)
 	var spawn_pos = global_position + offset
-	spawn_pos.y = spawn_height  # Lock Y to absolute height
-	
-	# Create new water instance
+	spawn_pos.y = spawn_height
+
 	var water = rippling_water_scene.instantiate()
-	
-	# Add to scene tree (deferred to avoid threading issues)
+
+	if chosen_level != null and water.has_method("set_rhythm_level"):
+		water.set_rhythm_level(chosen_level)
+
 	get_parent().call_deferred("add_child", water)
-	
-	# Set spawn position (deferred to ensure node is ready)
 	water.set_deferred("global_position", spawn_pos)
-	
-	# Add to tracking array
+
 	active_waters.append(water)
-	
-	# Connect cleanup signal for when water is removed
 	water.tree_exiting.connect(_on_water_removed.bind(water))
+
+# ========================================
+# RHYTHM LEVEL SELECTION
+# ========================================
+
+func _pick_rhythm_level() -> RhythmLevelEntry:
+	if rhythm_levels.is_empty():
+		return null
+
+	var roll := randf() * 100.0
+	var cumulative: float = 0.0
+	for entry in rhythm_levels:
+		cumulative += entry.chance
+		if roll < cumulative:
+			return entry
+
+	return rhythm_levels[-1]
+
 # ========================================
 # CLEANUP
 # ========================================
-# Called when a water instance is removed from the scene
+
 func _on_water_removed(water):
 	active_waters.erase(water)
-	# Trigger a respawn after a short delay to let the node fully exit the tree
-	if spawnable:
-		get_tree().create_timer(1.0).timeout.connect(spawn_rippling_water)
-
-func _on_quest_assigned():
-	enable_spawning()
+	get_tree().create_timer(1.0).timeout.connect(spawn_rippling_water)
 
 func enable_spawning():
-	spawnable = true  # Set local flag so _on_water_removed can respawn
-	if spawn_timer.is_stopped():
-		spawn_timer.start()
-	# Defer initial spawn so any pending tree_exiting signals finish first
+	spawn_timer.start()
 	call_deferred("spawn_rippling_water")
 
 func disable_spawning():
-	spawnable = false
 	spawn_timer.stop()
