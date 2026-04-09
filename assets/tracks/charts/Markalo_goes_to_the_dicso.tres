@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://5t3xaub4ojyv"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_d3211"]
+[ext_resource type="Resource" uid="uid://crvppdb3xf5a2" path="res://assets/tracks/audio/Markalo_goes_to_the_disco.tres" id="2_m1qup"]
+
+[resource]
+script = ExtResource("1_d3211")
+track = ExtResource("2_m1qup")
+note_timings = PackedFloat64Array(2, 2.6666666666666665, 4, 5.666666666666666, 6, 6.333333333333333, 10.333333333333332, 10.666666666666666, 11.333333333333332, 11.666666666666666, 12, 12.333333333333332, 12.666666666666666, 13.333333333333332, 13.666666666666666, 14.333333333333332, 15)
+note_column = PackedInt64Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+metadata/_custom_type_script = "uid://bpno8ianhdobd"
