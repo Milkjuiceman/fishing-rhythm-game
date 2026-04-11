@@ -36,6 +36,8 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if i >= chart.note_timings.size(): # at end of song and all done
 			if not testing:
 				emit_signal("send_key_times", key_times, key_columns, start, finish)
+			else:
+				print("inputed times: ", key_times)
 			get_tree().quit()
 			break
 			

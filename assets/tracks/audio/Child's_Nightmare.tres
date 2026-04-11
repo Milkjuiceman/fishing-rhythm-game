@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://bvxnsfl5ddr1v"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_sy5gu"]
+
+[resource]
+script = ExtResource("1_sy5gu")
+audio_location = &"res://assets/tracks/audio/Child\'s_Nightmare.ogg"
+artists = "Patrick de Arteaga"
+title = "Child's Nightmare"
+bpm = Dictionary[float, float]({
+0.0: 129.0
+})
+song_length = 90.46
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

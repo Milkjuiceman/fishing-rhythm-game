@@ -3,7 +3,7 @@ extends Node3D
 ## Acts as a controller between the UI countdown system, the Referee rhythm gameplay logic, 
 ## and the GameStateManager for inventory updates and scene transitions.
 ## Author: Tyler Schauermann
-## Date of last update: 09/03/2026
+## Date of last update: 03/09/2026
 ## Designed so the countdown system and gameplay controller remain modular.
 ## Additional minigames or rhythm level variants could reuse this controller
 ## by swapping charts, countdown scenes, or reward logic.

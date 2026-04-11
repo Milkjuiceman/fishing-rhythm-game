@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://crvppdb3xf5a2"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_3psf5"]
+
+[resource]
+script = ExtResource("1_3psf5")
+audio_location = &"res://assets/tracks/audio/Markalo_goes_to_the_disco.ogg"
+artists = "Patrick de Arteaga"
+title = "Markalo goes to the disco"
+song_length = 92.63
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
