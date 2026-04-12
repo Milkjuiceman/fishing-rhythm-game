@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://countdown123"]
+[gd_scene load_steps=3 format=3 uid="uid://countdown123"]
 
-[ext_resource type="Script" path="res://scripts/ui/transitions/rhythm_countdown.gd" id="1_countdown"]
+[ext_resource type="Script" uid="uid://2i644w66ijvq" path="res://scripts/ui/transitions/rhythm_countdown.gd" id="1_countdown"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_vs85n"]
 
 [node name="RhythmCountdown" type="CanvasLayer"]
 process_mode = 3
@@ -21,10 +22,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -100.0
-offset_right = 200.0
-offset_bottom = 100.0
+offset_left = -235.5
+offset_top = -155.0
+offset_right = 235.5
+offset_bottom = 93.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 100)
@@ -32,6 +33,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("2_vs85n")
 theme_override_font_sizes/font_size = 180
 text = "3"
 horizontal_alignment = 1
@@ -44,12 +46,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = 80.0
+offset_top = 39.0
 offset_right = 200.0
-offset_bottom = 140.0
+offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.7, 0.75, 0.85, 1)
+theme_override_fonts/font = ExtResource("2_vs85n")
 theme_override_font_sizes/font_size = 32
 text = "Get Ready!"
 horizontal_alignment = 1

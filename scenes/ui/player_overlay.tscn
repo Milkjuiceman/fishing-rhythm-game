@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgkv5fqg0vfku"]
+
+[ext_resource type="Texture2D" uid="uid://cql5gbc1wymno" path="res://assets/ui/fish_invintory_icon.png" id="1_xu0p3"]
+[ext_resource type="Texture2D" uid="uid://dr46th3r2u30p" path="res://assets/ui/I.png" id="2_q80rw"]
+[ext_resource type="Texture2D" uid="uid://bceakx5tyckqt" path="res://assets/ui/player_quest_icon.png" id="3_o143d"]
+[ext_resource type="Texture2D" uid="uid://bro3eanj0k2on" path="res://assets/ui/Q.png" id="4_wlxa1"]
+
+[node name="PlayerOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Inventory" type="Sprite2D" parent="."]
+position = Vector2(21, 21)
+texture = ExtResource("1_xu0p3")
+
+[node name="I" type="Sprite2D" parent="."]
+position = Vector2(21, 51)
+texture = ExtResource("2_q80rw")
+
+[node name="Quest Tracker" type="Sprite2D" parent="."]
+position = Vector2(57, 21)
+texture = ExtResource("3_o143d")
+
+[node name="Q" type="Sprite2D" parent="."]
+position = Vector2(58, 51)
+texture = ExtResource("4_wlxa1")

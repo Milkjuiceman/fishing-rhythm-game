@@ -1,29 +1,31 @@
 [gd_scene load_steps=9 format=3 uid="uid://carq5mcy70d6"]
 
 [ext_resource type="Script" uid="uid://bwffufa60sqiq" path="res://scripts/ui/dialogue_ui.gd" id="1_nb7lm"]
-[ext_resource type="Texture2D" uid="uid://ddcsblhx6pmkw" path="res://assets/ui/blank_dialogue_box.png" id="2_yxtxj"]
-[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="3_yxtxj"]
-[ext_resource type="Texture2D" uid="uid://dn0dijhuxl136" path="res://assets/ui/continue.png" id="4_rmrpe"]
+[ext_resource type="Texture2D" uid="uid://djvwhdl13h0a1" path="res://assets/ui/dialog_npc_textbox.png" id="2_e75fp"]
+[ext_resource type="Texture2D" uid="uid://c0cs4pk8au8uw" path="res://assets/ui/dialog_npc_arrow.png" id="4_71c00"]
 [ext_resource type="Theme" uid="uid://dokp163ntldau" path="res://assets/ui/ui_text.tres" id="5_h4oo0"]
-[ext_resource type="Texture2D" uid="uid://b6k3qmyn2p8ux" path="res://assets/ui/nameplate.png" id="6_e75fp"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_810ju"]
 [ext_resource type="Texture2D" uid="uid://xadfujtnqn1l" path="res://assets/ui/enter_ui.png" id="7_h4oo0"]
+[ext_resource type="Texture2D" uid="uid://bu52tha1qhiwd" path="res://assets/ui/dialog_npc_namebox.png" id="7_pm5ym"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxtxj"]
-texture = ExtResource("2_yxtxj")
+texture = ExtResource("2_e75fp")
 
 [node name="dialogue_ui" type="CanvasLayer"]
 script = ExtResource("1_nb7lm")
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = -1
-anchor_left = 0.47900003
-anchor_top = 0.67700005
-anchor_right = 0.47900003
-anchor_bottom = 0.67700005
-offset_left = -401.88336
-offset_top = -158.92944
-offset_right = 398.11664
-offset_bottom = 174.15881
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -56.0
+offset_right = 240.0
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_yxtxj")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
@@ -33,13 +35,13 @@ anchor_left = 0.52400005
 anchor_top = 0.5
 anchor_right = 0.52400005
 anchor_bottom = 0.5
-offset_left = -260.12473
-offset_top = -80.31074
-offset_right = 228.87527
-offset_bottom = 90.68924
-theme_override_colors/default_color = Color(0.27324143, 0.05124119, 0.06433046, 1)
-theme_override_fonts/normal_font = ExtResource("3_yxtxj")
-theme_override_font_sizes/normal_font_size = 32
+offset_left = -168.52002
+offset_top = -31.0
+offset_right = 144.47998
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_810ju")
+theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -59,9 +61,9 @@ offset_right = 105.9505
 offset_bottom = 45.00354
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/EnterPrompt"]
-position = Vector2(98, 36)
-scale = Vector2(0.68125, 0.64375)
-texture = ExtResource("4_rmrpe")
+position = Vector2(87.00474, -13.870155)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("4_71c00")
 
 [node name="Nameplate" type="Control" parent="Panel"]
 z_index = 1
@@ -85,16 +87,16 @@ anchor_left = 0.52500004
 anchor_top = 0.5
 anchor_right = 0.52500004
 anchor_bottom = 0.5
-offset_left = -138.6
-offset_top = -45.0
-offset_right = 31.338654
-offset_bottom = 1.0122719
+offset_left = 30.78215
+offset_top = 47.93032
+offset_right = 94.838455
+offset_bottom = 61.463326
 scale = Vector2(1.63, 1.63)
 theme = ExtResource("5_h4oo0")
-theme_override_colors/font_color = Color(0.9882787, 0.83374995, 0.82308364, 1)
-theme_override_colors/font_outline_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 9
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("6_810ju")
+theme_override_font_sizes/font_size = 11
 text = "npc_name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,9 +104,9 @@ autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/Nameplate"]
 z_index = 1
-position = Vector2(136, 44)
-scale = Vector2(0.5203125, 0.44062498)
-texture = ExtResource("6_e75fp")
+position = Vector2(222.32352, 104.69507)
+scale = Vector2(1.4675245, 1.4705882)
+texture = ExtResource("7_pm5ym")
 
 [node name="UIprompt" type="Control" parent="."]
 layout_mode = 3
@@ -112,12 +114,12 @@ anchor_left = 0.92100006
 anchor_top = 0.89000005
 anchor_right = 0.92100006
 anchor_bottom = 0.89000005
-offset_left = -68.992065
-offset_top = -38.72003
-offset_right = 69.04797
-offset_bottom = 39.27997
+offset_left = -55.080017
+offset_top = 78.69998
+offset_right = 82.96002
+offset_bottom = 156.69998
 
 [node name="Sprite2D" type="Sprite2D" parent="UIprompt"]
-position = Vector2(64, 42)
+position = Vector2(348.91202, -54.579987)
 scale = Vector2(0.4625, 0.434375)
 texture = ExtResource("7_h4oo0")
