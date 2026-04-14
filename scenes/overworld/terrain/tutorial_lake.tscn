@@ -210,13 +210,14 @@ rippling_water_scene = ExtResource("15_yq4oh")
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="Dock" parent="." node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
-transform = Transform3D(-0.5665696, 0, -7.3632345, 0, 7.385, 0, 7.3632345, 0, -0.5665696, 276.20355, 7.8072414, 399.3725)
+transform = Transform3D(-0.5665696, 0, -7.3632345, 0, 7.385, 0, 7.3632345, 0, -0.5665696, 279.7242, 7.8072414, 399.3725)
 script = ExtResource("18_c03w6")
 npc_id = "dock_npc"
 dialogueUI = NodePath("../dialogue_ui")
 questPopup = NodePath("../assignment_popup_ui")
 
 [node name="Area3D" type="Area3D" parent="Dock"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
 
 [node name="sphere" type="CollisionShape3D" parent="Dock/Area3D"]
 transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
@@ -362,7 +363,7 @@ transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 421.96988, 8.401, 66
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 499.64093, 8.400944, 657.8821)
 
 [node name="TreeFat" parent="Enviorment/Tree\'s" instance=ExtResource("21_3ddkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 418.32233, 9.219519, 567.7674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 418.32233, 8.053625, 567.7674)
 
 [node name="TreeFat2" parent="Enviorment/Tree\'s" instance=ExtResource("21_3ddkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 385.36676, 11.209829, 556.89044)

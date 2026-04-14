@@ -15,18 +15,18 @@ anchor_left = 0.201
 anchor_top = 0.312
 anchor_right = 0.201
 anchor_bottom = 0.312
-offset_left = -183.552
-offset_top = -154.17601
-offset_right = 183.448
-offset_bottom = 153.82399
+offset_left = -96.48
+offset_top = -82.240005
+offset_right = 384.52
+offset_bottom = 225.76
 
 [node name="Label" type="Label" parent="Panel"]
 z_index = 1
 layout_mode = 0
-offset_left = 15.0
-offset_top = 15.15
-offset_right = 359.0
-offset_bottom = 47.150017
+offset_left = 71.0
+offset_top = 44.0
+offset_right = 415.0
+offset_bottom = 76.000015
 theme_override_colors/font_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
 theme_override_fonts/font = ExtResource("2_5uvqt")
 theme_override_font_sizes/font_size = 32
@@ -50,6 +50,6 @@ layout_mode = 2
 theme = ExtResource("2_6isj2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(230.00002, 204.99998)
-scale = Vector2(0.91041666, 0.77916664)
+position = Vector2(244.25002, 148.5)
+scale = Vector2(0.96979165, 0.54375005)
 texture = ExtResource("3_6isj2")

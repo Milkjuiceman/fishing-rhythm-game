@@ -14,10 +14,10 @@ const GAME_SCENE = "res://scenes/overworld/terrain/tutorial_lake.tscn"
 # NODE REFERENCES
 # ========================================
 
-@onready var start_button = $VBoxContainer/start_button
-@onready var load_button = $VBoxContainer/load_button
-@onready var options_button = $VBoxContainer/options_button
-@onready var quit_button = $VBoxContainer/quit_button
+@onready var start_button = $start_button
+@onready var load_button = $load_button
+@onready var options_button = $options_button
+@onready var quit_button = $quit_button
 
 # ========================================
 # INITIALIZATION

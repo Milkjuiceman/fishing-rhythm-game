@@ -17,10 +17,10 @@ anchor_left = 0.846
 anchor_top = 0.708
 anchor_right = 0.846
 anchor_bottom = 0.708
-offset_left = -144.59204
-offset_top = -154.784
-offset_right = 144.40796
-offset_bottom = 154.216
+offset_left = -306.08002
+offset_top = -184.16
+offset_right = -17.080017
+offset_bottom = 124.84
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qm7a1")
 
 [node name="Label" type="Label" parent="Panel"]
