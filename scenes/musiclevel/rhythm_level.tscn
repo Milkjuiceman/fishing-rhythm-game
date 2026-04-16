@@ -1,4 +1,4 @@
-[gd_scene load_steps=453 format=3 uid="uid://dobb00e6psm41"]
+[gd_scene load_steps=454 format=3 uid="uid://dobb00e6psm41"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_kr2i6"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_nkh30"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_v6oj6"]
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="7_3ffb3"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="8_nm25w"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="8_o6wfx"]
 [ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_vlupf"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="9_ttdv7"]
 [ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="10_vlupf"]
@@ -2684,14 +2685,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -176.0
-offset_top = -48.0
-offset_right = 177.0
-offset_bottom = -21.0
+offset_left = -135.0
+offset_top = -23.0
+offset_right = 135.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("8_o6wfx")
 value = 20.0
 allow_lesser = true
 script = ExtResource("11_i3t07")
@@ -2700,12 +2702,12 @@ script = ExtResource("11_i3t07")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -151.0
-offset_top = 15.000002
-offset_right = -100.66675
-offset_bottom = 38.0
+offset_left = -84.0
+offset_top = 33.0
+offset_right = -64.0
+offset_bottom = 56.0
 grow_horizontal = 0
-scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("8_o6wfx")
 text = "X1"
 script = ExtResource("8_vlupf")
 
@@ -2723,7 +2725,7 @@ COMBO:"
 [node name="Score" type="Label" parent="Camera3D/HUD"]
 offset_right = 63.0
 offset_bottom = 26.333334
-scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("8_o6wfx")
 text = "SCORE: "
 script = ExtResource("10_vlupf")
 
@@ -2744,9 +2746,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -372.0
-offset_top = -124.0
+offset_top = -81.0
 offset_right = -322.0
-offset_bottom = 176.0
+offset_bottom = 83.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -2756,9 +2758,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 300.0
-offset_top = -124.0
+offset_top = -81.0
 offset_right = 350.0
-offset_bottom = 176.0
+offset_bottom = 83.0
 grow_vertical = 2
 
 [node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
