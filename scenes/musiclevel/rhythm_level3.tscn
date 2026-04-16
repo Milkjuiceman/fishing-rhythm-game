@@ -1,9 +1,8 @@
-[gd_scene load_steps=394 format=3 uid="uid://cuej6va4e7tey"]
+[gd_scene load_steps=393 format=3 uid="uid://cuej6va4e7tey"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_6gbra"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_pyprf"]
 [ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_6wntb"]
-[ext_resource type="AudioStream" uid="uid://ddb88xewes8nb" path="res://assets/tracks/audio/Rollin at 5 - 210 - full.ogg" id="3_pyprf"]
 [ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_s3vos"]
 [ext_resource type="Resource" uid="uid://dxict80ar6hkq" path="res://assets/tracks/charts/Rolling_at_5-210.tres" id="6_6wntb"]
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_qcu57"]
@@ -2266,7 +2265,6 @@ progress_bar = NodePath("../Camera3D/HUD/ProgressBar")
 referee = NodePath("../MusicPlayer/Referee")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_pyprf")
 script = ExtResource("3_6wntb")
 
 [node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
