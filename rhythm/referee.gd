@@ -29,10 +29,10 @@ class_name Referee extends Node
 @export var note_speed: float = 10.
 
 # Input timing offset adjustment
-@export var input_offset: float = 0.0
+var input_offset: float = 0.0
 
 # Audio timing offset adjustment
-@export var audio_offset: float = 0.02
+var audio_offset: float = 0.0
 
 # ========================================
 # SIGNALS
@@ -82,8 +82,10 @@ func _ready() -> void:
 		var saved_input_offset = pause_menu.get_setting("input_offset")
 		if saved_audio_offset != null:
 			audio_offset = saved_audio_offset
+			print("Audio_offset: ", audio_offset)
 		if saved_input_offset != null:
 			input_offset = saved_input_offset
+			print("Input_offset: ", input_offset)
 	# Load chart into judge
 	if judge != null and chart != null:
 		judge.load_new_chart(chart)

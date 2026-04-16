@@ -46,15 +46,19 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if frame_state.k_key_press and in_editing_window:
 			key_times.append(compared_t)
 			key_columns.append(0)
+			print("Note: ", i, " Lane: 0")
 		elif frame_state.j_key_press and in_editing_window:
 			key_times.append(compared_t)
 			key_columns.append(1)
+			print("Note: ", i, " Lane: 1")
 		elif frame_state.f_key_press and in_editing_window:
 			key_times.append(compared_t)
 			key_columns.append(2)
+			print("Note: ", i, " Lane: 2")
 		elif frame_state.d_key_press and in_editing_window:
 			key_times.append(compared_t)
 			key_columns.append(3)
+			print("Note: ", i, " Lane: 3")
 		
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
