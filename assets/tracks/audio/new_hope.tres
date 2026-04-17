@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://vcsdf51mv8cr"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_1fns1"]
+
+[resource]
+script = ExtResource("1_1fns1")
+audio_location = &"res://assets/tracks/audio/New Hope.ogg"
+artists = "Patrick de Arteaga"
+title = "New Hope"
+bpm = Dictionary[float, float]({
+0.0: 120.0
+})
+song_length = 28.9
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

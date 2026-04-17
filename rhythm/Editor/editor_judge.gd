@@ -59,7 +59,7 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 		if timing > upper_bound: # done searching
 			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
 				# MISS
-				scorecard.penalty(chart.note_column[i])
+					scorecard.penalty(chart.note_column[i])
 			break
 		
 		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:

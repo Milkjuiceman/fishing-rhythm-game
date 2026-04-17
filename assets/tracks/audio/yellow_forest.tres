@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://r280xyjcninx"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_sw7ct"]
+
+[resource]
+script = ExtResource("1_sw7ct")
+audio_location = &"res://assets/tracks/audio/Yellow Forest.ogg"
+artists = "Patrick de Arteaga"
+title = "Yellow Forest"
+bpm = Dictionary[float, float]({
+0.0: 109.95
+})
+song_length = 29.0
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
