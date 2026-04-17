@@ -1,4 +1,4 @@
-[gd_scene load_steps=323 format=3 uid="uid://kc6gxomlw3bs"]
+[gd_scene load_steps=329 format=3 uid="uid://kc6gxomlw3bs"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_7antu"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_vxtj7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_dd7r5"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="12_51vgy"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="12_jo8b5"]
+[ext_resource type="PackedScene" uid="uid://cm86nj0rojdco" path="res://assets/underwater/rocks2.glb" id="15_51vgy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,6 +28,15 @@ background_mode = 2
 sky = SubResource("Sky_uxfdm")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm25w"]
+transparency = 1
+albedo_color = Color(0.015061461, 0.068115756, 0.36249587, 0.5254902)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ayyjd"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_nm25w")
+orientation = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6wfx"]
 albedo_color = Color(1, 0.54901963, 0, 1)
@@ -51,15 +61,6 @@ albedo_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_1e7ru"]
 material = SubResource("StandardMaterial3D_3ffb3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm25w"]
-transparency = 1
-albedo_color = Color(0.015061461, 0.068115756, 0.36249587, 0.5254902)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_ayyjd"]
-lightmap_size_hint = Vector2i(12, 12)
-material = SubResource("StandardMaterial3D_nm25w")
-orientation = 2
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 
@@ -1827,6 +1828,26 @@ shader_parameter/seed = 0.78660333
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_5drfm"]
+offsets = PackedFloat32Array(0.01608579, 0.4852547, 1)
+colors = PackedColorArray(0.27058825, 0.5254902, 1, 1, 0.49019608, 0.47058824, 1, 1, 0.56078434, 0.08235294, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_51vgy"]
+frequency = 0.0344
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ayyjd"]
+noise = SubResource("FastNoiseLite_51vgy")
+color_ramp = SubResource("Gradient_5drfm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui0py"]
+albedo_color = Color(0.6666667, 0.63529414, 0.43529412, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_ayyjd")
+uv1_scale = Vector3(3.725, 3.725, 3.725)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5f5ri"]
+material = SubResource("StandardMaterial3D_ui0py")
+
 [node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee")]
 script = ExtResource("1_7antu")
 referee = NodePath("MusicPlayer/Referee")
@@ -1857,44 +1878,8 @@ enter_prompt = NodePath("../../Camera3D/HUD/EnterPrompt")
 note_speed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 6.696973e-08, -5.619428e-08, 0, 0.64278764, 0.76604444, 8.742278e-08, 0.76604444, -0.64278764, 0, 7.002, -2)
+transform = Transform3D(-1, 6.696972e-08, -5.6194274e-08, 1.7744663e-08, 0.78489536, 0.6196283, 8.560296e-08, 0.6196283, -0.78489536, 0, 3.6752758, -2)
 script = ExtResource("6_ayyjd")
-
-[node name="Column2" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-4.3711392e-08, 0.91899997, -2.368869e-15, -0.7660445, -3.07726e-08, 0.5907217, 0.64278746, 2.5821286e-08, 0.703995, -1.0000001, -3.2289999, -6.9040008)
-mesh = SubResource("QuadMesh_ayyjd")
-
-[node name="Label3D" type="Label3D" parent="Camera3D/Column2"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
-text = "F"
-font_size = 100
-
-[node name="Column3" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-4.3711395e-08, 0.919, -4.9742704e-15, -0.76604456, -3.07726e-08, 0.5907217, 0.6427875, 2.5821276e-08, 0.703995, -3, -3.229, -6.9040003)
-mesh = SubResource("QuadMesh_ui0py")
-
-[node name="Label3D" type="Label3D" parent="Camera3D/Column3"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
-text = "D"
-font_size = 100
-
-[node name="Column0" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-4.3711395e-08, 0.919, -4.9742704e-15, -0.76604456, -3.07726e-08, 0.5907217, 0.6427875, 2.5821276e-08, 0.703995, 3, -3.229, -6.9040003)
-mesh = SubResource("QuadMesh_5f5ri")
-
-[node name="Label3D" type="Label3D" parent="Camera3D/Column0"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
-text = "K"
-font_size = 100
-
-[node name="Column1" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-4.3711395e-08, 0.919, -4.9742704e-15, -0.76604456, -3.07726e-08, 0.5907217, 0.6427875, 2.5821276e-08, 0.703995, 1, -3.2290003, -6.9040003)
-mesh = SubResource("QuadMesh_1e7ru")
-
-[node name="Label3D" type="Label3D" parent="Camera3D/Column1"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
-text = "J"
-font_size = 100
 
 [node name="HUD" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
@@ -1997,6 +1982,42 @@ mesh = SubResource("PlaneMesh_ayyjd")
 [node name="Description" type="Label3D" parent="Camera3D/Background"]
 visible = false
 text = "Transparent Water"
+
+[node name="Column2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891575e-08, 0.91899997, 1.630734e-08, -0.61962837, -3.6654235e-08, 0.7213187, 0.7848952, 2.0112708e-08, 0.5694386, -1.0000001, -1.9519958, -4.0435457)
+mesh = SubResource("QuadMesh_ayyjd")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "F"
+font_size = 100
+
+[node name="Column3" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, -3.0000002, -1.9519958, -4.0435457)
+mesh = SubResource("QuadMesh_ui0py")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "D"
+font_size = 100
+
+[node name="Column0" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 2.9999998, -1.951996, -4.0435457)
+mesh = SubResource("QuadMesh_5f5ri")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column0"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "K"
+font_size = 100
+
+[node name="Column1" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 0.99999994, -1.9519964, -4.0435457)
+mesh = SubResource("QuadMesh_1e7ru")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column1"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "J"
+font_size = 100
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("10_0qy5r")
@@ -3330,6 +3351,19 @@ modulate = Color(0, 0.39215687, 0, 1)
 
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("12_jo8b5")
+
+[node name="Node3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(23.865, 0, 0, 0, 23.865, 0, 0, 0, 76.23199, 167.47607, -3.6220326, -121.065475)
+mesh = SubResource("PlaneMesh_5f5ri")
+
+[node name="rocks2" parent="." instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 194.17308, -2.723, 42.775)
+
+[node name="rocks3" parent="." instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 194.17308, -2.723, 85.55412)
+
+[node name="rocks4" parent="." instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 194.17308, -2.723, 128.16472)
 
 [connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
