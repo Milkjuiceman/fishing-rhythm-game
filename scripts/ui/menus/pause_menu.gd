@@ -409,6 +409,13 @@ func _on_invert_y_toggled(button_pressed: bool) -> void:
 
 # --- Rhythm Calibration Settings ---
 
+func _on_audio_offset_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/musiclevel/calibrator.tscn")
+
+
+func _on_input_offset_button_pressed() -> void:
+	pass # Replace with function body.
+
 func _on_audio_offset_changed(value: float) -> void:
 	settings["audio_offset"] = value
 	if audio_offset_value:
