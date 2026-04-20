@@ -106,11 +106,12 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 text = "J"
 font_size = 100
 
-[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee")]
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("7_gedgv")
 place_notes = ExtResource("8_2m8lo")
 chart = ExtResource("5_8v0rf")
 referee = NodePath("../AudioStreamPlayer/Referee")
+judge = NodePath("../Judge")
 note_speed = 2.0
 
 [node name="@MeshInstance3D@41474" parent="Note_Holder" instance=ExtResource("8_2m8lo")]

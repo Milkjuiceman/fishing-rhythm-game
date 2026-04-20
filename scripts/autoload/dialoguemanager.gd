@@ -33,10 +33,35 @@ var dialogue_data: Dictionary = {
 			"TURNEDIN": [
 				"That means if you want to make a living, you're going to have to get to work!"
 			]
-		
-		}
+		},
+		# Repeatable lines shown after all quests are done.
+		# Only one line is shown per interaction — cycles through the list.
+		"idle": [
+			"The fish up here aren't going anywhere. Get back out there!",
+			"Keep at it. The more you fish, the better you'll get.",
+			"You're doing great. Don't let me down!"
+		]
 	}
 }
+
+# ========================================
+# INITIALIZATION
+# ========================================
+
+func _ready() -> void:
+	QuestManager.quest_started.connect(_on_quest_started)
+
+func _on_quest_started(quest_id: String) -> void:
+	for npc_id in npc_quest_order.keys():
+		if quest_id in npc_quest_order[npc_id]:
+			_init_npc(npc_id)
+			var state = npc_states[npc_id]
+			if state["quest_id"] == "":
+				state["quest_id"] = quest_id
+
+# ========================================
+# NPC STATE
+# ========================================
 
 func _init_npc(npc_id: String):
 	if not npc_states.has(npc_id):
@@ -44,16 +69,28 @@ func _init_npc(npc_id: String):
 			"quest_id": "",
 			"line_index": 0,
 			"current_lines": [],
-			"completed_quests": []
-	}
+			"completed_quests": [],
+			"idle_index": 0,    # tracks position in idle cycle
+			"all_done": false   # true once all quests are turned in
+		}
 
 func register_ui(ui):
 	dialogueUI = ui
+
+# ========================================
+# DIALOGUE FLOW
+# ========================================
 
 func start_dialogue(npc_id: String):
 	_init_npc(npc_id)
 	current_npc = npc_id
 	var state = npc_states[npc_id]
+
+	# If all quests are done, show the next idle line and exit
+	if state["all_done"]:
+		_show_idle_line(npc_id)
+		return
+
 	var quest_id = state["quest_id"]
 	var lines = get_dialogue(npc_id, quest_id)
 	if lines.size() > 0:
@@ -62,52 +99,76 @@ func start_dialogue(npc_id: String):
 		if dialogueUI:
 			dialogueUI.show_dialogue(lines, npc_id)
 			active = true
-		
+
 func next_line(npc_id: String):
 	_init_npc(npc_id)
 	var state = npc_states[npc_id]
 
 	if state["current_lines"].is_empty():
 		return
-	
+
 	state["line_index"] += 1
 	var lines = state["current_lines"]
-	
+
 	if state["line_index"] < lines.size():
 		dialogueUI.show_line(lines[state["line_index"]])
 		return
 
 	var quest_id = state["quest_id"]
 	var quest_state = QuestManager.get_quest_state(quest_id)
-	
+
 	if quest_state == QuestManager.states.COMPLETED:
 		QuestManager.turn_in_quest(quest_id)
-		quest_state = QuestManager.states.TURNEDIN  # update locally
-	var next_lines = get_dialogue(npc_id, quest_id)
-	if next_lines.size() > 0 and quest_state == QuestManager.states.TURNEDIN:
-		state["line_index"] = 0
-		state["current_lines"] = next_lines
-		dialogueUI.show_line(next_lines[0])
-	else:
-		# Otherwise, assign next quest or end dialogue
-		_assign_next_quest(npc_id)
-		end_dialogue()
+		state["completed_quests"].append(quest_id)
 
-		
+		var turnin_lines = get_dialogue(npc_id, quest_id)
+		if turnin_lines.size() > 0:
+			state["line_index"] = 0
+			state["current_lines"] = turnin_lines
+			dialogueUI.show_line(turnin_lines[0])
+			return
+
+	_assign_next_quest(npc_id)
+	end_dialogue()
+
 func end_dialogue():
 	active = false
 	current_npc = ""
 	for state in npc_states.values():
-		state.erase("current_lines")
+		state["current_lines"] = []
 		state["line_index"] = 0
 	if dialogueUI:
 		dialogueUI.hide_dialogue()
+
+# ========================================
+# IDLE DIALOGUE (repeatable, post-quest)
+# ========================================
+
+func _show_idle_line(npc_id: String) -> void:
+	var state = npc_states[npc_id]
+	var npc_dialogue = dialogue_data.get(npc_id, {})
+	var idle_lines: Array = npc_dialogue.get("idle", [])
+
+	if idle_lines.is_empty():
+		return
+
+	# Pick the next line in the cycle, wrapping around
+	var idx = state["idle_index"] % idle_lines.size()
+	state["idle_index"] += 1
+
+	if dialogueUI:
+		active = true
+		dialogueUI.show_dialogue([idle_lines[idx]], npc_id)
+
+# ========================================
+# DIALOGUE LOOKUP
+# ========================================
 
 func get_dialogue(npc_id: String, quest_id: String = "") -> Array:
 	if not dialogue_data.has(npc_id):
 		return []
 	var npc_dialogue = dialogue_data[npc_id]
-	if quest_id ==  "":
+	if quest_id == "":
 		return npc_dialogue.get("", [])
 	var quest_state = QuestManager.get_quest_state(quest_id)
 	if npc_dialogue.has(quest_id):
@@ -118,8 +179,12 @@ func get_dialogue(npc_id: String, quest_id: String = "") -> Array:
 			QuestManager.states.COMPLETED:
 				return qdata.get("COMPLETED", [])
 			QuestManager.states.TURNEDIN:
-				return qdata.get("TURNIN", [])
+				return qdata.get("TURNEDIN", [])
 	return []
+
+# ========================================
+# QUEST ASSIGNMENT
+# ========================================
 
 func _assign_next_quest(npc_id: String):
 	_init_npc(npc_id)
@@ -131,15 +196,27 @@ func _assign_next_quest(npc_id: String):
 			state["quest_id"] = qid
 			emit_signal("quest_started", qid)
 			return
+	# No more quests — switch to idle mode
 	state["quest_id"] = ""
-	
+	state["all_done"] = true
+
+# ========================================
+# HELPERS
+# ========================================
+
 func has_new_lines(npc_id: String) -> bool:
 	_init_npc(npc_id)
 	var state = npc_states[npc_id]
+
+	# Idle NPCs always have something to say
+	if state["all_done"]:
+		var npc_dialogue = dialogue_data.get(npc_id, {})
+		return not npc_dialogue.get("idle", []).is_empty()
+
 	var quest_id = state["quest_id"]
 	var lines = get_dialogue(npc_id, quest_id)
-	return state["line_index"] < lines.size()
-	
+	return lines.size() > 0
+
 func get_current_lines() -> Array:
 	if current_npc == "":
 		return []
