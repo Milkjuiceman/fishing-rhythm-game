@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c4i3rthdmlqxo"]
+[gd_scene load_steps=24 format=3 uid="uid://c4i3rthdmlqxo"]
 
 [ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://scripts/levels/lake_intersection.gd" id="1_pdbi5"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ticw3"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_5sc3m"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_0t4oa"]
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="10_pdbi5"]
-[ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/enviormentObjects/tree.tscn" id="16_qdsx3"]
-[ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/enviormentObjects/treeCone.tscn" id="17_twurd"]
-[ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/enviormentObjects/treeConeOrange.tscn" id="18_kpg5x"]
-[ext_resource type="PackedScene" uid="uid://ddxlcvb61af8h" path="res://scenes/overworld/enviormentObjects/treeFat.tscn" id="19_k1cpa"]
+[ext_resource type="Texture2D" uid="uid://buhp3htbhb5xi" path="res://assets/ui/characters/Muscular_Orangutang_Orange.png" id="15_6hhe6"]
+[ext_resource type="Texture2D" uid="uid://r7rqhbv1l1ij" path="res://assets/ui/characters/Muscular_Orangutang_White.png" id="16_caq17"]
+[ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/environmentObjects/tree.tscn" id="16_qdsx3"]
+[ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/environmentObjects/treeCone.tscn" id="17_twurd"]
+[ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/environmentObjects/treeConeOrange.tscn" id="18_kpg5x"]
+[ext_resource type="PackedScene" uid="uid://ddxlcvb61af8h" path="res://scenes/overworld/environmentObjects/treeFat.tscn" id="19_k1cpa"]
 [ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="20_kpg5x"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="21_k1cpa"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="22_ckqto"]
@@ -561,13 +563,31 @@ transform = Transform3D(2.59, 0, 0, 0, 2.59, 0, 0, 0, 2.59, 250.57053, 18.344975
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 604.9509, 2.4367702, 661.97205)
 
 [node name="smallDock2" parent="Buildings/Docks" instance=ExtResource("20_kpg5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 266.13965, 2.525708, 764.7112)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 262.40433, 2.525708, 763.3653)
 
 [node name="smallDock3" parent="Buildings/Docks" instance=ExtResource("20_kpg5x")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 717.2637, 2.4367702, 493.15247)
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 716.2862, 2.4367702, 493.15247)
 
 [node name="Shipyard" parent="Buildings/Docks" instance=ExtResource("21_k1cpa")]
-transform = Transform3D(-13.18, 0, -1.1522322e-06, 0, 13.18, 0, 1.1522322e-06, 0, -13.18, 460.2647, 6.4159784, 311.3212)
+transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 451.05707, 4.459921, 316.15164)
+
+[node name="ShipUpgrader" type="Sprite3D" parent="Buildings/Docks/Shipyard"]
+transform = Transform3D(0.005, 0, -2.0372665e-10, 0, 0.005, 0, 2.0372665e-10, 0, 0.005, 0.8765869, 0.32493693, 0.6906967)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("15_6hhe6")
 
 [node name="Dock" parent="Buildings/Docks" instance=ExtResource("22_ckqto")]
-transform = Transform3D(1.5872017e-07, 0, -13.31, 0, 13.31, 0, 13.31, 0, 1.5872017e-07, 347.68945, 8.453647, 423.45093)
+transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 348.94763, 4.2124853, 423.45093)
+
+[node name="PrimateLeader" type="Sprite3D" parent="Buildings/Docks/Dock"]
+transform = Transform3D(0.005, 0, -2.0372688e-10, 0, 0.005, 0, 2.0372688e-10, 0, 0.005, 0.8765793, 0.3331079, 0.5977478)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("16_caq17")

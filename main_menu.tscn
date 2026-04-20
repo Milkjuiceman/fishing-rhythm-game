@@ -109,7 +109,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dy7ct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
-text = "Options"
+text = "Settings"
 
 [node name="quit_button" type="Button" parent="."]
 layout_mode = 1

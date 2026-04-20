@@ -49,17 +49,15 @@ signal note_judged(note_index: int, frame_state: FrameState, status: String)
 
 # Initializes judge and connects referee signals
 func _ready() -> void:
-	# Wire song_finished to scene return
-	# Connect catch outcomes to scene exit
-	print("[Judge] referee export value: ", referee)
-	if referee:
-		print("[Judge] Connecting fish_caught and fish_failed")
-		# fish_caught emits a float (performance) so use a lambda to absorb it
-		referee.fish_caught.connect(func(_performance, _rarity): _return_to_previous_scene())
-		referee.fish_failed.connect(_return_to_previous_scene)
-	else:
+	# Scene transition is handled by temp_rhythm_section.gd, which also
+	# updates quest progress before returning to the overworld.
+	# Do not connect fish_caught / fish_failed here to avoid double-firing.
+	if not referee:
 		push_warning("[Judge] Referee is null — cannot connect catch signals")
 
+# ========================================
+# CHART LOADING
+# ========================================
 
 # Loads a new chart and resets scoring state
 func load_new_chart(new_chart: Chart) -> void:

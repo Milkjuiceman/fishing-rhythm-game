@@ -6,25 +6,37 @@ extends Node3D
 # ========================================
 # CONFIGURATION
 # ========================================
-@export var spawn_interval: float = 10.0  # Time between spawns (seconds)
-@export var max_spawns: int = 1  # Maximum concurrent water pools per spawner
-@export var rippling_water_scene: PackedScene  # Water scene to spawn
-@export var spawn_radius: float = 100.0  # Radius around spawner to place water
-@export var spawn_height: float = 4.4  # Absolute Y coordinate for spawns
+@export var spawn_interval: float = 10.0
+@export var max_spawns: int = 1
+@export var rippling_water_scene: PackedScene
+@export var spawn_radius: float = 100.0
+@export var spawn_height: float = 4.4
+
+# ========================================
+# QUEST GATING
+# ========================================
+
+## If set, this spawner will not activate until the given quest ID has started.
+@export var require_quest_id: String = ""
+
+## If true, the water will never respawn after it is removed.
+@export var spawn_once: bool = false
+
+## If true, spawns one water immediately when enabled rather than waiting for the timer.
+@export var spawn_immediately: bool = true
 
 # ========================================
 # RHYTHM LEVEL CONFIGURATION
 # ========================================
 
-## One entry per rhythm level this spawner can send the player to.
-## Set the scene path and chance (0-100). All chances should add up to 100.
 @export var rhythm_levels: Array[RhythmLevelEntry] = []
 
 # ========================================
 # VARIABLES
 # ========================================
-var active_waters: Array = []  # Track currently spawned water instances
-var spawn_timer: Timer  # Timer for periodic spawning
+var active_waters: Array = []
+var spawn_timer: Timer
+var _spawning_enabled: bool = false
 
 # ========================================
 # INITIALIZATION
@@ -38,7 +50,19 @@ func _ready():
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	add_child(spawn_timer)
 
-	enable_spawning()
+	if require_quest_id != "":
+		QuestManager.quest_started.connect(_on_quest_started)
+	else:
+		enable_spawning()
+
+# ========================================
+# QUEST GATING
+# ========================================
+
+func _on_quest_started(quest_id: String) -> void:
+	if quest_id == require_quest_id:
+		QuestManager.quest_started.disconnect(_on_quest_started)
+		enable_spawning()
 
 # ========================================
 # VALIDATION
@@ -66,6 +90,9 @@ func _on_spawn_timer_timeout():
 	spawn_rippling_water()
 
 func spawn_rippling_water():
+	if not _spawning_enabled:
+		return
+
 	if active_waters.size() >= max_spawns:
 		return
 
@@ -114,11 +141,30 @@ func _pick_rhythm_level() -> RhythmLevelEntry:
 
 func _on_water_removed(water):
 	active_waters.erase(water)
-	get_tree().create_timer(1.0).timeout.connect(spawn_rippling_water)
+
+	if spawn_once:
+		disable_spawning()
+		return
+
+	# Use a one-shot Timer node instead of a chained signal to avoid
+	# Godot 4 issues with connecting to a timer's timeout mid-frame
+	var respawn_timer = Timer.new()
+	respawn_timer.wait_time = 1.0
+	respawn_timer.one_shot = true
+	add_child(respawn_timer)
+	respawn_timer.timeout.connect(_on_respawn_timer_done.bind(respawn_timer))
+	respawn_timer.start()
+
+func _on_respawn_timer_done(respawn_timer: Timer) -> void:
+	respawn_timer.queue_free()
+	spawn_rippling_water()
 
 func enable_spawning():
+	_spawning_enabled = true
 	spawn_timer.start()
-	call_deferred("spawn_rippling_water")
+	if spawn_immediately:
+		call_deferred("spawn_rippling_water")
 
 func disable_spawning():
+	_spawning_enabled = false
 	spawn_timer.stop()
