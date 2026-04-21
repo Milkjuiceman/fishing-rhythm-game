@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpcosx0shws1q"]
+[gd_scene load_steps=11 format=3 uid="uid://bpcosx0shws1q"]
 
 [ext_resource type="Script" uid="uid://fq6ldg2s6gdk" path="res://scripts/vehicles/boat_big.gd" id="1_28m0g"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_5bfo1"]
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="3_pqnko"]
 [ext_resource type="PackedScene" uid="uid://msoagscxgldc" path="res://assets/models/ship.glb" id="4_dxr8b"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_5bfo1"]
+[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/ui/characters/MiniMonkey.png" id="6_pqnko"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
 size = Vector3(2.3106852, 2.551056, 1.9288177)
@@ -20,6 +21,8 @@ shader_parameter/fog_color = Color(0.629, 0.74, 0.74, 1)
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/fog_start = 1.0
 shader_parameter/fog_width = 0.02
+shader_parameter/test1 = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/test2 = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_annr2"]
 size = Vector3(2.57312, 1, 1.2182617)
@@ -73,3 +76,12 @@ transform = Transform3D(0.87, 0, 0, 0, 0.87, 0, 0, 0, 0.87, -0.16810465, 0.09458
 
 [node name="BoatSFX" type="Node" parent="."]
 script = ExtResource("5_5bfo1")
+
+[node name="Monkey" type="Sprite3D" parent="."]
+transform = Transform3D(0.03, 0, -1.2223609e-09, 0, 0.03, 0, 1.2223609e-09, 0, 0.03, 1.2032489, 2.0551896, -0.08383477)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("6_pqnko")

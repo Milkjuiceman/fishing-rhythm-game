@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=17 format=3 uid="uid://dfdg34vf6rofh"]
 
 [ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/vehicles/boat.gd" id="1_annr2"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat_small.glb" id="4_lvl5j"]
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="5_5c6k0"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_ouaro"]
+[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/ui/characters/MiniMonkey.png" id="10_rg0x2"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_qkrje"]
 resource_local_to_scene = false
@@ -97,3 +98,12 @@ shape = SubResource("BoxShape3D_hfmrw")
 
 [node name="BoatSFX" type="Node" parent="."]
 script = ExtResource("5_ouaro")
+
+[node name="Monkey" type="Sprite3D" parent="."]
+transform = Transform3D(0.03, 0, -1.2223609e-09, 0, 0.03, 0, 1.2223609e-09, 0, 0.03, 0.11465037, 1.3368727, -0.019314408)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("10_rg0x2")

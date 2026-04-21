@@ -29,6 +29,9 @@ var player: Player = null  # Spawned player instance
 
 func _ready() -> void:
 	# Execute level lifecycle in order
+	if get_viewport() is SubViewport:
+		return
+	
 	_setup_level()      # Pre-spawn setup
 	_spawn_player()     # Spawn and configure player
 	_post_spawn_setup() # Post-spawn setup
