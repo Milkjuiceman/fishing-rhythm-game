@@ -32,12 +32,13 @@ func play_track(track_to_pay: Track) -> void:
 
 # Updates frame timing data for rhythm processing
 func fill_frame_state(frame_delta: float, frame_state: FrameState) -> void:
-	if current_track == null:
+	if current_track == null or not playing:
 		frame_state.playing_song = false
 		frame_state.t = offset
-		frame_state.delta = frame_delta
-		
+		frame_state.delta = 0
 		_previous_t = -1.
+		return
+		
 	
 	else:
 		frame_state.playing_song = true
@@ -72,3 +73,8 @@ func _on_referee_play_chart_now(chart: Chart) -> void:
 # Updates global audio offset from UI slider
 func _on_offset_slider_change_audio_offset(offset_: float) -> void:
 	offset = offset_
+
+func stop_track() -> void:
+	stop()
+	current_track = null
+	_previous_t = 0.0

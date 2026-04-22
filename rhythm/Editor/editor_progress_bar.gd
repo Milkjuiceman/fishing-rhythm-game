@@ -8,7 +8,8 @@ var prev_miss = 0  # Track previous miss count
 
 # Update progress bar based on rhythm game performance
 func _on_referee_process(frame_state: FrameState) -> void:
-	# Process hits 
+	if frame_state.scorecard == null:
+		return
 	if frame_state.scorecard.hits > prev_hit:
 		if frame_state.scorecard.combo >= 10:
 			value += (frame_state.scorecard.hits - prev_hit) * 4  

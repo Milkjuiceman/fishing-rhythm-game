@@ -19,12 +19,21 @@ var key_columns: PackedInt64Array = PackedInt64Array()
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	scorecard = Scorecard.new(new_chart)
+	
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
 	if not frame_state.playing_song: return
 	
 	var lower_bound := frame_state.previous_t - TEMPORAL_ERROR_MARGIN + frame_state.input_offset
 	var upper_bound := frame_state.t + TEMPORAL_ERROR_MARGIN + frame_state.input_offset
 	var compared_t: float = lerp(frame_state.t, frame_state.previous_t, 0.5)
+	
+	if compared_t > finish + TEMPORAL_ERROR_MARGIN:
+		if not testing:
+			emit_signal("send_key_times", key_times, key_columns, start, finish)
+		else:
+			print("inputed times: ", key_times)
+		get_tree().quit()
+		return
 	
 	# need to set this before doing the loop because the loop will emit signals with the frame_state in ti
 	frame_state.scorecard = scorecard
@@ -128,3 +137,11 @@ func _get_return_scene() -> String:
 			
 func _on_referee_play_chart_now(chart_: Chart) -> void:
 	load_new_chart(chart_)
+
+func end_test_run(frame_state: FrameState) -> void:
+	# Stop audio if present
+	if frame_state.has_method("stop_song"):
+		frame_state.stop_song()
+	get_tree().paused = true
+	await get_tree().process_frame
+	get_tree().quit()
