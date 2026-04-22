@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=49 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -33,22 +33,29 @@
 [ext_resource type="PackedScene" uid="uid://dybxaunemw6te" path="res://scenes/ui/questsUI.tscn" id="31_klb0h"]
 [ext_resource type="Script" uid="uid://g2m52b80n6cd" path="res://scripts/ui/tutorial_ui.gd" id="31_pnbm0"]
 [ext_resource type="PackedScene" uid="uid://w7ptyjv51a2m" path="res://scenes/ui/assignmentPopupUI.tscn" id="32_5aefc"]
+[ext_resource type="PackedScene" uid="uid://bcnm12bxtl2jw" path="res://scenes/overworld/environmentObjects/npcs/Orangatang_npc.tscn" id="35_1it6v"]
+[ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="35_cdd1p"]
 [ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="37_uanvt"]
-
-[sub_resource type="Environment" id="Environment_gyexu"]
-background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
-background_energy_multiplier = 2.13
-ambient_light_source = 2
-ambient_light_color = Color(0.89059, 0.89059, 0.8905901, 1)
-reflected_light_source = 2
-tonemap_mode = 2
-tonemap_exposure = 0.84
-tonemap_white = 0.52
 
 [sub_resource type="Resource" id="Resource_q51th"]
 script = ExtResource("4_6j6pq")
 mode = 0
 textures = [[ExtResource("5_aw33w"), ExtResource("6_ngif8"), ExtResource("7_ngif8"), ExtResource("8_38p3g")], [ExtResource("9_yq4oh"), ExtResource("9_6j6pq"), ExtResource("10_6j6pq"), ExtResource("12_hsd36")]]
+
+[sub_resource type="Environment" id="Environment_cdd1p"]
+background_color = Color(0.41960785, 0.972549, 0.9647059, 1)
+background_energy_multiplier = 2.8
+ambient_light_source = 2
+ambient_light_color = Color(0.92941177, 0.9098039, 0.84705883, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.35
+tonemap_white = 2.0
+fog_mode = 1
+fog_light_color = Color(0.4029321, 0.43353698, 0.48598647, 1)
+fog_light_energy = 0.68
+fog_sun_scatter = 0.11
+fog_density = 0.106
 
 [sub_resource type="Shader" id="Shader_tyy4w"]
 code = "shader_type spatial;
@@ -93,7 +100,7 @@ size = Vector3(386.7661, 51.820324, 273.94922)
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("17_cdd1p")
-scene_path = "uid://dobb00e6psm41"
+scene_path = "uid://cuej6va4e7tey"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_cdd1p"]
@@ -118,9 +125,6 @@ metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j1cte")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gyexu")
-
 [node name="Tutorial_HTerrain" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 script = ExtResource("2_ca3h6")
@@ -144,19 +148,22 @@ shader_params/u_globalmap_blend_distance = null
 shader_params/u_colormap_opacity_per_texture = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cdd1p")
+
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.2033014, 0, 0, 0, 1, 0, 0, 0, 4.3287506, 524.985, 0, 541)
 mesh = SubResource("BoxMesh_swigd")
 skeleton = NodePath("../Tutorial_HTerrain")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Water"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Water" groups=["water_body"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1891785, -5.590332, -4.6297607)
 shape = SubResource("BoxShape3D_gyexu")
 
 [node name="Sun?" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.11162496, 0.5119581, -0.85172695, -0.18144372, 0.8321761, 0.5239859, 0.9770456, 0.21303041, -3.7230166e-08, 580.6832, 194.86136, 373.576)
+transform = Transform3D(-0.7558535, 0, 0.65474075, 0, 1, 0, -0.65474075, 0, -0.7558535, 580.6832, 194.86136, 508.64838)
 light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
 shadow_enabled = true
 directional_shadow_split_1 = 0.064
@@ -181,58 +188,43 @@ transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 
 [node name="tutorial_boat_initial_spawnpoint" type="Node3D" parent="SpawnPoints"]
 transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 199.777, 5, 303.74)
 
-[node name="tutorial_boat_upgrade_spawnpoint" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 552.484, 5, 550.861)
-
 [node name="FishSpawners" type="Node3D" parent="."]
 
 [node name="RipplingWaterSpawner" type="Node3D" parent="FishSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 602.4725, 5, 419.60556)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "tutorial_02"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_1it6v")])
 
 [node name="RipplingWaterSpawner2" type="Node3D" parent="FishSpawners"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.89978, 5, 276.07565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.31146, 5, 334.33908)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 spawn_radius = 20.0
 require_quest_id = "tutorial_01"
-spawn_once = true
+stop_when_fish_id = "fish_2"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_cdd1p")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="FishSpawners"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 528.29974, 5, 577.40405)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "tutorial_02"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
-[node name="Dock" parent="." node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
-transform = Transform3D(-0.5370328, 0, -6.979369, 0, 7, 0, 6.979369, 0, -0.5370328, 284.73007, 7.9923935, 399.3725)
-script = ExtResource("18_c03w6")
-npc_id = "dock_npc"
-dialogueUI = NodePath("../dialogue_ui")
-questPopup = NodePath("../assignment_popup_ui")
-
-[node name="Area3D" type="Area3D" parent="Dock"]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
-
-[node name="sphere" type="CollisionShape3D" parent="Dock/Area3D"]
-transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
-shape = SubResource("SphereShape3D_c03w6")
-
-[node name="Indicator" type="Sprite3D" parent="Dock"]
-transform = Transform3D(0.30300006, 0, 7.450581e-09, 0, 0.303, 0, -7.450581e-09, 0, 0.30300006, 0.877, 1.159, 0.771)
-billboard = 2
-render_priority = 1
-texture = ExtResource("20_cdd1p")
-
-[node name="Prompt" type="Sprite3D" parent="Dock"]
-transform = Transform3D(0.118, 0, -2.0164417e-09, 0, 0.118, 0, 2.0164417e-09, 0, 0.118, 0.195, -0.16109943, 1.0200427)
-pixel_size = 0.012
-billboard = 2
-render_priority = 1
-texture = ExtResource("20_3a54u")
+[node name="RipplingWaterSpawner4" type="Node3D" parent="FishSpawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 253.7984, 5, 258.68295)
+script = ExtResource("16_5oyo0")
+rippling_water_scene = ExtResource("15_yq4oh")
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "tutorial_02"
+rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="Enviorment" type="Node3D" parent="."]
 
@@ -836,3 +828,66 @@ visible = false
 
 [node name="assignment_popup_ui" parent="." instance=ExtResource("32_5aefc")]
 visible = false
+
+[node name="Docks" type="Node3D" parent="."]
+
+[node name="smallDock" parent="Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("35_cdd1p")]
+transform = Transform3D(-0.6538936, 0, -0.08957231, 0, 0.66, 0, 0.08957231, 0, -0.6538936, 780.526, 5.881262, 684.04126)
+script = ExtResource("18_c03w6")
+npc_id = "lake_npc"
+quest_id = "tutorial_03"
+dialogueUI = NodePath("../../dialogue_ui")
+questPopup = NodePath("../../assignment_popup_ui")
+
+[node name="Area3D" type="Area3D" parent="Docks/smallDock"]
+transform = Transform3D(12.9, 0, 0, 0, 12.9, 0, 0, 0, 12.9, 0, 0, 0)
+
+[node name="sphere" type="CollisionShape3D" parent="Docks/smallDock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_c03w6")
+
+[node name="Indicator" type="Sprite3D" parent="Docks/smallDock"]
+transform = Transform3D(2.6230006, 0, 5.9604645e-08, 0, 2.623, 0, -5.9604645e-08, 0, 2.6230006, -4.055908, 8.950575, 1.1390381)
+billboard = 2
+render_priority = 1
+texture = ExtResource("20_cdd1p")
+
+[node name="Prompt" type="Sprite3D" parent="Docks/smallDock"]
+transform = Transform3D(0.863, 0, -7.450581e-09, 0, 0.86300004, 0, 7.450581e-09, 0, 0.863, 0.9609375, -0.16109943, -4.571167)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("20_3a54u")
+
+[node name="OrangatangNpc" parent="Docks/smallDock" instance=ExtResource("35_1it6v")]
+transform = Transform3D(-1.5011331, 0, 0.20562972, 0, 1.5151515, 0, -0.20562972, 0, -1.5011331, -4.055908, 3.5518732, 1.1385498)
+
+[node name="Dock" parent="Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
+transform = Transform3D(-0.5370328, 0, -6.979369, 0, 7, 0, 6.979369, 0, -0.5370328, 284.73007, 6.9839354, 399.3725)
+script = ExtResource("18_c03w6")
+npc_id = "dock_npc"
+dialogueUI = NodePath("../../dialogue_ui")
+questPopup = NodePath("../../assignment_popup_ui")
+
+[node name="Area3D" type="Area3D" parent="Docks/Dock"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="sphere" type="CollisionShape3D" parent="Docks/Dock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_c03w6")
+
+[node name="Indicator" type="Sprite3D" parent="Docks/Dock"]
+transform = Transform3D(0.30300006, 0, 7.450581e-09, 0, 0.303, 0, -7.450581e-09, 0, 0.30300006, 0.911, 1.159, 0.6)
+billboard = 2
+render_priority = 1
+texture = ExtResource("20_cdd1p")
+
+[node name="Prompt" type="Sprite3D" parent="Docks/Dock"]
+transform = Transform3D(0.11800001, 0, -2.7939677e-09, 0, 0.118, 0, 2.7939677e-09, 0, 0.11800001, 0.1949997, 0.049069166, 1.0200424)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("20_3a54u")
+
+[node name="OrangatangNpc" parent="Docks/Dock" instance=ExtResource("35_1it6v")]
+transform = Transform3D(-0.010959853, 0, 0.14243612, 0, 0.14285715, 0, -0.14243612, 0, -0.010959853, 0.91125107, 0.32825124, 0.6000023)

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bsjd37f2ire8w" path="res://graphics/post_process.gd" id="3_pqnko"]
 [ext_resource type="PackedScene" uid="uid://msoagscxgldc" path="res://assets/models/ship.glb" id="4_dxr8b"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_5bfo1"]
-[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/ui/characters/MiniMonkey.png" id="6_pqnko"]
+[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/characters/MiniMonkey.png" id="6_pqnko"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_henu8"]
 size = Vector3(2.3106852, 2.551056, 1.9288177)

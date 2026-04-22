@@ -108,7 +108,7 @@ func _switch_to_boat(boat_scene_path: String) -> void:
 	
 	# Reposition player at designated spawn point
 	var main_scene = get_tree().current_scene
-	var spawn_point = main_scene.get_node_or_null("SpawnPoints/tutorial_boat_upgrade_spawnpoint")
+	var spawn_point = main_scene.get_node_or_null("SpawnPoints/lake_intersection_boat_upgrade_spawnpoint")
 	
 	if spawn_point:
 		player.global_position = spawn_point.global_position

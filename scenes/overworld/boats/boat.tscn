@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbc4j12a81c5y" path="res://assets/models/boat_small.glb" id="4_lvl5j"]
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="5_5c6k0"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_ouaro"]
-[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/ui/characters/MiniMonkey.png" id="10_rg0x2"]
+[ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/characters/MiniMonkey.png" id="10_rg0x2"]
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_qkrje"]
 resource_local_to_scene = false
