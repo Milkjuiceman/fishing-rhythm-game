@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=47 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -19,24 +19,21 @@
 [ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="17_cdd1p"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="17_ywjkn"]
 [ext_resource type="Script" uid="uid://0rwk7tajftlx" path="res://scripts/npcs/npc.gd" id="18_c03w6"]
-[ext_resource type="PackedScene" uid="uid://c4a0jes5hdlsu" path="res://scenes/overworld/environmentObjects/cabin.tscn" id="18_gv44t"]
-[ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="19_frxx6"]
-[ext_resource type="Script" uid="uid://bbscsuhcok1ic" path="res://scripts/components/shop_detection_area.gd" id="19_hsd36"]
-[ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/environmentObjects/tree.tscn" id="19_s87os"]
+[ext_resource type="PackedScene" uid="uid://blo0u5bipu4m" path="res://scenes/overworld/environmentObjects/trees/tree.tscn" id="19_s87os"]
 [ext_resource type="Texture2D" uid="uid://c2ntpig1e4d1p" path="res://assets/ui/enter_prompt.png" id="20_3a54u"]
 [ext_resource type="Texture2D" uid="uid://cqvxgf0tkkyqo" path="res://assets/ui/Popup_Red.png" id="20_cdd1p"]
-[ext_resource type="PackedScene" uid="uid://ddxlcvb61af8h" path="res://scenes/overworld/environmentObjects/treeFat.tscn" id="21_3ddkj"]
-[ext_resource type="Texture2D" uid="uid://buhp3htbhb5xi" path="res://assets/ui/characters/Muscular_Orangutang_Orange.png" id="22_1it6v"]
-[ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/environmentObjects/treeCone.tscn" id="22_77g0c"]
-[ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/environmentObjects/treeConeOrange.tscn" id="23_38p3g"]
+[ext_resource type="PackedScene" uid="uid://ddxlcvb61af8h" path="res://scenes/overworld/environmentObjects/trees/treeFat.tscn" id="21_3ddkj"]
+[ext_resource type="PackedScene" uid="uid://bfx118gr3twcw" path="res://scenes/overworld/environmentObjects/trees/treeCone.tscn" id="22_77g0c"]
+[ext_resource type="PackedScene" uid="uid://81q13ru41tle" path="res://scenes/overworld/environmentObjects/trees/treeConeOrange.tscn" id="23_38p3g"]
 [ext_resource type="PackedScene" uid="uid://bx4s0du0mddf1" path="res://scenes/overworld/environmentObjects/rocks/rockWall.tscn" id="25_owl05"]
 [ext_resource type="PackedScene" uid="uid://bl2v6k16pm4qj" path="res://scenes/ui/inventoryUI.tscn" id="27_1kwnl"]
 [ext_resource type="PackedScene" uid="uid://b0djdglch8rvh" path="res://scenes/ui/tutorialUI.tscn" id="30_5aefc"]
 [ext_resource type="PackedScene" uid="uid://carq5mcy70d6" path="res://scenes/ui/dialogueUI.tscn" id="30_c4giv"]
+[ext_resource type="PackedScene" uid="uid://8am2t8pkt1w6" path="res://scenes/overworld/enviormentObjects/buildings/House_small.tscn" id="30_uanvt"]
 [ext_resource type="PackedScene" uid="uid://dybxaunemw6te" path="res://scenes/ui/questsUI.tscn" id="31_klb0h"]
 [ext_resource type="Script" uid="uid://g2m52b80n6cd" path="res://scripts/ui/tutorial_ui.gd" id="31_pnbm0"]
 [ext_resource type="PackedScene" uid="uid://w7ptyjv51a2m" path="res://scenes/ui/assignmentPopupUI.tscn" id="32_5aefc"]
-[ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="36_1it6v"]
+[ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="37_uanvt"]
 
 [sub_resource type="Environment" id="Environment_gyexu"]
 background_color = Color(0.4183119, 0.97404796, 0.96545357, 1)
@@ -117,10 +114,6 @@ chance = 50.0
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c03w6"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_38p3g"]
-height = 0.97766113
-radius = 2.0576172
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j1cte")
@@ -215,7 +208,7 @@ rippling_water_scene = ExtResource("15_yq4oh")
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="Dock" parent="." node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
-transform = Transform3D(-0.38359487, 0, -4.985264, 0, 5, 0, 4.985264, 0, -0.38359487, 284.01465, 6.87459, 399.3725)
+transform = Transform3D(-0.5370328, 0, -6.979369, 0, 7, 0, 6.979369, 0, -0.5370328, 284.73007, 7.9923935, 399.3725)
 script = ExtResource("18_c03w6")
 npc_id = "dock_npc"
 dialogueUI = NodePath("../dialogue_ui")
@@ -241,30 +234,7 @@ billboard = 2
 render_priority = 1
 texture = ExtResource("20_3a54u")
 
-[node name="Monkey" type="Sprite3D" parent="Dock"]
-transform = Transform3D(0.005, 0, -2.0372681e-10, 0, 0.005, 0, 2.0372681e-10, 0, 0.005, 0.87657166, 0.32493687, 0.7705536)
-pixel_size = 1.0
-billboard = 2
-alpha_cut = 1
-texture_filter = 0
-render_priority = 1
-texture = ExtResource("22_1it6v")
-
-[node name="Shipyard" parent="." instance=ExtResource("19_frxx6")]
-transform = Transform3D(8.27, 0, -1.4459728e-06, 0, 8.27, 0, 1.4459728e-06, 0, 8.27, 592.03064, 7.5905247, 546.5107)
-
-[node name="ShopDetectionArea" type="Area3D" parent="Shipyard"]
-transform = Transform3D(1.54, 0, 0, 0, 1.54, 0, 0, 0, 1.54, 0, 0, 0)
-script = ExtResource("19_hsd36")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Shipyard/ShopDetectionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15350324, -0.14872742)
-shape = SubResource("CylinderShape3D_38p3g")
-
 [node name="Enviorment" type="Node3D" parent="."]
-
-[node name="Cabin" parent="Enviorment" instance=ExtResource("18_gv44t")]
-transform = Transform3D(6.74, 0, 0, 0, 6.74, 0, 0, 0, 6.74, 323.00345, 18.194427, 415.38815)
 
 [node name="Tree\'s" type="Node3D" parent="Enviorment"]
 
@@ -308,7 +278,7 @@ transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 700.1842, 8.401001, 
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 873.76965, 8.401, 732.5936)
 
 [node name="TreeDefualt14" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
-transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 810.7698, 8.401, 681.0732)
+transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 817.7099, 11.317796, 686.1479)
 
 [node name="TreeDefualt15" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 852.31006, 19.817245, 511.69278)
@@ -843,6 +813,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 726.0782, 8.4203825, 798.4181
 [node name="RockWall" parent="Enviorment/Rocks" instance=ExtResource("25_owl05")]
 transform = Transform3D(0.9788674, 0, -0.20449604, 0, 1, 0, 0.20449604, 0, 0.9788674, 690.7935, 2.6940765, 265.66217)
 
+[node name="Buildings" type="Node3D" parent="Enviorment"]
+
+[node name="House_medium" parent="Enviorment/Buildings" instance=ExtResource("37_uanvt")]
+transform = Transform3D(0.6832738, 0, -0.73016226, 0, 1, 0, 0.73016226, 0, 0.6832738, 802.6901, 7.7994003, 674.65436)
+
+[node name="House" parent="Enviorment/Buildings" instance=ExtResource("30_uanvt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 319.71805, 7.5063305, 402.711)
+
 [node name="inventory_ui" parent="." instance=ExtResource("27_1kwnl")]
 visible = false
 
@@ -858,6 +836,3 @@ visible = false
 
 [node name="assignment_popup_ui" parent="." instance=ExtResource("32_5aefc")]
 visible = false
-
-[node name="smallDock" parent="." instance=ExtResource("36_1it6v")]
-transform = Transform3D(0.0460393, 0, 0.6583923, 0, 0.66, 0, -0.6583923, 0, 0.0460393, 791.0781, 3.6197147, 703.12665)

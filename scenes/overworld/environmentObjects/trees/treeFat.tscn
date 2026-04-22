@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddxlcvb61af8h"]
+
+[ext_resource type="PackedScene" uid="uid://clrexo70eusje" path="res://assets/models/trees/tree_fat.glb" id="1_8qr5j"]
+
+[node name="TreeFat" type="Node3D"]
+
+[node name="tree_fat2" parent="." instance=ExtResource("1_8qr5j")]
+transform = Transform3D(8.18, 0, 0, 0, 8.18, 0, 0, 0, 8.18, 0, 0, 0)

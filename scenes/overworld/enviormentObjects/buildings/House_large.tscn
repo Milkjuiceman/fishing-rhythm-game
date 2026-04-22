@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3jn6t170lt6d"]
+
+[ext_resource type="PackedScene" uid="uid://blnn6tw4pq5je" path="res://assets/models/town/House3.gltf" id="1_2q731"]
+
+[node name="House_large" type="Node3D"]
+
+[node name="House3" parent="." instance=ExtResource("1_2q731")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)

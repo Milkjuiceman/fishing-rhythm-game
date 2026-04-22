@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://441vr2n7wuvx"]
+
+[ext_resource type="PackedScene" uid="uid://cloijvbh76c7e" path="res://assets/models/town/Market.gltf" id="1_vyhys"]
+
+[node name="Market" type="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Market" parent="." instance=ExtResource("1_vyhys")]
