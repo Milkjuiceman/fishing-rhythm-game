@@ -3,24 +3,23 @@ class_name CatchProgressBar
 ## Rhythm fishing minigame progress bar
 ## Tracks hits/misses and signals catch availability or failure
 ## Author: Tyler Schauermann
-## Date of last update: 04/02/2026
-## Designed for dynamic updating and integration with Referee system
+## Date of last update: 04/22/2026
 
 # ========================================
 # STATE VARIABLES
 # ========================================
 
-# Updates if the player can reel in or not
 var catchable: bool = false
+var prev_hit: int = 0
+var prev_miss: int = 0
+var reel_ins: int = 1
 
-# Track previous hit count
-var prev_hit = 0
+## Prevents catch_failed from firing more than once per level.
+var _failed: bool = false
 
- # Track previous miss count
-var prev_miss = 0
-
-# Track number of reel_ins have been denied
-var reel_ins = 1
+## Only allows the fail check once the song is actually playing.
+## Prevents instant failure on the first frame when the bar starts at 0.
+var _song_started: bool = false
 
 # ========================================
 # SIGNALS
@@ -31,43 +30,52 @@ signal catch_available
 signal catch_unavailable
 
 # ========================================
-# PROCESSING FRAME STATE
+# FRAME UPDATE
 # ========================================
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	if frame_state.scorecard == null:
 		return
+
+	# Mark song as started once audio is actually playing
+	if frame_state.playing_song and not _song_started:
+		_song_started = true
+
 	_update_from_scorecard(frame_state.scorecard)
-	#print(value)
 
-
-# Update progress bar based on rhythm game performance
 func _update_from_scorecard(scorecard: Scorecard) -> void:
-	# process hits
+	if _failed:
+		return  # Already failed — stop all processing
+
+	# Process hits
 	var hits_delta = scorecard.hits - prev_hit
 	value += hits_delta
 
-	# Process misses 
+	# Process misses
 	var misses_delta = scorecard.misses - prev_miss
 	if misses_delta > 0:
 		value -= misses_delta * reel_ins
-	
+
 	value = clamp(value, min_value, max_value)
-	
-	# Update tracking variables
+
 	prev_hit = scorecard.hits
 	prev_miss = scorecard.misses
-	
-	# Check if player hit 0%
-	if value <= min_value and not catchable:
+
+	# Only check for failure once the song has begun —
+	# prevents instant fail on the first frame when bar starts at 0
+	if _song_started and value <= min_value and not catchable:
 		print("[ProgressBar] depleted, level failed")
+		_failed = true
 		emit_signal("catch_failed")
-		
+		return
+
+	# Bar filled — catch window opens
 	if value >= max_value and not catchable:
 		catchable = true
 		print("[ProgressBar] filled, fish catchable")
 		emit_signal("catch_available")
-		
+
+	# Bar dropped below threshold — catch window closes
 	if value < 80 and catchable:
 		catchable = false
 		emit_signal("catch_unavailable")
@@ -80,8 +88,9 @@ func reset():
 	prev_hit = 0
 	prev_miss = 0
 	catchable = false
-
+	_failed = false
+	_song_started = false
 
 func _on_referee_reel_in_denied() -> void:
 	value = 50.0
-	reel_ins += reel_ins
+	reel_ins += reel_ins		
