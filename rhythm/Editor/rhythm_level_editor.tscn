@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=3 uid="uid://uytjfr8ssdc8"]
+[gd_scene load_steps=67 format=3 uid="uid://uytjfr8ssdc8"]
 
 [ext_resource type="Script" uid="uid://i1juk7dsw1th" path="res://rhythm/Editor/rhythm_level_editor.gd" id="1_syn7g"]
 [ext_resource type="Script" uid="uid://bo51tsvfo2v28" path="res://rhythm/Editor/editor_judge.gd" id="2_syn7g"]
@@ -11,11 +11,10 @@
 [ext_resource type="Script" uid="uid://buismt86y3qa4" path="res://rhythm/Editor/editor_note_holder.gd" id="10_x0nua"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_strij"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="12_4r7wg"]
-[ext_resource type="Resource" uid="uid://dfq4b8fliwivj" path="res://assets/tracks/charts/new_hope.tres" id="12_lstnr"]
+[ext_resource type="Resource" uid="uid://ctvm25egivu52" path="res://assets/tracks/charts/rgmp_01.tres" id="12_lstnr"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="13_asvrw"]
 [ext_resource type="PackedScene" uid="uid://ba5m0j8nuvpef" path="res://rhythm/Editor/beat_grid_snapper.tscn" id="14_74rbk"]
 [ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="14_trr87"]
-[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="15_27h43"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,1161 +37,452 @@ material = SubResource("StandardMaterial3D_rtuxy")
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h1r4h"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nua46"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no61u"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.6497182
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r7wg"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.3656629
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lstnr"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.024165155
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trr87"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.8518325
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27h43"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.44331935
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1r4h"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.30133972
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecu1r"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_h1r4h")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.46627545
+shader_parameter/seed = 0.7082917
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jdxih"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdxih"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.2485348
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_almbp"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jdxih")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.16982904
+shader_parameter/seed = 0.0051880744
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_strij"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.17798801
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_strij"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4udw2"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_strij")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.40415773
+shader_parameter/seed = 0.91834396
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asvrw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asvrw"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.9438896
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_74rbk"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_asvrw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.4179604
+shader_parameter/seed = 0.94184285
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ovbv7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovbv7"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.27943212
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_73umy"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ovbv7")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.24081169
+shader_parameter/seed = 0.7720377
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uqaga"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqaga"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.6109364
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mj0fb"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_uqaga")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.5259848
+shader_parameter/seed = 0.8602951
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_epvrf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epvrf"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.3130681
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8iwx"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_epvrf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3923385
+shader_parameter/seed = 0.41146898
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ila7d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ila7d"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.8486297
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_khgh5"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ila7d")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.86184084
+shader_parameter/seed = 0.5470144
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p272q"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.1342371
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p272q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1uol"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_p272q")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7627326
+shader_parameter/seed = 0.9185089
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rk5mc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk5mc"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.67952085
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nsf8w"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_rk5mc")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.728394
+shader_parameter/seed = 0.2868059
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30dj2"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.07628428
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30dj2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_adxm0"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_30dj2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.82793945
+shader_parameter/seed = 0.8487008
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mj6uh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj6uh"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.90126055
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0bkux"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mj6uh")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.36687043
+shader_parameter/seed = 0.46985605
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jv2l0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jv2l0"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.81700927
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m1x4d"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jv2l0")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9184099
+shader_parameter/seed = 0.22067536
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_50c8a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50c8a"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.5449507
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d2w34"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_50c8a")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.61927897
+shader_parameter/seed = 0.29349408
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_17mx2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17mx2"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.5506925
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3puvt"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_17mx2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.94369406
+shader_parameter/seed = 0.058084715
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22c0f"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.16166668
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22c0f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f56d1"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22c0f")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.8312434
+shader_parameter/seed = 0.69256675
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aa78w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aa78w"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.24062659
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aofdm"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_aa78w")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.13271329
+shader_parameter/seed = 0.6396457
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2geop"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2geop"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.2609393
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hatjc"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2geop")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7285723
+shader_parameter/seed = 0.6517711
+shader_parameter/displacement_strength = 0.30000000447036
+shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlndb"]
+render_priority = 0
+shader = ExtResource("12_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
+shader_parameter/smoothness = 0.1999999955296
+shader_parameter/speed = 2.0
+shader_parameter/seed = 0.76649386
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qlndb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxgii"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_qlndb")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7710693
+shader_parameter/seed = 0.14769746
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ugm6o"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc3rt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugm6o"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ugm6o")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
-shader_parameter/seed = 0.89821726
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wfe3d"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uthhf"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wfe3d")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.21050876
+shader_parameter/seed = 0.5172505
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_538d3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qor4p"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_538d3")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.1652465
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x03hk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ka15d"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_x03hk")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3506201
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mfuwl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_843t0"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfuwl")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.47320664
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r0i85"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_og3hn"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_r0i85")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3123936
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xminy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_afwgl"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_xminy")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.36021963
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af8sx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i20h3"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_af8sx")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.6938184
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e45hl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7n6e7"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_e45hl")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.84730154
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l3hu5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_phwye"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_l3hu5")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.61290187
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mfbfu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0w0oo"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfbfu")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.5661651
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r0upu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtfqi"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_r0upu")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.04231359
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_75ryq"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrstw"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_75ryq")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.58345443
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_byklx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s10so"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_byklx")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.117431894
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_amkv6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2odyi"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_amkv6")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.99735516
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gysjf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ej0eh"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_gysjf")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.18783838
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fvap5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4s3ue"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fvap5")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7412575
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_phswy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxoxh"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_phswy")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3357062
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vrveo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjilo"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_vrveo")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.62147564
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_phvm1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdo0c"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_phvm1")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.48836932
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jeivk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mli1a"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jeivk")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.74397904
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5eaub"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v04hi"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_5eaub")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7088288
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ycjx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptb3r"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_0ycjx")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3118004
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yqqn6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_li6sd"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yqqn6")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.72239685
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7a185"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1w10"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7a185")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9246755
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_17odx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdv7f"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_17odx")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.6337454
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjpa7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dgt3"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mjpa7")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.99220693
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o0m2w"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gl520"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_o0m2w")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.35737374
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pm1pt"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bcmv"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_pm1pt")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.23683687
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yvpml"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_plwea"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yvpml")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.58168674
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jps7w"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6gte"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jps7w")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.4808631
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0qh7f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_08ebm"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_0qh7f")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.091591515
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sqsq1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nv4gy"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_sqsq1")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.46640846
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ps0i"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ql1ih"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7ps0i")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.67552537
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b8xqf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wo4s7"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_b8xqf")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.060940027
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ljefe"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wiipc"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ljefe")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.63551563
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nnnrd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f1vei"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_nnnrd")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9199731
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_euwrt"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxs0v"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_euwrt")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.011724259
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k62yd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wy1lf"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_k62yd")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.04613011
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jxqox"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_43js0"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jxqox")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.45344472
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qhd78"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_je72b"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_qhd78")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.47720024
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3n7ar"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ympi6"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_3n7ar")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.77849656
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3r6gy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iet7"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_3r6gy")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.35364386
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bqovh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l00b8"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_bqovh")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.7379129
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7hw5t"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mbk3"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7hw5t")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.36560658
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bjvsa"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mglkd"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_bjvsa")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.031890005
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_75i6d"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_orm3n"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_75i6d")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.3413527
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2xpf4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_svrat"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2xpf4")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.12123623
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uul3p"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0enbm"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_uul3p")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9463275
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e5cje"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yykhx"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_e5cje")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.55602735
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p4jfs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lr0jv"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_p4jfs")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.1568326
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bp1cn"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4171s"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_bp1cn")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.8454268
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_32cj0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2yp7"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_32cj0")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.30303994
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0oafr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgsfx"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_0oafr")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.5057779
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kulff"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_totrc"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_kulff")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9855827
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pq0cc"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovgyg"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_pq0cc")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.91403085
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l5bj6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tygv3"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_l5bj6")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.27025893
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ectkw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sxvaf"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ectkw")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9564543
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7s52q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgpar"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7s52q")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.53554
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o5vyj"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqc5"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_o5vyj")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.16052173
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dss00"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v12sr"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dss00")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.017778713
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dfw78"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvsec"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dfw78")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.76647127
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_koap3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pxgw"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_koap3")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.16225739
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7pwwr"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5subv"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7pwwr")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.6314401
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lod06"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ho5bu"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_lod06")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.18947792
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yve27"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjjqu"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yve27")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.29544106
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_51fm7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_daeob"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_51fm7")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.18279238
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7bxbs"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_euig5"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7bxbs")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.069196455
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ltua5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7tf7"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ltua5")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.75188404
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uyit4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7cd4"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_uyit4")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.8671766
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o5gf2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ro8pd"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_o5gf2")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.97451586
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aeemk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hoaqo"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_aeemk")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.9779171
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dxm1h"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m13uv"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dxm1h")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.6956163
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_750n3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k5il"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_750n3")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.5367004
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r7t57"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqhi3"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_r7t57")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.15371563
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_abvb1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmtm0"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_abvb1")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.4561462
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3dui7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kcmx"]
-render_priority = 0
-shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_3dui7")
-shader_parameter/smoothness = 0.1999999955296
-shader_parameter/speed = 2.0
-shader_parameter/seed = 0.1780963
-shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
-
-[node name="RhythmLevelEditor" type="Node3D" node_paths=PackedStringArray("referee")]
+[node name="RhythmLevelEditor" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("1_syn7g")
 referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.46922, 0)
@@ -1204,15 +494,14 @@ environment = SubResource("Environment_wi50x")
 
 [node name="Judge" type="Node" parent="."]
 script = ExtResource("2_syn7g")
-testing = true
 finish = 10.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("3_4r7wg")
 
 [node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge") groups=["Rhythm"]]
+unique_name_in_owner = true
 script = ExtResource("4_syn7g")
-chart = ExtResource("12_lstnr")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
@@ -1310,1358 +599,323 @@ COMBO:"
 script = ExtResource("9_jdxih")
 
 [node name="Note_Holder" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("10_x0nua")
 place_notes = ExtResource("11_strij")
 chart = ExtResource("12_lstnr")
-note_speed = 15.0
 
-[node name="@MeshInstance3D@27335" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 4.5)
+[node name="Note" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 5.2941175)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ecu1r")
+surface_material_override/0 = SubResource("ShaderMaterial_no61u")
 script = ExtResource("14_trr87")
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27335" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27336" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 9)
+[node name="@MeshInstance3D@139792" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 7.279412)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_almbp")
+surface_material_override/0 = SubResource("ShaderMaterial_4r7wg")
 script = ExtResource("14_trr87")
 index = 1
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27336" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27337" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 13.5)
+[node name="@MeshInstance3D@139793" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 9.264706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_4udw2")
+surface_material_override/0 = SubResource("ShaderMaterial_lstnr")
 script = ExtResource("14_trr87")
 index = 2
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27337" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27338" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 18)
+[node name="@MeshInstance3D@139794" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 10.588235)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_74rbk")
+surface_material_override/0 = SubResource("ShaderMaterial_trr87")
 script = ExtResource("14_trr87")
 index = 3
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27338" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27339" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 22.5)
+[node name="@MeshInstance3D@139795" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 16.544117)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_73umy")
+surface_material_override/0 = SubResource("ShaderMaterial_27h43")
 script = ExtResource("14_trr87")
 index = 4
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27339" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27340" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 27)
+[node name="@MeshInstance3D@139796" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 18.529411)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_mj0fb")
+surface_material_override/0 = SubResource("ShaderMaterial_h1r4h")
 script = ExtResource("14_trr87")
 index = 5
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27340" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27341" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 31.5)
+[node name="@MeshInstance3D@139797" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 24.485294)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_v8iwx")
+surface_material_override/0 = SubResource("ShaderMaterial_ecu1r")
 script = ExtResource("14_trr87")
 index = 6
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27341" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27342" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 36)
+[node name="@MeshInstance3D@139798" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 29.117647)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_khgh5")
+surface_material_override/0 = SubResource("ShaderMaterial_jdxih")
 script = ExtResource("14_trr87")
 index = 7
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27342" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27343" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 40.5)
+[node name="@MeshInstance3D@139799" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 34.411766)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_p1uol")
+surface_material_override/0 = SubResource("ShaderMaterial_almbp")
 script = ExtResource("14_trr87")
 index = 8
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27343" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27344" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 45)
+[node name="@MeshInstance3D@139800" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 36.39706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_nsf8w")
+surface_material_override/0 = SubResource("ShaderMaterial_strij")
 script = ExtResource("14_trr87")
 index = 9
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27344" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27345" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 49.5)
+[node name="@MeshInstance3D@139801" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 39.044117)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_adxm0")
+surface_material_override/0 = SubResource("ShaderMaterial_4udw2")
 script = ExtResource("14_trr87")
 index = 10
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27345" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27346" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 54)
+[node name="@MeshInstance3D@139802" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 45.661766)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_0bkux")
+surface_material_override/0 = SubResource("ShaderMaterial_asvrw")
 script = ExtResource("14_trr87")
 index = 11
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27346" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27347" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 58.5)
+[node name="@MeshInstance3D@139803" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 47.64706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_m1x4d")
+surface_material_override/0 = SubResource("ShaderMaterial_74rbk")
 script = ExtResource("14_trr87")
 index = 12
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27347" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27348" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 63)
+[node name="@MeshInstance3D@139804" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 50.955883)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_d2w34")
+surface_material_override/0 = SubResource("ShaderMaterial_ovbv7")
 script = ExtResource("14_trr87")
 index = 13
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27348" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27349" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 67.5)
+[node name="@MeshInstance3D@139805" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 52.941177)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_3puvt")
+surface_material_override/0 = SubResource("ShaderMaterial_73umy")
 script = ExtResource("14_trr87")
 index = 14
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27349" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27350" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 72)
+[node name="@MeshInstance3D@139806" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 58.89706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_f56d1")
+surface_material_override/0 = SubResource("ShaderMaterial_uqaga")
 script = ExtResource("14_trr87")
 index = 15
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27350" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27351" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 76.5)
+[node name="@MeshInstance3D@139807" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 60.882355)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_aofdm")
+surface_material_override/0 = SubResource("ShaderMaterial_mj0fb")
 script = ExtResource("14_trr87")
 index = 16
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27351" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27352" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 81)
+[node name="@MeshInstance3D@139808" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 66.838234)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_hatjc")
+surface_material_override/0 = SubResource("ShaderMaterial_epvrf")
 script = ExtResource("14_trr87")
 index = 17
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27352" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27353" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 85.5)
+[node name="@MeshInstance3D@139809" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 71.47059)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_qxgii")
+surface_material_override/0 = SubResource("ShaderMaterial_v8iwx")
 script = ExtResource("14_trr87")
 index = 18
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27353" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27354" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 90)
+[node name="@MeshInstance3D@139810" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 76.76471)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_rc3rt")
+surface_material_override/0 = SubResource("ShaderMaterial_ila7d")
 script = ExtResource("14_trr87")
 index = 19
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27354" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27355" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 94.5)
+[node name="@MeshInstance3D@139811" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 79.411766)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_uthhf")
+surface_material_override/0 = SubResource("ShaderMaterial_khgh5")
 script = ExtResource("14_trr87")
 index = 20
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27355" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27356" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 99)
+[node name="@MeshInstance3D@139812" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 81.39706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_qor4p")
+surface_material_override/0 = SubResource("ShaderMaterial_p272q")
 script = ExtResource("14_trr87")
 index = 21
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27356" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27357" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 103.5)
+[node name="@MeshInstance3D@139813" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 88.01471)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ka15d")
+surface_material_override/0 = SubResource("ShaderMaterial_p1uol")
 script = ExtResource("14_trr87")
 index = 22
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27357" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27358" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 108)
+[node name="@MeshInstance3D@139814" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 90.661766)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_843t0")
+surface_material_override/0 = SubResource("ShaderMaterial_rk5mc")
 script = ExtResource("14_trr87")
 index = 23
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27358" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27359" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 112.5)
+[node name="@MeshInstance3D@139815" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 92.64706)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_og3hn")
+surface_material_override/0 = SubResource("ShaderMaterial_nsf8w")
 script = ExtResource("14_trr87")
 index = 24
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27359" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27360" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 117)
+[node name="@MeshInstance3D@139816" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 95.29412)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_afwgl")
+surface_material_override/0 = SubResource("ShaderMaterial_30dj2")
 script = ExtResource("14_trr87")
 index = 25
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27360" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27361" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 121.5)
+[node name="@MeshInstance3D@139817" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 101.25)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_i20h3")
+surface_material_override/0 = SubResource("ShaderMaterial_adxm0")
 script = ExtResource("14_trr87")
 index = 26
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27361" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27362" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 126)
+[node name="@MeshInstance3D@139818" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 103.23529)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_7n6e7")
+surface_material_override/0 = SubResource("ShaderMaterial_mj6uh")
 script = ExtResource("14_trr87")
 index = 27
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27362" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27363" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 130.5)
+[node name="@MeshInstance3D@139819" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 109.19118)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_phwye")
+surface_material_override/0 = SubResource("ShaderMaterial_0bkux")
 script = ExtResource("14_trr87")
 index = 28
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27363" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27364" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 135)
+[node name="@MeshInstance3D@139820" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 113.82353)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_0w0oo")
+surface_material_override/0 = SubResource("ShaderMaterial_jv2l0")
 script = ExtResource("14_trr87")
 index = 29
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27364" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27365" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 139.5)
+[node name="@MeshInstance3D@139821" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 119.77941)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_vtfqi")
+surface_material_override/0 = SubResource("ShaderMaterial_m1x4d")
 script = ExtResource("14_trr87")
 index = 30
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27365" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27366" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 144)
+[node name="@MeshInstance3D@139822" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 121.76471)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_nrstw")
+surface_material_override/0 = SubResource("ShaderMaterial_50c8a")
 script = ExtResource("14_trr87")
 index = 31
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27366" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27367" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 148.5)
+[node name="@MeshInstance3D@139823" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 124.411766)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_s10so")
+surface_material_override/0 = SubResource("ShaderMaterial_d2w34")
 script = ExtResource("14_trr87")
 index = 32
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27367" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27368" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 153)
+[node name="@MeshInstance3D@139824" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 129.70589)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_2odyi")
+surface_material_override/0 = SubResource("ShaderMaterial_17mx2")
 script = ExtResource("14_trr87")
 index = 33
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27368" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27369" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 157.5)
+[node name="@MeshInstance3D@139825" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 132.35294)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ej0eh")
+surface_material_override/0 = SubResource("ShaderMaterial_3puvt")
 script = ExtResource("14_trr87")
 index = 34
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27369" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27370" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 162)
+[node name="@MeshInstance3D@139826" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 135)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_4s3ue")
+surface_material_override/0 = SubResource("ShaderMaterial_22c0f")
 script = ExtResource("14_trr87")
 index = 35
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27370" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27371" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 166.5)
+[node name="@MeshInstance3D@139827" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 136.98529)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_wxoxh")
+surface_material_override/0 = SubResource("ShaderMaterial_f56d1")
 script = ExtResource("14_trr87")
 index = 36
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27371" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27372" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 171)
+[node name="@MeshInstance3D@139828" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 143.60294)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_cjilo")
+surface_material_override/0 = SubResource("ShaderMaterial_aa78w")
 script = ExtResource("14_trr87")
 index = 37
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27372" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27373" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 175.5)
+[node name="@MeshInstance3D@139829" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 145.58824)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_kdo0c")
+surface_material_override/0 = SubResource("ShaderMaterial_aofdm")
 script = ExtResource("14_trr87")
 index = 38
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27373" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27374" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 180)
+[node name="@MeshInstance3D@139830" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 151.54411)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_mli1a")
+surface_material_override/0 = SubResource("ShaderMaterial_2geop")
 script = ExtResource("14_trr87")
 index = 39
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27374" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27375" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 184.5)
+[node name="@MeshInstance3D@139831" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 156.17647)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_v04hi")
+surface_material_override/0 = SubResource("ShaderMaterial_hatjc")
 script = ExtResource("14_trr87")
 index = 40
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27375" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27376" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 189)
+[node name="@MeshInstance3D@139832" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 161.47058)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ptb3r")
+surface_material_override/0 = SubResource("ShaderMaterial_qlndb")
 script = ExtResource("14_trr87")
 index = 41
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27376" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27377" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 193.5)
+[node name="@MeshInstance3D@139833" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 163.45589)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_li6sd")
+surface_material_override/0 = SubResource("ShaderMaterial_qxgii")
 script = ExtResource("14_trr87")
 index = 42
 
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27377" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27378" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 198)
+[node name="@MeshInstance3D@139834" type="MeshInstance3D" parent="Note_Holder" instance=ExtResource("11_strij")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 166.10294)
 mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_b1w10")
+surface_material_override/0 = SubResource("ShaderMaterial_ugm6o")
 script = ExtResource("14_trr87")
 index = 43
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27378" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27379" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 202.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_fdv7f")
-script = ExtResource("14_trr87")
-index = 44
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27379" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27380" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 207)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_3dgt3")
-script = ExtResource("14_trr87")
-index = 45
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27380" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27381" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 211.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_gl520")
-script = ExtResource("14_trr87")
-index = 46
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27381" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27382" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 216)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_2bcmv")
-script = ExtResource("14_trr87")
-index = 47
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27382" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27383" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 220.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_plwea")
-script = ExtResource("14_trr87")
-index = 48
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27383" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27384" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 225)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_u6gte")
-script = ExtResource("14_trr87")
-index = 49
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27384" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27385" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 229.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_08ebm")
-script = ExtResource("14_trr87")
-index = 50
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27385" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27386" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 234)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_nv4gy")
-script = ExtResource("14_trr87")
-index = 51
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27386" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27387" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 238.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ql1ih")
-script = ExtResource("14_trr87")
-index = 52
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27387" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27388" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 243)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_wo4s7")
-script = ExtResource("14_trr87")
-index = 53
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27388" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27389" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 247.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_wiipc")
-script = ExtResource("14_trr87")
-index = 54
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27389" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27390" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 252)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_f1vei")
-script = ExtResource("14_trr87")
-index = 55
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27390" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27391" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 256.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_jxs0v")
-script = ExtResource("14_trr87")
-index = 56
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27391" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27392" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 261)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_wy1lf")
-script = ExtResource("14_trr87")
-index = 57
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27392" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27393" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 265.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_43js0")
-script = ExtResource("14_trr87")
-index = 58
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27393" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27394" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 270)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_je72b")
-script = ExtResource("14_trr87")
-index = 59
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27394" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27395" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 274.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ympi6")
-script = ExtResource("14_trr87")
-index = 60
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27395" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27396" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 279)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_8iet7")
-script = ExtResource("14_trr87")
-index = 61
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27396" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27397" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 283.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_l00b8")
-script = ExtResource("14_trr87")
-index = 62
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27397" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27398" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 288)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_0mbk3")
-script = ExtResource("14_trr87")
-index = 63
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27398" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27399" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 292.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_mglkd")
-script = ExtResource("14_trr87")
-index = 64
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27399" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27400" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 297)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_orm3n")
-script = ExtResource("14_trr87")
-index = 65
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27400" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27401" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 301.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_svrat")
-script = ExtResource("14_trr87")
-index = 66
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27401" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27402" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 306)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_0enbm")
-script = ExtResource("14_trr87")
-index = 67
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27402" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27403" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 310.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_yykhx")
-script = ExtResource("14_trr87")
-index = 68
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27403" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27404" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 315)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_lr0jv")
-script = ExtResource("14_trr87")
-index = 69
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27404" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27405" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 319.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_4171s")
-script = ExtResource("14_trr87")
-index = 70
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27405" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27406" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 324)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_b2yp7")
-script = ExtResource("14_trr87")
-index = 71
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27406" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27407" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 328.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_tgsfx")
-script = ExtResource("14_trr87")
-index = 72
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27407" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27408" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 333)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_totrc")
-script = ExtResource("14_trr87")
-index = 73
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27408" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27409" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 337.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ovgyg")
-script = ExtResource("14_trr87")
-index = 74
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27409" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27410" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 342)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_tygv3")
-script = ExtResource("14_trr87")
-index = 75
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27410" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27411" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 346.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_sxvaf")
-script = ExtResource("14_trr87")
-index = 76
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27411" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27412" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 351)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_mgpar")
-script = ExtResource("14_trr87")
-index = 77
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27412" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27413" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 355.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_cdqc5")
-script = ExtResource("14_trr87")
-index = 78
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27413" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27414" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 360)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_v12sr")
-script = ExtResource("14_trr87")
-index = 79
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27414" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27415" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 364.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_rvsec")
-script = ExtResource("14_trr87")
-index = 80
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27415" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27416" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 369)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_2pxgw")
-script = ExtResource("14_trr87")
-index = 81
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27416" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27417" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 373.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_5subv")
-script = ExtResource("14_trr87")
-index = 82
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27417" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27418" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 378)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ho5bu")
-script = ExtResource("14_trr87")
-index = 83
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27418" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27419" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 382.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_mjjqu")
-script = ExtResource("14_trr87")
-index = 84
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27419" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27420" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 387)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_daeob")
-script = ExtResource("14_trr87")
-index = 85
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27420" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27421" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 391.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_euig5")
-script = ExtResource("14_trr87")
-index = 86
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27421" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27422" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 396)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_a7tf7")
-script = ExtResource("14_trr87")
-index = 87
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27422" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27423" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 400.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_q7cd4")
-script = ExtResource("14_trr87")
-index = 88
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27423" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27424" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 405)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_ro8pd")
-script = ExtResource("14_trr87")
-index = 89
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27424" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27425" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3, 0, 409.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_hoaqo")
-script = ExtResource("14_trr87")
-index = 90
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27425" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27426" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 414)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_m13uv")
-script = ExtResource("14_trr87")
-index = 91
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27426" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27427" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 418.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_3k5il")
-script = ExtResource("14_trr87")
-index = 92
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27427" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27428" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 0, 421.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_sqhi3")
-script = ExtResource("14_trr87")
-index = 93
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27428" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27429" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1, 0, 426)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_dmtm0")
-script = ExtResource("14_trr87")
-index = 94
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27429" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
-
-[node name="@MeshInstance3D@27430" parent="Note_Holder" instance=ExtResource("11_strij")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1, 0, 430.5)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_0kcmx")
-script = ExtResource("14_trr87")
-index = 95
-
-[node name="Label3D" parent="Note_Holder/@MeshInstance3D@27430" index="0"]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
-modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("15_27h43")
 
 [node name="InputHit" type="Node" parent="."]
 script = ExtResource("13_asvrw")
 
 [node name="Beat Grid Snapper" parent="." instance=ExtResource("14_74rbk")]
+unique_name_in_owner = true
 chart = ExtResource("12_lstnr")
 
 [connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
@@ -2670,100 +924,3 @@ chart = ExtResource("12_lstnr")
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/EditingDisplay" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
-
-[editable path="Note_Holder/@MeshInstance3D@27335"]
-[editable path="Note_Holder/@MeshInstance3D@27336"]
-[editable path="Note_Holder/@MeshInstance3D@27337"]
-[editable path="Note_Holder/@MeshInstance3D@27338"]
-[editable path="Note_Holder/@MeshInstance3D@27339"]
-[editable path="Note_Holder/@MeshInstance3D@27340"]
-[editable path="Note_Holder/@MeshInstance3D@27341"]
-[editable path="Note_Holder/@MeshInstance3D@27342"]
-[editable path="Note_Holder/@MeshInstance3D@27343"]
-[editable path="Note_Holder/@MeshInstance3D@27344"]
-[editable path="Note_Holder/@MeshInstance3D@27345"]
-[editable path="Note_Holder/@MeshInstance3D@27346"]
-[editable path="Note_Holder/@MeshInstance3D@27347"]
-[editable path="Note_Holder/@MeshInstance3D@27348"]
-[editable path="Note_Holder/@MeshInstance3D@27349"]
-[editable path="Note_Holder/@MeshInstance3D@27350"]
-[editable path="Note_Holder/@MeshInstance3D@27351"]
-[editable path="Note_Holder/@MeshInstance3D@27352"]
-[editable path="Note_Holder/@MeshInstance3D@27353"]
-[editable path="Note_Holder/@MeshInstance3D@27354"]
-[editable path="Note_Holder/@MeshInstance3D@27355"]
-[editable path="Note_Holder/@MeshInstance3D@27356"]
-[editable path="Note_Holder/@MeshInstance3D@27357"]
-[editable path="Note_Holder/@MeshInstance3D@27358"]
-[editable path="Note_Holder/@MeshInstance3D@27359"]
-[editable path="Note_Holder/@MeshInstance3D@27360"]
-[editable path="Note_Holder/@MeshInstance3D@27361"]
-[editable path="Note_Holder/@MeshInstance3D@27362"]
-[editable path="Note_Holder/@MeshInstance3D@27363"]
-[editable path="Note_Holder/@MeshInstance3D@27364"]
-[editable path="Note_Holder/@MeshInstance3D@27365"]
-[editable path="Note_Holder/@MeshInstance3D@27366"]
-[editable path="Note_Holder/@MeshInstance3D@27367"]
-[editable path="Note_Holder/@MeshInstance3D@27368"]
-[editable path="Note_Holder/@MeshInstance3D@27369"]
-[editable path="Note_Holder/@MeshInstance3D@27370"]
-[editable path="Note_Holder/@MeshInstance3D@27371"]
-[editable path="Note_Holder/@MeshInstance3D@27372"]
-[editable path="Note_Holder/@MeshInstance3D@27373"]
-[editable path="Note_Holder/@MeshInstance3D@27374"]
-[editable path="Note_Holder/@MeshInstance3D@27375"]
-[editable path="Note_Holder/@MeshInstance3D@27376"]
-[editable path="Note_Holder/@MeshInstance3D@27377"]
-[editable path="Note_Holder/@MeshInstance3D@27378"]
-[editable path="Note_Holder/@MeshInstance3D@27379"]
-[editable path="Note_Holder/@MeshInstance3D@27380"]
-[editable path="Note_Holder/@MeshInstance3D@27381"]
-[editable path="Note_Holder/@MeshInstance3D@27382"]
-[editable path="Note_Holder/@MeshInstance3D@27383"]
-[editable path="Note_Holder/@MeshInstance3D@27384"]
-[editable path="Note_Holder/@MeshInstance3D@27385"]
-[editable path="Note_Holder/@MeshInstance3D@27386"]
-[editable path="Note_Holder/@MeshInstance3D@27387"]
-[editable path="Note_Holder/@MeshInstance3D@27388"]
-[editable path="Note_Holder/@MeshInstance3D@27389"]
-[editable path="Note_Holder/@MeshInstance3D@27390"]
-[editable path="Note_Holder/@MeshInstance3D@27391"]
-[editable path="Note_Holder/@MeshInstance3D@27392"]
-[editable path="Note_Holder/@MeshInstance3D@27393"]
-[editable path="Note_Holder/@MeshInstance3D@27394"]
-[editable path="Note_Holder/@MeshInstance3D@27395"]
-[editable path="Note_Holder/@MeshInstance3D@27396"]
-[editable path="Note_Holder/@MeshInstance3D@27397"]
-[editable path="Note_Holder/@MeshInstance3D@27398"]
-[editable path="Note_Holder/@MeshInstance3D@27399"]
-[editable path="Note_Holder/@MeshInstance3D@27400"]
-[editable path="Note_Holder/@MeshInstance3D@27401"]
-[editable path="Note_Holder/@MeshInstance3D@27402"]
-[editable path="Note_Holder/@MeshInstance3D@27403"]
-[editable path="Note_Holder/@MeshInstance3D@27404"]
-[editable path="Note_Holder/@MeshInstance3D@27405"]
-[editable path="Note_Holder/@MeshInstance3D@27406"]
-[editable path="Note_Holder/@MeshInstance3D@27407"]
-[editable path="Note_Holder/@MeshInstance3D@27408"]
-[editable path="Note_Holder/@MeshInstance3D@27409"]
-[editable path="Note_Holder/@MeshInstance3D@27410"]
-[editable path="Note_Holder/@MeshInstance3D@27411"]
-[editable path="Note_Holder/@MeshInstance3D@27412"]
-[editable path="Note_Holder/@MeshInstance3D@27413"]
-[editable path="Note_Holder/@MeshInstance3D@27414"]
-[editable path="Note_Holder/@MeshInstance3D@27415"]
-[editable path="Note_Holder/@MeshInstance3D@27416"]
-[editable path="Note_Holder/@MeshInstance3D@27417"]
-[editable path="Note_Holder/@MeshInstance3D@27418"]
-[editable path="Note_Holder/@MeshInstance3D@27419"]
-[editable path="Note_Holder/@MeshInstance3D@27420"]
-[editable path="Note_Holder/@MeshInstance3D@27421"]
-[editable path="Note_Holder/@MeshInstance3D@27422"]
-[editable path="Note_Holder/@MeshInstance3D@27423"]
-[editable path="Note_Holder/@MeshInstance3D@27424"]
-[editable path="Note_Holder/@MeshInstance3D@27425"]
-[editable path="Note_Holder/@MeshInstance3D@27426"]
-[editable path="Note_Holder/@MeshInstance3D@27427"]
-[editable path="Note_Holder/@MeshInstance3D@27428"]
-[editable path="Note_Holder/@MeshInstance3D@27429"]
-[editable path="Note_Holder/@MeshInstance3D@27430"]

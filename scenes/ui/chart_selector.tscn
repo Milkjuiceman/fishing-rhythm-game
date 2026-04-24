@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpv7jjaa31usp"]
+
+[ext_resource type="Script" uid="uid://cmocu74tbuwxs" path="res://scenes/ui/chart_selector.gd" id="1_xjwhr"]
+
+[node name="ChartSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xjwhr")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+z_index = 2
+clip_contents = false
+layout_mode = 0
+offset_left = 76.2
+offset_top = 18.38
+offset_right = 394.99
+offset_bottom = 241.57999
+scale = Vector2(1.09, 1.09)
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 484.0
+offset_bottom = 276.0
+mouse_filter = 2
+color = Color(0.29953745, 0.27751473, 0.31215656, 1)

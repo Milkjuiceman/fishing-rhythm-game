@@ -8,6 +8,8 @@ var note_status := PackedByteArray([])
 # the value inside of these should be disregarded unless note status is hit
 var note_temporal_accuracy := PackedFloat32Array([])
 
+var note_columns_pressed := PackedInt32Array()
+
 var misses: int = 0
 var hits: int = 0
 var combo: int = 0
@@ -23,6 +25,8 @@ func _init(chart_reference := Chart.new()):
 	note_temporal_accuracy.resize(chart_reference.note_timings.size())
 	note_status.fill(NoteStateEnum.WAITING)
 	note_temporal_accuracy.fill(0.)
+	note_columns_pressed.resize(chart_reference.note_timings.size())
+	note_columns_pressed.fill(-1)
 
 
 func miss_note(index: int, column: int) -> void:

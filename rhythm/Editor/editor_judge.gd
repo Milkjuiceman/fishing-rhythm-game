@@ -4,6 +4,8 @@ class_name EditorJudge extends Node
 @export var start = 0.0
 @export var finish = 0.0
 
+var session_active := false
+
 var chart: Chart = null
 var scorecard: Scorecard = null
 
@@ -15,101 +17,105 @@ signal send_key_times(key_times: PackedFloat64Array, key_columns: PackedInt64Arr
 var lowest_judgment_index: int = 0
 var key_times: PackedFloat64Array = PackedFloat64Array()
 var key_columns: PackedInt64Array = PackedInt64Array()
+var ghost_inputs: PackedFloat64Array = PackedFloat64Array()
+
+func start_session() -> void:
+	session_active = true
+	key_times.clear()
+	key_columns.clear()
+	ghost_inputs.clear()
+	if finish <= start:
+		finish = start + 60.0 
+		push_warning("[Judge] Finish time was invalid. Fallback to +60s.")
+	print("[Judge] Window: ", start, "s to ", finish, "s (Duration: ", finish - start, "s)")
+	
+	if testing:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+		get_window().grab_focus()
+
+	lowest_judgment_index = 0
+		
+	if chart != null:
+		if scorecard.note_columns_pressed.size() == 0:
+			scorecard.note_columns_pressed.resize(chart.note_timings.size())
+			scorecard.note_columns_pressed.fill(-1)
+			
+		for i in range(chart.note_timings.size()):
+			if chart.note_timings[i] >= start:
+				lowest_judgment_index = i
+				break
 
 func load_new_chart(new_chart: Chart) -> void:
 	chart = new_chart
 	scorecard = Scorecard.new(new_chart)
 	
 func process_and_fill_frame_state(frame_state: FrameState) -> void:
-	if not frame_state.playing_song: return
-	
-	var lower_bound := frame_state.previous_t - TEMPORAL_ERROR_MARGIN + frame_state.input_offset
-	var upper_bound := frame_state.t + TEMPORAL_ERROR_MARGIN + frame_state.input_offset
-	var compared_t: float = lerp(frame_state.t, frame_state.previous_t, 0.5)
-	
-	if compared_t > finish + TEMPORAL_ERROR_MARGIN:
-		if not testing:
-			emit_signal("send_key_times", key_times, key_columns, start, finish)
-		else:
-			print("inputed times: ", key_times)
-		get_tree().quit()
+	if not frame_state.playing_song:
+		if session_active:
+			print("[Judge] Song ended naturally before 'finish' time. Ending session.")
+			end_test_run(frame_state)
+		return
+
+	# Check for completion using ABSOLUTE time
+	if frame_state.t > finish:
+		print("[Judge] Reached finish time: ", finish)
+		end_test_run(frame_state)
+		return
+
+	# Ignore notes before the 'start' time
+	if frame_state.t < start:
 		return
 	
-	# need to set this before doing the loop because the loop will emit signals with the frame_state in ti
 	frame_state.scorecard = scorecard
 	
-	var i: int = lowest_judgment_index - 1
-	while true:
-		i += 1
-		var in_editing_window = compared_t > start and compared_t < finish
-		if i >= chart.note_timings.size(): # at end of song and all done
-			if not testing:
-				emit_signal("send_key_times", key_times, key_columns, start, finish)
-			else:
-				print("inputed times: ", key_times)
-			get_tree().quit()
-			break
-			
-		var timing: float =  chart.note_timings[i]
+	# capture input
+	var current_col = -1
+	if frame_state.k_key_press: current_col = 0
+	elif frame_state.j_key_press: current_col = 1
+	elif frame_state.f_key_press: current_col = 2
+	elif frame_state.d_key_press: current_col = 3
+	
+	if current_col != -1:
+		ghost_inputs.append(frame_state.t)
+	
+	if not testing:
+		if current_col != -1:
+			key_times.append(frame_state.t)
+			key_columns.append(current_col)
+		return # exit early; don't run judgment logic if recording
 		
-		if frame_state.k_key_press and in_editing_window:
-			key_times.append(compared_t)
-			key_columns.append(0)
-		elif frame_state.j_key_press and in_editing_window:
-			key_times.append(compared_t)
-			key_columns.append(1)
-		elif frame_state.f_key_press and in_editing_window:
-			key_times.append(compared_t)
-			key_columns.append(2)
-		elif frame_state.d_key_press and in_editing_window:
-			key_times.append(compared_t)
-			key_columns.append(3)
-		
-		if timing > upper_bound: # done searching
-			if frame_state.k_key_press || frame_state.j_key_press || frame_state.f_key_press || frame_state.d_key_press:
-				# MISS
-					scorecard.penalty(chart.note_column[i])
-			break
-		
+	# only runs if testing mode is enabled
+	for i in range(lowest_judgment_index, chart.note_timings.size()):
+		var note_time: float = chart.note_timings[i]
+
+		# Skip already processed notes
 		if scorecard.note_status[i] != Scorecard.NoteStateEnum.WAITING:
-			# already judge this one (in a previous frame)
+			if i == lowest_judgment_index:
+				lowest_judgment_index += 1
 			continue
+
+		# If note is too far in future, stop checking for this frame
+		if note_time > frame_state.t + TEMPORAL_ERROR_MARGIN:
+			break
 		
-		if timing < lower_bound:
-			# MISS
+		# Check for MISS
+		if frame_state.t > note_time + TEMPORAL_ERROR_MARGIN:
 			scorecard.miss_note(i, chart.note_column[i])
 			note_judged.emit(i, frame_state)
-			lowest_judgment_index += 1
+			lowest_judgment_index = i + 1
+			continue
+
+		# Check for HIT
+		if current_col != -1:
+			var diff: float = frame_state.t - note_time
 			
-		else:
-			if frame_state.k_key_press && chart.note_column[i] == 0:
-				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
-			elif frame_state.j_key_press && chart.note_column[i] == 1:
-				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
-			elif frame_state.f_key_press && chart.note_column[i] == 2:
-				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
-			elif frame_state.d_key_press && chart.note_column[i] == 3:
-				# HIT
-				var temporal_difference: float = compared_t - timing
-				scorecard.hit_note(i, temporal_difference)
-				note_judged.emit(i, frame_state)
-				if i == lowest_judgment_index:
-					lowest_judgment_index +=  1;
+			# Record the hit
+			scorecard.hit_note(i, diff)
+			scorecard.note_columns_pressed[i] = current_col # Save what you actually pressed
+			
+			note_judged.emit(i, frame_state)
+			if i == lowest_judgment_index:
+				lowest_judgment_index += 1
 			break
 
 
@@ -140,8 +146,9 @@ func _on_referee_play_chart_now(chart_: Chart) -> void:
 
 func end_test_run(frame_state: FrameState) -> void:
 	# Stop audio if present
+	session_active = false
+	emit_signal("send_key_times", key_times, key_columns, start, finish)
 	if frame_state.has_method("stop_song"):
 		frame_state.stop_song()
-	get_tree().paused = true
-	await get_tree().process_frame
-	get_tree().quit()
+	if testing:
+		get_tree().quit()

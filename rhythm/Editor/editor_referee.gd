@@ -14,7 +14,6 @@ class_name EditorReferee extends Node
 signal play_chart_now(chart: Chart)
 signal process(frame_state: FrameState)
 
-
 func _process(delta: float) -> void:
 	var frame_state := FrameState.new()
 	DisplayServer.window_move_to_foreground()
