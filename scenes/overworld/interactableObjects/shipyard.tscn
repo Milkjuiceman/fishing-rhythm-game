@@ -1,21 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://uvooa407owaq"]
+[gd_scene load_steps=6 format=3 uid="uid://uvooa407owaq"]
 
-[ext_resource type="PackedScene" uid="uid://d3e7y4oaj1usd" path="res://assets/models/port_boat.glb" id="1_4v863"]
+[ext_resource type="PackedScene" uid="uid://bniski7agx3i3" path="res://assets/models/docks/Port_SecondAge_Level3.gltf" id="1_4v863"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_si0ir"]
-size = Vector3(1.7658386, 0.89208984, 1.0968704)
+size = Vector3(2.6327038, 0.89208984, 0.4925902)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4v863"]
-size = Vector3(0.5470886, 0.9289551, 1.9889526)
+size = Vector3(0.49462128, 0.9289551, 2.1596375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3cr0"]
+size = Vector3(0.5332031, 0.8798828, 2.2441406)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0avix"]
+size = Vector3(1.5819702, 1, 0.82995605)
 
 [node name="Shipyard" type="StaticBody3D"]
-
-[node name="Root Scene" parent="." instance=ExtResource("1_4v863")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30110168, -0.05395502, -0.57700145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1323309, -0.053955037, -0.79353684)
 shape = SubResource("BoxShape3D_si0ir")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9130851, 0.0355224, -0.051508546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9117463, 0.0355224, 0.03383386)
 shape = SubResource("BoxShape3D_4v863")
+
+[node name="Port_SecondAge_Level32" parent="." instance=ExtResource("1_4v863")]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30371094, 0.060058612, 0.6220703)
+shape = SubResource("BoxShape3D_h3cr0")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31521606, 0, -0.21307379)
+shape = SubResource("BoxShape3D_0avix")

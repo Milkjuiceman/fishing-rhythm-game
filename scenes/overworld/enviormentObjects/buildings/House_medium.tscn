@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://blj6vdip8inrc"]
+
+[ext_resource type="PackedScene" uid="uid://c2b7lo2smorgy" path="res://assets/models/town/House2.gltf" id="1_3o3iy"]
+
+[node name="House_medium" type="Node3D"]
+
+[node name="Houses_SecondAge_1_Level22" parent="." instance=ExtResource("1_3o3iy")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)

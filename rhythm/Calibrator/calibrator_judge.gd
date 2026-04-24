@@ -3,7 +3,7 @@ class_name CalibratorJudge extends Node
 var chart: Chart = null
 var scorecard: Scorecard = null
 
-const TEMPORAL_ERROR_MARGIN: float = 0.3 # 300ms
+const TEMPORAL_ERROR_MARGIN: float = 1 # 1s
 
 signal note_judged(note_index: int, frame_state: FrameState)
 

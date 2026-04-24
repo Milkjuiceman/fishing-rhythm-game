@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://du2nh052xu1o"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 6.0
+offset_right = 699.0
+offset_bottom = 39.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 10.0
+offset_right = 470.0
+offset_bottom = 260.0
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 260.0
+
+[node name="Panel3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -277.0
+offset_top = 10.0
+offset_right = -87.0
+offset_bottom = 260.0

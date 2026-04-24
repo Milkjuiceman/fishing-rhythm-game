@@ -429,10 +429,13 @@ func _apply_offsets_to_referees() -> void:
 	# Find any active referee nodes and update their offsets
 	var referees = get_tree().get_nodes_in_group("Rhythm")
 	for referee in referees:
+		print("there are referees")
 		if "audio_offset" in referee:
 			referee.audio_offset = settings["audio_offset"]
+			print("from setting to referee audio: ", referee.audio_offset)
 		if "input_offset" in referee:
 			referee.input_offset = settings["input_offset"]
+			print("from setting to referee input: ", referee.input_offset)
 
 
 # =============================================================================

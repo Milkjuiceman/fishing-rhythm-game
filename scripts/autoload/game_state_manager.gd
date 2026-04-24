@@ -33,6 +33,10 @@ var current_save_data: PlayerSaveData = PlayerSaveData.new()
 var player_instance: Player = null
 var is_first_spawn: bool = true
 
+# Offsets for rhythm levels
+var input_offset: float = 1.0
+var audio_offset: float = 1.0
+
 var spawnable: bool = false
 var first_quest_started
 signal first_quest_assigned

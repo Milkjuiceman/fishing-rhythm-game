@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://i6ppkr5yl4rb" path="res://terraindata/area3_terrain_data/data.hterrain" id="2_tis1p"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_32env"]
 [ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boats/boat.tscn" id="5_wqv2k"]
-[ext_resource type="PackedScene" uid="uid://moe2awwkueun" path="res://scenes/overworld/enviormentObjects/bushs/Reeds.tscn" id="6_oe2da"]
-[ext_resource type="PackedScene" uid="uid://c4pjh2nfypdgo" path="res://scenes/overworld/enviormentObjects/bushs/ReedsBrown.tscn" id="7_juvor"]
+[ext_resource type="PackedScene" uid="uid://moe2awwkueun" path="res://scenes/overworld/environmentObjects/bushs/Reeds.tscn" id="6_oe2da"]
+[ext_resource type="PackedScene" uid="uid://c4pjh2nfypdgo" path="res://scenes/overworld/environmentObjects/bushs/ReedsBrown.tscn" id="7_juvor"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_tis1p"]
 
 [sub_resource type="Resource" id="Resource_unxlu"]

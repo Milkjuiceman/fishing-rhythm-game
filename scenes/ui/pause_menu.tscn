@@ -94,7 +94,6 @@ theme_override_font_sizes/font_size = 16
 text = "Quit Game"
 
 [node name="SettingsPanel" type="PanelContainer" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -377,6 +376,4 @@ text = "Back"
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer/ShowFPSCheck" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer/MouseSensSlider" to="." method="_on_mouse_sens_changed"]
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer/InvertYCheck" to="." method="_on_invert_y_toggled"]
-[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer/AudioOffsetSlider" to="." method="_on_audio_offset_changed"]
-[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer/InputOffsetSlider" to="." method="_on_input_offset_changed"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]

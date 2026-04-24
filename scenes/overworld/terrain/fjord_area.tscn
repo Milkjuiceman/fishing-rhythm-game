@@ -108,12 +108,13 @@ directional_shadow_max_distance = 150.0
 transform = Transform3D(0.20278734, 0, 0.9792228, 0, 1, 0, -0.9792228, 0, 0.20278734, 337.68497, 69.906944, 1117.3365)
 
 [node name="Factory1" parent="Buildings" instance=ExtResource("5_cd0kg")]
-transform = Transform3D(0.62796307, 0, -0.77824306, 0, 1, 0, 0.77824306, 0, 0.62796307, 990.91956, -1.3486481, 481.77032)
+transform = Transform3D(0.81512773, 0, -0.5792807, 0, 1, 0, 0.5792807, 0, 0.81512773, 977.54156, -27.493362, 510.34332)
 
 [node name="Factory2" parent="Buildings" instance=ExtResource("5_cd0kg")]
-transform = Transform3D(0.8562671, 0, -0.5165333, 0, 1, 0, 0.5165333, 0, 0.8562671, 868.0133, -1.2618027, -221.64551)
+transform = Transform3D(0.8562671, 0, -0.5165333, 0, 1, 0, 0.5165333, 0, 0.8562671, 842.82697, -26.019958, -183.11249)
 
 [node name="Factory3" parent="Buildings" instance=ExtResource("5_cd0kg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7662354, -25.79103, 27.84436)
 
 [node name="BoatTransitions" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2702637, 0, 0)

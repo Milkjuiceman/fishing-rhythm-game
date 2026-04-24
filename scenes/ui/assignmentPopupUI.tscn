@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://w7ptyjv51a2m"]
 
 [ext_resource type="Script" uid="uid://bkscimp3mqfgb" path="res://scripts/ui/assignment_popup_ui.gd" id="1_mn010"]
-[ext_resource type="Texture2D" uid="uid://dxld72w5g3yeg" path="res://assets/ui/assignment_popup.png" id="2_728x7"]
-[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="2_n6qb3"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_rpwvy"]
+[ext_resource type="Texture2D" uid="uid://bhm80wk7jbfw5" path="res://assets/ui/Popup.png" id="4_rpwvy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n6qb3"]
 
@@ -10,47 +10,51 @@
 script = ExtResource("1_mn010")
 
 [node name="Panel" type="Panel" parent="."]
-anchors_preset = -1
-anchor_left = 0.34800002
-anchor_top = 0.47700003
-anchor_right = 0.34800002
-anchor_bottom = 0.47700003
-offset_left = -10.896027
-offset_top = -140.09601
-offset_right = 296.10397
-offset_bottom = 148.90399
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.50002
+offset_top = -144.5
+offset_right = 153.50002
+offset_bottom = 144.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_n6qb3")
 
 [node name="Label" type="Label" parent="Panel"]
 z_index = 1
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.48100004
-anchor_top = 0.1
-anchor_right = 0.48100004
-anchor_bottom = 0.1
-offset_left = -132.667
-offset_top = -13.9
-offset_right = 182.333
-offset_bottom = 66.1
-theme_override_colors/font_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
-theme_override_fonts/font = ExtResource("2_n6qb3")
-theme_override_font_sizes/font_size = 48
-text = "quest started!"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.99998
+offset_top = -132.0
+offset_right = 157.5
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_rpwvy")
+theme_override_font_sizes/font_size = 38
+text = "Quest Started!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.49800003
-anchor_top = 0.53000003
-anchor_right = 0.49800003
-anchor_bottom = 0.53000003
-offset_left = -132.886
-offset_top = -52.170013
-offset_right = 166.114
-offset_bottom = 96.82999
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = -53.0
+offset_right = 149.5
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -58,13 +62,13 @@ grow_vertical = 2
 z_index = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.3211996, 0.06602186, 0.079444714, 1)
-theme_override_fonts/font = ExtResource("2_n6qb3")
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.8352941, 0.5411765, 0.31764707, 1)
+theme_override_fonts/font = ExtResource("2_rpwvy")
+theme_override_font_sizes/font_size = 17
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="AssignmentPopup" type="Sprite2D" parent="."]
-position = Vector2(560, 308)
-texture = ExtResource("2_728x7")
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(243, 153)
+texture = ExtResource("4_rpwvy")
