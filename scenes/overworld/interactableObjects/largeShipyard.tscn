@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5au67bbuirx7"]
+
+[ext_resource type="PackedScene" uid="uid://c7rmieylj8rfr" path="res://assets/models/docks/Port_SecondAge_Level2.gltf" id="1_i7hl1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qdb3x"]
+size = Vector3(2.2098236, 0.8852539, 0.52734375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7hl1"]
+size = Vector3(0.50061035, 0.8964844, 2.7095032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qq5gu"]
+size = Vector3(0.46185303, 0.9272461, 1.9263916)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpjc4"]
+size = Vector3(1.6524658, 0.93408203, 0.67785645)
+
+[node name="LargeShipyard" type="StaticBody3D"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06578827, 0.057373047, -0.8105469)
+shape = SubResource("BoxShape3D_qdb3x")
+
+[node name="Port_SecondAge_Level22" parent="." instance=ExtResource("1_i7hl1")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3078003, 0.051757813, 0.36698914)
+shape = SubResource("BoxShape3D_i7hl1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8967558, 0.036376953, 0.09857178)
+shape = SubResource("BoxShape3D_qq5gu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3118286, 0.032958984, -0.16107178)
+shape = SubResource("BoxShape3D_xpjc4")

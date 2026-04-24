@@ -2,7 +2,7 @@ class_name Referee extends Node
 ## Coordinates rhythm gameplay flow, input processing, and catch logic.
 ## Acts as the central controller between MusicPlayer, InputHit, RhythmJudge, and UI elements.
 ## Author: Tyler Schauermann
-## Date of last update: 04/02/2026
+## Date of last update: 04/22/2026
 ## Designed to orchestrate modular rhythm systems and allow reuse across different
 ## levels by swapping charts, judges, and reward logic.
 
@@ -125,10 +125,10 @@ func _on_judge_song_finished() -> void:
 	var rarity = _performance_to_rarity(performance)
 	_catch_fish(performance, rarity)
 
-# Handles catch failure from progress bar
+# Handles bar depletion — uses same exit path as win but with empty rarity (no fish awarded)
 func _on_catch_failed() -> void:
 	print_debug("[referee]: bar depleted, ending song")
-	fish_failed.emit()
+	_catch_fish(0.0, "")
 
 # Enables catch window and shows prompt
 func _on_catch_available() -> void:
@@ -170,12 +170,11 @@ func _performance_to_rarity(performance: float) -> String:
 		return "common"
 
 # Finalizes catch and emits result
+# NOTE: Inventory is managed by temp_rhythm_section, NOT here.
+# rarity == "" means the player failed — temp_rhythm_section will skip the fish award.
 func _catch_fish(performance: float, rarity: String) -> void:
-	print("[Referee] _catch_fish called — emitting fish_caught")
+	print("[Referee] _catch_fish called — rarity: '%s'" % rarity)
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
-	if rarity != "":
-		InventoryManager.add_item("fish", rarity, 1)
-		# print_debug("granted 1 %s fish, inventory now %s" % [rarity, InventoryManager.items])
 	fish_caught.emit(performance, rarity)

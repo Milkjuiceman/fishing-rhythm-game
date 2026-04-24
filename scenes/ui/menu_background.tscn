@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://deq1hkhksjeqb"]
+
+[ext_resource type="PackedScene" uid="uid://bxa7vkfck6ybn" path="res://scenes/overworld/terrain/tutorial_lake.tscn" id="1_jhwhf"]
+[ext_resource type="Script" uid="uid://f35bse6ryjwr" path="res://scripts/ui/menus/menu_background_camera.gd" id="2_g8af1"]
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(480, 270)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="SubViewport" instance=ExtResource("1_jhwhf")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 400.27045, 42.705727, 463.5856)
+script = ExtResource("2_g8af1")

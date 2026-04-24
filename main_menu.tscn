@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://covxaj11k0427"]
+[gd_scene load_steps=12 format=3 uid="uid://covxaj11k0427"]
 
 [ext_resource type="Script" uid="uid://dnm12ppe1u68w" path="res://scripts/ui/menus/main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_7vrkn"]
+[ext_resource type="PackedScene" uid="uid://deq1hkhksjeqb" path="res://scenes/ui/menu_background.tscn" id="2_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://cgp8hj30tiiyd" path="res://assets/ui/main_menu_button.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://bmsxevftf0e26" path="res://assets/ui/main_menu_button_click.png" id="4_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bkb6x5yb1pdu5" path="res://assets/ui/main_menu_button_hover.png" id="5_qe12f"]
@@ -28,6 +29,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06t4h")
+
+[node name="SubViewportContainer" parent="." instance=ExtResource("2_nlkkf")]
+layout_mode = 1
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -109,7 +113,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dy7ct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
-text = "Options"
+text = "Settings"
 
 [node name="quit_button" type="Button" parent="."]
 layout_mode = 1

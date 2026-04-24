@@ -94,7 +94,6 @@ theme_override_font_sizes/font_size = 16
 text = "Quit Game"
 
 [node name="SettingsPanel" type="PanelContainer" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
