@@ -2,27 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h68cek51vakm"
-path.bptc="res://.godot/imported/icon.png-816117353ba57afc3af521f78eedcc3c.bptc.ctex"
+uid="uid://3xbu76dl3dre"
+path.s3tc="res://.godot/imported/rocks2_bottom albedo.png-43c3ba794654048dc23606ebc1cd4fc9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "97791bae1b4b7a9190590365a86c5377"
+}
 
 [deps]
 
-source_file="res://assets/icons/icon.png"
-dest_files=["res://.godot/imported/icon.png-816117353ba57afc3af521f78eedcc3c.bptc.ctex"]
+source_file="res://assets/underwater/rocks2_bottom albedo.png"
+dest_files=["res://.godot/imported/rocks2_bottom albedo.png-43c3ba794654048dc23606ebc1cd4fc9.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
