@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://ctvm25egivu52"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_mu3hw"]
+[ext_resource type="Resource" uid="uid://dk3ua0kpjoin8" path="res://assets/tracks/audio/rgmp_01.tres" id="2_tkg88"]
+
+[resource]
+script = ExtResource("1_mu3hw")
+track = ExtResource("2_tkg88")
+note_timings = PackedFloat64Array(0.352941176, 0.485294118, 0.617647059, 0.705882353, 1.102941176, 1.235294118, 1.632352941, 1.941176471, 2.294117647, 2.426470588, 2.602941176, 3.044117647, 3.176470588, 3.397058824, 3.529411765, 3.926470588, 4.058823529, 4.455882353, 4.764705882, 5.117647059, 5.294117647, 5.426470588, 5.867647059, 6.044117647, 6.176470588, 6.352941176, 6.75, 6.882352941, 7.279411765, 7.588235294, 7.985294118, 8.117647059, 8.294117647, 8.647058824, 8.823529412, 9, 9.132352941, 9.573529412, 9.705882353, 10.10294118, 10.41176471, 10.76470588, 10.89705882, 11.07352941)
+note_column = PackedInt64Array(3, 1, 2, 0, 3, 0, 2, 0, 1, 2, 3, 0, 2, 1, 3, 2, 1, 0, 3, 0, 1, 2, 3, 2, 1, 0, 1, 2, 0, 3, 0, 1, 2, 3, 2, 1, 0, 3, 1, 2, 0, 2, 3, 1)
+metadata/_custom_type_script = "uid://bpno8ianhdobd"

@@ -7,6 +7,9 @@ class_name Chart extends Resource
 @export var note_column := PackedInt64Array([])
 #@export var note_angles := PackedFloat32Array([])
 
+@export var use_straight: bool = true
+@export var use_triplets: bool = false
+
 func _init(
 		track_ := Track.new(),
 		note_timings_ := PackedFloat64Array([]),

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bo51tsvfo2v28" path="res://rhythm/Editor/editor_judge.gd" id="2_syn7g"]
 [ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_4r7wg"]
 [ext_resource type="Script" uid="uid://bn6or7oddwbqm" path="res://rhythm/Editor/editor_referee.gd" id="4_syn7g"]
-[ext_resource type="Resource" uid="uid://m8p1myqyo4o2" path="res://assets/tracks/charts/Markalo_goes_to_the_dicso.tres" id="5_x0nua"]
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_27h43"]
 [ext_resource type="Script" uid="uid://di61sgnwlebsy" path="res://rhythm/Editor/editor_progress_bar.gd" id="7_syn7g"]
 [ext_resource type="Script" uid="uid://cutbe70v346ck" path="res://rhythm/Editor/edit_display.gd" id="8_4r7wg"]
@@ -12,10 +11,10 @@
 [ext_resource type="Script" uid="uid://buismt86y3qa4" path="res://rhythm/Editor/editor_note_holder.gd" id="10_x0nua"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_strij"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="12_4r7wg"]
-[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="13_4r7wg"]
+[ext_resource type="Resource" uid="uid://ctvm25egivu52" path="res://assets/tracks/charts/rgmp_01.tres" id="12_lstnr"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="13_asvrw"]
 [ext_resource type="PackedScene" uid="uid://ba5m0j8nuvpef" path="res://rhythm/Editor/beat_grid_snapper.tscn" id="14_74rbk"]
-[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="14_lstnr"]
+[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="14_trr87"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m5t38"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -38,12 +37,12 @@ material = SubResource("StandardMaterial3D_rtuxy")
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4r7wg"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nua46"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lstnr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no61u"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_4r7wg")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.33415955
@@ -52,22 +51,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_trr87"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_27h43"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4r7wg"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_trr87")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.07192966
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h1r4h"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecu1r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lstnr"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_h1r4h")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9856593
@@ -76,22 +73,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jdxih"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_almbp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trr87"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jdxih")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.65757096
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_strij"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4udw2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27h43"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_strij")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3028438
@@ -100,22 +95,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asvrw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_74rbk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1r4h"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_asvrw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5154808
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ovbv7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_73umy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecu1r"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ovbv7")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8948567
@@ -124,46 +117,40 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uqaga"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj0fb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdxih"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_uqaga")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.00641461
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_epvrf"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8iwx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_almbp"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_epvrf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.47772712
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
+shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ila7d"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_khgh5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_strij"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ila7d")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.19638862
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p272q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1uol"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4udw2"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_p272q")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.017264254
@@ -172,10 +159,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rk5mc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsf8w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asvrw"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_rk5mc")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.35386196
@@ -184,10 +171,10 @@ shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_30dj2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_adxm0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74rbk"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_30dj2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.07156343
@@ -196,10 +183,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mj6uh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bkux"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovbv7"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mj6uh")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.43048832
@@ -208,10 +195,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jv2l0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1x4d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_73umy"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jv2l0")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.18322279
@@ -235,19 +222,17 @@ shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3puvt"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_17mx2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.58511025
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22c0f"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f56d1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj0fb"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22c0f")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.33163276
@@ -256,22 +241,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aa78w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aofdm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_epvrf"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_aa78w")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8347186
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2geop"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hatjc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8iwx"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2geop")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6968926
@@ -280,10 +263,10 @@ shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qlndb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxgii"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ila7d"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_qlndb")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.609543
@@ -292,10 +275,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ugm6o"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc3rt"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_khgh5"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ugm6o")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.44827595
@@ -304,22 +287,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wfe3d"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uthhf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p272q"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wfe3d")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4664375
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_538d3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qor4p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1uol"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_538d3")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.69893986
@@ -328,10 +309,10 @@ shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x03hk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ka15d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rk5mc"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_x03hk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.38925266
@@ -340,22 +321,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mfuwl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_843t0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsf8w"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfuwl")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8457525
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r0i85"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_og3hn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30dj2"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_r0i85")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5817063
@@ -364,10 +343,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xminy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_afwgl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adxm0"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_xminy")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.039674606
@@ -376,34 +355,30 @@ shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_af8sx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i20h3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj6uh"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_af8sx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9872185
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e45hl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7n6e7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0bkux"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_e45hl")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.41779333
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l3hu5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_phwye"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jv2l0"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_l3hu5")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.47319463
@@ -412,22 +387,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mfbfu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0w0oo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m1x4d"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfbfu")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3119363
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r0upu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtfqi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50c8a"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_r0upu")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.31394374
@@ -436,10 +409,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_75ryq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrstw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2w34"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_75ryq")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.021229165
@@ -475,31 +448,27 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ej0eh"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_gysjf")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.03551246
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fvap5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4s3ue"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3puvt"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_fvap5")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7994534
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_phswy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxoxh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22c0f"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_phswy")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.03160931
@@ -508,22 +477,20 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vrveo"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjilo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f56d1"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_vrveo")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.27578473
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_phvm1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdo0c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aa78w"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_phvm1")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9239469
@@ -532,34 +499,30 @@ shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jeivk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mli1a"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aofdm"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_jeivk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.33756492
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5eaub"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v04hi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2geop"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_5eaub")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.63802093
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ycjx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptb3r"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hatjc"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_0ycjx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.84947866
@@ -568,10 +531,10 @@ shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yqqn6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_li6sd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlndb"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yqqn6")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.47083524
@@ -580,29 +543,30 @@ shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7a185"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1w10"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxgii"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_7a185")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4106115
 shader_parameter/displacement_strength = 0.30000000447036
-shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
+shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_17odx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdv7f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugm6o"]
 render_priority = 0
 shader = ExtResource("12_4r7wg")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_17odx")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.79891914
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mjpa7"]
+[node name="RhythmLevelEditor" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
+script = ExtResource("1_syn7g")
+referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3dgt3"]
 render_priority = 0
@@ -614,7 +578,8 @@ shader_parameter/seed = 0.36413413
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o0m2w"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wi50x")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gl520"]
 render_priority = 0
@@ -626,7 +591,8 @@ shader_parameter/seed = 0.8472335
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pm1pt"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_4r7wg")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2bcmv"]
 render_priority = 0
@@ -638,7 +604,9 @@ shader_parameter/seed = 0.93590105
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yvpml"]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 6.696973e-08, -5.619428e-08, 0, 0.64278764, 0.76604444, 8.742278e-08, 0.76604444, -0.64278764, 0, 7.002, -2)
+script = ExtResource("6_27h43")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_plwea"]
 render_priority = 0
@@ -650,7 +618,10 @@ shader_parameter/seed = 0.0724574
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jps7w"]
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D5"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "F"
+font_size = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u6gte"]
 render_priority = 0
@@ -662,7 +633,10 @@ shader_parameter/seed = 0.7987763
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0qh7f"]
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "D"
+font_size = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08ebm"]
 render_priority = 0
@@ -674,7 +648,10 @@ shader_parameter/seed = 0.28718382
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sqsq1"]
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "K"
+font_size = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nv4gy"]
 render_priority = 0
@@ -686,7 +663,10 @@ shader_parameter/seed = 0.40304896
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ps0i"]
+[node name="Label3D" type="Label3D" parent="Camera3D/MeshInstance3D4"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "J"
+font_size = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ql1ih"]
 render_priority = 0

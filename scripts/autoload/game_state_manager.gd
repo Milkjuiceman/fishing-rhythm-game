@@ -41,6 +41,10 @@ var spawnable: bool = false
 var first_quest_started
 signal first_quest_assigned
 
+var current_selected_chart: Chart = null
+var editor_testing_mode: bool = false
+var last_played_track_name: String = ""
+
 # Scene transition tracking
 var pending_transition: Dictionary = {
 	"target_scene": "",

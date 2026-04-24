@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bdfqtdf5omq5w"
+
+[deps]
+
+files=["res://chart_debug.column.translation"]
+
+source_file="res://chart_debug.csv"
+dest_files=["res://chart_debug.column.translation"]
+
+[params]
+
+compress=true
+delimiter=0

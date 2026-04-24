@@ -6,9 +6,9 @@ var input_offset: float = 0.
 var audio_offset: float = 0.
 
 # set by MusicPlayer
-var playing_song: bool = false
+var playing_song: bool
 # if playing_song is false will be the frame delta. If was false the previous frame will be t. Otherwise will be the music's delta
-var delta: float = 1. / 60.
+var delta: float
 # will be music to visual offset is playing_song is false
 var t: float = 0.
 # always t - delta, even when those values are invalid
