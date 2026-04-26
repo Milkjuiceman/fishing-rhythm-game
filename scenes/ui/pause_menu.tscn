@@ -311,14 +311,10 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Audio Offset"
 
-[node name="AudioOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
+[node name="AudioOffsetButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-min_value = -0.2
-max_value = 0.2
-step = 0.005
-value = -0.020000000000000018
+text = "Calibrate Audio"
 
 [node name="AudioOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
 unique_name_in_owner = true
@@ -335,14 +331,10 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Input Offset"
 
-[node name="InputOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
+[node name="InputOffsetButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-min_value = -0.2
-max_value = 0.2
-step = 0.005
-value = -0.020000000000000018
+text = "Calibrate Input"
 
 [node name="InputOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
 unique_name_in_owner = true
@@ -376,4 +368,6 @@ text = "Back"
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer/ShowFPSCheck" to="." method="_on_show_fps_toggled"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer/MouseSensSlider" to="." method="_on_mouse_sens_changed"]
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer/InvertYCheck" to="." method="_on_invert_y_toggled"]
+[connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer/AudioOffsetButton" to="." method="_on_audio_offset_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer/InputOffsetButton" to="." method="_on_input_offset_button_pressed"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]
