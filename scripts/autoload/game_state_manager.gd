@@ -37,6 +37,8 @@ var is_first_spawn: bool = true
 var input_offset: float = 1.0
 var audio_offset: float = 1.0
 
+var water_surface_y: float = 5.0
+
 var spawnable: bool = false
 var first_quest_started
 signal first_quest_assigned
@@ -154,8 +156,7 @@ func save_player_state(player: Player) -> void:
 	var saved_position = player.get_current_position()
 	
 	# Lock Y coordinate to water surface to prevent submerged spawns
-	const WATER_SURFACE_Y: float = 5.0  # Water Level
-	saved_position.y = WATER_SURFACE_Y
+	saved_position.y = water_surface_y
 	
 	current_save_data.player_position = saved_position
 	current_save_data.player_rotation = player.get_current_rotation()

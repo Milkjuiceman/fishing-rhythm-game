@@ -23,6 +23,10 @@ var player: Player = null  # Spawned player instance
 
 @onready var spawn_points: Node = get_node_or_null(spawn_points_node_path)
 
+# GUI instances shared across all levels
+var _inventory_gui = null
+var _quest_gui = null
+
 # ========================================
 # INITIALIZATION
 # ========================================
@@ -31,11 +35,34 @@ func _ready() -> void:
 	# Execute level lifecycle in order
 	if get_viewport() is SubViewport:
 		return
-	
+
+	_setup_gui()        # Set up inventory and quest UI
 	_setup_level()      # Pre-spawn setup
 	_spawn_player()     # Spawn and configure player
 	_post_spawn_setup() # Post-spawn setup
 	_start_boat_audio() # Start boat sounds after everything is ready
+
+# ========================================
+# GUI SETUP
+# ========================================
+
+func _setup_gui() -> void:
+	_inventory_gui = preload("res://scenes/ui/inventoryUI.tscn").instantiate()
+	_quest_gui = preload("res://scenes/ui/questsUI.tscn").instantiate()
+	add_child(_inventory_gui)
+	add_child(_quest_gui)
+
+func _input(event):
+	if _inventory_gui == null or _quest_gui == null:
+		return
+	if event.is_action_pressed("inventory_toggle"):
+		_inventory_gui.toggle()
+		if _quest_gui.visible:
+			_quest_gui.toggle()
+	if event.is_action_pressed("questlist_toggle"):
+		_quest_gui.toggle()
+		if _inventory_gui.visible:
+			_inventory_gui.toggle()
 
 # ========================================
 # LIFECYCLE HOOKS (Override in Child Classes)

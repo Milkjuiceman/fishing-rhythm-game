@@ -52,10 +52,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_W:
-			# Auto win — calls finished directly, _level_ended not set yet
 			_on_fishing_finished(1.0, "legendary")
 		elif event.keycode == KEY_E:
-			# Auto lose — empty rarity skips fish/quest award
 			_on_fishing_finished(0.0, "")
 
 # ========================================
@@ -93,4 +91,10 @@ func _safety_check() -> void:
 		return_scene = GameStateManager.pending_transition.from_scene
 	else:
 		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
+
+	# Fade overworld music back in on return
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+	if overworld_music:
+		overworld_music.on_exit_rhythm_level()
+
 	ScreenTransition.transition_to_scene(return_scene)

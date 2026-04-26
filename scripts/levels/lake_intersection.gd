@@ -18,10 +18,12 @@ func _init():
 
 # Setup level state before player spawns
 func _setup_level() -> void:
-	print("Lake intersection loading...")
+	print("Lake intersection loading...") 
 	# Add level-specific initialization here
+	GameStateManager.water_surface_y = 2.7
 
 # Configure level state after player has spawned
 func _post_spawn_setup() -> void:
 	print("Lake intersection ready! Player spawned.")
 	# Add level-specific post-spawn setup here
+	

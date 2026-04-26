@@ -163,7 +163,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1891785, -5.590332, -4.629
 shape = SubResource("BoxShape3D_gyexu")
 
 [node name="Sun?" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.7558535, 0, 0.65474075, 0, 1, 0, -0.65474075, 0, -0.7558535, 580.6832, 194.86136, 508.64838)
+transform = Transform3D(0.99999994, 0, 0, 0, -4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 580.873, 194.861, 508.648)
 light_color = Color(0.9215044, 0.85988003, 0.7159118, 1)
 shadow_enabled = true
 directional_shadow_split_1 = 0.064

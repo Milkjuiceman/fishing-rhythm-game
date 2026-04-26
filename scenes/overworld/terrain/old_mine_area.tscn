@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://qf68cvoclw5k"]
+[gd_scene load_steps=12 format=3 uid="uid://qf68cvoclw5k"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_kk0cs"]
 [ext_resource type="Resource" uid="uid://vqqccwyid0i5" path="res://terraindata/area2_terrain_data/data.hterrain" id="2_8hfmb"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_v0au8"]
+[ext_resource type="PackedScene" uid="uid://dfdg34vf6rofh" path="res://scenes/overworld/boats/boat.tscn" id="5_brkqy"]
+[ext_resource type="PackedScene" uid="uid://dy554gw5su3gw" path="res://scenes/overworld/enviormentObjects/buildings/Mineshaft.tscn" id="6_se802"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_8hfmb"]
 
 [sub_resource type="Resource" id="Resource_uxa3i"]
@@ -82,7 +84,7 @@ shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
 [node name="Water" type="MeshInstance3D" parent="."]
-transform = Transform3D(6.935, 0, 0, 0, 1.65, 0, 0, 0, 6.681, 792.0536, -8.744385, 772.1234)
+transform = Transform3D(6.935, 0, 0, 0, 1.65, 0, 0, 0, 6.681, 792.0536, 5.318123, 772.1234)
 mesh = SubResource("BoxMesh_brkqy")
 skeleton = NodePath("../Tutorial_HTerrain")
 
@@ -96,3 +98,9 @@ directional_shadow_split_1 = 0.064
 directional_shadow_split_2 = 0.16
 directional_shadow_split_3 = 0.4
 directional_shadow_max_distance = 150.0
+
+[node name="Boat" parent="." instance=ExtResource("5_brkqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1187.0045, 13.479164, 1107.6414)
+
+[node name="Mineshaft" parent="." instance=ExtResource("6_se802")]
+transform = Transform3D(0.01745232, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.01745232, 1075.5565, 45.29288, 1174.7535)
