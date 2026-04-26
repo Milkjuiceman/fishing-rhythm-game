@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://duxiqk4m8gcax"]
+[gd_scene load_steps=8 format=3 uid="uid://duxiqk4m8gcax"]
 
 [ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="1_doocs"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="1_nua46"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_kr1dr"]
 [ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="3_rr1s0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
@@ -28,5 +29,6 @@ script = ExtResource("1_doocs")
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
 modulate = Color(0, 0, 0, 1)
 text = "♪"
+font = ExtResource("3_kr1dr")
 font_size = 100
 script = ExtResource("3_rr1s0")

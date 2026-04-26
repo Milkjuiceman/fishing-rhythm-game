@@ -413,10 +413,18 @@ func _on_audio_offset_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/musiclevel/calibrator.tscn")
 	get_tree().paused = false
 	_hide_all()
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+	if overworld_music and overworld_music.is_playing():
+		overworld_music.stop()
 
 
 func _on_input_offset_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/musiclevel/input_calibrator.tscn")
+	get_tree().paused = false
+	_hide_all()
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+	if overworld_music and overworld_music.is_playing():
+		overworld_music.stop()
 
 func _on_audio_offset_changed(value: float) -> void:
 	settings["audio_offset"] = value

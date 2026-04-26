@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://da636e4i1c2qw"]
+[gd_scene load_steps=10 format=3 uid="uid://da636e4i1c2qw"]
 
 [ext_resource type="Script" uid="uid://b3n8ncreh5tnv" path="res://rhythm/Calibrator/inp_calibrator_judge.gd" id="1_7aa2x"]
 [ext_resource type="Script" uid="uid://blus24585mtcv" path="res://rhythm/Calibrator/inp_calibrator_camera_3d.gd" id="1_egldv"]
 [ext_resource type="Script" uid="uid://iidt4y041xtj" path="res://scripts/musiclevel/input_offset.gd" id="3_mn25f"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_ilub1"]
 
 [sub_resource type="Environment" id="Environment_kfcll"]
 
@@ -46,6 +47,7 @@ mesh = SubResource("PlaneMesh_egldv")
 transform = Transform3D(-2.8412401e-08, -0.65, 0, 0.65, -2.8412401e-08, 0, 0, 0, 0.65, 0, 0, 0.01)
 modulate = Color(0, 0, 0, 1)
 text = "SPACE"
+font = ExtResource("4_ilub1")
 font_size = 100
 
 [node name="HUD" type="CanvasLayer" parent="Camera3D"]
@@ -53,19 +55,22 @@ font_size = 100
 [node name="Offset" type="Label" parent="Camera3D/HUD"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("4_ilub1")
 script = ExtResource("3_mn25f")
 
 [node name="Instructions" type="Label" parent="Camera3D/HUD"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 41.0
-offset_top = -24.0
-offset_right = 340.0
-offset_bottom = 25.0
+offset_left = 4.0
+offset_top = -77.0
+offset_right = 227.0
+offset_bottom = 36.0
 grow_vertical = 2
-text = "Press space when the notes are above 
-the detection area 10 time"
+theme_override_fonts/font = ExtResource("4_ilub1")
+text = "Press space when the notes
+are above the detection area
+10 time"
 
 [node name="Note_Holder" type="Node3D" parent="."]
 
