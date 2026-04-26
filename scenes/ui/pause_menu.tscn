@@ -323,6 +323,10 @@ layout_mode = 2
 text = "-20 ms"
 horizontal_alignment = 2
 
+[node name="AudioOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="InputOffsetContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -342,6 +346,10 @@ custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
 text = "-20 ms"
 horizontal_alignment = 2
+
+[node name="InputOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="ButtonSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
