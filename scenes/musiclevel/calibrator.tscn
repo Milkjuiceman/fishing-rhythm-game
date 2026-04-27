@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://vkl7nxvcmfdt"]
+[gd_scene load_steps=10 format=3 uid="uid://vkl7nxvcmfdt"]
 
 [ext_resource type="Script" uid="uid://cn4lquysuylw3" path="res://rhythm/Calibrator/calibrator.gd" id="1_0trkm"]
 [ext_resource type="Script" uid="uid://cwfsltgcebhwi" path="res://rhythm/Calibrator/calibration_progress.gd" id="2_cq8f8"]
 [ext_resource type="Script" uid="uid://doqdud5lw0u0i" path="res://rhythm/Calibrator/calibrator_music_player.gd" id="2_psl0u"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_tepaq"]
 [ext_resource type="Script" uid="uid://dwbkyrumvklje" path="res://rhythm/Calibrator/calibrator_referee.gd" id="3_cq8f8"]
 [ext_resource type="Script" uid="uid://bqyr7p80je748" path="res://rhythm/Calibrator/calabration_offset.gd" id="3_u3vhk"]
 [ext_resource type="Resource" uid="uid://d22gw4d8i50df" path="res://assets/audio/charts/calibrator_metronome.tres" id="4_psl0u"]
@@ -29,11 +30,13 @@ offset_right = 142.0
 offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tepaq")
 script = ExtResource("2_cq8f8")
 
 [node name="Offset" type="Label" parent="Camera3D/HUD"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_tepaq")
 script = ExtResource("3_u3vhk")
 
 [node name="Instructions" type="Label" parent="Camera3D/HUD"]
@@ -48,6 +51,7 @@ offset_right = 19.455994
 offset_bottom = 11.528
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_tepaq")
 text = "Press space to the beat of the 
 metronome 10 times"
 
