@@ -13,14 +13,26 @@ The game features a growing fish encyclopedia, multiple fishing areas, and a que
 ### Rhythm Based Fishing
 Each fish species is tied to a unique rhythm level with its own chart and music. Performance is tracked in real time so if you nail the notes the catch bar fills, miss them and it drains. You have the option to ral in the fish when the bar is full.
 
+<img width="2555" height="1356" alt="Rhythm fishing gameplay showing a note chart and catch bar filling as the player hits notes." src="https://github.com/user-attachments/assets/f0377dba-e3bd-4119-a1d2-b675f691633a" />
+
+  
 ### Fish Encyclopedia
 Track every fish you've caught organized by area. Uncaught fish show in red with 0 catches; caught fish show green with a running count. Pixel art illustrations are planned for a future update.
+
+<img width="1469" height="1017" alt="Fish encyclopedia screen showing caught fish in green and uncaught fish in red with catch counts." src="https://github.com/user-attachments/assets/74bd543c-2b04-416e-a0ab-711a3baf8e0c" />
+
 
 ### Quest System
 A full story mode guides new players through the game. Talk to NPCs, catch new fish, and unlock new areas using the system.
 
+<img width="367" height="637" alt="A NPC in our game." src="https://github.com/user-attachments/assets/a78b99d6-d2ae-4470-9c52-45cec60a71fa" />
+
+
 ### Save System
 Full autosave support. Your position, boat, inventory, and quest progress persist across sessions.
+
+<img width="1059" height="687" alt="Save system screen." src="https://github.com/user-attachments/assets/fb0dea76-0d82-45de-9c26-76d05619c43e" />
+
 
 ## Getting Started
 
