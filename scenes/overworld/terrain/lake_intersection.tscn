@@ -1,9 +1,12 @@
-[gd_scene load_steps=35 format=3 uid="uid://c4i3rthdmlqxo"]
+[gd_scene load_steps=46 format=3 uid="uid://c4i3rthdmlqxo"]
 
 [ext_resource type="Script" uid="uid://dhkjnhoxotnx0" path="res://scripts/levels/lake_intersection.gd" id="1_pdbi5"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ticw3"]
 [ext_resource type="Resource" uid="uid://bn56ufgmn3ok4" path="res://terraindata/lake_intersection_terrain_data/data.hterrain" id="3_8it52"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_5sc3m"]
+[ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="6_tdqce"]
+[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="7_3h6tc"]
+[ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="8_7uajl"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_0t4oa"]
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="10_pdbi5"]
 [ext_resource type="Texture2D" uid="uid://r7rqhbv1l1ij" path="res://assets/characters/Muscular_Orangutang_White.png" id="16_caq17"]
@@ -22,10 +25,15 @@
 [ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="20_kpg5x"]
 [ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="21_ckqto"]
 [ext_resource type="PackedScene" uid="uid://uvooa407owaq" path="res://scenes/overworld/interactableObjects/shipyard.tscn" id="21_k1cpa"]
+[ext_resource type="Script" uid="uid://0rwk7tajftlx" path="res://scripts/npcs/npc.gd" id="22_7d68j"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="22_ckqto"]
+[ext_resource type="Texture2D" uid="uid://cqvxgf0tkkyqo" path="res://assets/ui/Popup_Red.png" id="23_g0p13"]
 [ext_resource type="PackedScene" uid="uid://bcnm12bxtl2jw" path="res://scenes/overworld/environmentObjects/npcs/Orangatang_npc.tscn" id="23_qc3en"]
+[ext_resource type="Texture2D" uid="uid://c2ntpig1e4d1p" path="res://assets/ui/enter_prompt.png" id="24_7d68j"]
 [ext_resource type="Texture2D" uid="uid://7l0qcend2epr" path="res://assets/characters/Muscular_Proboscis_Monkey.png" id="24_yaw6n"]
 [ext_resource type="Texture2D" uid="uid://hq5fa0ejaq05" path="res://assets/characters/Theodore.png" id="25_ixpj4"]
+[ext_resource type="PackedScene" uid="uid://carq5mcy70d6" path="res://scenes/ui/dialogueUI.tscn" id="30_0g024"]
+[ext_resource type="PackedScene" uid="uid://w7ptyjv51a2m" path="res://scenes/ui/assignmentPopupUI.tscn" id="31_okunj"]
 
 [sub_resource type="Resource" id="Resource_8ntsp"]
 script = ExtResource("4_5sc3m")
@@ -91,6 +99,16 @@ size = Vector3(235.62561, 51.820324, 243.78357)
 height = 0.97766113
 radius = 2.0576172
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_0g024"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7d68j"]
+
+[sub_resource type="Resource" id="Resource_1it6v"]
+resource_name = "Basic Fish"
+script = ExtResource("8_7uajl")
+scene_path = "uid://cuej6va4e7tey"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_pdbi5")
 
@@ -119,11 +137,14 @@ transform = Transform3D(4.673, 0, 0, 0, 1.112, 0, 0, 0, 4.813, 485.0188, -3, 516
 mesh = SubResource("BoxMesh_e3ujm")
 skeleton = NodePath("../Tutorial_HTerrain")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Water"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Water" groups=["water_body"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1891785, -5.590332, -4.6297607)
 shape = SubResource("BoxShape3D_6pe3x")
+
+[node name="FishSpawners" type="Node3D" parent="."]
+transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 833.33685, 5.7497025, 565.93085)
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.19922, 4.263556, 214.83836)
@@ -1714,8 +1735,11 @@ texture_filter = 0
 render_priority = 1
 texture = ExtResource("20_hwo30")
 
-[node name="MainDock" parent="Buildings/Docks" instance=ExtResource("20_k1cpa")]
+[node name="MainDock" parent="Buildings/Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("20_k1cpa")]
 transform = Transform3D(-4.0350266, 0, -5.720014, 0, 7, 0, 5.720014, 0, -4.0350266, 355.98117, 3.7133803, 396.07217)
+script = ExtResource("22_7d68j")
+dialogueUI = NodePath("../../../dialogue_ui")
+questPopup = NodePath("../../../assignment_popup_ui")
 
 [node name="PrimateLeaderNPC" type="Sprite3D" parent="Buildings/Docks/MainDock"]
 transform = Transform3D(0.0040857247, 0, 0.0028821616, 0, 0.0050000004, 0, -0.0028821616, 0, 0.0040857247, 0.89043427, 0.33562756, 1.010231)
@@ -1726,8 +1750,31 @@ texture_filter = 0
 render_priority = 1
 texture = ExtResource("16_caq17")
 
-[node name="SmallDock" parent="Buildings/Docks" instance=ExtResource("21_ckqto")]
+[node name="Area3D" type="Area3D" parent="Buildings/Docks/MainDock"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="sphere" type="CollisionShape3D" parent="Buildings/Docks/MainDock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_0g024")
+
+[node name="Indicator" type="Sprite3D" parent="Buildings/Docks/MainDock"]
+transform = Transform3D(0.3030001, 0, -1.4901161e-08, 0, 0.30300003, 0, 1.4901161e-08, 0, 0.3030001, 0.8900013, 0.9371652, 1.0099945)
+billboard = 2
+render_priority = 1
+texture = ExtResource("23_g0p13")
+
+[node name="Prompt" type="Sprite3D" parent="Buildings/Docks/MainDock"]
+transform = Transform3D(0.11800002, 0, -1.4901161e-08, 0, 0.118, 0, 1.4901161e-08, 0, 0.11800002, 0.41580582, 0.049069166, 1.6332779)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("24_7d68j")
+
+[node name="SmallDock" parent="Buildings/Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("21_ckqto")]
 transform = Transform3D(0.4416262, 0, 0.49047562, 0, 0.66, 0, -0.49047562, 0, 0.4416262, 273.1768, 4.8227863, 767.2368)
+script = ExtResource("22_7d68j")
+dialogueUI = NodePath("../../../dialogue_ui")
+questPopup = NodePath("../../../assignment_popup_ui")
 
 [node name="PrimateLeaderNPC" type="Sprite3D" parent="Buildings/Docks/SmallDock"]
 transform = Transform3D(0.04902869, 0, 0.034585945, 0, 0.06, 0, -0.034585945, 0, 0.04902869, -3.7023926, 4.058958, 2.33667)
@@ -1738,20 +1785,137 @@ texture_filter = 0
 render_priority = 1
 texture = ExtResource("24_yaw6n")
 
-[node name="Tower1Dock" parent="Buildings/Docks" instance=ExtResource("22_ckqto")]
+[node name="Area3D" type="Area3D" parent="Buildings/Docks/SmallDock"]
+transform = Transform3D(12.29, 0, 0, 0, 12.29, 0, 0, 0, 12.29, 0, 0, 0)
+
+[node name="sphere" type="CollisionShape3D" parent="Buildings/Docks/SmallDock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_0g024")
+
+[node name="Indicator" type="Sprite3D" parent="Buildings/Docks/SmallDock"]
+transform = Transform3D(3.078, 0, -3.5762787e-07, 0, 3.078, 0, 3.5762787e-07, 0, 3.078, -3.702, 9.777, 2.337)
+billboard = 2
+render_priority = 1
+texture = ExtResource("23_g0p13")
+
+[node name="Prompt" type="Sprite3D" parent="Buildings/Docks/SmallDock"]
+transform = Transform3D(0.953, 0, -1.9112795e-07, 0, 0.953, 0, 1.9112795e-07, 0, 0.953, 2.159912, 0.049069405, -3.1522217)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("24_7d68j")
+
+[node name="Tower1Dock" parent="Buildings/Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("22_ckqto")]
 transform = Transform3D(-2.847157, 0, 6.394818, 0, 7, 0, -6.394818, 0, -2.847157, 262.01904, 5.291919, 597.9501)
+script = ExtResource("22_7d68j")
+dialogueUI = NodePath("../../../dialogue_ui")
+questPopup = NodePath("../../../assignment_popup_ui")
 
-[node name="Tower2Dock" parent="Buildings/Docks" instance=ExtResource("21_ckqto")]
+[node name="Area3D" type="Area3D" parent="Buildings/Docks/Tower1Dock"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
+
+[node name="sphere" type="CollisionShape3D" parent="Buildings/Docks/Tower1Dock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_7d68j")
+
+[node name="Indicator" type="Sprite3D" parent="Buildings/Docks/Tower1Dock"]
+transform = Transform3D(0.30300015, 0, -1.4901161e-08, 0, 0.30300015, 0, 1.4901161e-08, 0, 0.30300015, -0.4310074, 0.90222406, 0.5810013)
+billboard = 2
+render_priority = 1
+texture = ExtResource("23_g0p13")
+
+[node name="Prompt" type="Sprite3D" parent="Buildings/Docks/Tower1Dock"]
+transform = Transform3D(0.11800001, 0, -2.7939677e-09, 0, 0.118, 0, 2.7939677e-09, 0, 0.11800001, 0.1949997, 0.049069166, 1.0200424)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("24_7d68j")
+
+[node name="OrangatangNpc" parent="Buildings/Docks/Tower1Dock" instance=ExtResource("23_qc3en")]
+transform = Transform3D(-0.1436585, 0, 0.019678786, 0, 0.14500026, 0, -0.019678786, 0, -0.1436585, -0.43054962, 0.35178077, 0.58141327)
+
+[node name="Tower2Dock" parent="Buildings/Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("21_ckqto")]
 transform = Transform3D(-0.6538936, 0, -0.08957231, 0, 0.66, 0, 0.08957231, 0, -0.6538936, 892.9948, 3.964487, 827.6411)
+script = ExtResource("22_7d68j")
+dialogueUI = NodePath("../../../dialogue_ui")
+questPopup = NodePath("../../../assignment_popup_ui")
 
-[node name="MarketDock" parent="Buildings/Docks" instance=ExtResource("21_ckqto")]
-transform = Transform3D(-0.66, 0, 5.7699033e-08, 0, 0.66, 0, -5.7699033e-08, 0, -0.66, 830.802, 3.404357, 566.7661)
+[node name="Area3D" type="Area3D" parent="Buildings/Docks/Tower2Dock"]
+transform = Transform3D(12.29, 0, 0, 0, 12.29, 0, 0, 0, 12.29, 0, 0, 0)
 
-[node name="TheodoreNPC" type="Sprite3D" parent="Buildings/Docks/MarketDock"]
-transform = Transform3D(-0.043333437, 0, -0.030568399, 0, 0.05303031, 0, 0.030568399, 0, -0.043333437, -2.418335, 4.364625, 1.5321655)
+[node name="sphere" type="CollisionShape3D" parent="Buildings/Docks/Tower2Dock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_0g024")
+
+[node name="Indicator" type="Sprite3D" parent="Buildings/Docks/Tower2Dock"]
+transform = Transform3D(3.0780003, 0, -3.5762787e-07, 0, 3.078, 0, 3.5762787e-07, 0, 3.0780003, -3.2790527, 8.960054, 1.8208008)
+billboard = 2
+render_priority = 1
+texture = ExtResource("23_g0p13")
+
+[node name="Prompt" type="Sprite3D" parent="Buildings/Docks/Tower2Dock"]
+transform = Transform3D(0.95300007, 0, -1.9112795e-07, 0, 0.95300007, 0, 1.9112795e-07, 0, 0.95300007, 2.159912, 0.7892103, -3.1522217)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("24_7d68j")
+
+[node name="TheodoreNPC" type="Sprite3D" parent="Buildings/Docks/Tower2Dock"]
+transform = Transform3D(-0.043333437, 0, -0.030568399, 0, 0.05303031, 0, 0.030568399, 0, -0.043333437, -3.2790527, 3.4774284, 1.8206787)
 pixel_size = 1.0
 billboard = 2
 alpha_cut = 1
 texture_filter = 0
 render_priority = 1
 texture = ExtResource("25_ixpj4")
+
+[node name="MarketDock" parent="Buildings/Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("21_ckqto")]
+transform = Transform3D(-0.66, 0, 5.7699033e-08, 0, 0.66, 0, -5.7699033e-08, 0, -0.66, 830.802, 3.404357, 566.7661)
+script = ExtResource("22_7d68j")
+dialogueUI = NodePath("../../../dialogue_ui")
+questPopup = NodePath("../../../assignment_popup_ui")
+
+[node name="TheodoreNPC" type="Sprite3D" parent="Buildings/Docks/MarketDock"]
+transform = Transform3D(-0.043333437, 0, -0.03056841, 0, 0.05303031, 0, 0.03056841, 0, -0.043333437, -3.8406982, 3.5535536, 1.265564)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("25_ixpj4")
+
+[node name="Area3D" type="Area3D" parent="Buildings/Docks/MarketDock"]
+transform = Transform3D(12.290001, 0, 0, 0, 12.290001, 0, 0, 0, 12.290001, -1.4223633, -0.8110714, -0.26660156)
+
+[node name="sphere" type="CollisionShape3D" parent="Buildings/Docks/MarketDock/Area3D"]
+transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
+shape = SubResource("SphereShape3D_0g024")
+
+[node name="Indicator" type="Sprite3D" parent="Buildings/Docks/MarketDock"]
+transform = Transform3D(3.078, 0, -3.5762787e-07, 0, 3.078, 0, 3.5762787e-07, 0, 3.078, -3.840332, 8.965929, 1.2653809)
+billboard = 2
+render_priority = 1
+texture = ExtResource("23_g0p13")
+
+[node name="Prompt" type="Sprite3D" parent="Buildings/Docks/MarketDock"]
+transform = Transform3D(0.95300007, 0, -1.9112795e-07, 0, 0.95300007, 0, 1.9112795e-07, 0, 0.95300007, 2.159912, 0.7892103, -3.1522217)
+pixel_size = 0.012
+billboard = 2
+render_priority = 1
+texture = ExtResource("24_7d68j")
+
+[node name="dialogue_ui" parent="." instance=ExtResource("30_0g024")]
+visible = false
+
+[node name="assignment_popup_ui" parent="." instance=ExtResource("31_okunj")]
+visible = false
+
+[node name="RipplingWaterSpawner" type="Node3D" parent="."]
+transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 270.33966, 2.6666427, 407.66956)
+script = ExtResource("6_tdqce")
+rippling_water_scene = ExtResource("7_3h6tc")
+spawn_radius = 20.0
+spawn_height = 1.9
+use_lifetime = true
+lifetime = 10.0
+rhythm_levels = Array[ExtResource("8_7uajl")]([SubResource("Resource_1it6v")])

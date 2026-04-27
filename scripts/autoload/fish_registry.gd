@@ -21,13 +21,16 @@ const FISH_DATA: Array = [
 			{ "fish_id": "fish_3", "display_name": "Fish 3" },
 		]
 	},
-	# Add new areas here as the game expands, e.g.:
-	# {
-	# 	"area": "Fjord",
-	# 	"fish": [
-	# 		{ "fish_id": "fjord_fish_1", "display_name": "Icy Perch" },
-	# 	]
-	# },
+	{
+		"area": "Second Area",
+		"fish": [
+			{ "fish_id": "temp_fish_1", "display_name": "Temp Fish 1" },
+			{ "fish_id": "temp_fish_2", "display_name": "Temp Fish 2" },
+			{ "fish_id": "temp_fish_3", "display_name": "Temp Fish 3" },
+			{ "fish_id": "temp_fish_4", "display_name": "Temp Fish 4" },
+			{ "fish_id": "temp_fish_5", "display_name": "Temp Fish 5" },
+		]
+	},
 ]
 
 # ========================================
