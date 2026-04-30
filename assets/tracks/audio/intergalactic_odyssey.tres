@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://srbi1og21pbs"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_wdean"]
+
+[resource]
+script = ExtResource("1_wdean")
+audio_location = &"uid://cjtw3y3crdpj0ey.ogg"
+artists = "Patrick de Arteaga"
+title = "Intergalactic Odyssey"
+bpm = Dictionary[float, float]({
+0.0: 120.0
+})
+song_length = 88.0
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
