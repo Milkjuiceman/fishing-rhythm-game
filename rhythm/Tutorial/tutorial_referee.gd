@@ -139,7 +139,6 @@ func _on_catch_available() -> void:
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
 	
-	await get_tree().create_timer(5.0).timeout
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
 	judge.scorecard.score += 1000

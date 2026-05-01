@@ -2796,7 +2796,7 @@ script = ExtResource("6_kmicg")
 [node name="HUD" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
 
-[node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD" node_paths=PackedStringArray("tutorial")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -2814,6 +2814,7 @@ theme_override_fonts/font = ExtResource("7_mjn6q")
 value = 90.0
 allow_lesser = true
 script = ExtResource("11_b71pt")
+tutorial = NodePath("../../../TutorialHandler")
 
 [node name="Multiplier" type="Label" parent="Camera3D/HUD"]
 anchors_preset = 1

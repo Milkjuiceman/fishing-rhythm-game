@@ -13,6 +13,8 @@ var catchable: bool = false
 var prev_hit: int = 0
 var prev_miss: int = 0
 var reel_ins: int = 1
+var flag: bool = false
+@export var tutorial: Tutorial
 
 ## Prevents catch_failed from firing more than once per level.
 var _failed: bool = false
@@ -33,6 +35,9 @@ signal action_required
 # ========================================
 # FRAME UPDATE
 # ========================================
+
+func _ready() -> void:
+	tutorial.tutorial_step_completed.connect(_on_tutorial_step_completed)
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	if frame_state.scorecard == null:
@@ -71,11 +76,12 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 		return
 
 	# Bar filled — catch window opens
-	if value >= max_value and not catchable:
-		catchable = true
-		print("[ProgressBar] filled, fish catchable")
-		emit_signal("catch_available")
+	if value >= max_value:
 		emit_signal("action_required", 6)
+		if not catchable && flag:
+			catchable = true
+			print("[ProgressBar] filled, fish catchable")
+			emit_signal("catch_available")
 
 	# Bar dropped below threshold — catch window closes
 	if value < 80 and catchable:
@@ -96,3 +102,6 @@ func reset():
 func _on_referee_reel_in_denied() -> void:
 	value = 50.0
 	reel_ins += reel_ins
+
+func _on_tutorial_step_completed(_step_id: int) -> void:
+	flag = true
