@@ -19,10 +19,10 @@ extends Node3D
 @export var chart: Chart;
 
 # Reference to referee for signal connections
-@export var referee: Referee;
+@export var referee: TutorialReferee;
 
 # Reference to judge for note judgment signals
-@export var judge: RhythmJudge;
+@export var judge: TutorialJudge;
 
 # Speed multiplier for note positioning
 @export var note_speed: float;

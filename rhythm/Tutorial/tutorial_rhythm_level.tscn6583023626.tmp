@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://d04w5662btjsu" path="res://rhythm/Tutorial/tutorial_referee.gd" id="5_4tppo"]
 [ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_kmicg"]
 [ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="7_mjn6q"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="8_6wyll"]
 [ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="9_u6eqi"]
 [ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="10_paqg0"]
 [ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="11_1xc28"]
-[ext_resource type="Script" uid="uid://c27226wfyou7g" path="res://rhythm/Tutorial/tutorial_progress_bar.gd" id="11_b71pt"]
 [ext_resource type="Script" uid="uid://unnwtwhhk2i1" path="res://rhythm/Tutorial/tutorial_note_holder.gd" id="13_0jivc"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="13_jr6wu"]
 [ext_resource type="Resource" uid="uid://c63unmsa5c575" path="res://assets/tracks/charts/Lyonesse.tres" id="14_c6poa"]
@@ -2811,9 +2811,9 @@ grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("7_mjn6q")
-value = 90.0
+value = 50.0
 allow_lesser = true
-script = ExtResource("11_b71pt")
+script = ExtResource("8_6wyll")
 
 [node name="Multiplier" type="Label" parent="Camera3D/HUD"]
 anchors_preset = 1

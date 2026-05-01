@@ -1,5 +1,5 @@
 extends Node
-class_name RhythmJudge
+class_name TutorialJudge
 ## Handles note timing judgment and scoring for the rhythm gameplay system.
 ## Integrates with Referee gameplay logic, Scorecard scoring system, and CatchProgressBar UI.
 ## Author: Tyler Schauermann
@@ -12,10 +12,12 @@ class_name RhythmJudge
 # ========================================
 
 # Reference to the catch progress bar UI
-@export var progress_bar: CatchProgressBar
+@export var progress_bar: TutorialProgressBar
 
 # Reference to the rhythm referee
-@export var referee: Referee
+@export var referee: TutorialReferee
+
+@export var tutorial: Tutorial
 
 # Allowed timing error window in seconds
 const TEMPORAL_ERROR_MARGIN: float = 0.12 # 120ms
@@ -45,7 +47,7 @@ signal song_finished
 # Emitted whenever a note receives a judgment
 signal note_judged(note_index: int, frame_state: FrameState, status: String)
 
-signal first_note
+signal action_required
 
 # ========================================
 # INITIALIZATION
@@ -58,6 +60,8 @@ func _ready() -> void:
 	# Do not connect fish_caught / fish_failed here to avoid double-firing.
 	if not referee:
 		push_warning("[Judge] Referee is null — cannot connect catch signals")
+		
+	tutorial.tutorial_step_completed.connect(_on_tutorial_step_completed)
 
 # ========================================
 # CHART LOADING
@@ -78,8 +82,6 @@ func load_new_chart(new_chart: Chart) -> void:
 
 # Registers a successful note hit
 func register_hit(compared_t: float, timing: float, i: int, frame_state: FrameState) -> void:
-	if i == 0:
-		first_note.emit()
 	var temporal_difference: float = compared_t - timing
 	scorecard.hit_note(i, temporal_difference)
 	scorecard.update_score(abs(temporal_difference), chart.note_column[i])
@@ -134,7 +136,8 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			continue
 
 		# Note is in the hit window — check for matching key press
-		if i == 0 and flag == true:
+		if i < 5 and flag == true:
+			emit_signal("action_required", i + 1)
 			get_tree().paused = true
 			flag = false
 		if frame_state.k_key_press and chart.note_column[i] == 0:
@@ -190,3 +193,8 @@ func _get_return_scene() -> String:
 # Receives signal to load a new chart from the referee
 func _on_referee_play_chart_now(chart_: Chart) -> void:
 	load_new_chart(chart_)
+
+
+func _on_tutorial_step_completed(_step_id: int) -> void:
+	await get_tree().create_timer(.1).timeout
+	flag = true

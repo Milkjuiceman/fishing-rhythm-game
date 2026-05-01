@@ -9,8 +9,8 @@ extends Node3D
 
 const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.tscn")
 
-@export var referee: Referee
-@export var judge: RhythmJudge
+@export var referee: TutorialReferee
+@export var judge: TutorialJudge
 
 ## The quest ID to mark progress on when a fish is caught.
 @export var quest_id: String = "tutorial_01"
@@ -25,6 +25,8 @@ const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.ts
 
 var _countdown_instance: RhythmCountdown = null
 var _level_ended: bool = false
+
+signal action_required
 
 # ========================================
 # STARTUP AND COUNTDOWN
@@ -42,6 +44,7 @@ func _show_countdown() -> void:
 
 func _on_countdown_finished() -> void:
 	referee.play_chart_now.emit(referee.chart)
+	emit_signal("action_required", 0)
 
 # ========================================
 # DEBUG KEYS
