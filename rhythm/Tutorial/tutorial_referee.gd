@@ -24,7 +24,9 @@ class_name TutorialReferee
 @export var judge: TutorialJudge
 
 # UI prompt for catching fish
-@export var enter_prompt: Label3D
+@export var enter_prompt: Label
+
+@export var tutorial: Tutorial
 
 # Speed multiplier for note movement
 @export var note_speed: float = 10.
@@ -34,6 +36,8 @@ var input_offset: float = 0.0
 
 # Audio timing offset adjustment
 var audio_offset: float = 0.0
+
+var flag: bool = false
 
 # ========================================
 # SIGNALS
@@ -67,6 +71,7 @@ var catchable := false
 
 # Initializes referee and connects systems
 func _ready() -> void:
+	tutorial.tutorial_step_completed.connect(_on_tutorial_step_completed)
 	print("[Referee] _ready — enter_prompt: ", enter_prompt)
 	# Add to Rhythm group so PauseMenu can find us
 	add_to_group("Rhythm")
@@ -110,7 +115,7 @@ func _process(delta: float) -> void:
 	input_hit.fill_frame_state(frame_state)
 	judge.process_and_fill_frame_state(frame_state)
 	process.emit(frame_state)
-	if catchable and frame_state.enter_key_press:
+	if catchable and frame_state.enter_key_press and flag:
 		print("[Referee] Enter pressed — catchable: true, calling _catch_fish")
 		var performance = _calculate_performance()
 		var rarity = _performance_to_rarity(performance)
@@ -139,13 +144,14 @@ func _on_catch_available() -> void:
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
 	
+	await get_tree().create_timer(5.0).timeout
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
 	judge.scorecard.score += 1000
 
 # Disables catch window and hides prompt
 func _on_catch_unavailable() -> void:
-	print("[Referee] _on_catch_unavailable fired")
+	print("[Referee] _on_catch_unavailable fired ", Time.get_time_string_from_system())
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
@@ -178,3 +184,8 @@ func _catch_fish(performance: float, rarity: String) -> void:
 	if enter_prompt:
 		enter_prompt.visible = false
 	fish_caught.emit(performance, rarity)
+
+func _on_tutorial_step_completed(step_id: int) -> void:
+	if step_id == 7:
+		await get_tree().create_timer(1.0).timeout
+		flag = true

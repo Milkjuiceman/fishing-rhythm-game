@@ -2760,6 +2760,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_mjn6q")
 script = ExtResource("3_4tppo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -2780,13 +2781,14 @@ tutorial = NodePath("../TutorialHandler")
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("4_5gfdg")
 
-[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
+[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt", "tutorial") groups=["Rhythm"]]
 script = ExtResource("5_4tppo")
 chart = ExtResource("14_c6poa")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
-enter_prompt = NodePath("../../Camera3D/Background/Description")
+enter_prompt = NodePath("../../Camera3D/HUD/EnterPrompt")
+tutorial = NodePath("../../TutorialHandler")
 note_speed = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -2885,11 +2887,12 @@ grow_vertical = 2
 
 [node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
 visible = false
-offset_left = 812.0
-offset_top = 587.0
-offset_right = 1039.0
-offset_bottom = 611.0
-text = "press enter to reel it in early! "
+offset_left = 269.0
+offset_top = 89.0
+offset_right = 473.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("7_mjn6q")
+text = "Hit enter to reel it in early! "
 
 [node name="Background" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(58, 5.357192e-07, 3.5049244e-08, -1.8221194e-06, 26.963133, 0.4384182, -1.3729932e-06, -13.152548, 0.89877135, 4.497753e-06, 5.813774, -28.311403)

@@ -4,6 +4,7 @@ class_name Tutorial
 @onready var instructions_label = $InstructionsLabel
 
 var current_step: int = 0
+var phase: int = 0
 var waiting_for_input: bool = false
 
 signal tutorial_step_completed(step_id: int)
@@ -43,7 +44,7 @@ func _pause_and_show_instruction(step_id: int):
 		5:
 			instructions_label.text = "Keep hitting those notes to\nthe beat of the music"
 		6:
-			instructions_label.text = "Your progress bar is at 100% you\nhave the chance to catch this fish\nPress enter when the level starts\nagain or wait 5 seconds to let the chance pass you by"
+			instructions_label.text = "Your progress bar is at 100% you\nhave the chance to catch this fish\nPress enter when the music starts again to reel in the fish\nor after 5 seconds of music the chance to reel in disapears"
 		_:
 			instructions_label.text = "Good Luck"
 
@@ -65,7 +66,15 @@ func _input(event):
 	elif current_step == 5 && Input.is_action_just_pressed(&"k note"):
 		_continue_tutorial()
 	elif current_step == 6 && Input.is_action_just_pressed(&"interact"):
-		_continue_tutorial()
+		if phase == 0:
+			instructions_label.text = "If the reel in disapears the misses will double,\nbut your score increases by 1000"
+			phase = 1
+		elif phase == 1:
+			instructions_label.text = "Don't worry you'll have multiple chances to catch the fish\njust get that progress bar to 100% or finish the level\nGood Luck"
+			phase = 2
+		elif phase == 2:
+			phase = 0
+			_continue_tutorial()
 
 func _continue_tutorial():
 	waiting_for_input = false

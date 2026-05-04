@@ -76,12 +76,15 @@ func _update_from_scorecard(scorecard: Scorecard) -> void:
 		return
 
 	# Bar filled — catch window opens
-	if value >= max_value:
-		emit_signal("action_required", 6)
-		if not catchable && flag:
-			catchable = true
-			print("[ProgressBar] filled, fish catchable")
-			emit_signal("catch_available")
+	if value >= max_value and not catchable:
+		if !flag:
+			emit_signal("action_required", 6)
+			print("waiting ", Time.get_time_string_from_system())
+			await tutorial.tutorial_step_completed
+			print("done waiting ", Time.get_time_string_from_system())
+		catchable = true
+		print("[ProgressBar] filled, fish catchable ", Time.get_time_string_from_system())
+		emit_signal("catch_available")
 
 	# Bar dropped below threshold — catch window closes
 	if value < 80 and catchable:
@@ -103,5 +106,6 @@ func _on_referee_reel_in_denied() -> void:
 	value = 50.0
 	reel_ins += reel_ins
 
-func _on_tutorial_step_completed(_step_id: int) -> void:
-	flag = true
+func _on_tutorial_step_completed(step_id: int) -> void:
+	if step_id == 7:
+		flag = true
