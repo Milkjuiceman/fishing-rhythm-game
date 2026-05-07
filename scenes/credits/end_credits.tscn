@@ -1,0 +1,149 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjscm2k7qk5fm"]
+
+[ext_resource type="Script" uid="uid://5sefqgef27sl" path="res://scenes/credits/credits.gd" id="1_5mu7s"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_p15bj"]
+
+[node name="EndCredits" type="Node2D"]
+
+[node name="handler" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -425.0
+offset_right = 480.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5mu7s")
+
+[node name="Credits" type="RichTextLabel" parent="handler"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 71.0
+offset_top = 704.0
+offset_right = 406.0
+offset_bottom = 4108.0
+theme_override_fonts/normal_font = ExtResource("2_p15bj")
+theme_override_fonts/bold_font = ExtResource("2_p15bj")
+theme_override_fonts/bold_italics_font = ExtResource("2_p15bj")
+theme_override_fonts/italics_font = ExtResource("2_p15bj")
+theme_override_fonts/mono_font = ExtResource("2_p15bj")
+bbcode_enabled = true
+text = "[center]
+
+[font_size=40][b]Reel to the Rhythm[/b][/font_size]
+Created by Team58
+
+[/center]
+
+[center]
+[font_size=28][b]Overworld Development[/b][/font_size]
+
+[b]Department Lead:[/b] Colin Totten  
+Tyler Schauermann
+
+[/center]
+
+[center]
+[font_size=28][b]Rhythm[/b][/font_size]
+
+[b]Department Lead:[/b] Tyler Schauermann
+
+[b]Performance[/b]
+Qualia Farrell  
+Tyler Schauermann
+
+[b]Rhythm Level Designers[/b]
+Tyler Schauermann  
+Aya Ryplewski  
+Rylan Holt
+
+[/center]
+
+[center]
+[font_size=28][b]Graphics[/b][/font_size]
+
+[b]Department Lead:[/b] Qualia Farrell  
+Colin Totten
+
+[/center]
+
+[center]
+[font_size=28][b]Systems[/b][/font_size]
+
+[b]Department Lead:[/b] Rylan Holt  
+[b]Rhythm System Design:[/b] Qualia Farrell  
+Colin Totten
+
+[/center]
+
+[center]
+[font_size=28][b]Story[/b][/font_size]
+
+[b]Department Lead:[/b] Aya Ryplewski  
+[b]Implementation:[/b] Colin Totten
+
+[/center]
+
+[center]
+[font_size=28][b]Assets[/b][/font_size]
+
+[b]Music Tracks[/b]
+Child's Nightmare - Patrick de Arteaga
+Humble Match - Patrick de Arteaga
+intergalactic odyssey - Patrick de Arteaga
+Lyonesse - Patrick de Arteaga
+Markalo goes to the disco - Patrick de Arteaga
+new hope - Patrick de Arteaga
+rgmp 01 - Juhani Junkala
+rgmp 02 - Juhani Junkala
+rgmp 03 - Juhani Junkala
+rgmp 04 - Juhani Junkala
+rgmp 05 - Juhani Junkala
+rgmp 06 - Juhani Junkala
+rgmp 07 - Juhani Junkala
+rgmp 08 - Juhani Junkala
+rgmp 09 - Juhani Junkala
+rgmp 10 - Juhani Junkala
+rgmp 11 - Juhani Junkala
+rgmp 12 - Juhani Junkala
+Rolling at 5-210 - Kevin MacLeod
+Yellow forest - Patrick de Arteaga
+
+
+[b]3D Models[/b]
+
+[b]Others[/b]
+
+[/center]
+
+[center]
+
+[font_size=28][b]Special Thanks[/b][/font_size]
+
+To all who supported our team in our academic and proffesional journeys.  
+Your encouragement made this project possible.
+
+[b]Oregon State University[/b]
+
+For providing the tools, environment, and opportunity to grow as developers and creators.
+
+[/center]
+
+[center]
+
+[font_size=28][b]Thank You for Playing[/b][/font_size]
+
+We sincerely appreciate you taking the time to experience our game.
+
+[/center]
+
+[center]
+
+[font_size=48][b]FIN[/b][/font_size]
+
+[/center]"
+fit_content = true
+horizontal_alignment = 1
