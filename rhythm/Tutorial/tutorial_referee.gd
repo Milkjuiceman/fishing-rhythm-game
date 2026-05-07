@@ -39,6 +39,8 @@ var audio_offset: float = 0.0
 
 var flag: bool = false
 
+var timer
+
 # ========================================
 # SIGNALS
 # ========================================
@@ -57,6 +59,10 @@ signal fish_failed
 
 # Emitted when player fails to reel in during window
 signal reel_in_denied
+
+signal timer_activated
+
+signal timer_done
 
 # ========================================
 # RUNTIME STATE VARIABLES
@@ -144,7 +150,11 @@ func _on_catch_available() -> void:
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
 	
-	await get_tree().create_timer(5.0).timeout
+	timer = get_tree().create_timer(5.0)
+	emit_signal("timer_activated")
+	await timer.timeout
+	emit_signal("timer_done")
+	
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
 	judge.scorecard.score += 1000

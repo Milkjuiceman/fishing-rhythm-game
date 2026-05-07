@@ -30,7 +30,7 @@ FishRegistry="*res://scripts/autoload/fish_registry.gd"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

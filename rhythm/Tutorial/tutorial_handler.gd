@@ -6,6 +6,7 @@ class_name Tutorial
 var current_step: int = 0
 var phase: int = 0
 var waiting_for_input: bool = false
+var flag: bool = true
 
 signal tutorial_step_completed(step_id: int)
 
@@ -44,6 +45,7 @@ func _pause_and_show_instruction(step_id: int):
 		5:
 			instructions_label.text = "Keep hitting those notes to\nthe beat of the music"
 		6:
+			flag = false
 			instructions_label.text = "Your progress bar is at 100% you\nhave the chance to catch this fish\nPress enter when the music starts again to reel in the fish\nor after 5 seconds of music the chance to reel in disapears"
 		_:
 			instructions_label.text = "Good Luck"

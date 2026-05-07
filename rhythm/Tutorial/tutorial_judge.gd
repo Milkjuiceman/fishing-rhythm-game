@@ -140,6 +140,13 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			emit_signal("action_required", i + 1)
 			get_tree().paused = true
 			flag = false
+		
+		if i == 20 and flag == true and tutorial.flag:
+			progress_bar.value = 100
+			emit_signal("action_required", 6)
+			get_tree().paused = true
+			flag = false
+		
 		if frame_state.k_key_press and chart.note_column[i] == 0:
 			register_hit(compared_t, timing, i, frame_state)
 		elif frame_state.j_key_press and chart.note_column[i] == 1:
