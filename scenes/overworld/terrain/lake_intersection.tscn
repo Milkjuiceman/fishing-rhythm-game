@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bn56ufgmn3ok4" path="res://terraindata/lake_intersection_terrain_data/data.hterrain" id="3_8it52"]
 [ext_resource type="Script" uid="uid://utx0ikg1socr" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_5sc3m"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="6_tdqce"]
-[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="7_3h6tc"]
+[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/rippling water/RipplingWater.tscn" id="7_3h6tc"]
 [ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="8_7uajl"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="9_0t4oa"]
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="10_pdbi5"]
