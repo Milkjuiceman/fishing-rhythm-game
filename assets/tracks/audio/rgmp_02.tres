@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://dibvv2jdvtfav"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_5y7kq"]
+
+[resource]
+script = ExtResource("1_5y7kq")
+audio_location = &"res://assets/tracks/audio/rgmp_02.ogg"
+artists = "Juhani Junkala"
+title = "RGMP track 2"
+bpm = Dictionary[float, float]({
+0.0: 93.33
+})
+song_length = 41.4
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
