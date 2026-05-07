@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://covxaj11k0427"]
+[gd_scene load_steps=14 format=3 uid="uid://covxaj11k0427"]
 
 [ext_resource type="Script" uid="uid://dnm12ppe1u68w" path="res://scripts/ui/menus/main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_7vrkn"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cgp8hj30tiiyd" path="res://assets/ui/main_menu_button.png" id="3_glbon"]
 [ext_resource type="Texture2D" uid="uid://bmsxevftf0e26" path="res://assets/ui/main_menu_button_click.png" id="4_nlkkf"]
 [ext_resource type="Texture2D" uid="uid://bkb6x5yb1pdu5" path="res://assets/ui/main_menu_button_hover.png" id="5_qe12f"]
+[ext_resource type="Texture2D" uid="uid://cy1p3pao0rjip" path="res://assets/ui/title_label.png" id="7_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://be2344bpdjhps" path="res://assets/ui/fish_main_menu.png" id="7_qe12f"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glbon"]
 texture = ExtResource("3_glbon")
@@ -33,25 +35,6 @@ script = ExtResource("1_06t4h")
 [node name="SubViewportContainer" parent="." instance=ExtResource("2_nlkkf")]
 layout_mode = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.5
-offset_top = -147.0
-offset_right = 185.5
-offset_bottom = -56.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_7vrkn")
-theme_override_font_sizes/font_size = 40
-text = "Reel to the Rhythm"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="start_button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -60,12 +43,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -89.5
-offset_top = -66.0
+offset_top = -41.0
 offset_right = 89.5
-offset_bottom = -34.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.52156866, 0.5058824, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_styles/normal = SubResource("StyleBoxTexture_glbon")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
@@ -81,12 +68,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -89.5
-offset_top = -23.0
+offset_top = -6.0
 offset_right = 89.5
-offset_bottom = 9.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.52156866, 0.5058824, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
@@ -102,12 +93,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -89.5
-offset_top = 20.0
+offset_top = 29.0
 offset_right = 89.5
-offset_bottom = 52.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.52156866, 0.5058824, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
@@ -123,15 +118,54 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -89.5
-offset_top = 62.0
+offset_top = 65.0
 offset_right = 89.5
-offset_bottom = 94.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.52156866, 0.5058824, 1)
 theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dy7ct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
 text = "Quit"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(241.005, 44)
+texture = ExtResource("7_8qtwp")
+
+[node name="fish1" type="Sprite2D" parent="."]
+position = Vector2(68, 44.58)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_qe12f")
+
+[node name="fish2" type="Sprite2D" parent="."]
+position = Vector2(414.005, 44.465)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_qe12f")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.495
+offset_top = -120.0
+offset_right = 167.505
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 36
+text = "REEL TO THE RHYTHM"
+horizontal_alignment = 1
+vertical_alignment = 1
