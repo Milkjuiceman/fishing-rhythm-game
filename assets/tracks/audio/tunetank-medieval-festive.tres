@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://c1m4tqxa6ra30"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_pv1hk"]
+
+[resource]
+script = ExtResource("1_pv1hk")
+audio_location = &"res://assets/tracks/audio/tunetank-medieval-festive-music.ogg"
+artists = "TuneTank"
+title = "Medieval Festive Music"
+bpm = Dictionary[float, float]({
+0.0: 120.0
+})
+song_length = 68.55
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

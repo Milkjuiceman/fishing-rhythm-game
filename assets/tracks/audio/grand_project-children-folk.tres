@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://b3q3q1rdrr4js"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_la5mn"]
+
+[resource]
+script = ExtResource("1_la5mn")
+audio_location = &"res://assets/tracks/audio/grand_project-children-folk.ogg"
+artists = "Roman Dudchyk"
+title = "Children Folk"
+bpm = Dictionary[float, float]({
+0.0: 200.0
+})
+song_length = 60.08
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

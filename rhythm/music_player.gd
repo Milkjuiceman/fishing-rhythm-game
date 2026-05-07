@@ -19,6 +19,9 @@ var _previous_t: float
 # Global timing offset applied to playback
 var offset: float = 0
 
+# Playback speed multiplier (1.0 = normal, 0.5 = half speed). Also affects pitch.
+@export var playback_rate: float = 1.0
+
 # ========================================
 # FRAME STATE SYNCHRONIZATION
 # ========================================
@@ -27,6 +30,7 @@ var offset: float = 0
 func play_track(track_to_pay: Track) -> void:
 	current_track = track_to_pay
 	stream = current_track.load_stream()
+	pitch_scale = playback_rate
 	play()
 
 
@@ -41,7 +45,7 @@ func fill_frame_state(frame_delta: float, frame_state: FrameState) -> void:
 	
 	else:
 		frame_state.playing_song = true
-		frame_state.t = get_playback_position() + AudioServer.get_time_since_last_mix() + offset
+		frame_state.t = get_playback_position() + AudioServer.get_time_since_last_mix() * pitch_scale + offset
 		if _previous_t != -1.:
 			frame_state.delta = frame_state.t - _previous_t
 		else:
