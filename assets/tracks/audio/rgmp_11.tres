@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://cfo02eakxajtb"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_3sxne"]
+
+[resource]
+script = ExtResource("1_3sxne")
+audio_location = &"res://assets/tracks/audio/rgmp_11.ogg"
+artists = "jj"
+title = "track 11"
+bpm = Dictionary[float, float]({
+0.0: 104.0
+})
+song_length = 21.33
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

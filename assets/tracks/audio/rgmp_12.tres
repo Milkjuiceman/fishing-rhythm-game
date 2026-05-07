@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://7c3hxeq07pqu"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_nl4vf"]
+
+[resource]
+script = ExtResource("1_nl4vf")
+audio_location = &"res://assets/tracks/audio/rgmp_12.ogg"
+artists = "jj"
+title = "track 12"
+metadata/_custom_type_script = "uid://cx126bxq1i3do"
