@@ -60,7 +60,7 @@ func align_notes() -> void:
 		note.index = i
 		print(note.index)
 		set_editable_instance(note, true)
-
+		
 		# Apply to shader
 		var mat = note.get_surface_override_material(0).duplicate(true)
 		# Get the label
@@ -86,6 +86,6 @@ func align_notes() -> void:
 					label.modulate = Color.WHITE
 			note.set_surface_override_material(0, mat)
 		i += 1;
-			
+		
 		if Engine.is_editor_hint():
 			note.owner = get_tree().edited_scene_root;

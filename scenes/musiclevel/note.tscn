@@ -1,9 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxiqk4m8gcax"]
+[gd_scene load_steps=14 format=3 uid="uid://duxiqk4m8gcax"]
 
 [ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="1_doocs"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="1_nua46"]
 [ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="2_j17vq"]
 [ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="3_rr1s0"]
+[ext_resource type="Texture2D" uid="uid://buppebgksadkt" path="res://assets/underwater/flat_sphere.png" id="5_j17vq"]
+
+[sub_resource type="Shader" id="Shader_kr1dr"]
+code = "shader_type spatial;
+uniform sampler2D sphere_flat : repeat_disable;
+
+render_mode blend_add;
+uniform sampler2D ior_gradient : repeat_disable;
+
+
+//render_mode unshaded;
+
+void vertex() {
+	// billboarding
+	MODELVIEW_MATRIX = mat4(
+		vec4(vec3(1.,0.,0.),MODELVIEW_MATRIX[0][3]),
+		vec4(vec3(0.,1.,0.),MODELVIEW_MATRIX[1][3]),
+		vec4(vec3(0.,0.,1.),MODELVIEW_MATRIX[2][3]),
+		MODELVIEW_MATRIX[3]);
+}
+
+void fragment() {
+	vec2 uv = (UV - 0.5) * 2.;
+	
+	if (dot(uv,uv) > 0.95) discard;
+	uv = uv * 0.5 + 0.5;
+	NORMAL = normalize(texture(sphere_flat, uv).xyz-0.5);
+	
+	ROUGHNESS = 0.05;
+	
+	float a = 1. - dot(NORMAL, vec3(0, 0., 1.));
+	
+	ALBEDO = texture(ior_gradient, vec2(a*1.1, 0.5)).rgb * 2.;
+	
+	//ALBEDO = NORMAL;
+	
+}
+"
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j17vq"]
+gradient = ExtResource("2_j17vq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j17vq"]
+render_priority = 0
+shader = SubResource("Shader_kr1dr")
+shader_parameter/sphere_flat = ExtResource("5_j17vq")
+shader_parameter/ior_gradient = SubResource("GradientTexture1D_j17vq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_txkkf"]
+material = SubResource("ShaderMaterial_j17vq")
+size = Vector2(2, 2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_kr1dr"]
 
@@ -18,7 +69,6 @@ render_priority = 0
 shader = ExtResource("1_nua46")
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_nua46")
 shader_parameter/smoothness = 0.16999999620016
-shader_parameter/speed = 17.83
 shader_parameter/seed = 0.0
 shader_parameter/vertex_speed = 0.1
 shader_parameter/displacement_strength = 0.21562502
@@ -26,14 +76,20 @@ shader_parameter/lane_color = Color(0.47918278, 0.47918278, 0.47918278, 1)
 shader_parameter/ior_gradient = SubResource("GradientTexture1D_txkkf")
 
 [node name="Note" type="MeshInstance3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-mesh = SubResource("SphereMesh_kr1dr")
-surface_material_override/0 = SubResource("ShaderMaterial_rr1s0")
+custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
+mesh = SubResource("QuadMesh_txkkf")
 script = ExtResource("1_doocs")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0, 0)
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0, 1)
 text = "♪"
 font_size = 100
 script = ExtResource("3_rr1s0")
+
+[node name="e" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_kr1dr")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_rr1s0")

@@ -99,8 +99,8 @@ func read_extras_and_apply(thing: Object):
 	# the meta of a object, in a dictionary named extras
 	if thing.has_meta(&"extras"):
 		var extras: Dictionary = thing.get_meta(&"extras")
-
-		for extra: String in extras:
+		
+		for extra: String in extras.keys():
 			if extra.begins_with("import_"):
 				var property = extra.substr(7)
 				thing[property] = convert_to_better_format(extras[extra])
