@@ -4,4 +4,11 @@
 
 [resource]
 script = ExtResource("1_tfayr")
+audio_location = &"uid://cac2xk8rhwig1"
+artists = "Patrick de Arteaga"
+title = "Lord Mavras"
+bpm = Dictionary[float, float]({
+0.0: 80.0
+})
+song_length = 78.0
 metadata/_custom_type_script = "uid://cx126bxq1i3do"
