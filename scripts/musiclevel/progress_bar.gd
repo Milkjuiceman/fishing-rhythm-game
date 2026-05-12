@@ -12,7 +12,7 @@ class_name CatchProgressBar
 var catchable: bool = false
 var prev_hit: int = 0
 var prev_miss: int = 0
-var reel_ins: int = 1
+var reel_ins: int = 2
 
 ## Prevents catch_failed from firing more than once per level.
 var _failed: bool = false
