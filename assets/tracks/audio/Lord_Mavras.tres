@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://bk17wast3ou37"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_tfayr"]
+
+[resource]
+script = ExtResource("1_tfayr")
+audio_location = &"uid://cac2xk8rhwig1"
+artists = "Patrick de Arteaga"
+title = "Lord Mavras"
+bpm = Dictionary[float, float]({
+0.0: 80.0
+})
+song_length = 78.0
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

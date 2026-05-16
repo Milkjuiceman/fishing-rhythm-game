@@ -1,5 +1,5 @@
 extends Node
-class_name Referee 
+class_name TutorialReferee 
 ## Coordinates rhythm gameplay flow, input processing, and catch logic.
 ## Acts as the central controller between MusicPlayer, InputHit, RhythmJudge, and UI elements.
 ## Author: Tyler Schauermann
@@ -21,10 +21,12 @@ class_name Referee
 @export var input_hit: InputHit
 
 # Handles note judgment and scoring
-@export var judge: RhythmJudge
+@export var judge: TutorialJudge
 
 # UI prompt for catching fish
-@export var enter_prompt: Label3D
+@export var enter_prompt: Label
+
+@export var tutorial: Tutorial
 
 # Speed multiplier for note movement
 @export var note_speed: float = 10.
@@ -34,6 +36,10 @@ var input_offset: float = 0.0
 
 # Audio timing offset adjustment
 var audio_offset: float = 0.0
+
+var flag: bool = false
+
+var timer
 
 # ========================================
 # SIGNALS
@@ -54,6 +60,10 @@ signal fish_failed
 # Emitted when player fails to reel in during window
 signal reel_in_denied
 
+signal timer_activated
+
+signal timer_done
+
 # ========================================
 # RUNTIME STATE VARIABLES
 # ========================================
@@ -67,6 +77,7 @@ var catchable := false
 
 # Initializes referee and connects systems
 func _ready() -> void:
+	tutorial.tutorial_step_completed.connect(_on_tutorial_step_completed)
 	print("[Referee] _ready — enter_prompt: ", enter_prompt)
 	# Add to Rhythm group so PauseMenu can find us
 	add_to_group("Rhythm")
@@ -110,7 +121,7 @@ func _process(delta: float) -> void:
 	input_hit.fill_frame_state(frame_state)
 	judge.process_and_fill_frame_state(frame_state)
 	process.emit(frame_state)
-	if catchable and frame_state.enter_key_press:
+	if catchable and frame_state.enter_key_press and flag:
 		print("[Referee] Enter pressed — catchable: true, calling _catch_fish")
 		var performance = _calculate_performance()
 		var rarity = _performance_to_rarity(performance)
@@ -139,14 +150,18 @@ func _on_catch_available() -> void:
 	else:
 		print("[Referee] WARNING: enter_prompt is null")
 	
-	await get_tree().create_timer(5.0).timeout
+	timer = get_tree().create_timer(5.0)
+	emit_signal("timer_activated")
+	await timer.timeout
+	emit_signal("timer_done")
+	
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
 	judge.scorecard.score += 1000
 
 # Disables catch window and hides prompt
 func _on_catch_unavailable() -> void:
-	print("[Referee] _on_catch_unavailable fired")
+	print("[Referee] _on_catch_unavailable fired ", Time.get_time_string_from_system())
 	catchable = false
 	if enter_prompt:
 		enter_prompt.visible = false
@@ -179,3 +194,8 @@ func _catch_fish(performance: float, rarity: String) -> void:
 	if enter_prompt:
 		enter_prompt.visible = false
 	fish_caught.emit(performance, rarity)
+
+func _on_tutorial_step_completed(step_id: int) -> void:
+	if step_id == 7:
+		await get_tree().create_timer(1.0).timeout
+		flag = true
