@@ -17,6 +17,7 @@ func _init():
 func _setup_level() -> void:
 	print("Delta area loading...")
 	# Set water_surface_y to match your delta water mesh height
+	GameStateManager.water_surface_y = -6.488
 
 func _post_spawn_setup() -> void:
 	print("Delta area ready! Player spawned.")

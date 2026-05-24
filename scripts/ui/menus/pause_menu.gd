@@ -30,24 +30,13 @@ const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.ts
 # Settings panel references
 @onready var master_slider: HSlider = %MasterSlider
 @onready var master_value: Label = %MasterValue
-@onready var music_slider: HSlider = %MusicSlider
-@onready var music_value: Label = %MusicValue
-@onready var sfx_slider: HSlider = %SFXSlider
-@onready var sfx_value: Label = %SFXValue
-@onready var mouse_sens_slider: HSlider = %MouseSensSlider
-@onready var mouse_sens_value: Label = %MouseSensValue
 
-# Rhythm offset sliders
-@onready var audio_offset_slider: HSlider = %AudioOffsetSlider
+# Rhythm offset values (display only - sliders removed)
 @onready var audio_offset_value: Label = %AudioOffsetValue
-@onready var input_offset_slider: HSlider = %InputOffsetSlider
 @onready var input_offset_value: Label = %InputOffsetValue
 
-# Checkbox references
-@onready var fullscreen_check: CheckBox = %FullscreenCheck
+# VSyncCheck is still present
 @onready var vsync_check: CheckBox = %VSyncCheck
-@onready var show_fps_check: CheckBox = %ShowFPSCheck
-@onready var invert_y_check: CheckBox = %InvertYCheck
 
 # Back button
 @onready var back_button: Button = %BackButton
@@ -88,12 +77,23 @@ func _ready() -> void:
 	_apply_settings_to_game()
 
 
+func _can_pause() -> bool:
+	# Disable pause on the main menu
+	var scene = get_tree().current_scene
+	if scene and scene.scene_file_path == TITLE_SCREEN_PATH:
+		return false
+	# Disable pause during rhythm levels (Referee adds itself to "Rhythm" group)
+	if get_tree().get_nodes_in_group("Rhythm").size() > 0:
+		return false
+	return true
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	# Toggle pause with Tab key
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_TAB:
 		if is_in_settings:
 			_on_back_pressed()
-		else:
+		elif _can_pause():
 			toggle_pause()
 		get_viewport().set_input_as_handled()
 
@@ -339,22 +339,6 @@ func _on_master_volume_changed(value: float) -> void:
 	_apply_volume("Master", value)
 
 
-func _on_music_volume_changed(value: float) -> void:
-	settings["music_volume"] = value
-	if music_value:
-		music_value.text = "%d%%" % int(value)
-	settings_changed.emit("music_volume", value)
-	_apply_volume("Overworld Music", value)
-
-
-func _on_sfx_volume_changed(value: float) -> void:
-	settings["sfx_volume"] = value
-	if sfx_value:
-		sfx_value.text = "%d%%" % int(value)
-	settings_changed.emit("sfx_volume", value)
-	_apply_volume("SFX", value)
-
-
 func _apply_volume(bus_name: String, value: float) -> void:
 	var bus_idx := AudioServer.get_bus_index(bus_name)
 	if bus_idx >= 0:
@@ -368,16 +352,6 @@ func _apply_volume(bus_name: String, value: float) -> void:
 
 # --- Display Settings ---
 
-func _on_fullscreen_toggled(button_pressed: bool) -> void:
-	settings["fullscreen"] = button_pressed
-	settings_changed.emit("fullscreen", button_pressed)
-	
-	if button_pressed:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-
 func _on_vsync_toggled(button_pressed: bool) -> void:
 	settings["vsync"] = button_pressed
 	settings_changed.emit("vsync", button_pressed)
@@ -388,30 +362,12 @@ func _on_vsync_toggled(button_pressed: bool) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 
-func _on_show_fps_toggled(button_pressed: bool) -> void:
-	settings["show_fps"] = button_pressed
-	settings_changed.emit("show_fps", button_pressed)
-
-
-# --- Gameplay Settings ---
-
-func _on_mouse_sens_changed(value: float) -> void:
-	settings["mouse_sensitivity"] = value
-	if mouse_sens_value:
-		mouse_sens_value.text = "%.1f" % value
-	settings_changed.emit("mouse_sensitivity", value)
-
-
-func _on_invert_y_toggled(button_pressed: bool) -> void:
-	settings["invert_y"] = button_pressed
-	settings_changed.emit("invert_y", button_pressed)
-
-
 # --- Rhythm Calibration Settings ---
 
 func _on_audio_offset_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/musiclevel/calibrator.tscn")
 	get_tree().paused = false
+	is_paused = false  # Fix: reset so pause menu works correctly on return
 	_hide_all()
 	var overworld_music = get_node_or_null("/root/OverworldMusic")
 	if overworld_music and overworld_music.is_playing():
@@ -421,10 +377,12 @@ func _on_audio_offset_button_pressed() -> void:
 func _on_input_offset_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/musiclevel/input_calibrator.tscn")
 	get_tree().paused = false
+	is_paused = false  # Fix: reset so pause menu works correctly on return
 	_hide_all()
 	var overworld_music = get_node_or_null("/root/OverworldMusic")
 	if overworld_music and overworld_music.is_playing():
 		overworld_music.stop()
+
 
 func _on_audio_offset_changed(value: float) -> void:
 	settings["audio_offset"] = value
@@ -518,41 +476,12 @@ func _apply_settings_to_ui() -> void:
 	if master_value:
 		master_value.text = "%d%%" % int(settings["master_volume"])
 	
-	if music_slider:
-		music_slider.value = settings["music_volume"]
-	if music_value:
-		music_value.text = "%d%%" % int(settings["music_volume"])
-	
-	if sfx_slider:
-		sfx_slider.value = settings["sfx_volume"]
-	if sfx_value:
-		sfx_value.text = "%d%%" % int(settings["sfx_volume"])
-	
-	if fullscreen_check:
-		fullscreen_check.button_pressed = settings["fullscreen"]
-	
 	if vsync_check:
 		vsync_check.button_pressed = settings["vsync"]
 	
-	if show_fps_check:
-		show_fps_check.button_pressed = settings["show_fps"]
-	
-	if mouse_sens_slider:
-		mouse_sens_slider.value = settings["mouse_sensitivity"]
-	if mouse_sens_value:
-		mouse_sens_value.text = "%.1f" % settings["mouse_sensitivity"]
-	
-	if invert_y_check:
-		invert_y_check.button_pressed = settings["invert_y"]
-	
-	# Rhythm calibration settings
-	if audio_offset_slider:
-		audio_offset_slider.value = settings["audio_offset"]
+	# Rhythm calibration display
 	if audio_offset_value:
 		audio_offset_value.text = "%.0f ms" % (settings["audio_offset"] * 1000.0)
-	
-	if input_offset_slider:
-		input_offset_slider.value = settings["input_offset"]
 	if input_offset_value:
 		input_offset_value.text = "%.0f ms" % (settings["input_offset"] * 1000.0)
 

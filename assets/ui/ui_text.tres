@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://dokp163ntldau"]
 
-[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="1_jwkqv"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="1_jwkqv"]
 
 [resource]
 default_font = ExtResource("1_jwkqv")
-default_font_size = 28
-Label/colors/font_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
+default_font_size = 33
+Label/colors/font_color = Color(0, 0, 0, 1)

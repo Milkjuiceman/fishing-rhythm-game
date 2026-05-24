@@ -25,6 +25,7 @@ DialogueManager="*res://scripts/autoload/dialoguemanager.gd"
 OverworldMusic="*res://scenes/audio/overworld_music.tscn"
 ScreenTransition="*res://scenes/ui/transitions/screen_transition.tscn"
 FishRegistry="*res://scripts/autoload/fish_registry.gd"
+RhythmPauseMenu="*res://scenes/ui/rhythm_pause_menu.tscn"
 
 [display]
 

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="6_gir7d"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_id4fg"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="8_kdwto"]
-[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="9_nw3hw"]
+[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/rippling water/RipplingWater.tscn" id="9_nw3hw"]
 [ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="10_elvrq"]
 [ext_resource type="Script" uid="uid://dixxyak75vh4d" path="res://scripts/environment/boss_spawner.gd" id="11_nw3hw"]
 [ext_resource type="PackedScene" uid="uid://eis3rojm45tt" path="res://scenes/overworld/BossFish1.tscn" id="12_elvrq"]

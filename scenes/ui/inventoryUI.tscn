@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl2v6k16pm4qj"]
+[gd_scene load_steps=7 format=3 uid="uid://bl2v6k16pm4qj"]
 
 [ext_resource type="Script" uid="uid://b7pgfa2xmpyxe" path="res://scripts/ui/inventory_ui.gd" id="1_rhi3t"]
-[ext_resource type="Texture2D" uid="uid://cw7hcsde6h6r1" path="res://assets/ui/quest_ui.png" id="2_adsss"]
-[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="2_qm7a1"]
+[ext_resource type="Texture2D" uid="uid://dvcpvnsgixgq2" path="res://assets/ui/quest_screen.png" id="2_2uoai"]
+[ext_resource type="Texture2D" uid="uid://be2344bpdjhps" path="res://assets/ui/fish_main_menu.png" id="2_768pl"]
 [ext_resource type="Theme" uid="uid://dokp163ntldau" path="res://assets/ui/ui_text.tres" id="3_2uoai"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_768pl"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qm7a1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_768pl"]
+bg_color = Color(0.26666668, 0.26666668, 0.26666668, 0.39215687)
 
 [node name="inventory_ui" type="CanvasLayer"]
 script = ExtResource("1_rhi3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -189
+position = Vector2(430, 107)
+scale = Vector2(1.78125, 1.6875)
+texture = ExtResource("2_768pl")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -189
+position = Vector2(52, 107)
+scale = Vector2(1.78125, 1.6875)
+texture = ExtResource("2_768pl")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 1
@@ -17,26 +32,15 @@ anchor_left = 0.846
 anchor_top = 0.708
 anchor_right = 0.846
 anchor_bottom = 0.708
-offset_left = -307.08002
-offset_top = -258.16
-offset_right = -18.080017
-offset_bottom = 50.839996
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qm7a1")
+offset_left = -406.08002
+offset_top = -191.16
+offset_right = 73.91998
+offset_bottom = 78.84
+theme_override_styles/panel = SubResource("StyleBoxFlat_768pl")
 
-[node name="Label" type="Label" parent="Panel"]
-z_index = 1
-layout_mode = 0
-offset_left = 30.04
-offset_top = 19.0
-offset_right = 251.04001
-offset_bottom = 51.000015
-theme_override_colors/font_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
-theme_override_fonts/font = ExtResource("2_qm7a1")
-theme_override_font_sizes/font_size = 32
-text = "fish inventory:"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="Sprite2D3" type="Sprite2D" parent="Panel"]
+position = Vector2(239, 135)
+texture = ExtResource("2_2uoai")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 z_index = 1
@@ -46,17 +50,34 @@ anchor_left = 0.47800002
 anchor_top = 0.48900002
 anchor_right = 0.47800002
 anchor_bottom = 0.48900002
-offset_left = -128.142
-offset_top = -98.10101
-offset_right = 129.858
-offset_bottom = 149.89899
+offset_left = -141.48401
+offset_top = -47.541
+offset_right = 166.51599
+offset_bottom = 105.459
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
 z_index = 1
 layout_mode = 2
 theme = ExtResource("3_2uoai")
 
-[node name="Sprite2D" type="Sprite2D" parent="Panel"]
-position = Vector2(144.99998, 157)
-scale = Vector2(-0.63, -0.689)
-texture = ExtResource("2_adsss")
+[node name="Label" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -102.5
+offset_right = 172.0
+offset_bottom = -69.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_768pl")
+theme_override_font_sizes/font_size = 32
+text = "Fish Inventory:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

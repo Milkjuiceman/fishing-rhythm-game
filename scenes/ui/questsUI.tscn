@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dybxaunemw6te"]
+[gd_scene load_steps=7 format=3 uid="uid://dybxaunemw6te"]
 
 [ext_resource type="Script" uid="uid://b2ot1plk7dc8y" path="res://scripts/ui/quests_ui.gd" id="1_04sey"]
-[ext_resource type="FontFile" uid="uid://kkxis2yalkvh" path="res://assets/fonts/pirkkala.ttf" id="2_5uvqt"]
 [ext_resource type="Theme" uid="uid://dokp163ntldau" path="res://assets/ui/ui_text.tres" id="2_6isj2"]
-[ext_resource type="Texture2D" uid="uid://cw7hcsde6h6r1" path="res://assets/ui/quest_ui.png" id="3_6isj2"]
+[ext_resource type="Texture2D" uid="uid://dvcpvnsgixgq2" path="res://assets/ui/quest_screen.png" id="2_rlou3"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_brd74"]
+[ext_resource type="Texture2D" uid="uid://bceakx5tyckqt" path="res://assets/ui/player_quest_icon.png" id="5_rlou3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlou3"]
+bg_color = Color(0.26666668, 0.26666668, 0.26666668, 0.39215687)
 
 [node name="quests_ui" type="CanvasLayer"]
 script = ExtResource("1_04sey")
@@ -16,32 +20,22 @@ anchor_top = 0.312
 anchor_right = 0.201
 anchor_bottom = 0.312
 offset_left = -96.48
-offset_top = -82.240005
+offset_top = -84.240005
 offset_right = 384.52
-offset_bottom = 225.76
+offset_bottom = 184.76
+theme_override_styles/panel = SubResource("StyleBoxFlat_rlou3")
 
-[node name="Label" type="Label" parent="Panel"]
-z_index = 1
-layout_mode = 0
-offset_left = 71.0
-offset_top = 44.0
-offset_right = 415.0
-offset_bottom = 76.000015
-theme_override_colors/font_color = Color(0.27450982, 0.050980393, 0.0627451, 1)
-theme_override_fonts/font = ExtResource("2_5uvqt")
-theme_override_font_sizes/font_size = 32
-text = "current objectives:"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+[node name="Sprite2D2" type="Sprite2D" parent="Panel"]
+position = Vector2(239, 134)
+texture = ExtResource("2_rlou3")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 clip_contents = true
 layout_mode = 0
-offset_left = 15.0
-offset_top = 51.0
-offset_right = 359.0
-offset_bottom = 310.0
+offset_left = 91.0
+offset_top = 87.0
+offset_right = 391.0
+offset_bottom = 232.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 z_index = 1
@@ -49,7 +43,34 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("2_6isj2")
 
+[node name="Label" type="Label" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -103.5
+offset_right = 170.5
+offset_bottom = -70.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_brd74")
+theme_override_font_sizes/font_size = 32
+text = "Current Ouest:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(236.00002, 142.00002)
-scale = Vector2(0.96979165, 0.54375005)
-texture = ExtResource("3_6isj2")
+position = Vector2(41, 47)
+scale = Vector2(1.3593749, 1.4062502)
+texture = ExtResource("5_rlou3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(436, 47)
+scale = Vector2(1.3593749, 1.4062502)
+texture = ExtResource("5_rlou3")
