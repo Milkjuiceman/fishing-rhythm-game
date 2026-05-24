@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://bqfil55wxphri"]
 
 [ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_ts71x"]
-[ext_resource type="Resource" path="res://assets/tracks/audio/rgmp_03.tres" id="2_rijou"]
+[ext_resource type="Resource" uid="uid://icjrpk1th5dm" path="res://assets/tracks/audio/rgmp_03.tres" id="2_rijou"]
 
 [resource]
 script = ExtResource("1_ts71x")

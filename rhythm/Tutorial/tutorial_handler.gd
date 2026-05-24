@@ -13,7 +13,7 @@ signal tutorial_step_completed(step_id: int)
 func _ready():
 	var rhythm_level = get_parent()
 	var judge = rhythm_level.get_node("Judge")
-	var progress = rhythm_level.get_node("Camera3D/HUD/ProgressBar")
+	var progress = rhythm_level.get_node("HUD/ProgressBar")
 	judge.action_required.connect(on_action_required)
 	rhythm_level.action_required.connect(on_action_required)
 	progress.action_required.connect(on_action_required)
