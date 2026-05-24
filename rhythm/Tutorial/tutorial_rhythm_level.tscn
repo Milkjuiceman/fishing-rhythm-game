@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://unnwtwhhk2i1" path="res://rhythm/Tutorial/tutorial_note_holder.gd" id="13_0jivc"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="13_jr6wu"]
 [ext_resource type="Resource" uid="uid://c63unmsa5c575" path="res://assets/tracks/charts/Lyonesse.tres" id="14_c6poa"]
-[ext_resource type="Script" uid="uid://b5shoky24jrh2" path="res://scripts/musiclevel/reel_in_timer.gd" id="15_5gfdg"]
+[ext_resource type="Script" uid="uid://b5shoky24jrh2" path="res://rhythm/Tutorial/tutorial_reel_in_timer.gd" id="15_5gfdg"]
 [ext_resource type="Shader" uid="uid://v2d123tk32df" path="res://scenes/musiclevel/note.gdshader" id="15_7oycu"]
 [ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="16_e7wy6"]
 [ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="17_vohrj"]

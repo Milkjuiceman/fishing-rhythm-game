@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@export var referee: Referee
+@export var referee: TutorialReferee
 
 func _ready() -> void:
 	set_process(false)
