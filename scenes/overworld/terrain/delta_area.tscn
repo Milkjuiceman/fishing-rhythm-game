@@ -112,7 +112,7 @@ shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://0sijhong0njw"
 
-[node name="Water" type="MeshInstance3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="." groups=["water_body"]]
 transform = Transform3D(4.644, 0, 0, 0, 1.105, 0, 0, 0, 4.474, 485.96295, -12, 507.2519)
 mesh = SubResource("BoxMesh_ot664")
 skeleton = NodePath("../Tutorial_HTerrain")

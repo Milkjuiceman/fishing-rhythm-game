@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbnav5dlmcc3r"]
+[gd_scene load_steps=5 format=3 uid="uid://bbnav5dlmcc3r"]
 
 [ext_resource type="PackedScene" uid="uid://bqtchbdaktqi" path="res://assets/models/docks/Port_FirstAge_Level3.gltf" id="1_8spdn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a762l"]
-size = Vector3(1.8138428, 1.1170654, 1.87146)
+size = Vector3(1.8138428, 1.1170654, 0.94732666)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8spdn"]
+size = Vector3(0.6665039, 1, 1.4815063)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kgn0q"]
+size = Vector3(0.51379395, 1, 1.4348755)
 
 [node name="Dock" type="StaticBody3D" groups=["interactable_objects"]]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
@@ -11,5 +17,13 @@ transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 [node name="Port_FirstAge_Level32" parent="." instance=ExtResource("1_8spdn")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24652109, 0.058532733, -0.11160473)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24652109, 0.058532733, -0.57367134)
 shape = SubResource("BoxShape3D_a762l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33959976, 0, 0.11386112)
+shape = SubResource("BoxShape3D_8spdn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9135135, 0, 0.13052373)
+shape = SubResource("BoxShape3D_kgn0q")

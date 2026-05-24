@@ -3,7 +3,7 @@ class_name Referee
 ## Coordinates rhythm gameplay flow, input processing, and catch logic.
 ## Acts as the central controller between MusicPlayer, InputHit, RhythmJudge, and UI elements.
 ## Author: Tyler Schauermann
-## Date of last update: 04/22/2026
+## Date of last update: 05/23/2026
 ## Designed to orchestrate modular rhythm systems and allow reuse across different
 ## levels by swapping charts, judges, and reward logic.
 
@@ -120,11 +120,19 @@ func _process(delta: float) -> void:
 # SONG COMPLETION & CATCH STATE
 # ========================================
 
-# Handles end-of-song catch
+# Handles end-of-song — if the player never reeled in, it's a loss
 func _on_judge_song_finished() -> void:
-	var performance = _calculate_performance()
-	var rarity = _performance_to_rarity(performance)
-	_catch_fish(performance, rarity)
+	# If the fish was already caught mid-song, _catch_fish already fired — do nothing
+	if not catchable and judge.progress_bar._failed:
+		return  # bar-depletion loss already handled
+	if catchable:
+		# Catch window was open at song end but player didn't reel in — counts as a loss
+		print_debug("[Referee] song ended with open catch window — player didn't reel in, failing")
+		_catch_fish(0.0, "")
+	else:
+		# Song ended and bar never filled — also a loss
+		print_debug("[Referee] song ended, bar never filled — failing")
+		_catch_fish(0.0, "")
 
 # Handles bar depletion — uses same exit path as win but with empty rarity (no fish awarded)
 func _on_catch_failed() -> void:

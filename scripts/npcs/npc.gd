@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 		_set_indicator(false)
 		if Input.is_action_just_pressed("ui_accept"):
 			get_viewport().set_input_as_handled()
-			if DialogueManager.dialogueUI.typing:
+			if is_instance_valid(DialogueManager.dialogueUI) and DialogueManager.dialogueUI.typing:
 				DialogueManager.dialogueUI.finish_line()
 			else:
 				DialogueManager.next_line(npc_id)
@@ -58,8 +58,9 @@ func _process(_delta: float) -> void:
 		_update_indicator()
 		return
 
-	_set_prompt(DialogueManager.has_new_lines(npc_id))
-	if is_instance_valid(DialogueManager.dialogueUI):
+	var has_lines = DialogueManager.has_new_lines(npc_id)
+	_set_prompt(has_lines)
+	if not has_lines and is_instance_valid(DialogueManager.dialogueUI):
 		DialogueManager.dialogueUI.hide_interaction_prompt()
 
 	if Input.is_action_just_pressed("ui_accept"):
@@ -79,7 +80,8 @@ func _on_body_entered(body: Node3D) -> void:
 	player_in_range = true
 	if not DialogueManager.active and DialogueManager.has_new_lines(npc_id):
 		_set_prompt(true)
-		DialogueManager.dialogueUI.show_interaction_prompt()
+		if is_instance_valid(DialogueManager.dialogueUI):
+			DialogueManager.dialogueUI.show_interaction_prompt()
 
 func _on_body_exited(body: Node3D) -> void:
 	if not body is Boat:
@@ -90,6 +92,7 @@ func _on_body_exited(body: Node3D) -> void:
 	player_in_range = false
 	_set_prompt(false)
 	if not DialogueManager.active:
+		if is_instance_valid(DialogueManager.dialogueUI):
 			DialogueManager.dialogueUI.hide_interaction_prompt()
 
 # ========================================
