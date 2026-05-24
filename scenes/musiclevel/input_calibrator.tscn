@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b3n8ncreh5tnv" path="res://rhythm/Calibrator/inp_calibrator_judge.gd" id="1_7aa2x"]
 [ext_resource type="Script" uid="uid://blus24585mtcv" path="res://rhythm/Calibrator/inp_calibrator_camera_3d.gd" id="1_egldv"]
+[ext_resource type="Environment" uid="uid://mon27fkwe2bi" path="res://assets/underwater/underwater_enviorment.tres" id="1_q5awc"]
 [ext_resource type="Script" uid="uid://iidt4y041xtj" path="res://scripts/musiclevel/input_offset.gd" id="3_mn25f"]
 [ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_ilub1"]
-
-[sub_resource type="Environment" id="Environment_kfcll"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfcll"]
 
@@ -25,7 +24,7 @@ size = Vector3(2, 1, 1)
 [node name="InputCalibrator" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_kfcll")
+environment = ExtResource("1_q5awc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.469, 0)

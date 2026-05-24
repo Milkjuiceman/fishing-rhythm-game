@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d1t7itcndlne6"]
+
+[sub_resource type="Shader" id="Shader_r64kc"]
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled;
+uniform sampler2D t;
+void fragment() {
+	float shift = sin(TIME+NODE_POSITION_WORLD.z*10.)*0.5+0.5;
+	float uv_x = (mix(0., shift, clamp(UV.x, 0., 0.5)) + mix(0., 1.-shift, clamp(UV.x-0.5, 0., 0.5))) * 2.;
+	vec4 sample = texture(t, vec2(uv_x, 0.5));
+	float fade = 1. - clamp(NODE_POSITION_VIEW.z/4. + 1., 0., 1.);
+	ALBEDO = sample.rgb;
+	ALPHA = sample.a * fade;
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_o2s8w"]
+offsets = PackedFloat32Array(0, 0.27896994, 0.57796854, 0.81545067, 1)
+colors = PackedColorArray(0.086399995, 0.21488002, 0.32, 0, 0.0768, 0.16191997, 0.32, 0.2, 0.041599996, 0.13903998, 0.32, 0.2, 0.035699997, 0.053606644, 0.17, 0.12941177, 0.11980003, 0.096, 0.3, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_txgvl"]
+gradient = SubResource("Gradient_o2s8w")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_r64kc")
+shader_parameter/t = SubResource("GradientTexture1D_txgvl")
