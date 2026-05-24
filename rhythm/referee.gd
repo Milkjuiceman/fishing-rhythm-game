@@ -153,7 +153,6 @@ func _on_catch_available() -> void:
 	_on_catch_unavailable()
 	emit_signal("reel_in_denied")
 	judge.scorecard.score += 1000
-	judge.scorecard.score += 1000
 
 # Disables catch window and hides prompt
 func _on_catch_unavailable() -> void:
