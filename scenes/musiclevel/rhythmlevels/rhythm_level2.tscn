@@ -1388,6 +1388,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
 [connection signal="process" from="MusicPlayer/Referee" to="HUD/Hits" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="HUD/Score" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="HUD/RatingArea" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
 [connection signal="reel_in_denied" from="MusicPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_reel_in_denied"]
 
 [editable path="Note_Holder/Note"]
