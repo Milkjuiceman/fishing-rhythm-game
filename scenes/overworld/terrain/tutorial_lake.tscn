@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bi6o6djkqu4lh" path="res://assets/textures/Green/Plastic017A_2K-JPG_NormalDX.jpg" id="10_6j6pq"]
 [ext_resource type="Texture2D" uid="uid://d3magfa2dvagf" path="res://assets/textures/DarkGreen/Plastic009_2K-JPG_NormalDX.jpg" id="12_hsd36"]
 [ext_resource type="Script" uid="uid://bde0rll8mi6h" path="res://scripts/components/scene_transition_trigger.gd" id="14_owl05"]
-[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/RipplingWater.tscn" id="15_yq4oh"]
+[ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/rippling water/RipplingWater.tscn" id="15_yq4oh"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="16_5oyo0"]
 [ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="17_cdd1p"]
 [ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="17_ywjkn"]

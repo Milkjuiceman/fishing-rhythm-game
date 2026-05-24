@@ -2736,9 +2736,10 @@ uv1_scale = Vector3(3.725, 3.725, 3.725)
 [sub_resource type="PlaneMesh" id="PlaneMesh_5f5ri"]
 material = SubResource("StandardMaterial3D_ui0py")
 
-[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee")]
+[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("1_7antu")
 referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
 fish_id = "fish_2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

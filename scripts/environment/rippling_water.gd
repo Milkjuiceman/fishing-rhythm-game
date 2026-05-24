@@ -22,6 +22,8 @@ const DEFAULT_RHYTHM_SCENE_PATH: String = "res://scenes/musiclevel/rhythm_level.
 @export var water_height: float = 0.0
 @export_range(0.1, 10.0) var respawn_delay: float = 2.0
 
+@onready var fish_rotation_root: Node3D = $fish_rotation_root
+
 # ========================================
 # RUNTIME STATE
 # ========================================
@@ -119,3 +121,6 @@ func respawn_at_random_location() -> void:
 	visible = true
 	monitoring = true
 	monitorable = true
+
+func _rotate_fish_randomly():
+	fish_rotation_root.rotation.y = randf() * TAU

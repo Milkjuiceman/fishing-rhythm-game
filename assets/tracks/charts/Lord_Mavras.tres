@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Chart" load_steps=3 format=3 uid="uid://djkm7j8104v2e"]
+
+[ext_resource type="Script" uid="uid://bpno8ianhdobd" path="res://rhythm/chart_resource.gd" id="1_b6ksu"]
+[ext_resource type="Resource" uid="uid://bk17wast3ou37" path="res://assets/tracks/audio/Lord_Mavras.tres" id="2_absn2"]
+
+[resource]
+script = ExtResource("1_b6ksu")
+track = ExtResource("2_absn2")
+note_timings = PackedFloat64Array(0, 78)
+note_column = PackedInt64Array(0, 0)
+metadata/_custom_type_script = "uid://bpno8ianhdobd"
