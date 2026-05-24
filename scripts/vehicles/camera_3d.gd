@@ -8,6 +8,12 @@ extends Camera3D
 
 @onready var scenery: Node3D = $"../scenery"
 
+
+func _ready() -> void:
+	position = Vector3(0, 4, 2)
+	rotation = Vector3(-0.66, -PI, 0)
+
+
 # ========================================
 # CAMERA UPDATE
 # ========================================

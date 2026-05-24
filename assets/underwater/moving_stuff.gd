@@ -33,7 +33,7 @@ func move_foward(limit: float):
 		#print(child.position.z)
 		#print(child.position.z)
 		if child.position.z < limit:
-			print("lt")
+			#print("lt")
 			var offset_from_rung = fmod(child.position.z, distance_to_move)
 			child.position.z = next_rung + offset_from_rung
 		else:

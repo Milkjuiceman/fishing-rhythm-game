@@ -189,7 +189,7 @@ offset_bottom = 611.0
 text = "press enter to reel it in early! "
 
 [node name="Camera3D" parent="." instance=ExtResource("11_bcrdd")]
-transform = Transform3D(-1, 1.16168955e-07, -1.1851591e-07, 1.7744664e-08, 0.7848954, 0.6196283, 1.6500417e-07, 0.6196283, -0.7848954, 0, 3.675, 2.275)
+transform = Transform3D(-1, -5.3822838e-08, 6.889009e-08, 0, 0.7880108, 0.6156615, -8.742278e-08, 0.6156615, -0.7880108, 0, 4, 2)
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("10_0qy5r")
