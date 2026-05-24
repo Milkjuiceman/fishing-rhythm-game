@@ -183,16 +183,22 @@ grow_vertical = 2
 
 [node name="EnterPrompt" type="Label" parent="HUD"]
 visible = false
-offset_left = 812.0
-offset_top = 587.0
-offset_right = 1039.0
-offset_bottom = 611.0
-text = "press enter to reel it in early! "
+offset_left = 269.0
+offset_top = 89.0
+offset_right = 473.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("6_e5laj")
+text = "Hit enter to reel it in early! "
 
 [node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
 layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = 1.0
+offset_top = 17.0
+offset_right = 197.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("6_e5laj")
+max_value = 5.0
+show_percentage = false
 script = ExtResource("11_ycq5j")
 referee = NodePath("../../../MusicPlayer/Referee")
 
@@ -1398,6 +1404,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
 [connection signal="process" from="MusicPlayer/Referee" to="HUD/RatingArea" method="_on_referee_process"]
 [connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
 [connection signal="reel_in_denied" from="MusicPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_reel_in_denied"]
+[connection signal="timer_activated" from="MusicPlayer/Referee" to="HUD/EnterPrompt/ReelInTimer" method="_on_referee_timer_activated"]
+[connection signal="timer_done" from="MusicPlayer/Referee" to="HUD/EnterPrompt/ReelInTimer" method="_on_referee_timer_done"]
 
 [editable path="Note_Holder/Note"]
 [editable path="Note_Holder/@MeshInstance3D@26235"]
