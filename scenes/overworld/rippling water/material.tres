@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bk83x62bcoy24"]
+
+[ext_resource type="Shader" uid="uid://bu6leqyeehhvd" path="res://shaders/RipplingWater.gdshader" id="1_pupv4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pupv4")
+shader_parameter/color = Color(0.1, 0.2, 0.3, 1)
+shader_parameter/ripple_speed = 0.725
+shader_parameter/ripple_frequency = 0.25
+shader_parameter/ripple_width = 0.64
+shader_parameter/ripple_size = 0.25

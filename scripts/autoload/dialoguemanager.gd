@@ -1,121 +1,206 @@
 extends Node
 ## DialogueManager Autoload
-## Manages all NPC dialogue, quest assignment, and conversation flow.
+## Drives all NPC conversation and quest progression.
+##
+## DESIGN:
+##   - One quest active at a time (QuestManager.current_quest_id).
+##   - Talking to an NPC triggers a single decision:
+##       1. Is this the NPC the current quest is pointing to?
+##       2. If it's a talk quest  -> show intro lines, advance quest at end.
+##       3. If it's a catch quest -> check fish count now; if done show
+##          completion lines and advance; otherwise show "keep trying" lines.
+##   - No per-NPC state machines. No intro_seen flags. No quest order lists.
+##   - Every NPC has: pre_lines (wrong time), complete_lines (quest done here),
+##     waiting_lines (right NPC, quest not done yet), idle_lines (all done).
 ## Author: Tyler Schauermann
-## Date of last update: 04/22/2026
+## Date of last update: 05/23/2026
+
+signal quest_started(quest_id)  # kept for RipplingWaterSpawner compatibility
 
 var dialogueUI: dialogue_ui
 var active: bool = false
 var current_npc: String = ""
 
-var npc_states: Dictionary = {}
-
-signal quest_started(quest_id)
-
-# ========================================
-# QUEST ORDER PER NPC
-# ========================================
-
-var npc_quest_order: Dictionary = {
-	"dock_npc": ["tutorial_01", "tutorial_02"],
-	"lake_npc":  ["tutorial_03", "tutorial_04"],
-}
+# Lines currently being shown + cursor
+var _lines: Array = []
+var _line_idx: int = 0
+var _advance_on_end: bool = false  # if true, call QuestManager.advance_quest() when lines finish
 
 # ========================================
 # DIALOGUE DATA
 # ========================================
-# Special keys:
-#   "pre_quest"  — shown when the player talks to this NPC before it's their turn
-#                  in the story. Does NOT assign a quest or advance state.
-#   ""           — real intro, shown once when it IS this NPC's turn
-#   "quest_id"   — { "ACTIVE": [], "COMPLETED": [], "TURNEDIN": [] }
-#   "idle"       — cycling lines shown after all quests are complete
+# Per NPC:
+#   "pre"      — shown when player talks to this NPC but it's not their turn yet
+#   "complete" — shown when the player has satisfied the quest and talks to this NPC
+#                (advance_quest fires at the end of these lines)
+#   "waiting"  — shown when it IS this NPC's turn but the condition isn't met yet
+#   "idle"     — shown after this NPC's quest chain is finished
 
-var dialogue_data: Dictionary = {
+var dialogue: Dictionary = {
 
-	# ── DOCK NPC ──────────────────────────────────────────────────────────
-	"dock_npc": {
-		"": [
-			"Congrats on your first boat! Have you gotten a hang of steering that old thing yet?",
-			"I know it's nothing special, but it's good enough to keep you afloat in calm waters like these.",
-			"But you're not here for a sailing lesson, though, huh? I promised to show you how to use that old fishing rod!",
-			"We'll start with something easy - just try to catch a fish in this here lake.",
-			"Talk to me again once you've gotten something to show for it!"
+	# ── GRAMPS (dock NPC, tutorial lake) ──────────────────────────────────
+	"gramps": {
+		"pre": [
+			"Welcome! Go get your bearings first.",
 		],
-		"tutorial_01": {
-			"ACTIVE": [
-				"Just look for signs of life in the water, like some unusual ripples or sparkles.",
-				"Don't sail off too far, now!"
-			],
-			"COMPLETED": [
-				"Nice job! You're a natural.",
-				"The fish up here are cleaner than the ones downstream, but they tend to be much smaller.",
-			],
-			"TURNEDIN": [
-				"There's another fisher on the far side of the lake — been out here longer than I have.",
-				"Head over and introduce yourself. Could be worth your while."
-			]
-		},
-		"tutorial_02": {
-			"ACTIVE": [
-				"They're on the other side of the lake. Go say hello!",
-			],
-			# tutorial_02 completes when the player reaches lake_npc,
-			# so dock_npc won't show COMPLETED. Leave empty.
-			"COMPLETED": [],
-			"TURNEDIN": [
-				"Good to hear you two met. Now get back out there!"
-			]
-		},
+		"complete": [
+			# q1 complete: player talked to Gramps. Give q2 (catch 1 fish).
+			"Congrats on your first boat! She's nothing fancy but she'll keep you afloat.",
+			"Here, take this old rod. Try to hook something in this lake.",
+			"Come back once you've caught your first fish!",
+		],
+		"waiting": [
+			# q2 active, player back before catching anything
+			"No fish yet? The water's full of them — keep looking for ripples!",
+		],
+		"q2_done": [
+			# q2 complete: player caught 1 fish and talks to Gramps. Give q3 (talk to Paul).
+			"Ha! Look at that! Not bad for a first timer.",
+			"The fish here are small but clean. There's another fisher across the lake — name's Paul.",
+			"Head over and introduce yourself. He's been out here a lot longer than me.",
+		],
 		"idle": [
-			"The fish up here aren't going anywhere. Get back out there!",
-			"Keep at it. The more you fish, the better you'll get.",
-			"You're doing great. Don't let me down!"
-		]
+			"The fish aren't going anywhere. Get back out there!",
+			"Keep at it. You're doing great.",
+		],
 	},
 
-	# ── LAKE NPC ──────────────────────────────────────────────────────────
-	"lake_npc": {
-		# Shown when the player reaches lake_npc BEFORE tutorial_01 is turned in.
-		# Does not assign a quest — just friendly deflection.
-		"pre_quest": [
-			"Oh! Didn't expect a visitor.",
-			"You look new. Go get your bearings first — there's a fisher back at the dock who can help.",
-			"Come find me once you've caught something."
+	# ── PAUL (lake NPC, tutorial lake) ────────────────────────────────────
+	"paul": {
+		"pre": [
+			"Oh! Didn't expect a visitor. Go talk to the fisher at the dock first.",
 		],
-		# Shown the first time the player arrives AFTER tutorial_01 is turned in.
-		"": [
-			"Oh! A newcomer. Don't see many fresh faces out this way.",
-			"The name's Fen. I've been fishing these waters since before you were born.",
-			"You've caught one already? Not bad. But one fish doesn't make a fisher.",
-			"Tell you what — come back once you've caught all three kinds that live in this lake.",
-			"Then we'll talk about what lies beyond."
+		"complete": [
+			# q3 complete: player talked to Paul. Give q4 (catch 3 fish).
+			"Well hello there! Gramps sent you? Good man.",
+			"This lake has three different kinds of fish hiding in it.",
+			"Catch one of each and come back — I want to see what you're made of.",
 		],
-		"tutorial_03": {
-			"ACTIVE": [
-				"Still working on it? The three fish are out there — keep at it.",
-				"Each spot on the water hides something different. Stay patient."
-			],
-			"COMPLETED": [
-				"Well I'll be. You actually did it.",
-				"Three different fish from the same lake. You've got a good feel for this.",
-				"There's a whole world past this lake. Head downstream when you're ready.",
-			],
-			"TURNEDIN": [
-				"The current will take you there. Good luck out there."
-			]
-		},
-		"tutorial_04": {
-			"ACTIVE": [
-				"What are you still doing here? Head downstream — the next area is waiting.",
-			],
-			"COMPLETED": [],
-			"TURNEDIN": []
-		},
+		"waiting": [
+			"Still working on it? Three different fish — you can do it.",
+			"Each ripple spot hides something different. Stay patient.",
+		],
+		"q4_done": [
+			# q4 complete: player caught 3 fish and talks to Paul. Give q5 (talk to Tim).
+			"Three different fish! You've got a real feel for this.",
+			"There's a whole world past this lake. Head to the lake intersection.",
+			"Find Tim at the main dock there. Tell him I sent you.",
+		],
 		"idle": [
-			"Still here? The downstream waters are calling.",
-			"You've earned your place out there. Don't keep them waiting.",
-		]
+			"The intersection is waiting. Don't keep Tim standing around.",
+		],
+	},
+
+	# ── TIM (main dock NPC, lake intersection) ─────────────────────────────
+	"tim": {
+		"pre": [
+			"Welcome to the intersection. Come back when Paul sends you.",
+		],
+		"complete": [
+			# q5 complete: player talked to Tim. Give q6 (catch 3 fish in intersection).
+			"Paul's student, huh? Welcome to the intersection.",
+			"These waters branch off everywhere from here. Good place to sharpen your skills.",
+			"Catch three fish in this area first — then we'll talk about what's further out.",
+		],
+		"waiting": [
+			"Three fish from this area. You're close — keep going.",
+		],
+		"q6_done": [
+			# q6 complete: player caught 3 intersection fish and talks to Tim. Give q7 (talk to Chad).
+			"Three from the intersection — solid work.",
+			"Head over to the market dock. There's a guy named Chad there.",
+			"He knows the outer areas better than anyone. Go introduce yourself.",
+		],
+		"idle": [
+			"Chad's waiting at the market dock. Don't hang around here too long.",
+		],
+	},
+
+	# ── CHAD (market dock NPC, lake intersection) ──────────────────────────
+	"chad": {
+		"pre": [
+			"Market dock's busy. Come back when Tim sends you.",
+		],
+		"complete": [
+			# q7 complete: player talked to Chad. Give q8 (catch 3 fish in Fjord).
+			"Tim's recommendation? Alright, I'll give you a shot.",
+			"The fjord area north of here has fish you won't find anywhere else.",
+			"Catch three of them. Then we'll see about the real challenge.",
+		],
+		"waiting": [
+			"Three fjord fish. The fjord area is north — get moving.",
+		],
+		"q8_done": [
+			# q8 complete: player caught 3 fjord fish, talks to Chad. Give q9 (beat fjord boss).
+			"Three fjord fish? Not bad. But there's something bigger out there.",
+			"The fjord boss. It's been terrorising those waters for years.",
+			"Take it down and come back.",
+		],
+		"q9_done": [
+			# q9 complete: fjord boss caught, talks to Chad. Give q10 (talk to George).
+			"You actually did it. The fjord boss.",
+			"There's more. Head to the small dock — talk to George.",
+			"He'll point you toward the mine area.",
+		],
+		"idle": [
+			"George is at the small dock. Go find him.",
+		],
+	},
+
+	# ── GEORGE (small dock NPC, lake intersection) ─────────────────────────
+	"george": {
+		"pre": [
+			"Not my turn yet. Chad will send you my way eventually.",
+		],
+		"complete": [
+			# q10 complete: player talked to George. Give q11 (catch 3 mine fish).
+			"Chad told me about you. You handled the fjord well.",
+			"The mine area is different. Darker. The fish there are tough.",
+			"Catch three of them and report back.",
+		],
+		"waiting": [
+			"Three fish from the mine area. It's not easy down there.",
+		],
+		"q11_done": [
+			# q11 complete: 3 mine fish caught, talks to George. Give q12 (beat mine boss).
+			"Three mine fish. You're tougher than you look.",
+			"There's a boss in those depths. Old and mean.",
+			"Bring it down. I'll be here.",
+		],
+		"q12_done": [
+			# q12 complete: mine boss caught, talks to George. Give q13 (talk to Bob).
+			"The mine boss. Incredible.",
+			"You're ready for the delta. Head there and find Bob — he's at Tower 1 dock.",
+			"Good luck. You'll need it.",
+		],
+		"idle": [
+			"Bob is at Tower 1 dock in the delta. Go find him.",
+		],
+	},
+
+	# ── BOB (Tower 1 dock NPC, delta area) ─────────────────────────────────
+	"bob": {
+		"pre": [
+			"The delta isn't ready for you yet. Come back when George sends you.",
+		],
+		"complete": [
+			# q13 complete: player talked to Bob. Give q14 (catch 3 delta fish).
+			"George's fisher. Word travels fast out here.",
+			"The delta is the end of the line — nothing past it but open ocean.",
+			"Catch three delta fish first. Show me you belong here.",
+		],
+		"waiting": [
+			"Three delta fish. The delta has secrets — keep exploring.",
+		],
+		"q14_done": [
+			# q14 complete: 3 delta fish caught, talks to Bob. Give q15 (final boss).
+			"Three delta fish. You've come a long way.",
+			"There's one more. The final boss lurks in the deepest part of the delta.",
+			"This is what everything has been leading to. Go end it.",
+		],
+		"idle": [
+			"The final boss is out there. You know what to do.",
+		],
 	},
 }
 
@@ -124,213 +209,181 @@ var dialogue_data: Dictionary = {
 # ========================================
 
 func _ready() -> void:
-	QuestManager.quest_started.connect(_on_quest_started)
+	pass
 
-func _on_quest_started(quest_id: String) -> void:
-	for npc_id in npc_quest_order.keys():
-		if quest_id in npc_quest_order[npc_id]:
-			_init_npc(npc_id)
-			var state = npc_states[npc_id]
-			if state["quest_id"] == "":
-				state["quest_id"] = quest_id
-
-# ========================================
-# NPC STATE
-# ========================================
-
-func _init_npc(npc_id: String):
-	if not npc_states.has(npc_id):
-		npc_states[npc_id] = {
-			"quest_id": "",
-			"line_index": 0,
-			"current_lines": [],
-			"completed_quests": [],
-			"idle_index": 0,
-			"all_done": false,
-			"intro_seen": false  # true once the "" intro block has fully played
-		}
-
-func register_ui(ui):
+func register_ui(ui) -> void:
 	dialogueUI = ui
 
 # ========================================
-# DIALOGUE FLOW
+# START DIALOGUE
 # ========================================
 
-func start_dialogue(npc_id: String):
-	_init_npc(npc_id)
+func start_dialogue(npc_id: String) -> void:
 	current_npc = npc_id
-	var state = npc_states[npc_id]
+	_advance_on_end = false
 
-	if state["all_done"]:
-		_show_idle_line(npc_id)
+	var npc = dialogue.get(npc_id, null)
+	if npc == null:
+		push_warning("[DialogueManager] No dialogue data for NPC: %s" % npc_id)
 		return
 
-	# ── lake_npc gate ─────────────────────────────────────────────────────
-	# If tutorial_01 isn't turned in yet, show deflection lines — no quest.
-	if npc_id == "lake_npc" and not state["intro_seen"]:
-		var t01 = QuestManager.get_quest_state("tutorial_01")
-		if t01 != QuestManager.states.TURNEDIN:
-			_show_lines(npc_id, dialogue_data["lake_npc"].get("pre_quest", []))
-			return
-	# ─────────────────────────────────────────────────────────────────────
+	var q = QuestManager.current_quest_id
+	var quest = QuestManager.quests.get(q, null)
 
-	var quest_id = state["quest_id"]
-	var lines = get_dialogue(npc_id, quest_id)
-	if lines.size() > 0:
-		_show_lines(npc_id, lines)
+	print_debug("[Dialogue] Talking to: %s | current quest: %s | type: %s" % [
+		npc_id, q, quest.get("type", "?") if quest else "none"
+	])
 
-func _show_lines(npc_id: String, lines: Array) -> void:
+	var lines: Array = []
+
+	# ── Is this NPC relevant to the current quest? ────────────────────────
+	if QuestManager.is_talk_quest_for(npc_id):
+		# Current quest is "talk to this NPC" — talking completes it.
+		lines = npc.get("complete", [])
+		_advance_on_end = true
+		print_debug("[Dialogue] Talk quest complete — will advance after lines")
+
+	elif quest != null and quest["type"] in ["catch_in_area", "catch_fish", "final"]:
+		# Current quest is a catch quest — check if done.
+		# First find which NPC is supposed to receive this quest's turn-in.
+		# Turn-in NPCs are the NPC whose "complete" block gives the NEXT quest.
+		# We identify the turn-in NPC as the NPC assigned to the *previous* talk quest.
+		var turn_in_npc = _get_turn_in_npc_for(q)
+		if turn_in_npc == npc_id:
+			if QuestManager.is_current_quest_complete():
+				# Done — show completion lines and advance.
+				lines = _get_completion_lines(npc_id, q)
+				_advance_on_end = true
+				print_debug("[Dialogue] Catch quest complete — will advance after lines")
+			else:
+				# Not done yet — show encouragement.
+				lines = npc.get("waiting", [])
+				var caught = QuestManager.count_area_fish(quest.get("check_area", "")) if quest["type"] == "catch_in_area" else 0
+				print_debug("[Dialogue] Catch quest not complete — %d/%d in %s" % [caught, quest.get("goal", 1), quest.get("check_area", quest.get("fish_id", "?"))])
+		else:
+			# Wrong NPC for this quest.
+			lines = npc.get("pre", [])
+			print_debug("[Dialogue] Wrong NPC for current quest — showing pre lines")
+
+	else:
+		# This NPC's quest chain is in the past or future.
+		var npc_quest_idx = _get_last_quest_idx_for(npc_id)
+		var current_idx   = QuestManager.QUEST_ORDER.find(q)
+		if npc_quest_idx != -1 and current_idx > npc_quest_idx:
+			lines = npc.get("idle", [])
+			print_debug("[Dialogue] NPC quest chain complete — showing idle")
+		else:
+			lines = npc.get("pre", [])
+			print_debug("[Dialogue] NPC not yet relevant — showing pre")
+
 	if lines.is_empty():
+		print_debug("[Dialogue] WARNING: no lines resolved for %s" % npc_id)
+		end_dialogue()
 		return
-	var state = npc_states[npc_id]
-	state["line_index"] = 0
-	state["current_lines"] = lines
+
+	print_debug("[Dialogue] Showing %d lines. First: \"%s\"" % [lines.size(), lines[0]])
+	_lines = lines
+	_line_idx = 0
+	active = true
 	if dialogueUI:
 		dialogueUI.show_dialogue(lines, npc_id)
-		active = true
 
-func next_line(npc_id: String):
-	_init_npc(npc_id)
-	var state = npc_states[npc_id]
+# ========================================
+# LINE PROGRESSION
+# ========================================
 
-	if state["current_lines"].is_empty():
+func next_line(_npc_id: String) -> void:
+	if _lines.is_empty():
 		return
-
-	state["line_index"] += 1
-	var lines = state["current_lines"]
-
-	if state["line_index"] < lines.size():
-		dialogueUI.show_line(lines[state["line_index"]])
+	_line_idx += 1
+	if _line_idx < _lines.size():
+		dialogueUI.show_line(_lines[_line_idx])
 		return
-
-	# End of current line set — figure out what comes next.
-
-	# ── lake_npc pre_quest ending ─────────────────────────────────────────
-	# Just finished the deflection block — close without assigning anything.
-	if npc_id == "lake_npc" and not state["intro_seen"]:
-		var t01 = QuestManager.get_quest_state("tutorial_01")
-		if t01 != QuestManager.states.TURNEDIN:
-			end_dialogue()
-			return
-	# ─────────────────────────────────────────────────────────────────────
-
-	var quest_id = state["quest_id"]
-	var quest_state = QuestManager.get_quest_state(quest_id)
-
-	# Mark intro seen once the "" block finishes
-	if not state["intro_seen"] and quest_id == "":
-		state["intro_seen"] = true
-
-	if quest_state == QuestManager.states.COMPLETED:
-		QuestManager.turn_in_quest(quest_id)
-		state["completed_quests"].append(quest_id)
-
-		var turnin_lines = get_dialogue(npc_id, quest_id)
-		if turnin_lines.size() > 0:
-			state["line_index"] = 0
-			state["current_lines"] = turnin_lines
-			dialogueUI.show_line(turnin_lines[0])
-			return
-
-	# ── talking to lake_npc completes tutorial_02 ─────────────────────────
-	if npc_id == "lake_npc":
-		var t02_state = QuestManager.get_quest_state("tutorial_02")
-		if t02_state == QuestManager.states.ACTIVE:
-			QuestManager.update_progress("tutorial_02", 1)
-	# ─────────────────────────────────────────────────────────────────────
-
-	_assign_next_quest(npc_id)
+	# Reached end of lines.
+	if _advance_on_end:
+		QuestManager.advance_quest()
+		# Emit legacy signal so RipplingWaterSpawners wake up.
+		emit_signal("quest_started", QuestManager.current_quest_id)
 	end_dialogue()
 
-func end_dialogue():
+func end_dialogue() -> void:
 	active = false
 	current_npc = ""
-	for state in npc_states.values():
-		state["current_lines"] = []
-		state["line_index"] = 0
+	_lines = []
+	_line_idx = 0
+	_advance_on_end = false
 	if dialogueUI:
 		dialogueUI.hide_dialogue()
-
-# ========================================
-# IDLE DIALOGUE
-# ========================================
-
-func _show_idle_line(npc_id: String) -> void:
-	var state = npc_states[npc_id]
-	var npc_dialogue = dialogue_data.get(npc_id, {})
-	var idle_lines: Array = npc_dialogue.get("idle", [])
-	if idle_lines.is_empty():
-		return
-	var idx = state["idle_index"] % idle_lines.size()
-	state["idle_index"] += 1
-	if dialogueUI:
-		active = true
-		dialogueUI.show_dialogue([idle_lines[idx]], npc_id)
-
-# ========================================
-# DIALOGUE LOOKUP
-# ========================================
-
-func get_dialogue(npc_id: String, quest_id: String = "") -> Array:
-	if not dialogue_data.has(npc_id):
-		return []
-	var npc_dialogue = dialogue_data[npc_id]
-	if quest_id == "":
-		return npc_dialogue.get("", [])
-	var quest_state = QuestManager.get_quest_state(quest_id)
-	if npc_dialogue.has(quest_id):
-		var qdata = npc_dialogue[quest_id]
-		match quest_state:
-			QuestManager.states.ACTIVE:
-				return qdata.get("ACTIVE", [])
-			QuestManager.states.COMPLETED:
-				return qdata.get("COMPLETED", [])
-			QuestManager.states.TURNEDIN:
-				return qdata.get("TURNEDIN", [])
-	return []
-
-# ========================================
-# QUEST ASSIGNMENT
-# ========================================
-
-func _assign_next_quest(npc_id: String):
-	_init_npc(npc_id)
-	var state = npc_states[npc_id]
-	var completed = state["completed_quests"]
-	var quest_list = npc_quest_order.get(npc_id, [])
-	for qid in quest_list:
-		if not completed.has(qid):
-			state["quest_id"] = qid
-			emit_signal("quest_started", qid)
-			return
-	state["quest_id"] = ""
-	state["all_done"] = true
 
 # ========================================
 # HELPERS
 # ========================================
 
+## Returns true if this NPC has something new to say right now.
+## Used by npc.gd to show/hide the exclamation indicator.
 func has_new_lines(npc_id: String) -> bool:
-	_init_npc(npc_id)
-	var state = npc_states[npc_id]
+	var q = QuestManager.current_quest_id
+	var quest = QuestManager.quests.get(q, null)
 
-	if state["all_done"]:
-		var npc_dialogue = dialogue_data.get(npc_id, {})
-		return not npc_dialogue.get("idle", []).is_empty()
-
-	# lake_npc: always has something (pre_quest or real lines)
-	if npc_id == "lake_npc" and not state["intro_seen"]:
+	# Talk quest pointing at this NPC — always has something.
+	if QuestManager.is_talk_quest_for(npc_id):
 		return true
 
-	var quest_id = state["quest_id"]
-	var lines = get_dialogue(npc_id, quest_id)
-	return lines.size() > 0
+	# Catch quest — only the turn-in NPC has new lines when complete.
+	if quest != null and quest["type"] in ["catch_in_area", "catch_fish", "final"]:
+		var turn_in = _get_turn_in_npc_for(q)
+		if turn_in == npc_id:
+			return QuestManager.is_current_quest_complete()
+
+	# Past quest chain — idle lines.
+	var npc_last_idx = _get_last_quest_idx_for(npc_id)
+	var current_idx  = QuestManager.QUEST_ORDER.find(q)
+	if npc_last_idx != -1 and current_idx > npc_last_idx:
+		var npc = dialogue.get(npc_id, {})
+		return not npc.get("idle", []).is_empty()
+
+	return false
+
+## For a catch quest, returns the npc_id of the NPC the player should return to.
+## This is the NPC from the most recent "talk" quest before this one.
+func _get_turn_in_npc_for(quest_id: String) -> String:
+	var idx = QuestManager.QUEST_ORDER.find(quest_id)
+	if idx <= 0:
+		return ""
+	# Walk backwards to find the last talk quest
+	for i in range(idx - 1, -1, -1):
+		var qid = QuestManager.QUEST_ORDER[i]
+		var q = QuestManager.quests.get(qid, null)
+		if q != null and q["type"] == "talk":
+			return q.get("npc", "")
+	return ""
+
+## Returns the completion lines for an NPC at the end of a given catch quest.
+## Some NPCs handle multiple catch quests (e.g. chad handles q8 and q9),
+## so we look up a specific keyed block if it exists, otherwise fall back to "complete".
+func _get_completion_lines(npc_id: String, quest_id: String) -> Array:
+	var npc = dialogue.get(npc_id, {})
+	# Try a quest-specific key first, e.g. "q8_done"
+	var specific_key = "%s_done" % quest_id
+	if npc.has(specific_key):
+		return npc[specific_key]
+	return npc.get("complete", [])
+
+## Returns the index in QUEST_ORDER of the last quest this NPC is involved in.
+## Used to detect when an NPC's arc is complete and they should show idle lines.
+func _get_last_quest_idx_for(npc_id: String) -> int:
+	var last := -1
+	for i in range(QuestManager.QUEST_ORDER.size()):
+		var qid = QuestManager.QUEST_ORDER[i]
+		var q = QuestManager.quests.get(qid, null)
+		if q == null:
+			continue
+		if q.get("npc", "") == npc_id:
+			last = i
+		# Also include catch quests whose turn-in NPC is this NPC
+		if q["type"] in ["catch_in_area", "catch_fish"] and _get_turn_in_npc_for(qid) == npc_id:
+			last = i
+	return last
 
 func get_current_lines() -> Array:
-	if current_npc == "":
-		return []
-	var state = npc_states.get(current_npc, null)
-	if state and state.has("current_lines"):
-		return state["current_lines"]
-	return []
+	return _lines

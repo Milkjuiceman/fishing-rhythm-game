@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy554gw5su3gw"]
+
+[ext_resource type="PackedScene" uid="uid://0lcy317jyxut" path="res://assets/models/town/Ruined_Building_1.gltf" id="1_o0xbu"]
+
+[node name="Mineshaft" type="Node3D"]
+
+[node name="Ruined_Building_1" parent="." instance=ExtResource("1_o0xbu")]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)

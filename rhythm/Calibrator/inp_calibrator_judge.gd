@@ -55,4 +55,34 @@ func finish_calibration() -> void:
 	
 	emit_signal("calibration_finished", median)
 	
-	get_tree().paused = true
+	_return_to_previous_scene()
+	
+	
+func _return_to_previous_scene() -> void:
+	await get_tree().create_timer(2.0).timeout
+	print("[Judge] _return_to_previous_scene called")
+	var return_scene = _get_return_scene()
+	print("[Judge] Returning to: ", return_scene)
+
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+	if overworld_music:
+		overworld_music.on_exit_rhythm_level()
+
+	ScreenTransition.transition_to_scene(return_scene)
+
+
+func _get_return_scene() -> String:
+	if not has_node("/root/GameStateManager"):
+		push_warning("[Judge] GameStateManager not found - using fallback")
+		return "res://scenes/overworld/terrain/tutorial_lake.tscn"
+
+	var gsm = get_node("/root/GameStateManager")
+
+	if gsm.pending_transition.has("from_scene") and gsm.pending_transition.from_scene != "":
+		return gsm.pending_transition.from_scene
+
+	if gsm.current_save_data.current_scene_path != "":
+		return gsm.current_save_data.current_scene_path
+
+	push_warning("[Judge] No return scene found - using tutorial lake")
+	return "res://scenes/overworld/terrain/tutorial_lake.tscn"

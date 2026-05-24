@@ -1,17 +1,10 @@
 extends Node
 ## FishRegistry Autoload
 ## Single source of truth for every fish in the game.
-## Each fish maps to a unique rhythm level scene.
-## Add new fish here as new rhythm levels are created.
-## Author: [your name]
-## Date of last update: 04/22/2026
-
-# ========================================
-# DATA STRUCTURES
-# ========================================
-
-## Represents a single fish entry in the encyclopedia.
 ## fish_id must exactly match what RhythmLevelEntry.fish_id is set to in the Inspector.
+## Author: Tyler Schauermann
+## Date of last update: 05/23/2026
+
 const FISH_DATA: Array = [
 	{
 		"area": "Tutorial Lake",
@@ -21,24 +14,43 @@ const FISH_DATA: Array = [
 			{ "fish_id": "fish_3", "display_name": "Fish 3" },
 		]
 	},
-	# Add new areas here as the game expands, e.g.:
-	# {
-	# 	"area": "Fjord",
-	# 	"fish": [
-	# 		{ "fish_id": "fjord_fish_1", "display_name": "Icy Perch" },
-	# 	]
-	# },
+	{
+		"area": "Intersection Area",
+		"fish": [
+			{ "fish_id": "intersection_fish_1", "display_name": "Intersection Fish 1" },
+			{ "fish_id": "intersection_fish_2", "display_name": "Intersection Fish 2" },
+			{ "fish_id": "intersection_fish_3", "display_name": "Intersection Fish 3" },
+		]
+	},
+	{
+		"area": "Fjord Area",
+		"fish": [
+			{ "fish_id": "fjord_fish_1", "display_name": "Fjord Fish 1" },
+			{ "fish_id": "fjord_fish_2", "display_name": "Fjord Fish 2" },
+			{ "fish_id": "fjord_fish_3", "display_name": "Fjord Fish 3" },
+		]
+	},
+	{
+		"area": "Mine Area",
+		"fish": [
+			{ "fish_id": "mine_fish_1", "display_name": "Mine Fish 1" },
+			{ "fish_id": "mine_fish_2", "display_name": "Mine Fish 2" },
+			{ "fish_id": "mine_fish_3", "display_name": "Mine Fish 3" },
+		]
+	},
+	{
+		"area": "Delta Area",
+		"fish": [
+			{ "fish_id": "delta_fish_1", "display_name": "Delta Fish 1" },
+			{ "fish_id": "delta_fish_2", "display_name": "Delta Fish 2" },
+			{ "fish_id": "delta_fish_3", "display_name": "Delta Fish 3" },
+		]
+	},
 ]
 
-# ========================================
-# PUBLIC API
-# ========================================
-
-## Returns the full FISH_DATA array (all areas and their fish).
 func get_all_areas() -> Array:
 	return FISH_DATA
 
-## Returns the display name for a given fish_id, or the fish_id itself if not found.
 func get_display_name(fish_id: String) -> String:
 	for area in FISH_DATA:
 		for fish in area["fish"]:
@@ -46,7 +58,6 @@ func get_display_name(fish_id: String) -> String:
 				return fish["display_name"]
 	return fish_id
 
-## Returns the area name for a given fish_id, or "" if not found.
 func get_area(fish_id: String) -> String:
 	for area in FISH_DATA:
 		for fish in area["fish"]:

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://c1jcsovfeunsp"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_vj5dk"]
+
+[resource]
+script = ExtResource("1_vj5dk")
+audio_location = &"res://assets/tracks/audio/paulyudin-happy.ogg"
+artists = "Paul Yudin"
+title = "Happy"
+bpm = Dictionary[float, float]({
+0.0: 100.0
+})
+song_length = 88.84
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

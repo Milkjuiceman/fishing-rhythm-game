@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Track" load_steps=2 format=3 uid="uid://ce3fvouq21e7n"]
+
+[ext_resource type="Script" uid="uid://cx126bxq1i3do" path="res://rhythm/track_resource.gd" id="1_0ldra"]
+
+[resource]
+script = ExtResource("1_0ldra")
+audio_location = &"res://assets/tracks/audio/rgmp_06.ogg"
+title = "RGMP track 6"
+bpm = Dictionary[float, float]({
+0.0: 104.0
+})
+song_length = 44.0
+metadata/_custom_type_script = "uid://cx126bxq1i3do"

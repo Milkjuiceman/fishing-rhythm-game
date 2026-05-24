@@ -10,15 +10,15 @@ func _on_referee_process(frame_state: FrameState) -> void:
 	
 	if combo >= 40:
 		multiplier = 8
-		new_scale = Vector2(5, 5)
+		new_scale = Vector2(2, 2)
 	elif combo >= 20:
 		multiplier = 4
-		new_scale = Vector2(4, 4)
+		new_scale = Vector2(1.75, 1.75)
 	elif combo >= 10:
 		multiplier = 2
-		new_scale = Vector2(3, 3)
+		new_scale = Vector2(1.25, 1.25)
 	else:
 		multiplier = 1
-		new_scale = Vector2(2, 2)
+		new_scale = Vector2(1, 1)
 	scale = new_scale
 	text = str("X", multiplier)

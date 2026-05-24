@@ -18,7 +18,7 @@ func _ready():
 	QuestManager.quest_started.connect(_on_quest_assigned)
 	QuestManager.active_quests_changed.connect(_update_indicator)
 	_set_prompt(false)
-	_set_indicator(true)
+	_set_indicator(DialogueManager.has_new_lines(npc_id))
 
 # ========================================
 # HELPERS — safe setters
@@ -59,7 +59,8 @@ func _process(_delta: float) -> void:
 		return
 
 	_set_prompt(DialogueManager.has_new_lines(npc_id))
-	DialogueManager.dialogueUI.hide_interaction_prompt()
+	if is_instance_valid(DialogueManager.dialogueUI):
+		DialogueManager.dialogueUI.hide_interaction_prompt()
 
 	if Input.is_action_just_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()
@@ -95,12 +96,9 @@ func _on_body_exited(body: Node3D) -> void:
 # QUEST EVENTS
 # ========================================
 
-func _on_quest_assigned(qid) -> void:
-	if qid != quest_id:
-		return
-	var quest = QuestManager.get_quest(qid)
-	if quest and questPopup != null:
-		questPopup.show_quest(quest.title, quest.description)
+func _on_quest_assigned(_qid) -> void:
+	# Refresh indicator whenever any quest advances.
+	_update_indicator()
 
 func _update_indicator(_active_quests = null):
-	_set_indicator(false)
+	_set_indicator(DialogueManager.has_new_lines(npc_id))

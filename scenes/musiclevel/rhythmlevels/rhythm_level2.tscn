@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://kc6gxomlw3bs"]
+[gd_scene load_steps=479 format=3 uid="uid://kc6gxomlw3bs"]
 
 [ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_7antu"]
 [ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_vxtj7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="7_5drfm"]
 [ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_ui0py"]
 [ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_5f5ri"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="8_o2s8w"]
 [ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="10_0qy5r"]
 [ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="10_51vgy"]
 [ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_dd7r5"]
@@ -61,9 +62,10 @@ material = SubResource("ShaderMaterial_ad4hl")
 material = ExtResource("18_o2s8w")
 size = Vector2(9.025, 40.94)
 
-[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee")]
+[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
 script = ExtResource("1_7antu")
 referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
 fish_id = "fish_2"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
@@ -97,14 +99,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -176.0
-offset_top = -48.0
-offset_right = 177.0
-offset_bottom = -21.0
+offset_left = -130.0
+offset_top = -25.0
+offset_right = 130.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("8_o2s8w")
 value = 50.0
 allow_lesser = true
 script = ExtResource("7_ui0py")
@@ -113,12 +116,12 @@ script = ExtResource("7_ui0py")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -151.0
-offset_top = 15.000002
-offset_right = -100.66675
-offset_bottom = 38.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -29.666748
+offset_bottom = 43.0
 grow_horizontal = 0
-scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("8_o2s8w")
 text = "X1"
 script = ExtResource("8_5f5ri")
 
@@ -134,9 +137,11 @@ MISSES:
 COMBO:"
 
 [node name="Score" type="Label" parent="Camera3D/HUD"]
-offset_right = 63.0
-offset_bottom = 23.333
-scale = Vector2(3, 3)
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 56.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("8_o2s8w")
 text = "SCORE:"
 script = ExtResource("10_51vgy")
 
@@ -156,10 +161,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -124.0
-offset_right = -322.0
-offset_bottom = 176.0
+offset_left = -405.0
+offset_top = -80.0
+offset_right = -320.0
+offset_bottom = 80.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -169,9 +174,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 300.0
-offset_top = -124.0
-offset_right = 350.0
-offset_bottom = 176.0
+offset_top = -80.0
+offset_right = 385.0
+offset_bottom = 80.0
 grow_vertical = 2
 
 [node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
@@ -190,6 +195,7 @@ mesh = SubResource("QuadMesh_ayyjd")
 [node name="Label3D" type="Label3D" parent="Camera3D/Column2"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
 text = "F"
+font = ExtResource("8_o2s8w")
 font_size = 100
 
 [node name="Column3" type="MeshInstance3D" parent="Camera3D"]
@@ -200,6 +206,7 @@ mesh = SubResource("QuadMesh_ui0py")
 [node name="Label3D" type="Label3D" parent="Camera3D/Column3"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
 text = "D"
+font = ExtResource("8_o2s8w")
 font_size = 100
 
 [node name="Column0" type="MeshInstance3D" parent="Camera3D"]
@@ -210,6 +217,7 @@ mesh = SubResource("QuadMesh_5f5ri")
 [node name="Label3D" type="Label3D" parent="Camera3D/Column0"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
 text = "K"
+font = ExtResource("8_o2s8w")
 font_size = 100
 
 [node name="Column1" type="MeshInstance3D" parent="Camera3D"]
@@ -220,6 +228,7 @@ mesh = SubResource("QuadMesh_1e7ru")
 [node name="Label3D" type="Label3D" parent="Camera3D/Column1"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
 text = "J"
+font = ExtResource("8_o2s8w")
 font_size = 100
 
 [node name="caustics" type="MeshInstance3D" parent="Camera3D"]

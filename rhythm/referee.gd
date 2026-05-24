@@ -1,4 +1,5 @@
-class_name Referee extends Node
+extends Node
+class_name Referee 
 ## Coordinates rhythm gameplay flow, input processing, and catch logic.
 ## Acts as the central controller between MusicPlayer, InputHit, RhythmJudge, and UI elements.
 ## Author: Tyler Schauermann

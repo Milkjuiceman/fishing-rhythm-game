@@ -42,6 +42,7 @@ func show_rating(text: String, side: int):
 
 
 func animate_and_destroy(label: Label):
+	label.add_theme_font_override("font", load("res://assets/fonts/PixelOperator-Bold.ttf"))
 	var tween = create_tween()
 	
 	tween.tween_property(label, "modulate:a", 0.0, 0.6)
