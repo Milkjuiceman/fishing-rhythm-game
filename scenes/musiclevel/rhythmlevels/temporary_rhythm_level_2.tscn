@@ -72,6 +72,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_v6oj6")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3945201
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -84,6 +85,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_nm25w")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.59390587
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -96,6 +98,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_wjn2f")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9975773
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -108,6 +111,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ulahp")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7739348
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -120,6 +124,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_i82kn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.583855
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -132,6 +137,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_s07b1")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6186474
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -144,6 +150,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_urqrq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.058795746
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -156,6 +163,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_b0akv")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9611876
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -168,6 +176,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_yt7gi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9721329
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -180,6 +189,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xqw41")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.22628933
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -192,6 +202,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ibfi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.16308124
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -204,6 +215,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8dkdm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.69206643
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -216,6 +228,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_eg2k8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8416595
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -228,6 +241,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_eivy4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.10268957
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -240,6 +254,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_4waja")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.0063250894
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -252,6 +267,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cay0x")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.29283556
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -264,6 +280,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xces6")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.24580173
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -276,6 +293,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_bkwen")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.42803106
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -288,6 +306,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_kkr3u")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.2582436
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -300,6 +319,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xpw8k")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3928716
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -312,6 +332,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tvv73")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9815123
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -324,6 +345,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_q8bs7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.22166145
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -336,6 +358,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cqxqc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.26718125
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -348,6 +371,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xa547")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.99107295
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -360,6 +384,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_svji4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.55014104
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -372,6 +397,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_bffp7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8082384
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -384,6 +410,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_load8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.39435363
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -396,6 +423,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tgydl")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.19206712
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -408,6 +436,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vt70k")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.828529
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -420,6 +449,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_or1sl")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.528073
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -432,6 +462,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ambnm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.49927804
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -444,6 +475,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_f0wq1")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3982393
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -456,6 +488,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_enoot")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4326342
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -468,6 +501,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_gygoj")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.57895184
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -480,6 +514,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_34gb4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.75552565
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -492,6 +527,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_lmfbq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.303479
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -504,6 +540,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfjhp")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.12446154
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -516,6 +553,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_k7ycp")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.42362916
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -528,6 +566,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_nnvca")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6021094
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -540,6 +579,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_6ib4d")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.61910576
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -552,6 +592,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_rycxi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.12571524
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -564,6 +605,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_asl3n")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.59499407
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -576,6 +618,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_j0726")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9055566
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -588,6 +631,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_whmno")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6164638
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -600,6 +644,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_bw6ik")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.92280847
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -612,6 +657,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_4cyec")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.36961025
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -624,6 +670,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_kh67e")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5778028
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -636,6 +683,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_a6fbu")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.50075173
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -648,6 +696,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8ntqn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.40608168
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -660,6 +709,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_5mjx3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7568229
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -672,6 +722,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cpthc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.0058304993
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -684,6 +735,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_1e3y5")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.24834588
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -696,6 +748,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_hhyah")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5692974
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -708,6 +761,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_qkryk")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.45774022
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -720,6 +774,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_iytot")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.29413036
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -732,6 +787,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_rbivk")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5313109
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -744,6 +800,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_oebk0")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.37003762
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -756,6 +813,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_sraq7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.0829692
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -768,6 +826,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_yx2sm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.89049745
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -780,6 +839,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_krx08")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.11867032
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -792,6 +852,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ewiuu")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.09298714
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -804,6 +865,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_kpbq3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5131786
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -816,6 +878,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cn6wi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.36438194
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -828,6 +891,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_p3r1u")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.499112
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -840,6 +904,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ttw18")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4668745
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -852,6 +917,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_jitnj")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9613813
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -864,6 +930,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_3mrcn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.021034246
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -876,6 +943,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g66y0")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.18331973
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -888,6 +956,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8k8l3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.35193202
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -900,6 +969,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cfenm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.62769026
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -912,6 +982,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_m63qh")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.08136374
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -924,6 +995,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_fbvbc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.97018397
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -936,6 +1008,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_eivli")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9551727
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -948,6 +1021,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_at6j5")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.592595
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -960,6 +1034,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_jcsw0")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6853669
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -972,6 +1047,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_olt4o")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.49628413
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -984,6 +1060,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_d5jgo")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.08399186
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -996,6 +1073,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_k2q57")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.93719774
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1008,6 +1086,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_x6iqi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8246656
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1020,6 +1099,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_m6ox7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3788309
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1032,6 +1112,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_qbi17")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.13284625
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1044,6 +1125,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_1b510")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8728576
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1056,6 +1138,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ueuaf")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.72820526
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1068,6 +1151,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_pricn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.780933
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1080,6 +1164,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_bvwd7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6081395
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1092,6 +1177,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_3plga")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5238963
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1104,6 +1190,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_55rij")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.59020156
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1116,6 +1203,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_1thuy")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.062073246
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1128,6 +1216,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_h4cwn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4622722
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1140,6 +1229,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_eusuq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3909806
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1152,6 +1242,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mtxyd")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.13165459
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1164,6 +1255,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_pcifv")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8021473
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1176,6 +1268,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_rfeol")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.63385737
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1188,6 +1281,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tog1y")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.13830921
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1200,6 +1294,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_l8dwj")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.037568968
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1212,6 +1307,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_dsso7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.47781765
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1224,6 +1320,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_j16mv")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6539904
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1236,6 +1333,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_satj4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.92529356
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1248,6 +1346,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_4xtx3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8097517
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1260,6 +1359,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_oeuae")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.62963617
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1272,6 +1372,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g6x5y")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.35395217
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1284,6 +1385,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_3ivyf")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.11719353
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1296,6 +1398,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_j803x")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.37541047
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1308,6 +1411,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_iisq7")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.58284515
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1320,6 +1424,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_v7qkw")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9571137
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1332,6 +1437,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_undc6")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.626206
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1344,6 +1450,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_oop28")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7257157
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1356,6 +1463,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_iqemx")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.62154126
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1368,6 +1476,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_i3cfk")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.44283223
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1380,6 +1489,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_56pb2")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.076777615
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1392,6 +1502,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_n0nes")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.41075802
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1404,6 +1515,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mqpgi")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.24079847
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1416,6 +1528,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_lgqge")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.84453195
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1428,6 +1541,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_dbyyt")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.29737005
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1440,6 +1554,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_yjqay")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.13160874
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1452,6 +1567,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_11aoo")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5567698
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1464,6 +1580,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_2x2ro")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.35931474
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1476,6 +1593,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ph2yr")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.15524296
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1488,6 +1606,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_87qwm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.16565198
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1500,6 +1619,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_bx2mn")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.185617
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1512,6 +1632,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_dd1bk")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7119286
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1524,6 +1645,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_fgrv0")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.2792268
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1536,6 +1658,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_lxbku")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.39010784
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1548,6 +1671,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mq31g")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6849551
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1560,6 +1684,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_dy8m4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.16472879
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1572,6 +1697,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_046gq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.2245558
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1584,6 +1710,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8wdtf")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.45412853
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1596,6 +1723,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_0vhcm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7836111
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1608,6 +1736,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_qsljq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.40335527
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1620,6 +1749,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_wyi5g")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.38174742
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1632,6 +1762,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_psv4x")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.26348403
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1644,6 +1775,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xs6bw")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9954998
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1656,6 +1788,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_pk5ml")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.27294484
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1668,6 +1801,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_uadof")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.05329884
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1680,6 +1814,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_oqbng")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5641051
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1692,6 +1827,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_41few")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.12441989
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1704,6 +1840,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_fl1a0")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.69238985
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1716,6 +1853,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_1u237")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5494547
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1728,6 +1866,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ixh87")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5877144
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1740,6 +1879,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_w3dd1")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.13813898
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1752,6 +1892,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_exgoc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.26267827
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1764,6 +1905,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_b4g0a")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.085564785
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1776,6 +1918,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g7g31")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7709505
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1788,6 +1931,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_yhric")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8078783
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1800,6 +1944,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_fnwox")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8867543
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1812,6 +1957,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7eg5t")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.30658856
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1824,6 +1970,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_wrb88")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.2103309
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1836,6 +1983,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_x47pr")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.01368922
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1848,6 +1996,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_w6kec")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7924123
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1860,6 +2009,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_2axeb")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.48782617
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1872,6 +2022,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8fvs8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.36049682
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1884,6 +2035,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_hx7m8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8081188
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1896,6 +2048,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_b6gif")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.64414537
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1908,6 +2061,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_e24nc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8403504
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1920,6 +2074,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cniug")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.02231339
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1932,6 +2087,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_wf8vm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.26268852
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1944,6 +2100,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_sxb6y")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9372172
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -1956,6 +2113,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_l4nhh")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.20437561
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -1968,6 +2126,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_11dkm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8143384
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -1980,6 +2139,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_xyjsm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7023716
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -1992,6 +2152,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7hnth")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3432263
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2004,6 +2165,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_7x8nh")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.039824415
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2016,6 +2178,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ya7f4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.99327826
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2028,6 +2191,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_t7i1r")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.76143414
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2040,6 +2204,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_6l3em")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.26225492
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2052,6 +2217,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_25gyk")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.66760087
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2064,6 +2230,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_6uxko")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.46899652
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2076,6 +2243,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_jp2gm")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.6597702
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2088,6 +2256,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_2qgi8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.27087703
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2100,6 +2269,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_tj3un")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.91270393
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2112,6 +2282,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_4mkgq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.972054
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2124,6 +2295,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_mfev8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.080532834
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2136,6 +2308,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g2huq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8456813
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2148,6 +2321,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_sglj8")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5445755
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2160,6 +2334,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_6eds2")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8292195
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2172,6 +2347,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_6b6of")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8221531
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2184,6 +2360,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_122tp")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.28229514
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2196,6 +2373,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vus3c")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4289577
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2208,6 +2386,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_82f8j")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.4985646
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2220,6 +2399,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_71moo")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.040370636
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2232,6 +2412,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vvuiw")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.32251987
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2244,6 +2425,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_8kbwy")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.03287734
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2256,6 +2438,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_5x3b6")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9797415
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2268,6 +2451,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_50vx3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.76489466
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2280,6 +2464,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_uepqj")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9952706
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2292,6 +2477,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_uh03m")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.87453043
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2304,6 +2490,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_vdcpb")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.37667197
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2316,6 +2503,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_rfrjb")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8804441
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2328,6 +2516,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ffsfv")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9013776
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2340,6 +2529,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_5imrc")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.07752542
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2352,6 +2542,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_v1s6d")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.42974308
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0.54509807, 0, 0, 1)
 
@@ -2364,6 +2555,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_rh3ig")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.39091235
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0, 0.54509807, 1)
 
@@ -2376,6 +2568,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_2js00")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.67146486
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2388,6 +2581,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_l6qa4")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.14813952
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2400,6 +2594,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_pfamo")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.66720206
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2412,6 +2607,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_emf4r")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.59651464
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2424,6 +2620,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ohhvq")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.35182527
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2436,6 +2633,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cs54r")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.8684431
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2448,6 +2646,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_h1krf")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3293639
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2460,6 +2659,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_cwugb")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.39915273
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2472,6 +2672,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_c5j7i")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5098591
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2484,6 +2685,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_r0583")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.9904405
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2496,6 +2698,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_gbwcw")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.18988785
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2508,6 +2711,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_035os")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5312771
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2520,6 +2724,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_hheju")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.92629987
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2532,6 +2737,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_yiorf")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.0928968
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2544,6 +2750,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_saaww")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.3889253
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2556,6 +2763,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_ql24b")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.5049299
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2568,6 +2776,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_nxcd3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.033556893
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2580,6 +2789,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ka7t")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.47205296
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
@@ -2592,6 +2802,7 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_g6x5i")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.49406487
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(0, 0.39215687, 0, 1)
 
@@ -2604,13 +2815,14 @@ shader_parameter/noise_texture = SubResource("NoiseTexture2D_u6jd3")
 shader_parameter/smoothness = 0.1999999955296
 shader_parameter/speed = 2.0
 shader_parameter/seed = 0.7868945
+shader_parameter/vertex_speed = 0.01
 shader_parameter/displacement_strength = 0.30000000447036
 shader_parameter/lane_color = Color(1, 0.54901963, 0, 1)
 
 [node name="RhythmLevel" type="Node3D" node_paths=PackedStringArray("referee")]
 script = ExtResource("1_i6j6h")
 referee = NodePath("MusicPlayer/Referee")
-fish_id = "temp_fish_2"
+fish_id = "intersection_fish_2"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 28.46922, 0)

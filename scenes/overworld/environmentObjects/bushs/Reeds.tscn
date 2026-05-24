@@ -6,3 +6,45 @@
 
 [node name="crops_wheatStageA2" parent="." instance=ExtResource("1_g06pw")]
 transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, -0.040304184)
+
+[node name="crops_wheatStageA3" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -6.8056574, 0, 0.97510576)
+
+[node name="crops_wheatStageA4" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -1.8436999, -0.71112823, 5.2283406)
+
+[node name="crops_wheatStageA5" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -2.3579834, -0.9414673, -5.2950916)
+
+[node name="crops_wheatStageA6" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 5.591714, -1.0129147, 4.4898415)
+
+[node name="crops_wheatStageA7" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 5.8379955, -0.8039913, -4.5324907)
+
+[node name="crops_wheatStageA8" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, 9.435008)
+
+[node name="crops_wheatStageA9" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -6.445533, 0.25803566, -3.2889137)
+
+[node name="crops_wheatStageA10" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 0, 0, -8.333504)
+
+[node name="crops_wheatStageA11" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 5.588153, 0, -0.040304184)
+
+[node name="crops_wheatStageA12" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -7.82712, 0, 5.603981)
+
+[node name="crops_wheatStageA13" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, -4.195595, -1.1182861, -9.666229)
+
+[node name="crops_wheatStageA14" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 4.179781, -1.2578272, -6.621674)
+
+[node name="crops_wheatStageA15" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 5.658495, 0, 9.390169)
+
+[node name="crops_wheatStageA16" parent="." instance=ExtResource("1_g06pw")]
+transform = Transform3D(11, 0, 0, 0, 11, 0, 0, 0, 11, 5.5665684, -0.55541456, -10.3131485)
