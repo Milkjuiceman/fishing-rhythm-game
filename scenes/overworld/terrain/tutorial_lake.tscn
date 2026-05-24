@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=50 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -33,8 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://dybxaunemw6te" path="res://scenes/ui/questsUI.tscn" id="31_klb0h"]
 [ext_resource type="Script" uid="uid://g2m52b80n6cd" path="res://scripts/ui/tutorial_ui.gd" id="31_pnbm0"]
 [ext_resource type="PackedScene" uid="uid://w7ptyjv51a2m" path="res://scenes/ui/assignmentPopupUI.tscn" id="32_5aefc"]
-[ext_resource type="PackedScene" uid="uid://bcnm12bxtl2jw" path="res://scenes/overworld/environmentObjects/npcs/Orangatang_npc.tscn" id="35_1it6v"]
 [ext_resource type="PackedScene" uid="uid://dkmv7x5n7qfbr" path="res://scenes/overworld/interactableObjects/smallDock.tscn" id="35_cdd1p"]
+[ext_resource type="Texture2D" uid="uid://hq5fa0ejaq05" path="res://assets/characters/Theodore.png" id="35_uanvt"]
+[ext_resource type="Texture2D" uid="uid://r7rqhbv1l1ij" path="res://assets/characters/Muscular_Orangutang_White.png" id="37_ogh25"]
 [ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="37_uanvt"]
 
 [sub_resource type="Resource" id="Resource_q51th"]
@@ -186,7 +187,7 @@ shape = SubResource("BoxShape3D_kp4fu")
 transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 820.964, 5, 764.772)
 
 [node name="tutorial_boat_initial_spawnpoint" type="Node3D" parent="SpawnPoints"]
-transform = Transform3D(0.9518783, -0.30647627, 0, 0.30647627, 0.9518783, 0, 0, 0, 1, 199.777, 5, 303.74)
+transform = Transform3D(-0.95212936, 0.30569533, -8.742278e-08, 0.30569533, 0.95212936, 0, 8.323779e-08, -2.6724734e-08, -1, 172.09541, 5, 381.51956)
 
 [node name="FishSpawners" type="Node3D" parent="."]
 
@@ -851,15 +852,22 @@ billboard = 2
 render_priority = 1
 texture = ExtResource("20_cdd1p")
 
+[node name="TheodoreNPC" type="Sprite3D" parent="Docks/smallDock"]
+transform = Transform3D(-0.043333437, 0, -0.03056841, 0, 0.05303031, 0, 0.03056841, 0, -0.043333437, -3.8406982, 3.5535536, 1.265564)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("35_uanvt")
+
 [node name="Prompt" type="Sprite3D" parent="Docks/smallDock"]
-transform = Transform3D(0.863, 0, -7.450581e-09, 0, 0.86300004, 0, 7.450581e-09, 0, 0.863, 0.9609375, -0.16109943, -4.571167)
+transform = Transform3D(2.393, 0, -2.9802322e-08, 0, 2.3930001, 0, 2.9802322e-08, 0, 2.393, 1.362915, 0.049069405, 1.1800537)
 pixel_size = 0.012
 billboard = 2
+transparent = false
 render_priority = 1
 texture = ExtResource("20_3a54u")
-
-[node name="OrangatangNpc" parent="Docks/smallDock" instance=ExtResource("35_1it6v")]
-transform = Transform3D(-1.5011331, 0, 0.20562972, 0, 1.5151515, 0, -0.20562972, 0, -1.5011331, -4.055908, 3.5518732, 1.1385498)
 
 [node name="Dock" parent="Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
 transform = Transform3D(-0.5370328, 0, -6.979369, 0, 7, 0, 6.979369, 0, -0.5370328, 284.73007, 6.9839354, 399.3725)
@@ -876,17 +884,24 @@ transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
 shape = SubResource("SphereShape3D_c03w6")
 
 [node name="Indicator" type="Sprite3D" parent="Docks/Dock"]
-transform = Transform3D(0.30300006, 0, 7.450581e-09, 0, 0.303, 0, -7.450581e-09, 0, 0.30300006, 0.911, 1.159, 0.6)
+transform = Transform3D(0.30300006, 0, 5.5879354e-09, 0, 0.30300003, 0, -5.5879354e-09, 0, 0.30300006, 0.86800385, 1.0469066, 0.7249985)
 billboard = 2
 render_priority = 1
 texture = ExtResource("20_cdd1p")
 
+[node name="PrimateLeaderNPC" type="Sprite3D" parent="Docks/Dock"]
+transform = Transform3D(0.0040857256, 0, 0.0028821616, 0, 0.005000001, 0, -0.0028821616, 0, 0.0040857256, 0.86846924, 0.33562756, 0.7247124)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("37_ogh25")
+
 [node name="Prompt" type="Sprite3D" parent="Docks/Dock"]
-transform = Transform3D(0.11800001, 0, -2.7939677e-09, 0, 0.118, 0, 2.7939677e-09, 0, 0.11800001, 0.1949997, 0.049069166, 1.0200424)
+transform = Transform3D(0.288, 0, -6.8191746e-09, 0, 0.288, 0, 6.8191746e-09, 0, 0.288, 0.1949997, 0.049069166, 1.0200424)
 pixel_size = 0.012
 billboard = 2
+transparent = false
 render_priority = 1
 texture = ExtResource("20_3a54u")
-
-[node name="OrangatangNpc" parent="Docks/Dock" instance=ExtResource("35_1it6v")]
-transform = Transform3D(-0.010959853, 0, 0.14243612, 0, 0.14285715, 0, -0.14243612, 0, -0.010959853, 0.91125107, 0.32825124, 0.6000023)

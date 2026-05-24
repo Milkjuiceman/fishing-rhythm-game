@@ -1,16 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://cud6fc3trpc2l"]
+[gd_scene load_steps=20 format=3 uid="uid://cud6fc3trpc2l"]
 
 [ext_resource type="Script" uid="uid://cl8uilfeohdgt" path="res://scripts/ui/menus/pause_menu.gd" id="1_pause"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_0lmf7"]
+[ext_resource type="Texture2D" uid="uid://cgp8hj30tiiyd" path="res://assets/ui/main_menu_button.png" id="3_f6eus"]
+[ext_resource type="Texture2D" uid="uid://bmsxevftf0e26" path="res://assets/ui/main_menu_button_click.png" id="4_0bnpd"]
+[ext_resource type="Texture2D" uid="uid://bkb6x5yb1pdu5" path="res://assets/ui/main_menu_button_hover.png" id="4_8uki6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8uki6"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0bnpd"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8fwbo"]
+texture = ExtResource("4_0bnpd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2rlsb"]
+texture = ExtResource("4_8uki6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0bnpd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4inpj"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7yca1"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lrbnh"]
+texture = ExtResource("4_0bnpd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6qnem"]
+texture = ExtResource("4_8uki6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ynwdf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_coo1x"]
+texture = ExtResource("3_f6eus")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jkta"]
+texture = ExtResource("4_0bnpd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ht4ye"]
+texture = ExtResource("4_8uki6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4inpj"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 100
+scale = Vector2(0.63, 0.63)
+transform = Transform2D(0.63, 0, 0, 0.63, 0, 0)
 script = ExtResource("1_pause")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 281.90472
+offset_bottom = 158.57141
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.08, 0.1, 0.14, 0.88)
 
 [node name="MainPanel" type="PanelContainer" parent="."]
@@ -19,10 +68,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -200.0
-offset_right = 160.0
-offset_bottom = 200.0
+offset_left = -109.84128
+offset_top = -139.7619
+offset_right = 345.71423
+offset_bottom = 321.3492
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -39,6 +88,7 @@ theme_override_constants/separation = 12
 
 [node name="TitleLabel" type="Label" parent="MainPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 36
 text = "PAUSED"
 horizontal_alignment = 1
@@ -51,46 +101,97 @@ theme_override_constants/separation = 18
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_8uki6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_0bnpd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Settings"
 
 [node name="SaveButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Save Game"
 
 [node name="LoadButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Load Game"
 
 [node name="TitleScreenButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Return to Title"
-
-[node name="Spacer" type="Control" parent="MainPanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 6)
-layout_mode = 2
 
 [node name="QuitButton" type="Button" parent="MainPanel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_4inpj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8fwbo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2rlsb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0bnpd")
 text = "Quit Game"
 
 [node name="SettingsPanel" type="PanelContainer" parent="."]
@@ -99,10 +200,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -340.0
-offset_right = 220.0
-offset_bottom = 340.0
+offset_left = -122.53969
+offset_top = -135.00002
+offset_right = 374.2857
+offset_bottom = 313.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -119,6 +220,7 @@ theme_override_constants/separation = 6
 
 [node name="SettingsTitle" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 28
 text = "SETTINGS"
 horizontal_alignment = 1
@@ -130,6 +232,7 @@ theme_override_constants/separation = 12
 [node name="AudioLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 14
 text = "— Audio —"
 horizontal_alignment = 1
@@ -140,6 +243,7 @@ layout_mode = 2
 [node name="MasterLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer"]
@@ -152,49 +256,8 @@ value = 80.0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "80%"
-horizontal_alignment = 2
-
-[node name="MusicVolumeContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="MusicLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
-text = "Overworld"
-
-[node name="MusicSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-value = 70.0
-
-[node name="MusicValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(45, 0)
-layout_mode = 2
-text = "70%"
-horizontal_alignment = 2
-
-[node name="SFXVolumeContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SFXLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
-text = "SFX"
-
-[node name="SFXSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="SFXValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(45, 0)
-layout_mode = 2
-text = "100%"
 horizontal_alignment = 2
 
 [node name="AudioSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
@@ -204,21 +267,10 @@ layout_mode = 2
 [node name="DisplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 14
 text = "— Display —"
 horizontal_alignment = 1
-
-[node name="FullscreenContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="FullscreenLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Fullscreen"
-
-[node name="FullscreenCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="VSyncContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -226,6 +278,7 @@ layout_mode = 2
 [node name="VSyncLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "V-Sync"
 
 [node name="VSyncCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer"]
@@ -233,63 +286,8 @@ unique_name_in_owner = true
 layout_mode = 2
 button_pressed = true
 
-[node name="ShowFPSContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ShowFPSLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Show FPS"
-
-[node name="ShowFPSCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
 [node name="DisplaySpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-
-[node name="GameplayLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
-theme_override_font_sizes/font_size = 14
-text = "— Gameplay —"
-horizontal_alignment = 1
-
-[node name="MouseSensContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="MouseSensLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
-text = "Mouse Sens."
-
-[node name="MouseSensSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-min_value = 0.5
-max_value = 10.0
-step = 0.5
-value = 5.0
-
-[node name="MouseSensValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(45, 0)
-layout_mode = 2
-text = "5.0"
-horizontal_alignment = 2
-
-[node name="InvertYContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="InvertYLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Invert Y-Axis"
-
-[node name="InvertYCheck" type="CheckBox" parent="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 
 [node name="GameplaySpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
@@ -299,6 +297,7 @@ layout_mode = 2
 [node name="RhythmLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 14
 text = "— Rhythm Calibration —"
 horizontal_alignment = 1
@@ -309,23 +308,39 @@ layout_mode = 2
 [node name="AudioOffsetLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "Audio Offset"
 
 [node name="AudioOffsetButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Calibrate Audio"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7yca1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lrbnh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6qnem")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
+text = "  Calibrate Audio  "
 
 [node name="AudioOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "-20 ms"
 horizontal_alignment = 2
-
-[node name="AudioOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="InputOffsetContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -333,23 +348,39 @@ layout_mode = 2
 [node name="InputOffsetLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "Input Offset"
 
 [node name="InputOffsetButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Calibrate Input"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7yca1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lrbnh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6qnem")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ynwdf")
+text = "  Calibrate Input  "
 
 [node name="InputOffsetValue" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0lmf7")
 text = "-20 ms"
 horizontal_alignment = 2
-
-[node name="InputOffsetSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 
 [node name="ButtonSpacer" type="Control" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
@@ -359,7 +390,16 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0lmf7")
 theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_coo1x")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2jkta")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ht4ye")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4inpj")
 text = "Back"
 
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_pressed"]
@@ -369,13 +409,7 @@ text = "Back"
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/TitleScreenButton" to="." method="_on_title_screen_pressed"]
 [connection signal="pressed" from="MainPanel/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MasterVolumeContainer/MasterSlider" to="." method="_on_master_volume_changed"]
-[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MusicVolumeContainer/MusicSlider" to="." method="_on_music_volume_changed"]
-[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/SFXVolumeContainer/SFXSlider" to="." method="_on_sfx_volume_changed"]
-[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/FullscreenContainer/FullscreenCheck" to="." method="_on_fullscreen_toggled"]
 [connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/VSyncContainer/VSyncCheck" to="." method="_on_vsync_toggled"]
-[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/ShowFPSContainer/ShowFPSCheck" to="." method="_on_show_fps_toggled"]
-[connection signal="value_changed" from="SettingsPanel/MarginContainer/VBoxContainer/MouseSensContainer/MouseSensSlider" to="." method="_on_mouse_sens_changed"]
-[connection signal="toggled" from="SettingsPanel/MarginContainer/VBoxContainer/InvertYContainer/InvertYCheck" to="." method="_on_invert_y_toggled"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/AudioOffsetContainer/AudioOffsetButton" to="." method="_on_audio_offset_button_pressed"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/InputOffsetContainer/InputOffsetButton" to="." method="_on_input_offset_button_pressed"]
 [connection signal="pressed" from="SettingsPanel/MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_pressed"]

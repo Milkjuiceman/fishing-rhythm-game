@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfdg34vf6rofh"]
+[gd_scene load_steps=18 format=3 uid="uid://dfdg34vf6rofh"]
 
 [ext_resource type="Script" uid="uid://b11oy5q4yy7b1" path="res://scripts/vehicles/boat.gd" id="1_annr2"]
 [ext_resource type="Shader" uid="uid://ngvdmjwmrdq6" path="res://graphics/post_process.gdshader" id="2_8dbyq"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://blp70hoacldp2" path="res://graphics/compositor/comp.gd" id="5_5c6k0"]
 [ext_resource type="Script" uid="uid://bqt4qmdllax3s" path="res://scripts/audio/boat_sfx.gd" id="5_ouaro"]
 [ext_resource type="Texture2D" uid="uid://b0yg55b33l3lu" path="res://assets/characters/MiniMonkey.png" id="10_rg0x2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rg0x2"]
+rough = true
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_qkrje"]
 resource_local_to_scene = false
@@ -49,6 +52,7 @@ size = Vector3(2.57312, 1, 1.2182617)
 size = Vector3(2.378296, 0.5830078, 1.2022095)
 
 [node name="Boat" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_rg0x2")
 linear_damp = 1.0
 angular_damp = 0.5
 script = ExtResource("1_annr2")

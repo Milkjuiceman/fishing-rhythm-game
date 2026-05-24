@@ -20,6 +20,7 @@ func _init():
 func _setup_level() -> void:
 	print("Fjord loading...")
 	# Add level-specific initialization here
+	GameStateManager.water_surface_y = 15.499
 
 # Configure level state after player has spawned
 func _post_spawn_setup() -> void:

@@ -90,7 +90,7 @@ func _on_body_exited(body: Node3D) -> void:
 	player_in_range = false
 	_set_prompt(false)
 	if not DialogueManager.active:
-		DialogueManager.dialogueUI.hide_interaction_prompt()
+			DialogueManager.dialogueUI.hide_interaction_prompt()
 
 # ========================================
 # QUEST EVENTS
