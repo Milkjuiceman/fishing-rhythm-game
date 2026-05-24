@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=3 uid="uid://5p8scmggob1k"]
+
+[ext_resource type="Environment" uid="uid://mon27fkwe2bi" path="res://assets/underwater/underwater_enviorment.tres" id="1_tido2"]
+[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="2_wafia"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_wiy47"]
+[ext_resource type="Shader" uid="uid://dxvvxmgdf5d52" path="res://assets/underwater/caustics.gdshader" id="4_xshr0"]
+[ext_resource type="Texture2D" uid="uid://itn38175ksri" path="res://assets/underwater/caust.png" id="5_ua685"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6wfx"]
+albedo_color = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ayyjd"]
+material = SubResource("StandardMaterial3D_o6wfx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6oj6"]
+albedo_color = Color(0.54509807, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ui0py"]
+material = SubResource("StandardMaterial3D_v6oj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtuxy"]
+albedo_color = Color(0, 0, 0.54509807, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5f5ri"]
+material = SubResource("StandardMaterial3D_rtuxy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ffb3"]
+albedo_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1e7ru"]
+material = SubResource("StandardMaterial3D_3ffb3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad4hl"]
+render_priority = 100
+shader = ExtResource("4_xshr0")
+shader_parameter/t = ExtResource("5_ua685")
+shader_parameter/scale = 0.055
+shader_parameter/strength = 60.0
+shader_parameter/cutoff = 33.69
+
+[sub_resource type="QuadMesh" id="QuadMesh_ptfvx"]
+material = SubResource("ShaderMaterial_ad4hl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o2s8w"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(-1, 6.696972e-08, -5.6194274e-08, 1.7744663e-08, 0.78489536, 0.6196283, 8.560296e-08, 0.6196283, -0.78489536, 0, 0, 0)
+environment = ExtResource("1_tido2")
+script = ExtResource("2_wafia")
+
+[node name="Column2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.1891575e-08, 0.91899997, 1.630734e-08, -0.61962837, -3.6654235e-08, 0.7213187, 0.7848952, 2.0112708e-08, 0.5694386, -1.0000001, -1.9519958, -4.0435457)
+mesh = SubResource("QuadMesh_ayyjd")
+
+[node name="Label3D" type="Label3D" parent="Column2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "F"
+font = ExtResource("3_wiy47")
+font_size = 100
+
+[node name="Column3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, -3.0000002, -1.9519958, -4.0435457)
+mesh = SubResource("QuadMesh_ui0py")
+
+[node name="Label3D" type="Label3D" parent="Column3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "D"
+font = ExtResource("3_wiy47")
+font_size = 100
+
+[node name="Column0" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 2.9999998, -1.951996, -4.0435457)
+mesh = SubResource("QuadMesh_5f5ri")
+
+[node name="Label3D" type="Label3D" parent="Column0"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "K"
+font = ExtResource("3_wiy47")
+font_size = 100
+
+[node name="Column1" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 0.99999994, -1.9519964, -4.0435457)
+mesh = SubResource("QuadMesh_1e7ru")
+
+[node name="Label3D" type="Label3D" parent="Column1"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "J"
+font = ExtResource("3_wiy47")
+font_size = 100
+
+[node name="caustics" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.96060896)
+mesh = SubResource("QuadMesh_ptfvx")
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(103.981, 0, 0, 0, 12.189929, -8.440708, 0, 8.440708, 12.189929, 0, 49.417, -64)
+mesh = SubResource("QuadMesh_o2s8w")

@@ -6,6 +6,8 @@ extends Camera3D
 ## Designed for simple camera tracking, can be extended for dynamic effects
 ## such as zoom, shake, or cinematic transitions.
 
+@onready var scenery: Node3D = $"../scenery"
+
 # ========================================
 # CAMERA UPDATE
 # ========================================
@@ -13,3 +15,4 @@ extends Camera3D
 # Updates camera position based on rhythm timing
 func _on_referee_process(frame_state: FrameState) -> void:
 	position.z = frame_state.t * frame_state.note_speed - 2;
+	scenery.update(position.z)
