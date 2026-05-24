@@ -196,7 +196,7 @@ script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 use_lifetime = true
 lifetime = 10.0
-require_quest_id = "tutorial_02"
+require_quest_id = "q4"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_1it6v")])
 
 [node name="RipplingWaterSpawner2" type="Node3D" parent="FishSpawners"]
@@ -204,7 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.31146, 5, 334.33908)
 script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 spawn_radius = 20.0
-require_quest_id = "tutorial_01"
+require_quest_id = "q2"
 stop_when_fish_id = "fish_2"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_cdd1p")])
 
@@ -214,7 +214,7 @@ script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 use_lifetime = true
 lifetime = 10.0
-require_quest_id = "tutorial_02"
+require_quest_id = "q4"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="RipplingWaterSpawner4" type="Node3D" parent="FishSpawners"]
@@ -223,7 +223,7 @@ script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 use_lifetime = true
 lifetime = 10.0
-require_quest_id = "tutorial_02"
+require_quest_id = "q4"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_uanvt"), SubResource("Resource_ogh25")])
 
 [node name="Enviorment" type="Node3D" parent="."]
@@ -834,8 +834,7 @@ visible = false
 [node name="smallDock" parent="Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("35_cdd1p")]
 transform = Transform3D(-0.6538936, 0, -0.08957231, 0, 0.66, 0, 0.08957231, 0, -0.6538936, 780.526, 5.881262, 684.04126)
 script = ExtResource("18_c03w6")
-npc_id = "lake_npc"
-quest_id = "tutorial_03"
+npc_id = "paul"
 dialogueUI = NodePath("../../dialogue_ui")
 questPopup = NodePath("../../assignment_popup_ui")
 
@@ -865,7 +864,7 @@ transform = Transform3D(-1.5011331, 0, 0.20562972, 0, 1.5151515, 0, -0.20562972,
 [node name="Dock" parent="Docks" node_paths=PackedStringArray("dialogueUI", "questPopup") instance=ExtResource("17_ywjkn")]
 transform = Transform3D(-0.5370328, 0, -6.979369, 0, 7, 0, 6.979369, 0, -0.5370328, 284.73007, 6.9839354, 399.3725)
 script = ExtResource("18_c03w6")
-npc_id = "dock_npc"
+npc_id = "gramps"
 dialogueUI = NodePath("../../dialogue_ui")
 questPopup = NodePath("../../assignment_popup_ui")
 

@@ -1,205 +1,271 @@
 extends Node
 ## QuestManager Autoload
-## Manages all quest state, progress, and completion for the game.
-## Supports two quest types:
-##   - Standard: progress updated manually via update_progress()
-##   - inventory_check: auto-completes by watching InventoryManager for fish catches
+## Single-quest linear progression system.
+## Only one quest is active at a time. Quests advance via advance_quest().
+## Fish checks are done inline by DialogueManager on NPC interaction.
 ## Author: Tyler Schauermann
-## Date of last update: 04/22/2026
+## Date of last update: 05/23/2026
 
+signal quest_advanced(new_quest_id: String)
+signal quest_started(quest_id: String)  # compatibility with RipplingWaterSpawner and GameStateManager
 signal active_quests_changed(quests)
-signal quest_started(quest_id)
-signal quest_completed(quest_id)
-
-enum states {
-	NOT_STARTED,
-	ACTIVE,
-	COMPLETED,
-	TURNEDIN
-}
 
 # ========================================
-# QUEST DEFINITIONS
+# QUEST CHAIN
 # ========================================
-# type "standard"        — progress updated via update_progress()
-# type "inventory_check" — auto-watches InventoryManager.fish_caught
-#   requires: "check_area" (String) — area name from FishRegistry to count fish from
-#             "goal"       (int)    — how many distinct fish from that area must be caught
+# "type" controls how completion is checked:
+#   "talk"           — completed by talking to the right NPC
+#   "catch_in_area"  — player must have `goal` distinct fish from `check_area`
+#   "catch_fish"     — player must have caught a specific fish_id (boss fish)
+#   "final"          — ends the game
 
-var quests := {
-	# ── Tutorial 01 ─────────────────────────────────────────────
-	"tutorial_01": {
-		"title": "your first catch",
-		"description": "hook a fish in the lake and reel it in!",
-		"desc": "catch a fish",
-		"turnitin": "go talk to the fisher\non the other side of the lake!",
-		"goal": 1,
-		"type": "standard",
+const QUEST_ORDER: Array = [
+	"q1","q2","q3","q4","q5",
+	"q6","q7","q8","q9","q10",
+	"q11","q12","q13","q14","q15"
+]
+
+var quests: Dictionary = {
+	# ── Tutorial Area ────────────────────────────────────────────────────
+	"q1": {
+		"title": "meet gramps",
+		"description": "head to the dock and talk to Gramps.",
+		"hint": "talk to Gramps at the dock",
+		"type": "talk",
+		"npc": "gramps",
 	},
-	# ── Tutorial 02 ─────────────────────────────────────────────
-	"tutorial_02": {
-		"title": "meet the locals",
-		"description": "head to the other side of the lake\nand talk to the fisher there.",
-		"desc": "talk to the fisher across the lake",
-		"turnitin": "talk to the fisher\nacross the lake!",
+	"q2": {
+		"title": "first catch",
+		"description": "catch 1 fish in the tutorial lake.",
+		"hint": "catch a fish",
+		"type": "catch_in_area",
+		"check_area": "Tutorial Lake",
 		"goal": 1,
-		"type": "standard",
 	},
-	# ── Tutorial 03 ─────────────────────────────────────────────
-	"tutorial_03": {
+	"q3": {
+		"title": "go find paul",
+		"description": "head across the lake and talk to Paul.",
+		"hint": "talk to Paul across the lake",
+		"type": "talk",
+		"npc": "paul",
+	},
+	"q4": {
 		"title": "three of a kind",
 		"description": "catch 3 different fish in the tutorial lake.",
-		"desc": "catch 3 different fish",
-		"turnitin": "head to the\nnext fishing area!",
-		"goal": 3,
-		"type": "inventory_check",
+		"hint": "catch 3 different fish in the tutorial lake",
+		"type": "catch_in_area",
 		"check_area": "Tutorial Lake",
+		"goal": 3,
 	},
-	# ── Tutorial 04 ─────────────────────────────────────────────
-	"tutorial_04": {
-		"title": "onward!",
-		"description": "make your way to the next fishing area.",
-		"desc": "travel to the next area",
-		"goal": 1,
-		"type": "standard",
+	"q5": {
+		"title": "head to the intersection",
+		"description": "travel to the lake intersection and talk to Tim.",
+		"hint": "talk to Tim at the intersection",
+		"type": "talk",
+		"npc": "tim",
+	},
+	# ── Intersection Area ────────────────────────────────────────────────
+	"q6": {
+		"title": "intersection catch",
+		"description": "catch 3 fish in the intersection area.",
+		"hint": "catch 3 fish in the intersection area",
+		"type": "catch_in_area",
+		"check_area": "Intersection Area",
+		"goal": 3,
+	},
+	"q7": {
+		"title": "meet chad",
+		"description": "head to the market and talk to Chad.",
+		"hint": "talk to Chad at the market dock",
+		"type": "talk",
+		"npc": "chad",
+	},
+	"q8": {
+		"title": "fjord fishing",
+		"description": "catch 3 fish in the fjord area.",
+		"hint": "catch 3 fish in the fjord area",
+		"type": "catch_in_area",
+		"check_area": "Fjord Area",
+		"goal": 3,
+	},
+	"q9": {
+		"title": "fjord boss",
+		"description": "defeat the boss fish in the fjord area.",
+		"hint": "defeat the fjord boss fish",
+		"type": "catch_fish",
+		"fish_id": "fjord_boss",
+	},
+	"q10": {
+		"title": "meet george",
+		"description": "talk to George at the small dock.",
+		"hint": "talk to George at the small dock",
+		"type": "talk",
+		"npc": "george",
+	},
+	"q11": {
+		"title": "mine fishing",
+		"description": "catch 3 fish in the mine area.",
+		"hint": "catch 3 fish in the mine area",
+		"type": "catch_in_area",
+		"check_area": "Mine Area",
+		"goal": 3,
+	},
+	"q12": {
+		"title": "mine boss",
+		"description": "defeat the boss fish in the mine area.",
+		"hint": "defeat the mine boss fish",
+		"type": "catch_fish",
+		"fish_id": "mine_boss",
+	},
+	"q13": {
+		"title": "find bob",
+		"description": "travel to the delta area and talk to Bob.",
+		"hint": "talk to Bob in the delta area",
+		"type": "talk",
+		"npc": "bob",
+	},
+	# ── Delta Area ───────────────────────────────────────────────────────
+	"q14": {
+		"title": "delta fishing",
+		"description": "catch 3 fish in the delta area.",
+		"hint": "catch 3 fish in the delta area",
+		"type": "catch_in_area",
+		"check_area": "Delta Area",
+		"goal": 3,
+	},
+	"q15": {
+		"title": "final boss",
+		"description": "defeat the final boss fish.",
+		"hint": "defeat the final boss",
+		"type": "final",
+		"fish_id": "final_boss",
 	},
 }
 
-var quest_states := {}
+# ========================================
+# STATE
+# ========================================
+
+var current_quest_id: String = "q1"
 
 # ========================================
 # INITIALIZATION
 # ========================================
 
-func _ready():
-	DialogueManager.quest_started.connect(start_quest)
-	_register_all_quests()
-	# Watch for fish catches to auto-update inventory_check quests
-	InventoryManager.fish_caught.connect(_on_fish_caught)
-
-func _register_all_quests():
-	for qid in quests.keys():
-		quest_states[qid] = {
-			"progress": 0,
-			"state": states.NOT_STARTED
-		}
-
-# ========================================
-# QUEST LIFECYCLE
-# ========================================
-
-func start_quest(quest_id: String):
-	if not quests.has(quest_id):
-		print_debug("[QuestManager] Quest not defined:", quest_id)
-		return
-	var state = quest_states[quest_id]
-	if state["state"] == states.NOT_STARTED:
-		state["state"] = states.ACTIVE
-		print_debug("[QuestManager] Started:", quests[quest_id]["title"])
-		emit_signal("quest_started", quest_id)
-		emit_signal("active_quests_changed", get_active_quests())
-		# If this is an inventory_check quest, run an immediate check in case
-		# the player already has qualifying fish from before the quest started.
-		if quests[quest_id].get("type", "standard") == "inventory_check":
-			_check_inventory_quest(quest_id)
-
-func update_progress(quest_id: String, amount: int):
-	if not quest_states.has(quest_id):
-		return
-	var state = quest_states[quest_id]
-	var quest = quests[quest_id]
-	if state["state"] != states.ACTIVE:
-		return
-	state["progress"] += amount
-	if state["progress"] >= quest["goal"]:
-		state["progress"] = quest["goal"]
-		state["state"] = states.COMPLETED
-		print_debug("[QuestManager] Completed:", quest["title"])
-		emit_signal("quest_completed", quest_id)
-	emit_signal("active_quests_changed", get_active_quests())
-
-func turn_in_quest(quest_id: String):
-	if not quest_states.has(quest_id):
-		return
-	var state = quest_states[quest_id]
-	if state["state"] == states.COMPLETED:
-		state["state"] = states.TURNEDIN
-	print_debug("[QuestManager] Turned in:", quests[quest_id]["title"])
+func _ready() -> void:
+	print_debug("[QuestManager] Game started. First quest: %s" % current_quest_id)
 	emit_signal("active_quests_changed", get_active_quests())
 
 # ========================================
-# INVENTORY_CHECK QUEST LOGIC
+# QUEST ADVANCEMENT
 # ========================================
 
-## Called whenever a fish is caught. Checks all active inventory_check quests.
-func _on_fish_caught(_fish_id: String, _new_count: int) -> void:
-	for qid in quests.keys():
-		if quests[qid].get("type", "standard") == "inventory_check":
-			if quest_states[qid]["state"] == states.ACTIVE:
-				_check_inventory_quest(qid)
+## Moves to the next quest. Called by DialogueManager at the end of a conversation.
+func advance_quest() -> void:
+	var idx = QUEST_ORDER.find(current_quest_id)
+	if idx == -1:
+		push_warning("[QuestManager] current_quest_id '%s' not in QUEST_ORDER" % current_quest_id)
+		return
+	if idx + 1 >= QUEST_ORDER.size():
+		print_debug("[QuestManager] All quests complete!")
+		return
+	var old = current_quest_id
+	current_quest_id = QUEST_ORDER[idx + 1]
+	print_debug("[QuestManager] Advanced: %s -> %s" % [old, current_quest_id])
+	emit_signal("quest_advanced", current_quest_id)
+	emit_signal("quest_started", current_quest_id)  # compatibility shim
+	emit_signal("active_quests_changed", get_active_quests())
 
-## Counts distinct fish from the quest's area that the player has caught at least once.
-func _check_inventory_quest(quest_id: String) -> void:
-	var quest = quests[quest_id]
-	var area_name: String = quest.get("check_area", "")
-	var goal: int = quest["goal"]
+# ========================================
+# COMPLETION CHECKS
+# ========================================
 
-	var distinct_caught := 0
-	for area_data in FishRegistry.get_all_areas():
-		if area_data["area"] == area_name:
-			for fish in area_data["fish"]:
+## Returns how many distinct fish from `area_name` the player has caught.
+func count_area_fish(area_name: String) -> int:
+	var count := 0
+	for area in FishRegistry.get_all_areas():
+		if area["area"] == area_name:
+			for fish in area["fish"]:
 				if InventoryManager.has_caught_fish(fish["fish_id"]):
-					distinct_caught += 1
+					count += 1
+	return count
 
-	var state = quest_states[quest_id]
-	state["progress"] = distinct_caught
-	if distinct_caught >= goal:
-		state["progress"] = goal
-		state["state"] = states.COMPLETED
-		print_debug("[QuestManager] Inventory check completed:", quest["title"])
-		emit_signal("quest_completed", quest_id)
-	emit_signal("active_quests_changed", get_active_quests())
+## Returns true if the current catch/boss quest condition is met.
+func is_current_quest_complete() -> bool:
+	var quest = quests.get(current_quest_id, null)
+	if quest == null:
+		return false
+	match quest["type"]:
+		"catch_in_area":
+			return count_area_fish(quest["check_area"]) >= quest["goal"]
+		"catch_fish", "final":
+			return InventoryManager.has_caught_fish(quest.get("fish_id", ""))
+	return false
+
+## For "talk" quests: returns true if `npc_id` is the NPC this quest wants.
+func is_talk_quest_for(npc_id: String) -> bool:
+	var quest = quests.get(current_quest_id, null)
+	if quest == null:
+		return false
+	return quest["type"] == "talk" and quest.get("npc", "") == npc_id
 
 # ========================================
-# QUERY API
+# UI DATA
 # ========================================
-
-func get_quest(quest_id: String):
-	if not quests.has(quest_id):
-		return null
-	var quest = quests[quest_id]
-	var state = quest_states[quest_id]
-	return {
-		"quest_id": quest_id,
-		"title": quest["title"],
-		"description": quest["description"],
-		"desc": quest["desc"],
-		"goal": quest["goal"],
-		"progress": state["progress"],
-		"state": state["state"]
-	}
-
-func get_quest_state(quest_id: String):
-	if quest_states.has(quest_id):
-		return quest_states[quest_id]["state"]
-	return states.NOT_STARTED
 
 func get_active_quests() -> Dictionary:
-	var result := {}
-	for qid in quests.keys():
-		var quest = quests[qid]
-		var state = quest_states[qid]
-		if state["state"] in [states.ACTIVE, states.COMPLETED]:
-			var ui_description: String
-			if state["state"] == states.COMPLETED and quest.has("turnitin"):
-				ui_description = " - %s (%d/%d)\n> %s" % [quest["desc"], state["progress"], quest["goal"], quest["turnitin"]]
-			else:
-				ui_description = "> %s (%d/%d)" % [quest["desc"], state["progress"], quest["goal"]]
-			result[qid] = {
-				"title": quest["title"],
-				"description": quest["description"],
-				"desc": ui_description,
-				"progress": state["progress"],
-				"goal": quest["goal"]
-			}
-	return result
+	var quest = quests.get(current_quest_id, null)
+	if quest == null:
+		return {}
+	var progress_text: String
+	match quest["type"]:
+		"catch_in_area":
+			var caught = count_area_fish(quest["check_area"])
+			progress_text = "%s (%d/%d)" % [quest["hint"], caught, quest["goal"]]
+		"catch_fish", "final":
+			var done = "done" if InventoryManager.has_caught_fish(quest.get("fish_id", "")) else "in progress"
+			progress_text = "%s — %s" % [quest["hint"], done]
+		_:
+			progress_text = quest["hint"]
+	return {
+		current_quest_id: {
+			"title": quest["title"],
+			"description": quest["description"],
+			"desc": progress_text,
+		}
+	}
+
+
+# ========================================
+# LEGACY SHIMS
+# ========================================
+## get_quest() — called by assignment_popup_ui and npc.gd
+## Returns a lightweight object with .title and .description
+func get_quest(quest_id: String) -> Dictionary:
+	var q = quests.get(quest_id, null)
+	if q == null:
+		return {}
+	return {
+		"title": q.get("title", ""),
+		"description": q.get("description", ""),
+		"hint": q.get("hint", ""),
+	}
+
+# ========================================
+# LEGACY SHIM (get_quest_state)
+# ========================================
+## Older code (rippling water spawners) calls get_quest_state(quest_id).
+## We remap this: a quest is "active or past" if current_quest_id is at or beyond it.
+
+enum states { NOT_STARTED = 0, ACTIVE = 1, COMPLETED = 2, TURNEDIN = 3 }
+
+func get_quest_state(quest_id: String) -> int:
+	var current_idx = QUEST_ORDER.find(current_quest_id)
+	var check_idx   = QUEST_ORDER.find(quest_id)
+	if check_idx == -1:
+		return states.NOT_STARTED
+	if check_idx < current_idx:
+		return states.TURNEDIN
+	if check_idx == current_idx:
+		return states.ACTIVE
+	return states.NOT_STARTED

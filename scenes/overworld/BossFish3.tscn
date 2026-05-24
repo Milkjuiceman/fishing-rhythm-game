@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://op8fso3cp01h"]
+
+[ext_resource type="Script" uid="uid://cgasxmgt7j3pq" path="res://scripts/environment/rippling_water.gd" id="1_eqnxf"]
+[ext_resource type="PackedScene" uid="uid://bs4ldqi7wrvvl" path="res://assets/models/Animated Fish Bundle-glb/Puffer.glb" id="2_eqnxf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3cpqv"]
+height = 2.4902344
+radius = 1.8105469
+
+[node name="BossFish1" type="Area3D"]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+script = ExtResource("1_eqnxf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2451172, 0)
+shape = SubResource("CylinderShape3D_3cpqv")
+
+[node name="Root Scene2" parent="." instance=ExtResource("2_eqnxf")]
