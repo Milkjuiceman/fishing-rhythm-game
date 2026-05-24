@@ -1,0 +1,404 @@
+[gd_scene load_steps=32 format=3 uid="uid://kc6gxomlw3bs"]
+
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_7antu"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_vxtj7"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_5drfm"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_51vgy"]
+[ext_resource type="Resource" uid="uid://c63unmsa5c575" path="res://assets/tracks/charts/Lyonesse.tres" id="5_vxtj7"]
+[ext_resource type="Script" uid="uid://bl7kf1wd45xws" path="res://scripts/vehicles/camera_3d.gd" id="6_ayyjd"]
+[ext_resource type="Environment" uid="uid://mon27fkwe2bi" path="res://assets/underwater/underwater_enviorment.tres" id="6_o2s8w"]
+[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="7_5drfm"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_ui0py"]
+[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_5f5ri"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="8_o2s8w"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="10_0qy5r"]
+[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="10_51vgy"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="11_dd7r5"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="12_jo8b5"]
+[ext_resource type="Shader" uid="uid://dxvvxmgdf5d52" path="res://assets/underwater/caustics.gdshader" id="12_o2s8w"]
+[ext_resource type="Texture2D" uid="uid://itn38175ksri" path="res://assets/underwater/caust.png" id="13_txgvl"]
+[ext_resource type="PackedScene" uid="uid://cm86nj0rojdco" path="res://assets/underwater/rocks2.glb" id="15_51vgy"]
+[ext_resource type="Script" uid="uid://bteot0tuwlksu" path="res://assets/underwater/moving_stuff.gd" id="17_txgvl"]
+[ext_resource type="Material" uid="uid://d1t7itcndlne6" path="res://assets/underwater/lightray_shader.tres" id="18_o2s8w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6wfx"]
+albedo_color = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ayyjd"]
+material = SubResource("StandardMaterial3D_o6wfx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6oj6"]
+albedo_color = Color(0.54509807, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ui0py"]
+material = SubResource("StandardMaterial3D_v6oj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtuxy"]
+albedo_color = Color(0, 0, 0.54509807, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5f5ri"]
+material = SubResource("StandardMaterial3D_rtuxy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ffb3"]
+albedo_color = Color(0, 0.39215687, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1e7ru"]
+material = SubResource("StandardMaterial3D_3ffb3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad4hl"]
+render_priority = 100
+shader = ExtResource("12_o2s8w")
+shader_parameter/t = ExtResource("13_txgvl")
+shader_parameter/scale = 0.055
+shader_parameter/strength = 60.0
+shader_parameter/cutoff = 33.69
+
+[sub_resource type="QuadMesh" id="QuadMesh_ptfvx"]
+material = SubResource("ShaderMaterial_ad4hl")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o2s8w"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_txgvl"]
+material = ExtResource("18_o2s8w")
+size = Vector2(9.025, 40.94)
+
+[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
+script = ExtResource("1_7antu")
+referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
+fish_id = "fish_2"
+
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
+script = ExtResource("2_vxtj7")
+progress_bar = NodePath("../Camera3D/HUD/ProgressBar")
+referee = NodePath("../MusicPlayer/Referee")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_5drfm")
+
+[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
+script = ExtResource("4_51vgy")
+chart = ExtResource("5_vxtj7")
+music_player = NodePath("..")
+input_hit = NodePath("../../InputHit")
+judge = NodePath("../../Judge")
+enter_prompt = NodePath("../../Camera3D/HUD/EnterPrompt")
+note_speed = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 6.696972e-08, -5.6194274e-08, 1.7744663e-08, 0.78489536, 0.6196283, 8.560296e-08, 0.6196283, -0.78489536, 0, 3.675, 2.275)
+environment = ExtResource("6_o2s8w")
+script = ExtResource("6_ayyjd")
+
+[node name="HUD" type="CanvasLayer" parent="Camera3D"]
+follow_viewport_enabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D/HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -25.0
+offset_right = 130.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(177, 14)
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("8_o2s8w")
+value = 50.0
+allow_lesser = true
+script = ExtResource("7_ui0py")
+
+[node name="Multiplier" type="Label" parent="Camera3D/HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -29.666748
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("8_o2s8w")
+text = "X1"
+script = ExtResource("8_5f5ri")
+
+[node name="Hits" type="Label" parent="Camera3D/HUD"]
+visible = false
+offset_left = 2.0
+offset_top = 62.0
+offset_right = 68.0
+offset_bottom = 137.0
+scale = Vector2(3, 3)
+text = "HITS:
+MISSES:
+COMBO:"
+
+[node name="Score" type="Label" parent="Camera3D/HUD"]
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 56.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("8_o2s8w")
+text = "SCORE:"
+script = ExtResource("10_51vgy")
+
+[node name="RatingArea" type="Control" parent="Camera3D/HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_5drfm")
+
+[node name="AreaRight" type="Control" parent="Camera3D/HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -80.0
+offset_right = -320.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="AreaLeft" type="Control" parent="Camera3D/HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = -80.0
+offset_right = 385.0
+offset_bottom = 80.0
+grow_vertical = 2
+
+[node name="EnterPrompt" type="Label" parent="Camera3D/HUD"]
+visible = false
+offset_left = 812.0
+offset_top = 587.0
+offset_right = 1039.0
+offset_bottom = 611.0
+text = "press enter to reel it in early! "
+
+[node name="Column2" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891575e-08, 0.91899997, 1.630734e-08, -0.61962837, -3.6654235e-08, 0.7213187, 0.7848952, 2.0112708e-08, 0.5694386, -1.0000001, -1.9519958, -4.0435457)
+visible = false
+mesh = SubResource("QuadMesh_ayyjd")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "F"
+font = ExtResource("8_o2s8w")
+font_size = 100
+
+[node name="Column3" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, -3.0000002, -1.9519958, -4.0435457)
+visible = false
+mesh = SubResource("QuadMesh_ui0py")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column3"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "D"
+font = ExtResource("8_o2s8w")
+font_size = 100
+
+[node name="Column0" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 2.9999998, -1.951996, -4.0435457)
+visible = false
+mesh = SubResource("QuadMesh_5f5ri")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column0"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "K"
+font = ExtResource("8_o2s8w")
+font_size = 100
+
+[node name="Column1" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.1891578e-08, 0.919, 1.630734e-08, -0.6196284, -3.665423e-08, 0.7213187, 0.78489524, 2.0112697e-08, 0.5694386, 0.99999994, -1.9519964, -4.0435457)
+visible = false
+mesh = SubResource("QuadMesh_1e7ru")
+
+[node name="Label3D" type="Label3D" parent="Camera3D/Column1"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0.001)
+text = "J"
+font = ExtResource("8_o2s8w")
+font_size = 100
+
+[node name="caustics" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.96060896)
+mesh = SubResource("QuadMesh_ptfvx")
+
+[node name="wall" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(103.981, 0, 0, 0, 12.189929, -8.440708, 0, 8.440708, 12.189929, 0, 49.417, -64)
+mesh = SubResource("QuadMesh_o2s8w")
+
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
+script = ExtResource("10_0qy5r")
+place_notes = ExtResource("11_dd7r5")
+chart = ExtResource("5_vxtj7")
+referee = NodePath("../MusicPlayer/Referee")
+judge = NodePath("../Judge")
+note_speed = 5.0
+
+[node name="InputHit" type="Node" parent="."]
+script = ExtResource("12_jo8b5")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
+script = ExtResource("17_txgvl")
+possss = 100.0
+
+[node name="rocks2" parent="Node3D" instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 27.728714, -2.723, 42.775)
+
+[node name="rocks3" parent="Node3D" instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 27.728714, -2.723, 85.55412)
+
+[node name="rocks4" parent="Node3D" instance=ExtResource("15_51vgy")]
+transform = Transform3D(-5.8005014e-08, 0, 1.327, 0, 1.327, 0, -1.327, 0, -5.8005014e-08, 27.728714, -2.723, 128.16472)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, -14.842788, 11.245537, 0)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, -5.897056, 11.245537, 5.112396)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, 6.6096888, 11.245537, 12.743944)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, -17.862726, 11.245537, 17.85634)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, -0.12034798, 11.245537, 22.450089)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, -15.460823, 11.245537, 27.562485)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, 14.520123, 11.245537, 35.19403)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, -11.725578, 11.245537, 40.306427)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, 1.888958, 11.245537, 42.912968)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, 8.653082, 11.245537, 48.025364)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, -14.856494, 11.245537, 55.656914)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, -1.600904, 11.245537, 60.76931)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, 16.850548, 11.245537, 65.36305)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, 0.05824709, 11.245537, 70.47545)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.90154576, -0.43268377, -8.742278e-08, -0.43268377, 0.90154576, 0, 7.881563e-08, 3.7826418e-08, -1, -24.013508, 11.245537, 78.106995)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.9015458, 0.43268368, -8.742278e-08, 0.43268368, -0.9015458, 0, -7.881563e-08, -3.782641e-08, -1, 7.8400154, 11.245537, 83.21939)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, -14.842787, 11.245537, 7.734194)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D19" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, -5.8970556, 11.245537, 12.84659)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D20" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, 6.609689, 11.245537, 20.478138)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D21" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, -17.862726, 11.245537, 25.590534)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, -0.1203473, 11.245537, 30.184282)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D23" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, -15.460822, 11.245537, 35.296677)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D24" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, 14.5201235, 11.245537, 42.928223)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D25" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, -11.725577, 11.245537, 48.04062)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D26" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, 1.8889587, 11.245537, 50.647163)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D27" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, 8.653083, 11.245537, 55.75956)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D28" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, -14.856493, 11.245537, 63.391106)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D29" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, -1.6009033, 11.245537, 68.5035)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D30" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, 16.850548, 11.245537, 73.097244)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D31" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, 0.058247767, 11.245537, 78.20964)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D32" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-1.1720093, 0.43268386, -8.742278e-08, -0.562489, -0.9015457, 0, 1.0246032e-07, -3.7826425e-08, -1, -24.013508, 11.245537, 85.84119)
+mesh = SubResource("QuadMesh_txgvl")
+
+[node name="MeshInstance3D33" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1.1720095, -0.43268377, -8.742278e-08, 0.56248885, 0.90154576, 0, -1.0246033e-07, 3.782641e-08, -1, 7.840016, 11.245537, 90.95358)
+mesh = SubResource("QuadMesh_txgvl")
+
+[connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]
+[connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
+[connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Multiplier" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Hits" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/Score" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D/HUD/RatingArea" method="_on_referee_process"]
+[connection signal="reel_in_denied" from="MusicPlayer/Referee" to="Camera3D/HUD/ProgressBar" method="_on_referee_reel_in_denied"]
