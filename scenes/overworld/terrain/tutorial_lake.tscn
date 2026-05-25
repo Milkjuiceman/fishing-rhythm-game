@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bxa7vkfck6ybn"]
+[gd_scene load_steps=52 format=3 uid="uid://bxa7vkfck6ybn"]
 
 [ext_resource type="Script" uid="uid://b54jrqyjgxk7s" path="res://scripts/levels/tutorial_level.gd" id="1_j1cte"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="2_ca3h6"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://hq5fa0ejaq05" path="res://assets/characters/Theodore.png" id="35_uanvt"]
 [ext_resource type="Texture2D" uid="uid://r7rqhbv1l1ij" path="res://assets/characters/Muscular_Orangutang_White.png" id="37_ogh25"]
 [ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="37_uanvt"]
+[ext_resource type="Script" uid="uid://pfwtliqlo5mi" path="res://scripts/environment/quest_wall.gd" id="38_ogh25"]
 
 [sub_resource type="Resource" id="Resource_q51th"]
 script = ExtResource("4_6j6pq")
@@ -101,27 +102,30 @@ size = Vector3(386.7661, 51.820324, 273.94922)
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("17_cdd1p")
-scene_path = "uid://cuej6va4e7tey"
+scene_path = "uid://rhbsektkn7ww"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_cdd1p"]
 script = ExtResource("17_cdd1p")
-scene_path = "uid://kc6gxomlw3bs"
+scene_path = "uid://b2wfv8d8difg7"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_uanvt"]
 script = ExtResource("17_cdd1p")
-scene_path = "uid://dobb00e6psm41"
+scene_path = "uid://b1rxquwatoye4"
 chance = 50.0
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_ogh25"]
 script = ExtResource("17_cdd1p")
-scene_path = "uid://kc6gxomlw3bs"
+scene_path = "uid://bw4j6hss1crai"
 chance = 50.0
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c03w6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uanvt"]
+size = Vector3(4.1674805, 11.993042, 135.29254)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_j1cte")
@@ -206,7 +210,7 @@ script = ExtResource("16_5oyo0")
 rippling_water_scene = ExtResource("15_yq4oh")
 spawn_radius = 20.0
 require_quest_id = "q2"
-stop_when_fish_id = "fish_2"
+stop_when_fish_id = "lyonesse_fish"
 rhythm_levels = Array[ExtResource("17_cdd1p")]([SubResource("Resource_cdd1p")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="FishSpawners"]
@@ -268,7 +272,7 @@ transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 643.9954, 8.40098, 6
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 700.1842, 8.401001, 768.5149)
 
 [node name="TreeDefualt13" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
-transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 873.76965, 8.401, 732.5936)
+transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 873.76965, 7.139246, 732.5936)
 
 [node name="TreeDefualt14" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 817.7099, 11.317796, 686.1479)
@@ -397,7 +401,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 656.4022, 17.94879, 570.9119)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 691.12665, 25.453587, 576.18024)
 
 [node name="TreeFat20" parent="Enviorment/Tree\'s" instance=ExtResource("21_3ddkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 814.4945, 8.964453, 733.73517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 814.4945, 7.756583, 733.73517)
 
 [node name="TreeFat21" parent="Enviorment/Tree\'s" instance=ExtResource("21_3ddkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 811.169, 8.9809475, 477.7042)
@@ -652,7 +656,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 641.4694, 30.705875, 741.9405
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 850.9614, 7.825824, 902.5109)
 
 [node name="TreeCone64" parent="Enviorment/Tree\'s" instance=ExtResource("22_77g0c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 826.6361, 8.392303, 891.1796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 826.6361, 6.855795, 891.1796)
 
 [node name="TreeCone65" parent="Enviorment/Tree\'s" instance=ExtResource("22_77g0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 827.4527, 8.399268, 958.0892)
@@ -664,7 +668,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 851.14233, 8.127149, 929.1162
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 843.1239, 8.147786, 968.9702)
 
 [node name="TreeCone68" parent="Enviorment/Tree\'s" instance=ExtResource("22_77g0c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 802.3929, 8.39808, 869.9847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 802.3929, 7.695751, 869.9847)
 
 [node name="TreeCone69" parent="Enviorment/Tree\'s" instance=ExtResource("22_77g0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 889.8651, 8.4002495, 738.4144)
@@ -685,7 +689,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 899.868, 8.407776, 757.2368)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 900.6699, 8.4002495, 729.3085)
 
 [node name="TreeDefualt41" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
-transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 870.1493, 8.401006, 748.39514)
+transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 870.1493, 7.169097, 748.39514)
 
 [node name="TreeDefualt42" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 889.8053, 8.401, 709.8416)
@@ -694,7 +698,7 @@ transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 889.8053, 8.401, 709
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 830.5588, 8.401459, 925.35876)
 
 [node name="TreeDefualt44" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
-transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 830.0227, 8.2520485, 875.5218)
+transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 830.0227, 7.2573185, 875.5218)
 
 [node name="TreeDefualt45" parent="Enviorment/Tree\'s" instance=ExtResource("19_s87os")]
 transform = Transform3D(8.02, 0, 0, 0, 8.02, 0, 0, 0, 8.02, 856.057, 7.7400336, 946.43555)
@@ -793,7 +797,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 837.2902, 14.455982, 632.3482
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 834.30334, 21.93515, 688.7379)
 
 [node name="TreeConeOrange25" parent="Enviorment/Tree\'s" instance=ExtResource("23_38p3g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 851.7567, 8.415191, 749.4884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 851.7567, 7.7878304, 749.4884)
 
 [node name="TreeConeOrange26" parent="Enviorment/Tree\'s" instance=ExtResource("23_38p3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 811.4409, 8.4045, 926.6299)
@@ -905,3 +909,11 @@ billboard = 2
 transparent = false
 render_priority = 1
 texture = ExtResource("20_3a54u")
+
+[node name="TutorialWall" type="StaticBody3D" parent="."]
+script = ExtResource("38_ogh25")
+unlock_at_quest = "q5"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialWall"]
+transform = Transform3D(0.7760464, 0, -0.6306758, 0, 1, 0, 0.6306758, 0, 0.7760464, 790.04193, 5.496521, 779.63416)
+shape = SubResource("BoxShape3D_uanvt")

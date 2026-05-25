@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cnsrrlfnxcxuq"]
+[gd_scene load_steps=29 format=3 uid="uid://cnsrrlfnxcxuq"]
 
 [ext_resource type="Script" uid="uid://bxo3of0wq27a1" path="res://scripts/levels/delta_area_level.gd" id="1_kcvgw"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_tjtdi"]
@@ -7,11 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cvqxcivrvrwv8" path="res://scenes/overworld/environmentObjects/trees/palmTree.tscn" id="7_juvor"]
 [ext_resource type="PackedScene" uid="uid://blj6vdip8inrc" path="res://scenes/overworld/enviormentObjects/buildings/House_medium.tscn" id="8_qvkvr"]
 [ext_resource type="NoiseTexture3D" uid="uid://ce8yxjtvy300j" path="res://graphics/v.tres" id="8_tis1p"]
-[ext_resource type="PackedScene" uid="uid://bbnav5dlmcc3r" path="res://scenes/overworld/interactableObjects/dock.tscn" id="9_efnql"]
-[ext_resource type="Script" uid="uid://0rwk7tajftlx" path="res://scripts/npcs/npc.gd" id="10_t8jhf"]
-[ext_resource type="Texture2D" uid="uid://cqvxgf0tkkyqo" path="res://assets/ui/Popup_Red.png" id="11_q4ofs"]
-[ext_resource type="Texture2D" uid="uid://buhp3htbhb5xi" path="res://assets/characters/Muscular_Orangutang_Orange.png" id="11_xcqrf"]
-[ext_resource type="Texture2D" uid="uid://c2ntpig1e4d1p" path="res://assets/ui/enter_prompt.png" id="12_kcvgw"]
 [ext_resource type="Script" uid="uid://v3p46r8rkrgk" path="res://scripts/environment/rippling_water_spawner.gd" id="13_q4ofs"]
 [ext_resource type="PackedScene" uid="uid://d02ypoucyu1a" path="res://scenes/overworld/rippling water/RipplingWater.tscn" id="14_kcvgw"]
 [ext_resource type="Script" uid="uid://ce4v05iayj5lp" path="res://scripts/environment/rhythm_level_entry.gd" id="15_jc4vh"]
@@ -73,13 +68,26 @@ fog_light_energy = 0.68
 fog_sun_scatter = 0.11
 fog_density = 0.106
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xcqrf"]
-
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("15_jc4vh")
-scene_path = "uid://bxoicsre3w4g3"
+scene_path = "uid://d27qypw8hcjwq"
 fish_id = "intersection_fish_1"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_go5iy"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://d22hs1qi6jbdw"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_1teww"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://c8m6qfu1j60ra"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_jcvyx"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://d22hs1qi6jbdw"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4ofs"]
@@ -87,8 +95,24 @@ size = Vector3(127.83618, 8.40918, 96.21478)
 
 [sub_resource type="Resource" id="Resource_xcqrf"]
 script = ExtResource("15_jc4vh")
-scene_path = "uid://caa08pmlmqdfs"
+scene_path = "uid://ca4cbo0gm01bs"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_5l226"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://c8m6qfu1j60ra"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_efnql"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://c7kerghcwa6l"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efnql"]
+size = Vector3(291.1913, 19.543213, 28.642578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t8jhf"]
+size = Vector3(34.41992, 16.327148, 278.64844)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_kcvgw")
@@ -241,41 +265,6 @@ transform = Transform3D(0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, 0.64
 [node name="Docks" type="Node3D" parent="."]
 transform = Transform3D(-3.853365, 0, -5.843937, 0, 7, 0, 5.843937, 0, -3.853365, 175.91512, -5.330711, 171.41298)
 
-[node name="Tower1Dock" parent="Docks" instance=ExtResource("9_efnql")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
-script = ExtResource("10_t8jhf")
-npc_id = "bob"
-
-[node name="Area3D" type="Area3D" parent="Docks/Tower1Dock"]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0, 0)
-
-[node name="sphere" type="CollisionShape3D" parent="Docks/Tower1Dock/Area3D"]
-transform = Transform3D(4.81, 0, 0, 0, 4.81, 0, 0, 0, 4.81, 0, -0.35, 0)
-shape = SubResource("SphereShape3D_xcqrf")
-
-[node name="PrimateLeaderNPC" type="Sprite3D" parent="Docks/Tower1Dock"]
-transform = Transform3D(0.0040857256, 0, 0.0028821616, 0, 0.005000001, 0, -0.0028821616, 0, 0.0040857256, 0.86846924, 0.33562756, 0.7247124)
-pixel_size = 1.0
-billboard = 2
-alpha_cut = 1
-texture_filter = 0
-render_priority = 1
-texture = ExtResource("11_xcqrf")
-
-[node name="Indicator" type="Sprite3D" parent="Docks/Tower1Dock"]
-transform = Transform3D(0.30300006, 0, 5.5879354e-09, 0, 0.30300003, 0, -5.5879354e-09, 0, 0.30300006, 0.86800385, 1.0469066, 0.7249985)
-billboard = 2
-render_priority = 1
-texture = ExtResource("11_q4ofs")
-
-[node name="Prompt" type="Sprite3D" parent="Docks/Tower1Dock"]
-transform = Transform3D(0.288, 0, -6.8191746e-09, 0, 0.288, 0, 6.8191746e-09, 0, 0.288, 0.1949997, 0.049069166, 1.0200424)
-pixel_size = 0.012
-billboard = 2
-transparent = false
-render_priority = 1
-texture = ExtResource("12_kcvgw")
-
 [node name="RipplingWaterSpawner" type="Node3D" parent="."]
 transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 272.06854, -6.488, 233.907)
 script = ExtResource("13_q4ofs")
@@ -296,7 +285,7 @@ spawn_height = -6.4879999999999995
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q14"
-rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_go5iy")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="."]
 transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 300.78387, -6.488, 747.3849)
@@ -318,7 +307,7 @@ spawn_height = -6.4879999999999995
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q14"
-rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_1teww")])
 
 [node name="RipplingWaterSpawner5" type="Node3D" parent="."]
 transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 946.49677, -6.488, 86.812836)
@@ -329,7 +318,7 @@ spawn_height = -6.4879999999999995
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q14"
-rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_jcvyx")])
 
 [node name="RipplingWaterSpawner6" type="Node3D" parent="."]
 transform = Transform3D(0.0004109275, 0, 0.0011540215, 0, 0.0012250002, 0, -0.0011540215, 0, 0.0004109275, 853.62067, -6.71508, 403.17224)
@@ -357,7 +346,7 @@ transform = Transform3D(0.6819984, 0, -0.7313537, 0, 1, 0, 0.7313537, 0, 0.68199
 shape = SubResource("BoxShape3D_q4ofs")
 
 [node name="BossSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 917.51245, -6.488, 913.01074)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 917.51245, -6.488, 913.01074)
 script = ExtResource("17_jc4vh")
 rippling_water_scene = ExtResource("18_xcqrf")
 spawn_radius = 1.0
@@ -365,3 +354,48 @@ spawn_height = -6.4879999999999995
 spawn_delay = 10.0
 require_quest_id = "q15"
 rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_xcqrf")])
+
+[node name="RipplingWaterSpawner7" type="Node3D" parent="."]
+transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 616.74255, -6.488, 559.7428)
+script = ExtResource("13_q4ofs")
+rippling_water_scene = ExtResource("14_kcvgw")
+spawn_radius = 5.0
+spawn_height = -6.4879999999999995
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "q14"
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_5l226")])
+
+[node name="RipplingWaterSpawner8" type="Node3D" parent="."]
+transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 431.3424, -6.488, 269.2528)
+script = ExtResource("13_q4ofs")
+rippling_water_scene = ExtResource("14_kcvgw")
+spawn_radius = 5.0
+spawn_height = -6.4879999999999995
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "q14"
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_efnql")])
+
+[node name="RipplingWaterSpawner9" type="Node3D" parent="."]
+transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 283.12985, -6.488, 137.67139)
+script = ExtResource("13_q4ofs")
+rippling_water_scene = ExtResource("14_kcvgw")
+spawn_radius = 5.0
+spawn_height = -6.4879999999999995
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "q14"
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_efnql")])
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 903.6503, -9.271606, 1027.715)
+shape = SubResource("BoxShape3D_efnql")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1016.4192, -7.663574, 912.24884)
+shape = SubResource("BoxShape3D_t8jhf")
