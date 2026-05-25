@@ -1,23 +1,23 @@
 [gd_scene load_steps=23 format=3 uid="uid://cwiaroi8o5uvx"]
 
-[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_slqnd"]
-[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_4y5mx"]
-[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_ft5ew"]
-[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_8l2d5"]
-[ext_resource type="Resource" uid="uid://bbu3cctw7cio6" path="res://assets/tracks/charts/Childs'_Nightmare.tres" id="5_nwahq"]
-[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_b0bk7"]
-[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_ol3rs"]
-[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_265el"]
-[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="9_v3pot"]
-[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="10_pktl3"]
-[ext_resource type="Script" uid="uid://csotod2yj5dy6" path="res://scripts/musiclevel/reel_in_timer.gd" id="11_7y1o0"]
-[ext_resource type="PackedScene" uid="uid://5p8scmggob1k" path="res://scenes/musiclevel/parts/camera_3d.tscn" id="12_5m6mo"]
-[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="13_s2v5i"]
-[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="14_2awfp"]
-[ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="15_eig82"]
-[ext_resource type="Texture2D" uid="uid://buppebgksadkt" path="res://assets/underwater/flat_sphere.png" id="16_127he"]
-[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="17_uxnc8"]
-[ext_resource type="PackedScene" uid="uid://d2vf8nwvho5vl" path="res://scenes/musiclevel/parts/scenery.tscn" id="18_gu31c"]
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_5f87a"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_3ltbj"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_lw6ob"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_m8l4p"]
+[ext_resource type="Resource" uid="uid://bbu3cctw7cio6" path="res://assets/tracks/charts/Childs'_Nightmare.tres" id="5_ec07u"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_urwy0"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_weweb"]
+[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_d1nuj"]
+[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="9_ylqby"]
+[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="10_ckhrl"]
+[ext_resource type="Script" uid="uid://csotod2yj5dy6" path="res://scripts/musiclevel/reel_in_timer.gd" id="11_0aaf1"]
+[ext_resource type="PackedScene" uid="uid://5p8scmggob1k" path="res://scenes/musiclevel/parts/camera_3d.tscn" id="12_tpynt"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="13_1y4f0"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="14_j1vck"]
+[ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="15_urosw"]
+[ext_resource type="Texture2D" uid="uid://buppebgksadkt" path="res://assets/underwater/flat_sphere.png" id="16_kvgw5"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="19_3kwtk"]
+[ext_resource type="PackedScene" uid="uid://d2vf8nwvho5vl" path="res://scenes/musiclevel/parts/scenery.tscn" id="20_fdne6"]
 
 [sub_resource type="Shader" id="Shader_kr1dr"]
 code = "shader_type spatial;
@@ -57,12 +57,12 @@ void fragment() {
 "
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j17vq"]
-gradient = ExtResource("15_eig82")
+gradient = ExtResource("15_urosw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j17vq"]
 render_priority = 0
 shader = SubResource("Shader_kr1dr")
-shader_parameter/sphere_flat = ExtResource("16_127he")
+shader_parameter/sphere_flat = ExtResource("16_kvgw5")
 shader_parameter/ior_gradient = SubResource("GradientTexture1D_j17vq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_txkkf"]
@@ -70,27 +70,29 @@ material = SubResource("ShaderMaterial_j17vq")
 size = Vector2(1.7, 1.7)
 
 [node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
-script = ExtResource("1_slqnd")
+script = ExtResource("1_5f87a")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
 fish_id = "fish_2"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
-script = ExtResource("2_4y5mx")
+script = ExtResource("2_3ltbj")
 progress_bar = NodePath("../HUD/ProgressBar")
 referee = NodePath("../MusicPlayer/Referee")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("3_ft5ew")
+script = ExtResource("3_lw6ob")
 
 [node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
-script = ExtResource("4_8l2d5")
-chart = ExtResource("5_nwahq")
+script = ExtResource("4_m8l4p")
+chart = ExtResource("5_ec07u")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
 enter_prompt = NodePath("../../HUD/EnterPrompt")
 note_speed = 15.0
+ceiling = 5000
+boss = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -109,10 +111,10 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_b0bk7")
+theme_override_fonts/font = ExtResource("6_urwy0")
 value = 20.0
 allow_lesser = true
-script = ExtResource("7_ol3rs")
+script = ExtResource("7_weweb")
 
 [node name="Multiplier" type="Label" parent="HUD"]
 anchors_preset = 1
@@ -123,9 +125,9 @@ offset_top = 20.0
 offset_right = -29.666748
 offset_bottom = 43.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("6_b0bk7")
+theme_override_fonts/font = ExtResource("6_urwy0")
 text = "X1"
-script = ExtResource("8_265el")
+script = ExtResource("8_d1nuj")
 
 [node name="Hits" type="Label" parent="HUD"]
 visible = false
@@ -143,9 +145,9 @@ offset_left = 10.0
 offset_top = 20.0
 offset_right = 56.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("6_b0bk7")
+theme_override_fonts/font = ExtResource("6_urwy0")
 text = "SCORE:"
-script = ExtResource("9_v3pot")
+script = ExtResource("9_ylqby")
 
 [node name="RatingArea" type="Control" parent="HUD"]
 layout_mode = 3
@@ -154,7 +156,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("10_pktl3")
+script = ExtResource("10_ckhrl")
 
 [node name="AreaRight" type="Control" parent="HUD/RatingArea"]
 layout_mode = 1
@@ -187,8 +189,8 @@ offset_left = 269.0
 offset_top = 89.0
 offset_right = 473.0
 offset_bottom = 105.0
-theme_override_fonts/font = ExtResource("6_b0bk7")
-text = "Hit enter to reel it in early! "
+theme_override_fonts/font = ExtResource("6_urwy0")
+text = "Score 5000 before reeling in! "
 
 [node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
 layout_mode = 0
@@ -196,31 +198,30 @@ offset_left = 1.0
 offset_top = 17.0
 offset_right = 197.0
 offset_bottom = 28.0
-theme_override_fonts/font = ExtResource("6_b0bk7")
+theme_override_fonts/font = ExtResource("6_urwy0")
 max_value = 5.0
 show_percentage = false
-script = ExtResource("11_7y1o0")
+script = ExtResource("11_0aaf1")
 referee = NodePath("../../../MusicPlayer/Referee")
 
-[node name="Camera3D" parent="." instance=ExtResource("12_5m6mo")]
+[node name="Camera3D" parent="." instance=ExtResource("12_tpynt")]
 transform = Transform3D(-1, -5.3822838e-08, 6.889009e-08, 0, 0.7880108, 0.6156615, -8.742278e-08, 0.6156615, -0.7880108, 0, 4, 2)
 
-[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
-script = ExtResource("13_s2v5i")
-place_notes = ExtResource("14_2awfp")
-chart = ExtResource("5_nwahq")
-referee = NodePath("../MusicPlayer/Referee")
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("judge")]
+script = ExtResource("13_1y4f0")
+place_notes = ExtResource("14_j1vck")
+chart = ExtResource("5_ec07u")
 judge = NodePath("../Judge")
 note_speed = 15.0
 
-[node name="@MeshInstance3D@54893" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54893" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 16.27907)
 mesh = SubResource("QuadMesh_txkkf")
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54893" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54894" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54894" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 27.906977)
 mesh = SubResource("QuadMesh_txkkf")
 index = 1
@@ -228,7 +229,7 @@ index = 1
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54894" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54895" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54895" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 41.860466)
 mesh = SubResource("QuadMesh_txkkf")
 index = 2
@@ -236,7 +237,7 @@ index = 2
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54895" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54896" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54896" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 55.813953)
 mesh = SubResource("QuadMesh_txkkf")
 index = 3
@@ -244,7 +245,7 @@ index = 3
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54896" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54897" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54897" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 69.76744)
 mesh = SubResource("QuadMesh_txkkf")
 index = 4
@@ -252,7 +253,7 @@ index = 4
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54897" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54898" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54898" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 83.72093)
 mesh = SubResource("QuadMesh_txkkf")
 index = 5
@@ -260,7 +261,7 @@ index = 5
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54898" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54899" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54899" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 97.674416)
 mesh = SubResource("QuadMesh_txkkf")
 index = 6
@@ -268,7 +269,7 @@ index = 6
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54899" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54900" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54900" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 111.62791)
 mesh = SubResource("QuadMesh_txkkf")
 index = 7
@@ -276,7 +277,7 @@ index = 7
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54900" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54901" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54901" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 115.11628)
 mesh = SubResource("QuadMesh_txkkf")
 index = 8
@@ -284,7 +285,7 @@ index = 8
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54901" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54902" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54902" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 122.093025)
 mesh = SubResource("QuadMesh_txkkf")
 index = 9
@@ -292,7 +293,7 @@ index = 9
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54902" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54903" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54903" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 125.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 10
@@ -300,7 +301,7 @@ index = 10
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54903" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54904" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54904" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 129.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 11
@@ -308,7 +309,7 @@ index = 11
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54904" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54905" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54905" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 136.04651)
 mesh = SubResource("QuadMesh_txkkf")
 index = 12
@@ -316,7 +317,7 @@ index = 12
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54905" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54906" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54906" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 139.53488)
 mesh = SubResource("QuadMesh_txkkf")
 index = 13
@@ -324,7 +325,7 @@ index = 13
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54906" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54907" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54907" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 143.02325)
 mesh = SubResource("QuadMesh_txkkf")
 index = 14
@@ -332,7 +333,7 @@ index = 14
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54907" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54908" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54908" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 150)
 mesh = SubResource("QuadMesh_txkkf")
 index = 15
@@ -340,7 +341,7 @@ index = 15
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54908" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54909" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54909" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 155.81395)
 mesh = SubResource("QuadMesh_txkkf")
 index = 16
@@ -348,7 +349,7 @@ index = 16
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54909" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54910" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54910" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 160.46512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 17
@@ -356,7 +357,7 @@ index = 17
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54910" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54911" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54911" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 167.44186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 18
@@ -364,7 +365,7 @@ index = 18
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54911" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54912" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54912" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 170.93024)
 mesh = SubResource("QuadMesh_txkkf")
 index = 19
@@ -372,7 +373,7 @@ index = 19
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54912" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54913" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54913" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 176.74419)
 mesh = SubResource("QuadMesh_txkkf")
 index = 20
@@ -380,7 +381,7 @@ index = 20
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54913" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54914" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54914" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 181.39536)
 mesh = SubResource("QuadMesh_txkkf")
 index = 21
@@ -388,7 +389,7 @@ index = 21
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54914" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54915" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54915" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 184.88373)
 mesh = SubResource("QuadMesh_txkkf")
 index = 22
@@ -396,7 +397,7 @@ index = 22
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54915" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54916" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54916" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 191.86046)
 mesh = SubResource("QuadMesh_txkkf")
 index = 23
@@ -404,7 +405,7 @@ index = 23
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54916" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54917" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54917" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 195.34883)
 mesh = SubResource("QuadMesh_txkkf")
 index = 24
@@ -412,7 +413,7 @@ index = 24
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54917" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54918" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54918" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 198.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 25
@@ -420,7 +421,7 @@ index = 25
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54918" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54919" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54919" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 206.97675)
 mesh = SubResource("QuadMesh_txkkf")
 index = 26
@@ -428,7 +429,7 @@ index = 26
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54919" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54920" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54920" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 216.27907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 27
@@ -436,7 +437,7 @@ index = 27
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54920" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54921" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54921" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 223.25581)
 mesh = SubResource("QuadMesh_txkkf")
 index = 28
@@ -444,7 +445,7 @@ index = 28
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54921" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54922" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54922" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 230.23256)
 mesh = SubResource("QuadMesh_txkkf")
 index = 29
@@ -452,7 +453,7 @@ index = 29
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54922" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54923" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54923" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 232.55814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 30
@@ -460,7 +461,7 @@ index = 30
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54923" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54924" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54924" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 237.2093)
 mesh = SubResource("QuadMesh_txkkf")
 index = 31
@@ -468,7 +469,7 @@ index = 31
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54924" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54925" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54925" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 244.18605)
 mesh = SubResource("QuadMesh_txkkf")
 index = 32
@@ -476,7 +477,7 @@ index = 32
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54925" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54926" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54926" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 248.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 33
@@ -484,7 +485,7 @@ index = 33
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54926" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54927" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54927" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 258.13953)
 mesh = SubResource("QuadMesh_txkkf")
 index = 34
@@ -492,7 +493,7 @@ index = 34
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54927" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54928" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54928" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 260.46512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 35
@@ -500,7 +501,7 @@ index = 35
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54928" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54929" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54929" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 262.7907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 36
@@ -508,7 +509,7 @@ index = 36
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54929" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54930" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54930" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 269.76746)
 mesh = SubResource("QuadMesh_txkkf")
 index = 37
@@ -516,7 +517,7 @@ index = 37
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54930" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54931" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54931" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 276.74417)
 mesh = SubResource("QuadMesh_txkkf")
 index = 38
@@ -524,7 +525,7 @@ index = 38
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54931" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54932" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54932" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 283.72092)
 mesh = SubResource("QuadMesh_txkkf")
 index = 39
@@ -532,7 +533,7 @@ index = 39
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54932" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@54933" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54933" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 286.0465)
 mesh = SubResource("QuadMesh_txkkf")
 index = 40
@@ -540,7 +541,7 @@ index = 40
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54933" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54934" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54934" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 290.69766)
 mesh = SubResource("QuadMesh_txkkf")
 index = 41
@@ -548,7 +549,7 @@ index = 41
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54934" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54935" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54935" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 297.6744)
 mesh = SubResource("QuadMesh_txkkf")
 index = 42
@@ -556,7 +557,7 @@ index = 42
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54935" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54936" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54936" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 304.65115)
 mesh = SubResource("QuadMesh_txkkf")
 index = 43
@@ -564,7 +565,7 @@ index = 43
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54936" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54937" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54937" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 311.6279)
 mesh = SubResource("QuadMesh_txkkf")
 index = 44
@@ -572,7 +573,7 @@ index = 44
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54937" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54938" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54938" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 317.44186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 45
@@ -580,7 +581,7 @@ index = 45
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54938" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54939" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54939" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 323.25583)
 mesh = SubResource("QuadMesh_txkkf")
 index = 46
@@ -588,7 +589,7 @@ index = 46
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54939" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54940" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54940" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 325.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 47
@@ -596,7 +597,7 @@ index = 47
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54940" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54941" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54941" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 327.90698)
 mesh = SubResource("QuadMesh_txkkf")
 index = 48
@@ -604,7 +605,7 @@ index = 48
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54941" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54942" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54942" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 332.55814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 49
@@ -612,7 +613,7 @@ index = 49
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54942" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54943" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54943" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 339.53488)
 mesh = SubResource("QuadMesh_txkkf")
 index = 50
@@ -620,7 +621,7 @@ index = 50
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54943" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54944" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54944" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 344.18604)
 mesh = SubResource("QuadMesh_txkkf")
 index = 51
@@ -628,7 +629,7 @@ index = 51
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54944" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54945" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54945" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 346.51163)
 mesh = SubResource("QuadMesh_txkkf")
 index = 52
@@ -636,7 +637,7 @@ index = 52
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54945" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54946" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54946" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 353.48837)
 mesh = SubResource("QuadMesh_txkkf")
 index = 53
@@ -644,7 +645,7 @@ index = 53
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54946" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54947" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54947" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 360.46512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 54
@@ -652,7 +653,7 @@ index = 54
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54947" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54948" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54948" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 367.44186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 55
@@ -660,7 +661,7 @@ index = 55
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54948" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54949" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54949" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 372.09302)
 mesh = SubResource("QuadMesh_txkkf")
 index = 56
@@ -668,7 +669,7 @@ index = 56
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54949" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54950" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54950" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 374.4186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 57
@@ -676,7 +677,7 @@ index = 57
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54950" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54951" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54951" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 379.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 58
@@ -684,7 +685,7 @@ index = 58
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54951" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54952" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54952" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 381.39536)
 mesh = SubResource("QuadMesh_txkkf")
 index = 59
@@ -692,7 +693,7 @@ index = 59
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54952" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54953" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54953" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 383.72092)
 mesh = SubResource("QuadMesh_txkkf")
 index = 60
@@ -700,7 +701,7 @@ index = 60
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54953" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54954" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54954" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 388.3721)
 mesh = SubResource("QuadMesh_txkkf")
 index = 61
@@ -708,7 +709,7 @@ index = 61
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54954" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54955" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54955" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 395.34885)
 mesh = SubResource("QuadMesh_txkkf")
 index = 62
@@ -716,7 +717,7 @@ index = 62
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54955" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54956" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54956" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 400)
 mesh = SubResource("QuadMesh_txkkf")
 index = 63
@@ -724,7 +725,7 @@ index = 63
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54956" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54957" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54957" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 402.3256)
 mesh = SubResource("QuadMesh_txkkf")
 index = 64
@@ -732,7 +733,7 @@ index = 64
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54957" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54958" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54958" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 409.30234)
 mesh = SubResource("QuadMesh_txkkf")
 index = 65
@@ -740,7 +741,7 @@ index = 65
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54958" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54959" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54959" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 416.27908)
 mesh = SubResource("QuadMesh_txkkf")
 index = 66
@@ -748,7 +749,7 @@ index = 66
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54959" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54960" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54960" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 423.25583)
 mesh = SubResource("QuadMesh_txkkf")
 index = 67
@@ -756,7 +757,7 @@ index = 67
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54960" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54961" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54961" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 425.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 68
@@ -764,7 +765,7 @@ index = 68
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54961" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54962" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54962" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 430.23254)
 mesh = SubResource("QuadMesh_txkkf")
 index = 69
@@ -772,7 +773,7 @@ index = 69
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54962" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54963" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54963" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 432.55814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 70
@@ -780,7 +781,7 @@ index = 70
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54963" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54964" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54964" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 437.2093)
 mesh = SubResource("QuadMesh_txkkf")
 index = 71
@@ -788,7 +789,7 @@ index = 71
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54964" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54965" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54965" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 439.53488)
 mesh = SubResource("QuadMesh_txkkf")
 index = 72
@@ -796,7 +797,7 @@ index = 72
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54965" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54966" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54966" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 444.18604)
 mesh = SubResource("QuadMesh_txkkf")
 index = 73
@@ -804,7 +805,7 @@ index = 73
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54966" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54967" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54967" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 458.13953)
 mesh = SubResource("QuadMesh_txkkf")
 index = 74
@@ -812,7 +813,7 @@ index = 74
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54967" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54968" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54968" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 465.11627)
 mesh = SubResource("QuadMesh_txkkf")
 index = 75
@@ -820,7 +821,7 @@ index = 75
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54968" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54969" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54969" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 472.09302)
 mesh = SubResource("QuadMesh_txkkf")
 index = 76
@@ -828,7 +829,7 @@ index = 76
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54969" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54970" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54970" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 479.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 77
@@ -836,7 +837,7 @@ index = 77
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54970" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54971" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54971" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 483.72092)
 mesh = SubResource("QuadMesh_txkkf")
 index = 78
@@ -844,7 +845,7 @@ index = 78
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54971" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54972" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54972" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 486.0465)
 mesh = SubResource("QuadMesh_txkkf")
 index = 79
@@ -852,7 +853,7 @@ index = 79
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54972" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54973" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54973" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 493.02325)
 mesh = SubResource("QuadMesh_txkkf")
 index = 80
@@ -860,7 +861,7 @@ index = 80
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54973" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54974" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54974" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 500)
 mesh = SubResource("QuadMesh_txkkf")
 index = 81
@@ -868,7 +869,7 @@ index = 81
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54974" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54975" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54975" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 506.97675)
 mesh = SubResource("QuadMesh_txkkf")
 index = 82
@@ -876,7 +877,7 @@ index = 82
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54975" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54976" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54976" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 509.30234)
 mesh = SubResource("QuadMesh_txkkf")
 index = 83
@@ -884,7 +885,7 @@ index = 83
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54976" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54977" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54977" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 513.9535)
 mesh = SubResource("QuadMesh_txkkf")
 index = 84
@@ -892,7 +893,7 @@ index = 84
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54977" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54978" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54978" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 520.93024)
 mesh = SubResource("QuadMesh_txkkf")
 index = 85
@@ -900,7 +901,7 @@ index = 85
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54978" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54979" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54979" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 527.907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 86
@@ -908,7 +909,7 @@ index = 86
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54979" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54980" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54980" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 533.72095)
 mesh = SubResource("QuadMesh_txkkf")
 index = 87
@@ -916,7 +917,7 @@ index = 87
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54980" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54981" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54981" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 537.2093)
 mesh = SubResource("QuadMesh_txkkf")
 index = 88
@@ -924,7 +925,7 @@ index = 88
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54981" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54982" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54982" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 541.8605)
 mesh = SubResource("QuadMesh_txkkf")
 index = 89
@@ -932,7 +933,7 @@ index = 89
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54982" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54983" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54983" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 548.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 90
@@ -940,7 +941,7 @@ index = 90
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54983" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54984" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54984" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 554.6512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 91
@@ -948,7 +949,7 @@ index = 91
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54984" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54985" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54985" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 561.6279)
 mesh = SubResource("QuadMesh_txkkf")
 index = 92
@@ -956,7 +957,7 @@ index = 92
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54985" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54986" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54986" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 565.1163)
 mesh = SubResource("QuadMesh_txkkf")
 index = 93
@@ -964,7 +965,7 @@ index = 93
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54986" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54987" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54987" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 569.76746)
 mesh = SubResource("QuadMesh_txkkf")
 index = 94
@@ -972,7 +973,7 @@ index = 94
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54987" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54988" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54988" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 575.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 95
@@ -980,7 +981,7 @@ index = 95
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54988" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54989" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54989" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 579.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 96
@@ -988,7 +989,7 @@ index = 96
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54989" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54990" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54990" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 582.57)
 mesh = SubResource("QuadMesh_txkkf")
 index = 97
@@ -996,7 +997,7 @@ index = 97
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54990" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54991" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54991" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 586.0465)
 mesh = SubResource("QuadMesh_txkkf")
 index = 98
@@ -1004,7 +1005,7 @@ index = 98
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54991" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54992" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54992" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 589.5349)
 mesh = SubResource("QuadMesh_txkkf")
 index = 99
@@ -1012,7 +1013,7 @@ index = 99
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54992" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54993" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54993" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 593.02325)
 mesh = SubResource("QuadMesh_txkkf")
 index = 100
@@ -1020,7 +1021,7 @@ index = 100
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54993" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54994" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54994" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 596.51166)
 mesh = SubResource("QuadMesh_txkkf")
 index = 101
@@ -1028,7 +1029,7 @@ index = 101
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54994" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54995" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54995" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 600)
 mesh = SubResource("QuadMesh_txkkf")
 index = 102
@@ -1036,7 +1037,7 @@ index = 102
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54995" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54996" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54996" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 603.48834)
 mesh = SubResource("QuadMesh_txkkf")
 index = 103
@@ -1044,7 +1045,7 @@ index = 103
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54996" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@54997" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54997" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 606.97675)
 mesh = SubResource("QuadMesh_txkkf")
 index = 104
@@ -1052,7 +1053,7 @@ index = 104
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54997" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@54998" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54998" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 610.4651)
 mesh = SubResource("QuadMesh_txkkf")
 index = 105
@@ -1060,7 +1061,7 @@ index = 105
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54998" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@54999" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@54999" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 613.9535)
 mesh = SubResource("QuadMesh_txkkf")
 index = 106
@@ -1068,7 +1069,7 @@ index = 106
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@54999" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55000" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55000" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 617.44183)
 mesh = SubResource("QuadMesh_txkkf")
 index = 107
@@ -1076,7 +1077,7 @@ index = 107
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55000" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55001" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55001" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 620.93024)
 mesh = SubResource("QuadMesh_txkkf")
 index = 108
@@ -1084,7 +1085,7 @@ index = 108
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55001" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55002" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55002" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 624.4186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 109
@@ -1092,7 +1093,7 @@ index = 109
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55002" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55003" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55003" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 627.907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 110
@@ -1100,7 +1101,7 @@ index = 110
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55003" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55004" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55004" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 631.3953)
 mesh = SubResource("QuadMesh_txkkf")
 index = 111
@@ -1108,7 +1109,7 @@ index = 111
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55004" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55005" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55005" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 634.8837)
 mesh = SubResource("QuadMesh_txkkf")
 index = 112
@@ -1116,7 +1117,7 @@ index = 112
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55005" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55006" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55006" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 638.3721)
 mesh = SubResource("QuadMesh_txkkf")
 index = 113
@@ -1124,7 +1125,7 @@ index = 113
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55006" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55007" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55007" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 641.8605)
 mesh = SubResource("QuadMesh_txkkf")
 index = 114
@@ -1132,7 +1133,7 @@ index = 114
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55007" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55008" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55008" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 645.3488)
 mesh = SubResource("QuadMesh_txkkf")
 index = 115
@@ -1140,7 +1141,7 @@ index = 115
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55008" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55009" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55009" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 648.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 116
@@ -1148,7 +1149,7 @@ index = 116
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55009" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55010" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55010" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 652.32556)
 mesh = SubResource("QuadMesh_txkkf")
 index = 117
@@ -1156,7 +1157,7 @@ index = 117
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55010" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55011" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55011" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 655.81396)
 mesh = SubResource("QuadMesh_txkkf")
 index = 118
@@ -1164,7 +1165,7 @@ index = 118
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55011" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55012" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55012" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 659.3023)
 mesh = SubResource("QuadMesh_txkkf")
 index = 119
@@ -1172,7 +1173,7 @@ index = 119
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55012" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55013" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55013" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 662.7907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 120
@@ -1180,7 +1181,7 @@ index = 120
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55013" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55014" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55014" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 666.27905)
 mesh = SubResource("QuadMesh_txkkf")
 index = 121
@@ -1188,7 +1189,7 @@ index = 121
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55014" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55015" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55015" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 673.2558)
 mesh = SubResource("QuadMesh_txkkf")
 index = 122
@@ -1196,7 +1197,7 @@ index = 122
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55015" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55016" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55016" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 676.7442)
 mesh = SubResource("QuadMesh_txkkf")
 index = 123
@@ -1204,7 +1205,7 @@ index = 123
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55016" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55017" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55017" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 679.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 124
@@ -1212,7 +1213,7 @@ index = 124
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55017" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55018" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55018" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 687.2093)
 mesh = SubResource("QuadMesh_txkkf")
 index = 125
@@ -1220,7 +1221,7 @@ index = 125
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55018" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55019" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55019" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 690.6977)
 mesh = SubResource("QuadMesh_txkkf")
 index = 126
@@ -1228,7 +1229,7 @@ index = 126
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55019" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55020" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55020" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 693.03)
 mesh = SubResource("QuadMesh_txkkf")
 index = 127
@@ -1236,7 +1237,7 @@ index = 127
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55020" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55021" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55021" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 701.1628)
 mesh = SubResource("QuadMesh_txkkf")
 index = 128
@@ -1244,7 +1245,7 @@ index = 128
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55021" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55022" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55022" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 704.6512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 129
@@ -1252,7 +1253,7 @@ index = 129
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55022" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55023" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55023" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 706.97675)
 mesh = SubResource("QuadMesh_txkkf")
 index = 130
@@ -1260,7 +1261,7 @@ index = 130
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55023" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55024" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55024" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 713.9535)
 mesh = SubResource("QuadMesh_txkkf")
 index = 131
@@ -1268,7 +1269,7 @@ index = 131
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55024" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55025" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55025" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 717.435)
 mesh = SubResource("QuadMesh_txkkf")
 index = 132
@@ -1276,7 +1277,7 @@ index = 132
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55025" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55026" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55026" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 719.76)
 mesh = SubResource("QuadMesh_txkkf")
 index = 133
@@ -1284,7 +1285,7 @@ index = 133
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55026" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55027" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55027" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 729.06976)
 mesh = SubResource("QuadMesh_txkkf")
 index = 134
@@ -1292,7 +1293,7 @@ index = 134
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55027" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55028" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55028" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 732.55817)
 mesh = SubResource("QuadMesh_txkkf")
 index = 135
@@ -1300,7 +1301,7 @@ index = 135
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55028" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55029" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55029" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 734.8837)
 mesh = SubResource("QuadMesh_txkkf")
 index = 136
@@ -1308,7 +1309,7 @@ index = 136
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55029" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55030" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55030" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 741.8605)
 mesh = SubResource("QuadMesh_txkkf")
 index = 137
@@ -1316,7 +1317,7 @@ index = 137
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55030" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55031" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55031" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 746.51166)
 mesh = SubResource("QuadMesh_txkkf")
 index = 138
@@ -1324,7 +1325,7 @@ index = 138
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55031" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55032" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55032" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 748.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 139
@@ -1332,7 +1333,7 @@ index = 139
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55032" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55033" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55033" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 755.81396)
 mesh = SubResource("QuadMesh_txkkf")
 index = 140
@@ -1340,7 +1341,7 @@ index = 140
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55033" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55034" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55034" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 762.7907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 141
@@ -1348,7 +1349,7 @@ index = 141
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55034" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55035" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55035" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 769.76746)
 mesh = SubResource("QuadMesh_txkkf")
 index = 142
@@ -1356,7 +1357,7 @@ index = 142
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55035" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55036" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55036" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 776.7442)
 mesh = SubResource("QuadMesh_txkkf")
 index = 143
@@ -1364,7 +1365,7 @@ index = 143
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55036" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55037" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55037" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 783.72095)
 mesh = SubResource("QuadMesh_txkkf")
 index = 144
@@ -1372,7 +1373,7 @@ index = 144
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55037" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55038" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55038" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 790.6977)
 mesh = SubResource("QuadMesh_txkkf")
 index = 145
@@ -1380,7 +1381,7 @@ index = 145
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55038" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55039" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55039" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 797.67444)
 mesh = SubResource("QuadMesh_txkkf")
 index = 146
@@ -1388,7 +1389,7 @@ index = 146
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55039" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55040" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55040" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 804.6512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 147
@@ -1396,7 +1397,7 @@ index = 147
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55040" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55041" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55041" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 811.6279)
 mesh = SubResource("QuadMesh_txkkf")
 index = 148
@@ -1404,7 +1405,7 @@ index = 148
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55041" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55042" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55042" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 818.6047)
 mesh = SubResource("QuadMesh_txkkf")
 index = 149
@@ -1412,7 +1413,7 @@ index = 149
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55042" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55043" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55043" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 825.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 150
@@ -1420,7 +1421,7 @@ index = 150
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55043" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55044" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55044" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 832.55817)
 mesh = SubResource("QuadMesh_txkkf")
 index = 151
@@ -1428,7 +1429,7 @@ index = 151
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55044" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55045" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55045" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 839.5349)
 mesh = SubResource("QuadMesh_txkkf")
 index = 152
@@ -1436,7 +1437,7 @@ index = 152
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55045" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55046" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55046" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 846.51166)
 mesh = SubResource("QuadMesh_txkkf")
 index = 153
@@ -1444,7 +1445,7 @@ index = 153
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55046" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55047" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55047" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 853.48834)
 mesh = SubResource("QuadMesh_txkkf")
 index = 154
@@ -1452,7 +1453,7 @@ index = 154
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55047" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55048" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55048" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 860.4651)
 mesh = SubResource("QuadMesh_txkkf")
 index = 155
@@ -1460,7 +1461,7 @@ index = 155
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55048" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55049" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55049" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 867.44183)
 mesh = SubResource("QuadMesh_txkkf")
 index = 156
@@ -1468,7 +1469,7 @@ index = 156
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55049" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55050" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55050" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 874.4186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 157
@@ -1476,7 +1477,7 @@ index = 157
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55050" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55051" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55051" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 886.035)
 mesh = SubResource("QuadMesh_txkkf")
 index = 158
@@ -1484,7 +1485,7 @@ index = 158
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55051" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55052" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55052" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 889.53)
 mesh = SubResource("QuadMesh_txkkf")
 index = 159
@@ -1492,7 +1493,7 @@ index = 159
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55052" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55053" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55053" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 893.025)
 mesh = SubResource("QuadMesh_txkkf")
 index = 160
@@ -1500,7 +1501,7 @@ index = 160
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55053" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55054" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55054" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 900)
 mesh = SubResource("QuadMesh_txkkf")
 index = 161
@@ -1508,7 +1509,7 @@ index = 161
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55054" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55055" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55055" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 903.48834)
 mesh = SubResource("QuadMesh_txkkf")
 index = 162
@@ -1516,7 +1517,7 @@ index = 162
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55055" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55056" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55056" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 906.97675)
 mesh = SubResource("QuadMesh_txkkf")
 index = 163
@@ -1524,7 +1525,7 @@ index = 163
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55056" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55057" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55057" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 913.9535)
 mesh = SubResource("QuadMesh_txkkf")
 index = 164
@@ -1532,7 +1533,7 @@ index = 164
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55057" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55058" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55058" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 917.44183)
 mesh = SubResource("QuadMesh_txkkf")
 index = 165
@@ -1540,7 +1541,7 @@ index = 165
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55058" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55059" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55059" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 920.93024)
 mesh = SubResource("QuadMesh_txkkf")
 index = 166
@@ -1548,7 +1549,7 @@ index = 166
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55059" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55060" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55060" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 927.907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 167
@@ -1556,7 +1557,7 @@ index = 167
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55060" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55061" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55061" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 931.3953)
 mesh = SubResource("QuadMesh_txkkf")
 index = 168
@@ -1564,7 +1565,7 @@ index = 168
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55061" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55062" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55062" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 934.8837)
 mesh = SubResource("QuadMesh_txkkf")
 index = 169
@@ -1572,7 +1573,7 @@ index = 169
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55062" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55063" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55063" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 941.8605)
 mesh = SubResource("QuadMesh_txkkf")
 index = 170
@@ -1580,7 +1581,7 @@ index = 170
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55063" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55064" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55064" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 945.36)
 mesh = SubResource("QuadMesh_txkkf")
 index = 171
@@ -1588,7 +1589,7 @@ index = 171
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55064" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55065" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55065" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 948.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 172
@@ -1596,7 +1597,7 @@ index = 172
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55065" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55066" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55066" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 955.81396)
 mesh = SubResource("QuadMesh_txkkf")
 index = 173
@@ -1604,7 +1605,7 @@ index = 173
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55066" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55067" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55067" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 959.3023)
 mesh = SubResource("QuadMesh_txkkf")
 index = 174
@@ -1612,7 +1613,7 @@ index = 174
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55067" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55068" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55068" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 962.7907)
 mesh = SubResource("QuadMesh_txkkf")
 index = 175
@@ -1620,7 +1621,7 @@ index = 175
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55068" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55069" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55069" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 969.76746)
 mesh = SubResource("QuadMesh_txkkf")
 index = 176
@@ -1628,7 +1629,7 @@ index = 176
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55069" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55070" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55070" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 973.2558)
 mesh = SubResource("QuadMesh_txkkf")
 index = 177
@@ -1636,7 +1637,7 @@ index = 177
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55070" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55071" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55071" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 976.7442)
 mesh = SubResource("QuadMesh_txkkf")
 index = 178
@@ -1644,7 +1645,7 @@ index = 178
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55071" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55072" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55072" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 983.72095)
 mesh = SubResource("QuadMesh_txkkf")
 index = 179
@@ -1652,7 +1653,7 @@ index = 179
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55072" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55073" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55073" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 987.21)
 mesh = SubResource("QuadMesh_txkkf")
 index = 180
@@ -1660,7 +1661,7 @@ index = 180
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55073" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55074" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55074" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 990.6977)
 mesh = SubResource("QuadMesh_txkkf")
 index = 181
@@ -1668,7 +1669,7 @@ index = 181
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55074" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55075" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55075" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 997.67444)
 mesh = SubResource("QuadMesh_txkkf")
 index = 182
@@ -1676,7 +1677,7 @@ index = 182
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55075" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55076" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55076" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1004.6512)
 mesh = SubResource("QuadMesh_txkkf")
 index = 183
@@ -1684,7 +1685,7 @@ index = 183
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55076" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55077" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55077" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1011.6279)
 mesh = SubResource("QuadMesh_txkkf")
 index = 184
@@ -1692,7 +1693,7 @@ index = 184
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55077" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55078" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55078" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1018.6047)
 mesh = SubResource("QuadMesh_txkkf")
 index = 185
@@ -1700,7 +1701,7 @@ index = 185
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55078" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55079" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55079" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1025.5814)
 mesh = SubResource("QuadMesh_txkkf")
 index = 186
@@ -1708,7 +1709,7 @@ index = 186
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55079" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55080" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55080" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1032.5581)
 mesh = SubResource("QuadMesh_txkkf")
 index = 187
@@ -1716,7 +1717,7 @@ index = 187
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55080" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55081" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55081" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1039.5349)
 mesh = SubResource("QuadMesh_txkkf")
 index = 188
@@ -1724,7 +1725,7 @@ index = 188
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55081" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55082" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55082" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1046.5116)
 mesh = SubResource("QuadMesh_txkkf")
 index = 189
@@ -1732,7 +1733,7 @@ index = 189
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55082" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55083" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55083" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1053.4884)
 mesh = SubResource("QuadMesh_txkkf")
 index = 190
@@ -1740,7 +1741,7 @@ index = 190
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55083" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55084" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55084" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1058.1395)
 mesh = SubResource("QuadMesh_txkkf")
 index = 191
@@ -1748,7 +1749,7 @@ index = 191
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55084" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55085" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55085" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1062.7906)
 mesh = SubResource("QuadMesh_txkkf")
 index = 192
@@ -1756,7 +1757,7 @@ index = 192
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55085" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55086" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55086" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1067.4419)
 mesh = SubResource("QuadMesh_txkkf")
 index = 193
@@ -1764,7 +1765,7 @@ index = 193
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55086" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55087" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55087" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1070.9302)
 mesh = SubResource("QuadMesh_txkkf")
 index = 194
@@ -1772,7 +1773,7 @@ index = 194
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55087" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55088" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55088" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1074.4186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 195
@@ -1780,7 +1781,7 @@ index = 195
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55088" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55089" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55089" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1076.7441)
 mesh = SubResource("QuadMesh_txkkf")
 index = 196
@@ -1788,7 +1789,7 @@ index = 196
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55089" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55090" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55090" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1081.3954)
 mesh = SubResource("QuadMesh_txkkf")
 index = 197
@@ -1796,7 +1797,7 @@ index = 197
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55090" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55091" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55091" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1084.8837)
 mesh = SubResource("QuadMesh_txkkf")
 index = 198
@@ -1804,7 +1805,7 @@ index = 198
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55091" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55092" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55092" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1088.3721)
 mesh = SubResource("QuadMesh_txkkf")
 index = 199
@@ -1812,7 +1813,7 @@ index = 199
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55092" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55093" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55093" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1093.0233)
 mesh = SubResource("QuadMesh_txkkf")
 index = 200
@@ -1820,7 +1821,7 @@ index = 200
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55093" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55094" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55094" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1100)
 mesh = SubResource("QuadMesh_txkkf")
 index = 201
@@ -1828,7 +1829,7 @@ index = 201
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55094" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55095" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55095" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1106.9767)
 mesh = SubResource("QuadMesh_txkkf")
 index = 202
@@ -1836,7 +1837,7 @@ index = 202
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55095" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55096" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55096" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1118.6046)
 mesh = SubResource("QuadMesh_txkkf")
 index = 203
@@ -1844,7 +1845,7 @@ index = 203
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55096" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55097" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55097" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1120.9302)
 mesh = SubResource("QuadMesh_txkkf")
 index = 204
@@ -1852,7 +1853,7 @@ index = 204
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55097" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55098" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55098" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1137.2094)
 mesh = SubResource("QuadMesh_txkkf")
 index = 205
@@ -1860,7 +1861,7 @@ index = 205
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55098" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55099" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55099" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1147.6744)
 mesh = SubResource("QuadMesh_txkkf")
 index = 206
@@ -1868,7 +1869,7 @@ index = 206
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55099" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55100" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55100" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1148.8372)
 mesh = SubResource("QuadMesh_txkkf")
 index = 207
@@ -1876,7 +1877,7 @@ index = 207
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55100" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55101" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55101" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1162.7906)
 mesh = SubResource("QuadMesh_txkkf")
 index = 208
@@ -1884,7 +1885,7 @@ index = 208
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55101" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55102" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55102" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1176.7441)
 mesh = SubResource("QuadMesh_txkkf")
 index = 209
@@ -1892,7 +1893,7 @@ index = 209
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55102" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55103" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55103" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1189.5349)
 mesh = SubResource("QuadMesh_txkkf")
 index = 210
@@ -1900,7 +1901,7 @@ index = 210
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55103" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55104" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55104" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1197.6744)
 mesh = SubResource("QuadMesh_txkkf")
 index = 211
@@ -1908,7 +1909,7 @@ index = 211
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55104" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55105" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55105" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1200)
 mesh = SubResource("QuadMesh_txkkf")
 index = 212
@@ -1916,7 +1917,7 @@ index = 212
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55105" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55106" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55106" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1211.6279)
 mesh = SubResource("QuadMesh_txkkf")
 index = 213
@@ -1924,7 +1925,7 @@ index = 213
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55106" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55107" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55107" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1218.6046)
 mesh = SubResource("QuadMesh_txkkf")
 index = 214
@@ -1932,7 +1933,7 @@ index = 214
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55107" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55108" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55108" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1232.5581)
 mesh = SubResource("QuadMesh_txkkf")
 index = 215
@@ -1940,7 +1941,7 @@ index = 215
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55108" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55109" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55109" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1245.3489)
 mesh = SubResource("QuadMesh_txkkf")
 index = 216
@@ -1948,7 +1949,7 @@ index = 216
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55109" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55110" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55110" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1262.7906)
 mesh = SubResource("QuadMesh_txkkf")
 index = 217
@@ -1956,7 +1957,7 @@ index = 217
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55110" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55111" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55111" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1265.1163)
 mesh = SubResource("QuadMesh_txkkf")
 index = 218
@@ -1964,7 +1965,7 @@ index = 218
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55111" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55112" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55112" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1267.4419)
 mesh = SubResource("QuadMesh_txkkf")
 index = 219
@@ -1972,7 +1973,7 @@ index = 219
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55112" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55113" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55113" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1274.4186)
 mesh = SubResource("QuadMesh_txkkf")
 index = 220
@@ -1980,7 +1981,7 @@ index = 220
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55113" index="0"]
 modulate = Color(0, 0.39215687, 0, 1)
 
-[node name="@MeshInstance3D@55114" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55114" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1288.3721)
 mesh = SubResource("QuadMesh_txkkf")
 index = 221
@@ -1988,7 +1989,7 @@ index = 221
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55114" index="0"]
 modulate = Color(1, 0.54901963, 0, 1)
 
-[node name="@MeshInstance3D@55115" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55115" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1302.3256)
 mesh = SubResource("QuadMesh_txkkf")
 index = 222
@@ -1996,7 +1997,7 @@ index = 222
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55115" index="0"]
 modulate = Color(0.54509807, 0, 0, 1)
 
-[node name="@MeshInstance3D@55116" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55116" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1330.2325)
 mesh = SubResource("QuadMesh_txkkf")
 index = 223
@@ -2004,7 +2005,7 @@ index = 223
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55116" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55117" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55117" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1337.2094)
 mesh = SubResource("QuadMesh_txkkf")
 index = 224
@@ -2012,7 +2013,7 @@ index = 224
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@55117" index="0"]
 modulate = Color(0, 0, 0.54509807, 1)
 
-[node name="@MeshInstance3D@55118" parent="Note_Holder" instance=ExtResource("14_2awfp")]
+[node name="@MeshInstance3D@55118" parent="Note_Holder" instance=ExtResource("14_j1vck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1356.9)
 mesh = SubResource("QuadMesh_txkkf")
 index = 225
@@ -2021,9 +2022,9 @@ index = 225
 modulate = Color(0, 0, 0.54509807, 1)
 
 [node name="InputHit" type="Node" parent="."]
-script = ExtResource("17_uxnc8")
+script = ExtResource("19_3kwtk")
 
-[node name="scenery" parent="." instance=ExtResource("18_gu31c")]
+[node name="scenery" parent="." instance=ExtResource("20_fdne6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
 
 [connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]

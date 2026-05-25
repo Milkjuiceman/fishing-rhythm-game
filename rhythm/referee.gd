@@ -1,5 +1,5 @@
 extends Node
-class_name Referee 
+class_name Referee
 ## Coordinates rhythm gameplay flow, input processing, and catch logic.
 ## Acts as the central controller between MusicPlayer, InputHit, RhythmJudge, and UI elements.
 ## Author: Tyler Schauermann
@@ -27,7 +27,11 @@ class_name Referee
 @export var enter_prompt: Label
 
 # Speed multiplier for note movement
-@export var note_speed: float = 10.
+@export var note_speed: float = 10
+
+@export var ceiling: int = 1000
+
+@export var boss: bool = false
 
 # Input timing offset adjustment
 var input_offset: float = 0.0
@@ -116,8 +120,12 @@ func _process(delta: float) -> void:
 	input_hit.fill_frame_state(frame_state)
 	judge.process_and_fill_frame_state(frame_state)
 	process.emit(frame_state)
-	if catchable and frame_state.enter_key_press:
+	if catchable and frame_state.enter_key_press and !boss:
 		print("[Referee] Enter pressed — catchable: true, calling _catch_fish")
+		var performance = _calculate_performance()
+		var rarity = _performance_to_rarity(performance)
+		_catch_fish(performance, rarity)
+	elif catchable and frame_state.enter_key_press and frame_state.scorecard.score > ceiling:
 		var performance = _calculate_performance()
 		var rarity = _performance_to_rarity(performance)
 		_catch_fish(performance, rarity)
