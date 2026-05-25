@@ -1,0 +1,1622 @@
+[gd_scene load_steps=17 format=3 uid="uid://dnxpq3sc77e5i"]
+
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_xy065"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_strl1"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_hg8wa"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_t6l3b"]
+[ext_resource type="Resource" uid="uid://or2yky3hm4w0" path="res://assets/tracks/charts/Lord_Mavras.tres" id="5_2e6b0"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_kur64"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_kc2kf"]
+[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_susg0"]
+[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="9_creuk"]
+[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="10_x7lc8"]
+[ext_resource type="Script" uid="uid://csotod2yj5dy6" path="res://scripts/musiclevel/reel_in_timer.gd" id="11_pmqm1"]
+[ext_resource type="PackedScene" uid="uid://5p8scmggob1k" path="res://scenes/musiclevel/parts/camera_3d.tscn" id="12_27jql"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="13_agh20"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="14_mw03x"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="19_ybmk8"]
+[ext_resource type="PackedScene" uid="uid://d2vf8nwvho5vl" path="res://scenes/musiclevel/parts/scenery.tscn" id="20_yeirv"]
+
+[node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
+script = ExtResource("1_xy065")
+referee = NodePath("MusicPlayer/Referee")
+judge = NodePath("Judge")
+fish_id = "fish_2"
+
+[node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
+script = ExtResource("2_strl1")
+progress_bar = NodePath("../HUD/ProgressBar")
+referee = NodePath("../MusicPlayer/Referee")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_hg8wa")
+
+[node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
+script = ExtResource("4_t6l3b")
+chart = ExtResource("5_2e6b0")
+music_player = NodePath("..")
+input_hit = NodePath("../../InputHit")
+judge = NodePath("../../Judge")
+enter_prompt = NodePath("../../HUD/EnterPrompt")
+note_speed = 23.0
+ceiling = 7000
+
+[node name="HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ProgressBar" type="ProgressBar" parent="HUD"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -25.0
+offset_right = 130.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(177, 14)
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("6_kur64")
+value = 20.0
+allow_lesser = true
+script = ExtResource("7_kc2kf")
+
+[node name="Multiplier" type="Label" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 20.0
+offset_right = -29.666748
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("6_kur64")
+text = "X1"
+script = ExtResource("8_susg0")
+
+[node name="Hits" type="Label" parent="HUD"]
+visible = false
+offset_left = 2.0
+offset_top = 62.0
+offset_right = 68.0
+offset_bottom = 137.0
+scale = Vector2(3, 3)
+text = "HITS:
+MISSES:
+COMBO:"
+
+[node name="Score" type="Label" parent="HUD"]
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 56.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("6_kur64")
+text = "SCORE:"
+script = ExtResource("9_creuk")
+
+[node name="RatingArea" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_x7lc8")
+
+[node name="AreaRight" type="Control" parent="HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -405.0
+offset_top = -80.0
+offset_right = -320.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="AreaLeft" type="Control" parent="HUD/RatingArea"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 300.0
+offset_top = -80.0
+offset_right = 385.0
+offset_bottom = 80.0
+grow_vertical = 2
+
+[node name="EnterPrompt" type="Label" parent="HUD"]
+visible = false
+offset_left = 269.0
+offset_top = 89.0
+offset_right = 473.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("6_kur64")
+text = "Can't reel this one in!"
+
+[node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 17.0
+offset_right = 197.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("6_kur64")
+max_value = 5.0
+show_percentage = false
+script = ExtResource("11_pmqm1")
+referee = NodePath("../../../MusicPlayer/Referee")
+
+[node name="Camera3D" parent="." instance=ExtResource("12_27jql")]
+transform = Transform3D(-1, -5.3822838e-08, 6.889009e-08, 0, 0.7880108, 0.6156615, -8.742278e-08, 0.6156615, -0.7880108, 0, 4, 2)
+
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
+script = ExtResource("13_agh20")
+place_notes = ExtResource("14_mw03x")
+chart = ExtResource("5_2e6b0")
+referee = NodePath("../MusicPlayer/Referee")
+judge = NodePath("../Judge")
+note_speed = 23.0
+
+[node name="@MeshInstance3D@43936" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 23)
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43936" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43937" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 40.25)
+index = 1
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43937" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43938" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 57.5)
+index = 2
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43938" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43939" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 71.875)
+index = 3
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43939" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43940" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 90.5625)
+index = 4
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43940" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43941" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 109.25)
+index = 5
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43941" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43942" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 126.5)
+index = 6
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43942" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43943" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 143.75)
+index = 7
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43943" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43944" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 161)
+index = 8
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43944" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43945" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 178.25)
+index = 9
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43945" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43946" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 195.5)
+index = 10
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43946" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43947" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 212.75)
+index = 11
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43947" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43948" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 230)
+index = 12
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43948" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43949" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 235.75)
+index = 13
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43949" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43950" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 247.25)
+index = 14
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43950" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43951" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 250.125)
+index = 15
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43951" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43952" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 267.375)
+index = 16
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43952" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43953" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 270.25)
+index = 17
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43953" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43954" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 281.75)
+index = 18
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43954" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43955" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 287.5)
+index = 19
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43955" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43956" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 299)
+index = 20
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43956" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43957" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 304.75)
+index = 21
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43957" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43958" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 316.25)
+index = 22
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43958" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43959" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 322)
+index = 23
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43959" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@43960" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 336.375)
+index = 24
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43960" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43961" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 353.625)
+index = 25
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43961" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43962" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 370.875)
+index = 26
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43962" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43963" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 388.125)
+index = 27
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43963" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43964" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 405.375)
+index = 28
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43964" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@43965" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 422.625)
+index = 29
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43965" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43966" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 439.875)
+index = 30
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43966" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@43967" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 474.375)
+index = 31
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43967" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43968" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 488.75)
+index = 32
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43968" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43969" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 506)
+index = 33
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43969" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@43970" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 523.25)
+index = 34
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43970" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43971" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 540.5)
+index = 35
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43971" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43972" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 557.75)
+index = 36
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43972" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43973" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 575)
+index = 37
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43973" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43974" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 592.25)
+index = 38
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43974" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43975" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 612.375)
+index = 39
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43975" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43976" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 626.75)
+index = 40
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43976" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43977" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 632.5)
+index = 41
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43977" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43978" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 646.875)
+index = 42
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43978" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@43979" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 661.25)
+index = 43
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43979" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43980" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 681.375)
+index = 44
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43980" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43981" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 685.6875)
+index = 45
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43981" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43982" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 698.625)
+index = 46
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43982" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43983" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 715.875)
+index = 47
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43983" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43984" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 730.25)
+index = 48
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43984" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43985" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 733.125)
+index = 49
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43985" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43986" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 747.5)
+index = 50
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43986" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43987" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 770.5)
+index = 51
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43987" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43988" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 782)
+index = 52
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43988" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43989" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 799.25)
+index = 53
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43989" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43990" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 819.375)
+index = 54
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43990" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43991" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 840.9375)
+index = 55
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43991" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43992" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 909.9375)
+index = 56
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43992" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@43993" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 911.375)
+index = 57
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43993" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43994" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 917.125)
+index = 58
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43994" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43995" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 922.875)
+index = 59
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43995" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43996" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 927.1875)
+index = 60
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43996" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43997" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 931.5)
+index = 61
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43997" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@43998" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 937.25)
+index = 62
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43998" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@43999" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 944.4375)
+index = 63
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@43999" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44000" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 951.625)
+index = 64
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44000" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44001" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 957.375)
+index = 65
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44001" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44002" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 961.6875)
+index = 66
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44002" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44003" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 968.875)
+index = 67
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44003" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44004" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 977.5)
+index = 68
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44004" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44005" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 983.25)
+index = 69
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44005" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44006" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 986.125)
+index = 70
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44006" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44007" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 991.875)
+index = 71
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44007" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44008" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1000.5)
+index = 72
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44008" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44009" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1006.25)
+index = 73
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44009" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44010" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1012)
+index = 74
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44010" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44011" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1014.875)
+index = 75
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44011" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44012" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1020.625)
+index = 76
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44012" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44013" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1026.375)
+index = 77
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44013" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44014" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1030.6875)
+index = 78
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44014" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44015" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1037.875)
+index = 79
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44015" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44016" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1043.625)
+index = 80
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44016" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44017" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1046.5)
+index = 81
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44017" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44018" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1055.125)
+index = 82
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44018" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44019" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1060.875)
+index = 83
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44019" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44020" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1063.75)
+index = 84
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44020" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44021" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1072.375)
+index = 85
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44021" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44022" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1075.25)
+index = 86
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44022" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44023" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1086.75)
+index = 87
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44023" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44024" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1095.375)
+index = 88
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44024" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44025" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1098.25)
+index = 89
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44025" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44026" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1106.875)
+index = 90
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44026" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44027" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1112.625)
+index = 91
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44027" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44028" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1124.125)
+index = 92
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44028" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44029" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1129.875)
+index = 93
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44029" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44030" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1138.5)
+index = 94
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44030" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44031" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1147.125)
+index = 95
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44031" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44032" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1151.4375)
+index = 96
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44032" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44033" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1158.625)
+index = 97
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44033" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44034" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1167.25)
+index = 98
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44034" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44035" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1168.6875)
+index = 99
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44035" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44036" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1175.875)
+index = 100
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44036" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44037" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1181.625)
+index = 101
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44037" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44038" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1190.25)
+index = 102
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44038" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44039" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1196)
+index = 103
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44039" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44040" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1207.5)
+index = 104
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44040" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44041" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1216.125)
+index = 105
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44041" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44042" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1221.875)
+index = 106
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44042" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44043" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1227.625)
+index = 107
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44043" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44044" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1233.375)
+index = 108
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44044" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44045" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1239.125)
+index = 109
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44045" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44046" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1244.875)
+index = 110
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44046" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44047" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1253.5)
+index = 111
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44047" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44048" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1256.375)
+index = 112
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44048" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44049" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1262.125)
+index = 113
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44049" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44050" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1267.875)
+index = 114
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44050" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44051" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1272.1875)
+index = 115
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44051" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44052" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1279.375)
+index = 116
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44052" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44053" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1285.125)
+index = 117
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44053" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44054" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1289.4375)
+index = 118
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44054" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44055" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1293.75)
+index = 119
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44055" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44056" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1302.375)
+index = 120
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44056" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44057" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1311)
+index = 121
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44057" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44058" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1315.3125)
+index = 122
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44058" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44059" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1322.5)
+index = 123
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44059" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44060" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1323.9375)
+index = 124
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44060" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44061" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1334)
+index = 125
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44061" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44062" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1339.75)
+index = 126
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44062" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44063" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1342.625)
+index = 127
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44063" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44064" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1351.25)
+index = 128
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44064" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44065" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1354.125)
+index = 129
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44065" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44066" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1357)
+index = 130
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44066" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44067" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1365.625)
+index = 131
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44067" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44068" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1368.5)
+index = 132
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44068" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44069" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1374.25)
+index = 133
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44069" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44070" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1385.75)
+index = 134
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44070" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44071" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1391.5)
+index = 135
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44071" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44072" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1397.25)
+index = 136
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44072" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44073" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1403)
+index = 137
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44073" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44074" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1410.1875)
+index = 138
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44074" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44075" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1417.375)
+index = 139
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44075" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44076" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1423.125)
+index = 140
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44076" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44077" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1428.875)
+index = 141
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44077" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44078" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1434.625)
+index = 142
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44078" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44079" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1440.375)
+index = 143
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44079" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44080" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1446.125)
+index = 144
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44080" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44081" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1453.3125)
+index = 145
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44081" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44082" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1457.625)
+index = 146
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44082" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44083" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1463.375)
+index = 147
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44083" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44084" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1470.5625)
+index = 148
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44084" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44085" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1477.75)
+index = 149
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44085" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44086" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1483.5)
+index = 150
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44086" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44087" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1489.25)
+index = 151
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44087" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44088" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1497.875)
+index = 152
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44088" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44089" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1505.0625)
+index = 153
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44089" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44090" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1509.375)
+index = 154
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44090" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44091" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1523.75)
+index = 155
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44091" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44092" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1526.625)
+index = 156
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44092" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44093" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1541)
+index = 157
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44093" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44094" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1543.875)
+index = 158
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44094" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44095" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1558.25)
+index = 159
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44095" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44096" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1561.125)
+index = 160
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44096" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44097" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1574.0625)
+index = 161
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44097" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44098" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1578.375)
+index = 162
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44098" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44099" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1595.625)
+index = 163
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44099" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44100" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1601.375)
+index = 164
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44100" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44101" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1607.125)
+index = 165
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44101" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44102" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1612.875)
+index = 166
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44102" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44103" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1618.625)
+index = 167
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44103" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44104" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1624.375)
+index = 168
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44104" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44105" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1630.125)
+index = 169
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44105" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44106" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1647.375)
+index = 170
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44106" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44107" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1650.25)
+index = 171
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44107" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44108" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1664.625)
+index = 172
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44108" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44109" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1667.5)
+index = 173
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44109" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44110" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1681.875)
+index = 174
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44110" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44111" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1684.75)
+index = 175
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44111" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="@MeshInstance3D@44112" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1699.125)
+index = 176
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44112" index="0"]
+modulate = Color(0, 0, 0.54509807, 1)
+
+[node name="@MeshInstance3D@44113" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1739.375)
+index = 177
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44113" index="0"]
+modulate = Color(0, 0.39215687, 0, 1)
+
+[node name="@MeshInstance3D@44114" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1762.375)
+index = 178
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44114" index="0"]
+modulate = Color(1, 0.54901963, 0, 1)
+
+[node name="@MeshInstance3D@44115" parent="Note_Holder" instance=ExtResource("14_mw03x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1785.375)
+index = 179
+
+[node name="Label3D" parent="Note_Holder/@MeshInstance3D@44115" index="0"]
+modulate = Color(0.54509807, 0, 0, 1)
+
+[node name="InputHit" type="Node" parent="."]
+script = ExtResource("19_ybmk8")
+
+[node name="scenery" parent="." instance=ExtResource("20_yeirv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
+
+[connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]
+[connection signal="play_chart_now" from="MusicPlayer/Referee" to="Judge" method="_on_referee_play_chart_now"]
+[connection signal="play_chart_now" from="MusicPlayer/Referee" to="MusicPlayer" method="_on_referee_play_chart_now"]
+[connection signal="process" from="MusicPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="HUD/Multiplier" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="HUD/Hits" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="HUD/Score" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="HUD/RatingArea" method="_on_referee_process"]
+[connection signal="process" from="MusicPlayer/Referee" to="Camera3D" method="_on_referee_process"]
+[connection signal="reel_in_denied" from="MusicPlayer/Referee" to="HUD/ProgressBar" method="_on_referee_reel_in_denied"]
+[connection signal="timer_activated" from="MusicPlayer/Referee" to="HUD/EnterPrompt/ReelInTimer" method="_on_referee_timer_activated"]
+[connection signal="timer_done" from="MusicPlayer/Referee" to="HUD/EnterPrompt/ReelInTimer" method="_on_referee_timer_done"]
+
+[editable path="Note_Holder/@MeshInstance3D@43936"]
+[editable path="Note_Holder/@MeshInstance3D@43937"]
+[editable path="Note_Holder/@MeshInstance3D@43938"]
+[editable path="Note_Holder/@MeshInstance3D@43939"]
+[editable path="Note_Holder/@MeshInstance3D@43940"]
+[editable path="Note_Holder/@MeshInstance3D@43941"]
+[editable path="Note_Holder/@MeshInstance3D@43942"]
+[editable path="Note_Holder/@MeshInstance3D@43943"]
+[editable path="Note_Holder/@MeshInstance3D@43944"]
+[editable path="Note_Holder/@MeshInstance3D@43945"]
+[editable path="Note_Holder/@MeshInstance3D@43946"]
+[editable path="Note_Holder/@MeshInstance3D@43947"]
+[editable path="Note_Holder/@MeshInstance3D@43948"]
+[editable path="Note_Holder/@MeshInstance3D@43949"]
+[editable path="Note_Holder/@MeshInstance3D@43950"]
+[editable path="Note_Holder/@MeshInstance3D@43951"]
+[editable path="Note_Holder/@MeshInstance3D@43952"]
+[editable path="Note_Holder/@MeshInstance3D@43953"]
+[editable path="Note_Holder/@MeshInstance3D@43954"]
+[editable path="Note_Holder/@MeshInstance3D@43955"]
+[editable path="Note_Holder/@MeshInstance3D@43956"]
+[editable path="Note_Holder/@MeshInstance3D@43957"]
+[editable path="Note_Holder/@MeshInstance3D@43958"]
+[editable path="Note_Holder/@MeshInstance3D@43959"]
+[editable path="Note_Holder/@MeshInstance3D@43960"]
+[editable path="Note_Holder/@MeshInstance3D@43961"]
+[editable path="Note_Holder/@MeshInstance3D@43962"]
+[editable path="Note_Holder/@MeshInstance3D@43963"]
+[editable path="Note_Holder/@MeshInstance3D@43964"]
+[editable path="Note_Holder/@MeshInstance3D@43965"]
+[editable path="Note_Holder/@MeshInstance3D@43966"]
+[editable path="Note_Holder/@MeshInstance3D@43967"]
+[editable path="Note_Holder/@MeshInstance3D@43968"]
+[editable path="Note_Holder/@MeshInstance3D@43969"]
+[editable path="Note_Holder/@MeshInstance3D@43970"]
+[editable path="Note_Holder/@MeshInstance3D@43971"]
+[editable path="Note_Holder/@MeshInstance3D@43972"]
+[editable path="Note_Holder/@MeshInstance3D@43973"]
+[editable path="Note_Holder/@MeshInstance3D@43974"]
+[editable path="Note_Holder/@MeshInstance3D@43975"]
+[editable path="Note_Holder/@MeshInstance3D@43976"]
+[editable path="Note_Holder/@MeshInstance3D@43977"]
+[editable path="Note_Holder/@MeshInstance3D@43978"]
+[editable path="Note_Holder/@MeshInstance3D@43979"]
+[editable path="Note_Holder/@MeshInstance3D@43980"]
+[editable path="Note_Holder/@MeshInstance3D@43981"]
+[editable path="Note_Holder/@MeshInstance3D@43982"]
+[editable path="Note_Holder/@MeshInstance3D@43983"]
+[editable path="Note_Holder/@MeshInstance3D@43984"]
+[editable path="Note_Holder/@MeshInstance3D@43985"]
+[editable path="Note_Holder/@MeshInstance3D@43986"]
+[editable path="Note_Holder/@MeshInstance3D@43987"]
+[editable path="Note_Holder/@MeshInstance3D@43988"]
+[editable path="Note_Holder/@MeshInstance3D@43989"]
+[editable path="Note_Holder/@MeshInstance3D@43990"]
+[editable path="Note_Holder/@MeshInstance3D@43991"]
+[editable path="Note_Holder/@MeshInstance3D@43992"]
+[editable path="Note_Holder/@MeshInstance3D@43993"]
+[editable path="Note_Holder/@MeshInstance3D@43994"]
+[editable path="Note_Holder/@MeshInstance3D@43995"]
+[editable path="Note_Holder/@MeshInstance3D@43996"]
+[editable path="Note_Holder/@MeshInstance3D@43997"]
+[editable path="Note_Holder/@MeshInstance3D@43998"]
+[editable path="Note_Holder/@MeshInstance3D@43999"]
+[editable path="Note_Holder/@MeshInstance3D@44000"]
+[editable path="Note_Holder/@MeshInstance3D@44001"]
+[editable path="Note_Holder/@MeshInstance3D@44002"]
+[editable path="Note_Holder/@MeshInstance3D@44003"]
+[editable path="Note_Holder/@MeshInstance3D@44004"]
+[editable path="Note_Holder/@MeshInstance3D@44005"]
+[editable path="Note_Holder/@MeshInstance3D@44006"]
+[editable path="Note_Holder/@MeshInstance3D@44007"]
+[editable path="Note_Holder/@MeshInstance3D@44008"]
+[editable path="Note_Holder/@MeshInstance3D@44009"]
+[editable path="Note_Holder/@MeshInstance3D@44010"]
+[editable path="Note_Holder/@MeshInstance3D@44011"]
+[editable path="Note_Holder/@MeshInstance3D@44012"]
+[editable path="Note_Holder/@MeshInstance3D@44013"]
+[editable path="Note_Holder/@MeshInstance3D@44014"]
+[editable path="Note_Holder/@MeshInstance3D@44015"]
+[editable path="Note_Holder/@MeshInstance3D@44016"]
+[editable path="Note_Holder/@MeshInstance3D@44017"]
+[editable path="Note_Holder/@MeshInstance3D@44018"]
+[editable path="Note_Holder/@MeshInstance3D@44019"]
+[editable path="Note_Holder/@MeshInstance3D@44020"]
+[editable path="Note_Holder/@MeshInstance3D@44021"]
+[editable path="Note_Holder/@MeshInstance3D@44022"]
+[editable path="Note_Holder/@MeshInstance3D@44023"]
+[editable path="Note_Holder/@MeshInstance3D@44024"]
+[editable path="Note_Holder/@MeshInstance3D@44025"]
+[editable path="Note_Holder/@MeshInstance3D@44026"]
+[editable path="Note_Holder/@MeshInstance3D@44027"]
+[editable path="Note_Holder/@MeshInstance3D@44028"]
+[editable path="Note_Holder/@MeshInstance3D@44029"]
+[editable path="Note_Holder/@MeshInstance3D@44030"]
+[editable path="Note_Holder/@MeshInstance3D@44031"]
+[editable path="Note_Holder/@MeshInstance3D@44032"]
+[editable path="Note_Holder/@MeshInstance3D@44033"]
+[editable path="Note_Holder/@MeshInstance3D@44034"]
+[editable path="Note_Holder/@MeshInstance3D@44035"]
+[editable path="Note_Holder/@MeshInstance3D@44036"]
+[editable path="Note_Holder/@MeshInstance3D@44037"]
+[editable path="Note_Holder/@MeshInstance3D@44038"]
+[editable path="Note_Holder/@MeshInstance3D@44039"]
+[editable path="Note_Holder/@MeshInstance3D@44040"]
+[editable path="Note_Holder/@MeshInstance3D@44041"]
+[editable path="Note_Holder/@MeshInstance3D@44042"]
+[editable path="Note_Holder/@MeshInstance3D@44043"]
+[editable path="Note_Holder/@MeshInstance3D@44044"]
+[editable path="Note_Holder/@MeshInstance3D@44045"]
+[editable path="Note_Holder/@MeshInstance3D@44046"]
+[editable path="Note_Holder/@MeshInstance3D@44047"]
+[editable path="Note_Holder/@MeshInstance3D@44048"]
+[editable path="Note_Holder/@MeshInstance3D@44049"]
+[editable path="Note_Holder/@MeshInstance3D@44050"]
+[editable path="Note_Holder/@MeshInstance3D@44051"]
+[editable path="Note_Holder/@MeshInstance3D@44052"]
+[editable path="Note_Holder/@MeshInstance3D@44053"]
+[editable path="Note_Holder/@MeshInstance3D@44054"]
+[editable path="Note_Holder/@MeshInstance3D@44055"]
+[editable path="Note_Holder/@MeshInstance3D@44056"]
+[editable path="Note_Holder/@MeshInstance3D@44057"]
+[editable path="Note_Holder/@MeshInstance3D@44058"]
+[editable path="Note_Holder/@MeshInstance3D@44059"]
+[editable path="Note_Holder/@MeshInstance3D@44060"]
+[editable path="Note_Holder/@MeshInstance3D@44061"]
+[editable path="Note_Holder/@MeshInstance3D@44062"]
+[editable path="Note_Holder/@MeshInstance3D@44063"]
+[editable path="Note_Holder/@MeshInstance3D@44064"]
+[editable path="Note_Holder/@MeshInstance3D@44065"]
+[editable path="Note_Holder/@MeshInstance3D@44066"]
+[editable path="Note_Holder/@MeshInstance3D@44067"]
+[editable path="Note_Holder/@MeshInstance3D@44068"]
+[editable path="Note_Holder/@MeshInstance3D@44069"]
+[editable path="Note_Holder/@MeshInstance3D@44070"]
+[editable path="Note_Holder/@MeshInstance3D@44071"]
+[editable path="Note_Holder/@MeshInstance3D@44072"]
+[editable path="Note_Holder/@MeshInstance3D@44073"]
+[editable path="Note_Holder/@MeshInstance3D@44074"]
+[editable path="Note_Holder/@MeshInstance3D@44075"]
+[editable path="Note_Holder/@MeshInstance3D@44076"]
+[editable path="Note_Holder/@MeshInstance3D@44077"]
+[editable path="Note_Holder/@MeshInstance3D@44078"]
+[editable path="Note_Holder/@MeshInstance3D@44079"]
+[editable path="Note_Holder/@MeshInstance3D@44080"]
+[editable path="Note_Holder/@MeshInstance3D@44081"]
+[editable path="Note_Holder/@MeshInstance3D@44082"]
+[editable path="Note_Holder/@MeshInstance3D@44083"]
+[editable path="Note_Holder/@MeshInstance3D@44084"]
+[editable path="Note_Holder/@MeshInstance3D@44085"]
+[editable path="Note_Holder/@MeshInstance3D@44086"]
+[editable path="Note_Holder/@MeshInstance3D@44087"]
+[editable path="Note_Holder/@MeshInstance3D@44088"]
+[editable path="Note_Holder/@MeshInstance3D@44089"]
+[editable path="Note_Holder/@MeshInstance3D@44090"]
+[editable path="Note_Holder/@MeshInstance3D@44091"]
+[editable path="Note_Holder/@MeshInstance3D@44092"]
+[editable path="Note_Holder/@MeshInstance3D@44093"]
+[editable path="Note_Holder/@MeshInstance3D@44094"]
+[editable path="Note_Holder/@MeshInstance3D@44095"]
+[editable path="Note_Holder/@MeshInstance3D@44096"]
+[editable path="Note_Holder/@MeshInstance3D@44097"]
+[editable path="Note_Holder/@MeshInstance3D@44098"]
+[editable path="Note_Holder/@MeshInstance3D@44099"]
+[editable path="Note_Holder/@MeshInstance3D@44100"]
+[editable path="Note_Holder/@MeshInstance3D@44101"]
+[editable path="Note_Holder/@MeshInstance3D@44102"]
+[editable path="Note_Holder/@MeshInstance3D@44103"]
+[editable path="Note_Holder/@MeshInstance3D@44104"]
+[editable path="Note_Holder/@MeshInstance3D@44105"]
+[editable path="Note_Holder/@MeshInstance3D@44106"]
+[editable path="Note_Holder/@MeshInstance3D@44107"]
+[editable path="Note_Holder/@MeshInstance3D@44108"]
+[editable path="Note_Holder/@MeshInstance3D@44109"]
+[editable path="Note_Holder/@MeshInstance3D@44110"]
+[editable path="Note_Holder/@MeshInstance3D@44111"]
+[editable path="Note_Holder/@MeshInstance3D@44112"]
+[editable path="Note_Holder/@MeshInstance3D@44113"]
+[editable path="Note_Holder/@MeshInstance3D@44114"]
+[editable path="Note_Holder/@MeshInstance3D@44115"]

@@ -93,4 +93,4 @@ func reset():
 
 func _on_referee_reel_in_denied() -> void:
 	value = 50.0
-	reel_ins += reel_ins		
+	reel_ins += reel_ins

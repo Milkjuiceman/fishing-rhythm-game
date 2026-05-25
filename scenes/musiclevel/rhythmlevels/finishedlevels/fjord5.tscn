@@ -1,25 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://cm5bohkkjm8r0"]
+[gd_scene load_steps=23 format=3 uid="uid://cm5bohkkjm8r0"]
 
-[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_2urb0"]
-[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_a4r2o"]
-[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_1f3q6"]
-[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_mgvmc"]
-[ext_resource type="Resource" uid="uid://bne4ws0m7lovr" path="res://assets/tracks/charts/humble_fish.tres" id="5_2urb0"]
-[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_2xmdq"]
-[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_6mrj7"]
-[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_leyy2"]
-[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="9_3he3j"]
-[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="10_j4vrl"]
-[ext_resource type="Script" uid="uid://csotod2yj5dy6" path="res://scripts/musiclevel/reel_in_timer.gd" id="11_t0ato"]
-[ext_resource type="PackedScene" uid="uid://5p8scmggob1k" path="res://scenes/musiclevel/parts/camera_3d.tscn" id="12_y18kw"]
-[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="13_e6rsa"]
-[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="14_ba24a"]
-[ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="15_3hket"]
-[ext_resource type="Texture2D" uid="uid://buppebgksadkt" path="res://assets/underwater/flat_sphere.png" id="16_svefb"]
-[ext_resource type="Script" uid="uid://njbtsr54bw8a" path="res://scripts/musiclevel/note.gd" id="17_pal3x"]
-[ext_resource type="Script" uid="uid://byqv7n54oa7yw" path="res://scripts/musiclevel/music_note.gd" id="18_olm5w"]
-[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="19_kw55s"]
-[ext_resource type="PackedScene" uid="uid://d2vf8nwvho5vl" path="res://scenes/musiclevel/parts/scenery.tscn" id="20_i2yji"]
+[ext_resource type="Script" uid="uid://byo7uejl3thyh" path="res://scripts/musiclevel/temp_rhythm_section.gd" id="1_ua8p6"]
+[ext_resource type="Script" uid="uid://cv8fisjdi0j2a" path="res://rhythm/judge.gd" id="2_oxbsw"]
+[ext_resource type="Script" uid="uid://bwwah5pe5vhvw" path="res://rhythm/music_player.gd" id="3_njyle"]
+[ext_resource type="Script" uid="uid://cy1kpkr44w1w8" path="res://rhythm/referee.gd" id="4_evwr6"]
+[ext_resource type="Resource" uid="uid://bne4ws0m7lovr" path="res://assets/tracks/charts/humble_fish.tres" id="5_y2nuo"]
+[ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="6_trg7k"]
+[ext_resource type="Script" uid="uid://brn17mu8iamhc" path="res://scripts/musiclevel/progress_bar.gd" id="7_tf6e4"]
+[ext_resource type="Script" uid="uid://cnej4cuebwd4q" path="res://scripts/musiclevel/combo_counter.gd" id="8_sb81g"]
+[ext_resource type="Script" uid="uid://ye1i5dg7dl5p" path="res://scripts/musiclevel/score.gd" id="9_wc81v"]
+[ext_resource type="Script" uid="uid://b1e7ct5a3sydo" path="res://scripts/musiclevel/rating_area.gd" id="10_20yd6"]
+[ext_resource type="Script" uid="uid://csotod2yj5dy6" path="res://scripts/musiclevel/reel_in_timer.gd" id="11_fsp8w"]
+[ext_resource type="PackedScene" uid="uid://5p8scmggob1k" path="res://scenes/musiclevel/parts/camera_3d.tscn" id="12_sykyy"]
+[ext_resource type="Script" uid="uid://c2yxm6eo8xk0" path="res://scripts/musiclevel/note_holder.gd" id="13_tyrty"]
+[ext_resource type="PackedScene" uid="uid://duxiqk4m8gcax" path="res://scenes/musiclevel/note.tscn" id="14_8pkoc"]
+[ext_resource type="Gradient" uid="uid://b0k4nwegac6o6" path="res://assets/underwater/note_ior_gradient.tres" id="15_s811y"]
+[ext_resource type="Texture2D" uid="uid://buppebgksadkt" path="res://assets/underwater/flat_sphere.png" id="16_j3lx0"]
+[ext_resource type="Script" uid="uid://bg5paa1ypygrx" path="res://scripts/musiclevel/input_hit.gd" id="17_80avi"]
+[ext_resource type="PackedScene" uid="uid://d2vf8nwvho5vl" path="res://scenes/musiclevel/parts/scenery.tscn" id="18_a2nr6"]
 
 [sub_resource type="Shader" id="Shader_kr1dr"]
 code = "shader_type spatial;
@@ -59,12 +57,12 @@ void fragment() {
 "
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_j17vq"]
-gradient = ExtResource("15_3hket")
+gradient = ExtResource("15_s811y")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j17vq"]
 render_priority = 0
 shader = SubResource("Shader_kr1dr")
-shader_parameter/sphere_flat = ExtResource("16_svefb")
+shader_parameter/sphere_flat = ExtResource("16_j3lx0")
 shader_parameter/ior_gradient = SubResource("GradientTexture1D_j17vq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_txkkf"]
@@ -72,26 +70,28 @@ material = SubResource("ShaderMaterial_j17vq")
 size = Vector2(1.7, 1.7)
 
 [node name="RhythmLevel2" type="Node3D" node_paths=PackedStringArray("referee", "judge")]
-script = ExtResource("1_2urb0")
+script = ExtResource("1_ua8p6")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
 fish_id = "fish_2"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
-script = ExtResource("2_a4r2o")
+script = ExtResource("2_oxbsw")
 progress_bar = NodePath("../HUD/ProgressBar")
 referee = NodePath("../MusicPlayer/Referee")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("3_1f3q6")
+script = ExtResource("3_njyle")
 
 [node name="Referee" type="Node" parent="MusicPlayer" node_paths=PackedStringArray("music_player", "input_hit", "judge", "enter_prompt") groups=["Rhythm"]]
-script = ExtResource("4_mgvmc")
-chart = ExtResource("5_2urb0")
+script = ExtResource("4_evwr6")
+chart = ExtResource("5_y2nuo")
 music_player = NodePath("..")
 input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
 enter_prompt = NodePath("../../HUD/EnterPrompt")
+ceiling = 5000
+boss = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -110,10 +110,10 @@ grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(177, 14)
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("6_2xmdq")
+theme_override_fonts/font = ExtResource("6_trg7k")
 value = 20.0
 allow_lesser = true
-script = ExtResource("7_6mrj7")
+script = ExtResource("7_tf6e4")
 
 [node name="Multiplier" type="Label" parent="HUD"]
 anchors_preset = 1
@@ -124,9 +124,9 @@ offset_top = 20.0
 offset_right = -29.666748
 offset_bottom = 43.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("6_2xmdq")
+theme_override_fonts/font = ExtResource("6_trg7k")
 text = "X1"
-script = ExtResource("8_leyy2")
+script = ExtResource("8_sb81g")
 
 [node name="Hits" type="Label" parent="HUD"]
 visible = false
@@ -144,9 +144,9 @@ offset_left = 10.0
 offset_top = 20.0
 offset_right = 56.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("6_2xmdq")
+theme_override_fonts/font = ExtResource("6_trg7k")
 text = "SCORE:"
-script = ExtResource("9_3he3j")
+script = ExtResource("9_wc81v")
 
 [node name="RatingArea" type="Control" parent="HUD"]
 layout_mode = 3
@@ -155,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("10_j4vrl")
+script = ExtResource("10_20yd6")
 
 [node name="AreaRight" type="Control" parent="HUD/RatingArea"]
 layout_mode = 1
@@ -188,8 +188,8 @@ offset_left = 269.0
 offset_top = 89.0
 offset_right = 473.0
 offset_bottom = 105.0
-theme_override_fonts/font = ExtResource("6_2xmdq")
-text = "Hit enter to reel it in early! "
+theme_override_fonts/font = ExtResource("6_trg7k")
+text = "Score 5000 before reeling in! "
 
 [node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
 layout_mode = 0
@@ -197,2994 +197,1722 @@ offset_left = 1.0
 offset_top = 17.0
 offset_right = 197.0
 offset_bottom = 28.0
-theme_override_fonts/font = ExtResource("6_2xmdq")
+theme_override_fonts/font = ExtResource("6_trg7k")
 max_value = 5.0
 show_percentage = false
-script = ExtResource("11_t0ato")
+script = ExtResource("11_fsp8w")
 referee = NodePath("../../../MusicPlayer/Referee")
 
-[node name="Camera3D" parent="." instance=ExtResource("12_y18kw")]
+[node name="Camera3D" parent="." instance=ExtResource("12_sykyy")]
 transform = Transform3D(-1, -5.3822838e-08, 6.889009e-08, 0, 0.7880108, 0.6156615, -8.742278e-08, 0.6156615, -0.7880108, 0, 4, 2)
 
 [node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
-script = ExtResource("13_e6rsa")
-place_notes = ExtResource("14_ba24a")
-chart = ExtResource("5_2urb0")
+script = ExtResource("13_tyrty")
+place_notes = ExtResource("14_8pkoc")
+chart = ExtResource("5_y2nuo")
 referee = NodePath("../MusicPlayer/Referee")
 judge = NodePath("../Judge")
 note_speed = 10.0
 
-[node name="Note" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="Note" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 
 [node name="Label3D" parent="Note_Holder/Note" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66066" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66066" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 15)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 1
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66066" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66067" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66067" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 18)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 2
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66067" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66068" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66068" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 25)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 3
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66068" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66069" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66069" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 35)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 4
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66069" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66070" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66070" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 36)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 5
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66070" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66071" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66071" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 38)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 6
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66071" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66072" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66072" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 46)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 7
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66072" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66073" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66073" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 8
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66073" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66074" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66074" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 68)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 9
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66074" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66075" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66075" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 78)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 10
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66075" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66076" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66076" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 88)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 11
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66076" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66077" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66077" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 98)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 12
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66077" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66078" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66078" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 108)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 13
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66078" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66079" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66079" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 118)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 14
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66079" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66080" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66080" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 125)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 15
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66080" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66081" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66081" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 128.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 16
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66081" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66082" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66082" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 132.67)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 17
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66082" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66083" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66083" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 136.36)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 18
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66083" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66084" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66084" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 140.3)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 19
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66084" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66085" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66085" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 145.84)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 20
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66085" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66086" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66086" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 149.35)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 21
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66086" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66087" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66087" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 153.13)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 22
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66087" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66088" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66088" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 156.99)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 23
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66088" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66089" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66089" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 161.3)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 24
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66089" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66090" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66090" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 164.12)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 25
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66090" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66091" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66091" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 166.13)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 26
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66091" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66092" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66092" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 170.63)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 27
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66092" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66093" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66093" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 174.33)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 28
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66093" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66094" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66094" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 176.69)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 29
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66094" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66095" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66095" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 181.37)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 30
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66095" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66096" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66096" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 184.36)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 31
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66096" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66097" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66097" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 187.14)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 32
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66097" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66098" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66098" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 191.21)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 33
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66098" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66099" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66099" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 194.98)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 34
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66099" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66100" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66100" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 197.54)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 35
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66100" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66101" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66101" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 201.3)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 36
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66101" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66102" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66102" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 205.2)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 37
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66102" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66103" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66103" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 207.46)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 38
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66103" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66104" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66104" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 213.53)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 39
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66104" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66105" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66105" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 223.13)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 40
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66105" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66106" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66106" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 233.63)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 41
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66106" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66107" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66107" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 243.59)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 42
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66107" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66108" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66108" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 253.89)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 43
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66108" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66109" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66109" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 264.6)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 44
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66109" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66110" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66110" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 274.46)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 45
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66110" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66111" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66111" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 284.74)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 46
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66111" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66112" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66112" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 290.29)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 47
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66112" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66113" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66113" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 293.81)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 48
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66113" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66114" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66114" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 297.86)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 49
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66114" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66115" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66115" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 301.8)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 50
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66115" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66116" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66116" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 305.48)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 51
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66116" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66117" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66117" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 308.3)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 52
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66117" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66118" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66118" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 310.9)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 53
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66118" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66119" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66119" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 315)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 54
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66119" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66120" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66120" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 318.86)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 55
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66120" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66121" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66121" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 323.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 56
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66121" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66122" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66122" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 326.68)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 57
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66122" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66123" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66123" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 329.97)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 58
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66123" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66124" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66124" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 331.84)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 59
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66124" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66125" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66125" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 373.5)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 60
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66125" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66126" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66126" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 377.06)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 61
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66126" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66127" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66127" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 381.31)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 62
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66127" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66128" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66128" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 387.96)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 63
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66128" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66129" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66129" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 391.15)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 64
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66129" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66130" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66130" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 393.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 65
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66130" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66131" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66131" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 398.06)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 66
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66131" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66132" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66132" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 401.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 67
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66132" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66133" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66133" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 407.14)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 68
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66133" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66134" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66134" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 412.92)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 69
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66134" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66135" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66135" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 415.39)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 70
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66135" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66136" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66136" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 420.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 71
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66136" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66137" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66137" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 423.32)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 72
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66137" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66138" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66138" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 425.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 73
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66138" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66139" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66139" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 430.25)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 74
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66139" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66140" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66140" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 432.81)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 75
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66140" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66141" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66141" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 435.79)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 76
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66141" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66142" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66142" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 439.55)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 77
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66142" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66143" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66143" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 443.27)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 78
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66143" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66144" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66144" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 445.82)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 79
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66144" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66145" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66145" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 450.31)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 80
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66145" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66146" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66146" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 456.1)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 81
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66146" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66147" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66147" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 459.79)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 82
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66147" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66148" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66148" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 463.3)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 83
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66148" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66149" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66149" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 465.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 84
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66149" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66150" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66150" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 471.38)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 85
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66150" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66151" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66151" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 474.1)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 86
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66151" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66152" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66152" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 476.73)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 87
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66152" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66153" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66153" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 479.29)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 88
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66153" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66154" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66154" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 482.62)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 89
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66154" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66155" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66155" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 485.44)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 90
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66155" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66156" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66156" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 492.38)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 91
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66156" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66157" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66157" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 502.57)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 92
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66157" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66158" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66158" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 512.78)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 93
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66158" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66159" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66159" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 523.78)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 94
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66159" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66160" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66160" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 527.52)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 95
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66160" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66161" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66161" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 533.64)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 96
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66161" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66162" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66162" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 536.42)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 97
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66162" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66163" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66163" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 543.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 98
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66163" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66164" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66164" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 545.19)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 99
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66164" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66165" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66165" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 547.58)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 100
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66165" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66166" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66166" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 551.53)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 101
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66166" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66167" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66167" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 553.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 102
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66167" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66168" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66168" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 555.24)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 103
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66168" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66169" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66169" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 557.42)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 104
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66169" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66170" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66170" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 559.71)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 105
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66170" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66171" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66171" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 562.1)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 106
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66171" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66172" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66172" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 563.96)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 107
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66172" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66173" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66173" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 566.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 108
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66173" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66174" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66174" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 568.35)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 109
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66174" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66175" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66175" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 570.63)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 110
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66175" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66176" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66176" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 573.1)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 111
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66176" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66177" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66177" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 574.58)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 112
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66177" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66178" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66178" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 576.61)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 113
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66178" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66179" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66179" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 578.87)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 114
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66179" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66180" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66180" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 581.08)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 115
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66180" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66181" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66181" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 583.11)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 116
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66181" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66182" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66182" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 584.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 117
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66182" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66183" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66183" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 587.57)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 118
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66183" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66184" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66184" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 589.82)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 119
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66184" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66185" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66185" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 591.52)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 120
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66185" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66186" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66186" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 593.2)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 121
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66186" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66187" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66187" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 595.23)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 122
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66187" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66188" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66188" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 597.06)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 123
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66188" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66189" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66189" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 598.93)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 124
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66189" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66190" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66190" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 600.8)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 125
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66190" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66191" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66191" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 602.88)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 126
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66191" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66192" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66192" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 604.75)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 127
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66192" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66193" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66193" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 606.04)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 128
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66193" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66194" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66194" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 608.06)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 129
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66194" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66195" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66195" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 610.63)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 130
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66195" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66196" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66196" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 612.37)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 131
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66196" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66197" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66197" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 615.54)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 132
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66197" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66198" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66198" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 617.23)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 133
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66198" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66199" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66199" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 620.09)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 134
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66199" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66200" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66200" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 622.95)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 135
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66200" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66201" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66201" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 624.66)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 136
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66201" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66202" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66202" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 627.25)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 137
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66202" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66203" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66203" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 629.63)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 138
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66203" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66204" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66204" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 630.8)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 139
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66204" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66205" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66205" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 632.87)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 140
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66205" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66206" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66206" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 634.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 141
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66206" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66207" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66207" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 638.25)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 142
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66207" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66208" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66208" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 640.07)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 143
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66208" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66209" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66209" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 641.59)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 144
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66209" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66210" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66210" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 642.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 145
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66210" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66211" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66211" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 644.4)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 146
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66211" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66212" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66212" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 645.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 147
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66212" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66213" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66213" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 649.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 148
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66213" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66214" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66214" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 650.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 149
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66214" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66215" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66215" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 652.21)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 150
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66215" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66216" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66216" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 653.64)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 151
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66216" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66217" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66217" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 655.15)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 152
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66217" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66218" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66218" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 656.61)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 153
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66218" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66219" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66219" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 659.24)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 154
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66219" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66220" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66220" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 660.74)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 155
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66220" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66221" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66221" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 661.89)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 156
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66221" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66222" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66222" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 663.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 157
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66222" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66223" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66223" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 664.89)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 158
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66223" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66224" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66224" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 667.07)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 159
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66224" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66225" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66225" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 669.87)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 160
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66225" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66226" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66226" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 671.14)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 161
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66226" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66227" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66227" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 672.87)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 162
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66227" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66228" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66228" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 674.72)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 163
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66228" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66229" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66229" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 676.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 164
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66229" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66230" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66230" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 679.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 165
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66230" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66231" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66231" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 681.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 166
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66231" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66232" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66232" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 682.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 167
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66232" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66233" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66233" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 684.03)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 168
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66233" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66234" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66234" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 685.7)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 169
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66234" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66235" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66235" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 686.94)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 170
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66235" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66236" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66236" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 690.11)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 171
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66236" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66237" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66237" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 691.58)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 172
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66237" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66238" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66238" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 692.91)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 173
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66238" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66239" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66239" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 694.22)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 174
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66239" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66240" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66240" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 696.08)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 175
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66240" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66241" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66241" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 699.75)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 176
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66241" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66242" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66242" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 701.71)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 177
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66242" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66243" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66243" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 702.96)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 178
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66243" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66244" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66244" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 704.45)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 179
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66244" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66245" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66245" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 709.16)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 180
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66245" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66246" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66246" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 714.54)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 181
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66246" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66247" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66247" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 719.52)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 182
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66247" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66248" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66248" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 725.5)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 183
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66248" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66249" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66249" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 729.81)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 184
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66249" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66250" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66250" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 735.55)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 185
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66250" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66251" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66251" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 737.99)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 186
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66251" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66252" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66252" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 741.33)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 187
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66252" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66253" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66253" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 746.52)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 188
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66253" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66254" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66254" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 751.71)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 189
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66254" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66255" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66255" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 756)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 190
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66255" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0.54509807, 0, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66256" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66256" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 761.18)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 191
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66256" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0, 0.54509807, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66257" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66257" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 766.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 192
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66257" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66258" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66258" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 771.83)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 193
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66258" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66259" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66259" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 776.13)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 194
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66259" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66260" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66260" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 782.19)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 195
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66260" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66261" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66261" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 786.84)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 196
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66261" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66262" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66262" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 792.05)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 197
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66262" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66263" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66263" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 796.94)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 198
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66263" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66264" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66264" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 802.49)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 199
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66264" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66265" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66265" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 808.12)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 200
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66265" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66266" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66266" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 812.72)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 201
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66266" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66267" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66267" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 818.32)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 202
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66267" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66268" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66268" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 822.97)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 203
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66268" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66269" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66269" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 828.16)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 204
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66269" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66270" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66270" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 833.77)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 205
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66270" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66271" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66271" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 838.56)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 206
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66271" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66272" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66272" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 843.39)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 207
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66272" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66273" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66273" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 849.37)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 208
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66273" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66274" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66274" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 854.19)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 209
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66274" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66275" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66275" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 859.38)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 210
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66275" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(0, 0.39215687, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
-[node name="@MeshInstance3D@66276" parent="Note_Holder" instance=ExtResource("14_ba24a")]
+[node name="@MeshInstance3D@66276" parent="Note_Holder" instance=ExtResource("14_8pkoc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 865)
-custom_aabb = AABB(-1, -1, -1, 2, 2, 2)
 mesh = SubResource("QuadMesh_txkkf")
-script = ExtResource("17_pal3x")
 index = 211
 
 [node name="Label3D" parent="Note_Holder/@MeshInstance3D@66276" index="0"]
-transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 0, 0, 0)
 modulate = Color(1, 0.54901963, 0, 1)
-text = "♪"
-font_size = 100
-script = ExtResource("18_olm5w")
 
 [node name="InputHit" type="Node" parent="."]
-script = ExtResource("19_kw55s")
+script = ExtResource("17_80avi")
 
-[node name="scenery" parent="." instance=ExtResource("20_i2yji")]
+[node name="scenery" parent="." instance=ExtResource("18_a2nr6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.465)
 
 [connection signal="song_finished" from="Judge" to="MusicPlayer/Referee" method="_on_judge_song_finished"]
