@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bl2v6k16pm4qj"]
 
 [ext_resource type="Script" uid="uid://b7pgfa2xmpyxe" path="res://scripts/ui/inventory_ui.gd" id="1_rhi3t"]
-[ext_resource type="Texture2D" uid="uid://dvcpvnsgixgq2" path="res://assets/ui/quest_screen.png" id="2_2uoai"]
 [ext_resource type="Texture2D" uid="uid://be2344bpdjhps" path="res://assets/ui/fish_main_menu.png" id="2_768pl"]
 [ext_resource type="Theme" uid="uid://dokp163ntldau" path="res://assets/ui/ui_text.tres" id="3_2uoai"]
+[ext_resource type="Texture2D" uid="uid://cgvr317nrts2d" path="res://assets/ui/invenory_ui.png" id="3_768pl"]
 [ext_resource type="FontFile" uid="uid://ck56mhgaima2j" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_768pl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_768pl"]
@@ -40,7 +40,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_768pl")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Panel"]
 position = Vector2(239, 135)
-texture = ExtResource("2_2uoai")
+texture = ExtResource("3_768pl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 z_index = 1
