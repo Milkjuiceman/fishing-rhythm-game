@@ -172,7 +172,7 @@ func _physics_process(_delta):
 	
 	# --- Buoyancy System ---
 	# Apply upward force based on how deep each floaty point is submerged
-	var water_level = 0.0
+	var water_level = GameStateManager.water_surface_y
 	
 	# Floaty point 1
 	if $Floaty.global_transform.origin.y <= water_level:

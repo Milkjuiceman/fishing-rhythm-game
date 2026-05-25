@@ -100,14 +100,14 @@ var dialogue: Dictionary = {
 			# q5 complete: player talked to Tim. Give q6 (catch 3 fish in intersection).
 			"Paul's student, huh? Welcome to the intersection.",
 			"These waters branch off everywhere from here. Good place to sharpen your skills.",
-			"Catch three fish in this area first — then we'll talk about what's further out.",
+			"Catch two fish in this area first — then we'll talk about what's further out.",
 		],
 		"waiting": [
-			"Three fish from this area. You're close — keep going.",
+			"Two fish from this area. You're close — keep going.",
 		],
 		"q6_done": [
 			# q6 complete: player caught 3 intersection fish and talks to Tim. Give q7 (talk to Chad).
-			"Three from the intersection — solid work.",
+			"Two from the intersection — solid work.",
 			"Head over to the market dock. There's a guy named Chad there.",
 			"He knows the outer areas better than anyone. Go introduce yourself.",
 		],
@@ -125,20 +125,19 @@ var dialogue: Dictionary = {
 			# q7 complete: player talked to Chad. Give q8 (catch 3 fish in Fjord).
 			"Tim's recommendation? Alright, I'll give you a shot.",
 			"The fjord area north of here has fish you won't find anywhere else.",
-			"Catch three of them. Then we'll see about the real challenge.",
+			"Catch two of them. Then we'll see about the real challenge.",
 		],
 		"waiting": [
-			"Three fjord fish. The fjord area is north — get moving.",
+			"Two fjord fish. The fjord area is north — get moving.",
 		],
 		"q8_done": [
 			# q8 complete: player caught 3 fjord fish, talks to Chad. Give q9 (beat fjord boss).
-			"Three fjord fish? Not bad. But there's something bigger out there.",
-			"The fjord boss. It's been terrorising those waters for years.",
-			"Take it down and come back.",
+			"Two fjord fish. Good. There's something bigger out there though.",
+			"There are multiple fjord boss fish lurking up there. Take down three of them and come back.",
 		],
 		"q9_done": [
 			# q9 complete: fjord boss caught, talks to Chad. Give q10 (talk to George).
-			"You actually did it. The fjord boss.",
+			"Three fjord bosses. You actually did it.",
 			"There's more. Head to the small dock — talk to George.",
 			"He'll point you toward the mine area.",
 		],
@@ -155,21 +154,21 @@ var dialogue: Dictionary = {
 		"complete": [
 			# q10 complete: player talked to George. Give q11 (catch 3 mine fish).
 			"Chad told me about you. You handled the fjord well.",
-			"The mine area is different. Darker. The fish there are tough.",
-			"Catch three of them and report back.",
+			"The quarry is different. Dark and loud. The fish there are tough.",
+			"Catch two of them and report back.",
 		],
 		"waiting": [
-			"Three fish from the mine area. It's not easy down there.",
+			"Two fish from the quarry. It's not easy down there.",
 		],
 		"q11_done": [
 			# q11 complete: 3 mine fish caught, talks to George. Give q12 (beat mine boss).
-			"Three mine fish. You're tougher than you look.",
-			"There's a boss in those depths. Old and mean.",
+			"Two quarry fish. You're tougher than you look.",
+			"There's a boss down in the quarry. Old and mean.",
 			"Bring it down. I'll be here.",
 		],
 		"q12_done": [
 			# q12 complete: mine boss caught, talks to George. Give q13 (talk to Bob).
-			"The mine boss. Incredible.",
+			"The quarry boss. Incredible.",
 			"You're ready for the delta. Head there and find Bob — he's at Tower 1 dock.",
 			"Good luck. You'll need it.",
 		],
@@ -181,25 +180,25 @@ var dialogue: Dictionary = {
 	# ── BOB (Tower 1 dock NPC, delta area) ─────────────────────────────────
 	"bob": {
 		"pre": [
-			"The delta isn't ready for you yet. Come back when George sends you.",
+			"Busy here. Come back when George sends you my way.",
 		],
 		"complete": [
 			# q13 complete: player talked to Bob. Give q14 (catch 3 delta fish).
-			"George's fisher. Word travels fast out here.",
-			"The delta is the end of the line — nothing past it but open ocean.",
-			"Catch three delta fish first. Show me you belong here.",
+			"George's fisher. Good — I've been expecting you.",
+			"The delta is past here — end of the line, nothing beyond it but open ocean.",
+			"Head out there and catch four delta fish first. Show me you belong here.",
 		],
 		"waiting": [
-			"Three delta fish. The delta has secrets — keep exploring.",
+			"Four delta fish from out there. Keep at it.",
 		],
 		"q14_done": [
 			# q14 complete: 3 delta fish caught, talks to Bob. Give q15 (final boss).
-			"Three delta fish. You've come a long way.",
-			"There's one more. The final boss lurks in the deepest part of the delta.",
-			"This is what everything has been leading to. Go end it.",
+			"Four delta fish. You've come a long way.",
+			"There's one more thing. The final boss lurks in the deepest part of the delta.",
+			"This is what it's all been leading to. Go end it.",
 		],
 		"idle": [
-			"The final boss is out there. You know what to do.",
+			"The delta is waiting. You know what to do.",
 		],
 	},
 }
@@ -297,7 +296,8 @@ func next_line(_npc_id: String) -> void:
 		return
 	_line_idx += 1
 	if _line_idx < _lines.size():
-		dialogueUI.show_line(_lines[_line_idx])
+		if is_instance_valid(dialogueUI):
+			dialogueUI.show_line(_lines[_line_idx])
 		return
 	# Reached end of lines.
 	if _advance_on_end:

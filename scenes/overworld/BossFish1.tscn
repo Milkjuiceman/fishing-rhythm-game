@@ -16,3 +16,5 @@ script = ExtResource("1_qpkfa")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2451172, 0)
 shape = SubResource("CylinderShape3D_3cpqv")
+
+[node name="fish_rotation_root" type="Node3D" parent="."]

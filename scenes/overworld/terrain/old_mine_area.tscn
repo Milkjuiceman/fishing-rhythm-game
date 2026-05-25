@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://qf68cvoclw5k"]
+[gd_scene load_steps=28 format=3 uid="uid://qf68cvoclw5k"]
 
 [ext_resource type="Script" uid="uid://bb7t4ww6pmvi5" path="res://scripts/levels/old_mine_area_level.gd" id="1_jeulv"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_kk0cs"]
@@ -75,8 +75,18 @@ fog_density = 0.106
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("14_jeulv")
-scene_path = "uid://bxoicsre3w4g3"
+scene_path = "uid://da50xln666k4v"
 fish_id = "intersection_fish_1"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_2od2a"]
+script = ExtResource("14_jeulv")
+scene_path = "uid://7l0erhsenjdd"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_p31bi"]
+script = ExtResource("14_jeulv")
+scene_path = "uid://7l0erhsenjdd"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a348i"]
@@ -84,7 +94,7 @@ size = Vector3(273.16516, 26.866062, 232.0083)
 
 [sub_resource type="Resource" id="Resource_6a3t5"]
 script = ExtResource("14_jeulv")
-scene_path = "uid://caa08pmlmqdfs"
+scene_path = "uid://dk17kv5n8cftr"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [node name="Node3D" type="Node3D"]
@@ -838,7 +848,7 @@ spawn_height = 13.479
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q11"
-rhythm_levels = Array[ExtResource("14_jeulv")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("14_jeulv")]([SubResource("Resource_2od2a")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="."]
 transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 922.7308, 13.479, 465.16772)
@@ -860,7 +870,7 @@ spawn_height = 13.479
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q11"
-rhythm_levels = Array[ExtResource("14_jeulv")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("14_jeulv")]([SubResource("Resource_p31bi")])
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 

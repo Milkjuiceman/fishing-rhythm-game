@@ -75,6 +75,7 @@ size = Vector2(1.7, 1.7)
 script = ExtResource("1_5c48a")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
+fish_id = "lyonesse_fish"
 
 [node name="TutorialHandler" type="Node" parent="."]
 process_mode = 2

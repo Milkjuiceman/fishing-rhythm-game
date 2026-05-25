@@ -73,7 +73,7 @@ size = Vector2(2, 2)
 script = ExtResource("1_1035f")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
-fish_id = "fish_2"
+fish_id = "lyonesse_fish"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
 script = ExtResource("2_librt")

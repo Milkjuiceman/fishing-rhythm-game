@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1gbvvjs6x8n1"]
+[gd_scene load_steps=24 format=3 uid="uid://d1gbvvjs6x8n1"]
 
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_7hpc0"]
 [ext_resource type="Script" uid="uid://bdglj5osoy1y" path="res://scripts/levels/fjord_level.gd" id="1_q6ibi"]
@@ -73,13 +73,28 @@ size = Vector3(235.62561, 51.820324, 243.78357)
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("10_elvrq")
-scene_path = "uid://bxoicsre3w4g3"
+scene_path = "uid://tt0ak8ug2q5f"
 fish_id = "intersection_fish_1"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_rfcw6"]
+script = ExtResource("10_elvrq")
+scene_path = "uid://cw80qnr4eoc7p"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_elvrq"]
 script = ExtResource("10_elvrq")
-scene_path = "uid://caa08pmlmqdfs"
+scene_path = "uid://cwiaroi8o5uvx"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_qsq62"]
+script = ExtResource("10_elvrq")
+scene_path = "uid://cyi051lywmifw"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_id4fg"]
+script = ExtResource("10_elvrq")
+scene_path = "uid://cm5bohkkjm8r0"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [node name="Node3D" type="Node3D"]
@@ -164,7 +179,7 @@ require_quest_id = "q8"
 rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_1it6v")])
 
 [node name="RipplingWaterSpawner2" type="Node3D" parent="."]
-transform = Transform3D(0.0004109275, 0, 0.0011540215, 0, 0.0012250002, 0, -0.0011540215, 0, 0.0004109275, 1141.3875, 16.041464, 501.4052)
+transform = Transform3D(0.0004109275, 0, 0.0011540215, 0, 0.0012250002, 0, -0.0011540215, 0, 0.0004109275, 1218.9507, 16.041464, 626.83405)
 script = ExtResource("8_kdwto")
 rippling_water_scene = ExtResource("9_nw3hw")
 spawn_radius = 20.0
@@ -172,7 +187,7 @@ spawn_height = 14.76
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q8"
-rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_rfcw6")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="."]
 transform = Transform3D(-1.1530001e-05, 0, 4.129562e-05, 0, 4.2875014e-05, 0, -4.129562e-05, 0, -1.1530001e-05, 573.8864, 16.06045, 534.7203)
@@ -197,7 +212,7 @@ require_quest_id = "q8"
 rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_1it6v")])
 
 [node name="BossSpawner" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 181.13205, 15.499, 597.5823)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 431.07062, 15.499, 366.79456)
 script = ExtResource("11_nw3hw")
 rippling_water_scene = ExtResource("12_elvrq")
 spawn_radius = 1.0
@@ -206,3 +221,47 @@ spawn_delay = 10.0
 lifetime = 100.0
 require_quest_id = "q9"
 rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_elvrq")])
+
+[node name="RipplingWaterSpawner5" type="Node3D" parent="."]
+transform = Transform3D(0.0004109275, 0, 0.0011540215, 0, 0.0012250002, 0, -0.0011540215, 0, 0.0004109275, 909.5711, 16.041464, 883.75995)
+script = ExtResource("8_kdwto")
+rippling_water_scene = ExtResource("9_nw3hw")
+spawn_radius = 20.0
+spawn_height = 14.76
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "q8"
+rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_rfcw6")])
+
+[node name="RipplingWaterSpawner6" type="Node3D" parent="."]
+transform = Transform3D(0.0004109275, 0, 0.0011540215, 0, 0.0012250002, 0, -0.0011540215, 0, 0.0004109275, 1325.9911, 16.041464, 960.69824)
+script = ExtResource("8_kdwto")
+rippling_water_scene = ExtResource("9_nw3hw")
+spawn_radius = 20.0
+spawn_height = 14.76
+use_lifetime = true
+lifetime = 10.0
+require_quest_id = "q8"
+rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_rfcw6")])
+
+[node name="BossSpawner2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470.143, 15.499, 1140.5947)
+script = ExtResource("11_nw3hw")
+rippling_water_scene = ExtResource("12_elvrq")
+spawn_radius = 1.0
+spawn_height = 14.76
+spawn_delay = 10.0
+lifetime = 100.0
+require_quest_id = "q9"
+rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_qsq62")])
+
+[node name="BossSpawner3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1080.5798, 15.499, 407.7724)
+script = ExtResource("11_nw3hw")
+rippling_water_scene = ExtResource("12_elvrq")
+spawn_radius = 1.0
+spawn_height = 14.76
+spawn_delay = 10.0
+lifetime = 100.0
+require_quest_id = "q9"
+rhythm_levels = Array[ExtResource("10_elvrq")]([SubResource("Resource_id4fg")])
