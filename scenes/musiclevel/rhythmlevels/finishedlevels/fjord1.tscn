@@ -91,6 +91,8 @@ input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
 enter_prompt = NodePath("../../HUD/EnterPrompt")
 note_speed = 15.0
+ceiling = 5000
+boss = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -188,7 +190,7 @@ offset_top = 89.0
 offset_right = 473.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("6_urwy0")
-text = "Hit enter to reel it in early! "
+text = "Score 5000 before reeling in! "
 
 [node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
 layout_mode = 0
@@ -205,11 +207,10 @@ referee = NodePath("../../../MusicPlayer/Referee")
 [node name="Camera3D" parent="." instance=ExtResource("12_tpynt")]
 transform = Transform3D(-1, -5.3822838e-08, 6.889009e-08, 0, 0.7880108, 0.6156615, -8.742278e-08, 0.6156615, -0.7880108, 0, 4, 2)
 
-[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("referee", "judge")]
+[node name="Note_Holder" type="Node3D" parent="." node_paths=PackedStringArray("judge")]
 script = ExtResource("13_1y4f0")
 place_notes = ExtResource("14_j1vck")
 chart = ExtResource("5_ec07u")
-referee = NodePath("../MusicPlayer/Referee")
 judge = NodePath("../Judge")
 note_speed = 15.0
 

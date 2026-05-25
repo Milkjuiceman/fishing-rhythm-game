@@ -91,6 +91,8 @@ input_hit = NodePath("../../InputHit")
 judge = NodePath("../../Judge")
 enter_prompt = NodePath("../../HUD/EnterPrompt")
 note_speed = 15.0
+ceiling = 3000
+boss = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -188,7 +190,7 @@ offset_top = 89.0
 offset_right = 473.0
 offset_bottom = 105.0
 theme_override_fonts/font = ExtResource("6_vv274")
-text = "Hit enter to reel it in early! "
+text = "Score 3000 before reeling in!"
 
 [node name="ReelInTimer" type="ProgressBar" parent="HUD/EnterPrompt" node_paths=PackedStringArray("referee")]
 layout_mode = 0

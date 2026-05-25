@@ -40,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_fishing_finished(_performance: float, rarity: String) -> void:
 	if _level_ended:
 		return
+		
 	_level_ended = true
 
 	if rarity != "":
