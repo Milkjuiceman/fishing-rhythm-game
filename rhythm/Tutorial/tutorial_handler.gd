@@ -11,6 +11,9 @@ var flag: bool = true
 signal tutorial_step_completed(step_id: int)
 
 func _ready():
+	# Register in Tutorial group so RhythmPauseMenu can check if we're waiting
+	add_to_group("Tutorial")
+
 	var rhythm_level = get_parent()
 	var judge = rhythm_level.get_node("Judge")
 	var progress = rhythm_level.get_node("HUD/ProgressBar")
@@ -18,6 +21,11 @@ func _ready():
 	rhythm_level.action_required.connect(on_action_required)
 	progress.action_required.connect(on_action_required)
 	pass
+
+## Returns true while the tutorial is waiting for player input.
+## Used by RhythmPauseMenu to avoid stealing the Enter key.
+func is_waiting() -> bool:
+	return waiting_for_input
 
 # Called by rhythm nodes via signal
 func on_action_required(step_id: int):
