@@ -49,12 +49,14 @@ var timer
 signal process(frame_state: FrameState)
 
 # Triggers chart playback
+@warning_ignore("unused_signal")
 signal play_chart_now(chart: Chart)
 
 # Emitted when fish is successfully caught
 signal fish_caught(performance: float, rarity: String)
 
 # Emitted when catch fails
+@warning_ignore("unused_signal")
 signal fish_failed
 
 # Emitted when player fails to reel in during window
