@@ -59,7 +59,7 @@ func _pause_and_show_instruction(step_id: int):
 			instructions_label.text = "Good Luck"
 
 # Listen for player input while paused
-func _input(event):
+func _input(_event):
 	if not waiting_for_input:
 		return
 	

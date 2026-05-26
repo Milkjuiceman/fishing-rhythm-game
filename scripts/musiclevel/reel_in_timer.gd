@@ -10,7 +10,7 @@ func _on_referee_timer_activated() -> void:
 	set_process(true)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	value = referee.timer.time_left
 
 
