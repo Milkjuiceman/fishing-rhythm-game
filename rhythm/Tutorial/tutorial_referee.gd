@@ -136,14 +136,10 @@ func _on_judge_song_finished() -> void:
 	# If bar-depletion already fired, do nothing
 	if not catchable and judge.progress_bar._failed:
 		return
-	if catchable:
-		# Catch window was open at song end but player didn't reel in — counts as a loss
-		print_debug("[Referee] song ended with open catch window — player didn't reel in, failing")
-		_catch_fish(0.0, "")
-	else:
-		# Song ended and bar never filled — also a loss
-		print_debug("[Referee] song ended, bar never filled — failing")
-		_catch_fish(0.0, "")
+		
+	var performance = _calculate_performance()
+		
+	_catch_fish(performance, _performance_to_rarity(performance))
 
 # Handles bar depletion — uses same exit path as win but with empty rarity (no fish awarded)
 func _on_catch_failed() -> void:
