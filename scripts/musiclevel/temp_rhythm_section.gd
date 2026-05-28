@@ -1,7 +1,7 @@
 extends Node3D
 ## Controls the rhythm fishing minigame level flow.
 ## Author: Tyler Schauermann
-## Date of last update: 05/23/2026
+## Date of last update: 05/24/2026
 
 const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.tscn")
 
@@ -14,6 +14,7 @@ const COUNTDOWN_SCENE = preload("res://scenes/ui/transitions/rhythm_countdown.ts
 
 var _countdown_instance: RhythmCountdown = null
 var _level_ended: bool = false
+var _caught_successfully: bool = false  # true only when the player wins (rarity != "")
 
 func _ready() -> void:
 	_show_countdown()
@@ -40,12 +41,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_fishing_finished(_performance: float, rarity: String) -> void:
 	if _level_ended:
 		return
-		
+
 	_level_ended = true
 
 	if rarity != "":
 		if fish_id != "":
 			InventoryManager.add_fish(fish_id)
+			_caught_successfully = true
 		else:
 			push_warning("[TempRhythmSection] fish_id not set — fish won't be recorded.")
 		# Quest progress is checked automatically when the player talks to an NPC.
@@ -59,13 +61,22 @@ func _return_to_overworld() -> void:
 	call_deferred("_safety_check")
 
 func _safety_check() -> void:
+	var overworld_music = get_node_or_null("/root/OverworldMusic")
+
+	# ── Final boss win → end credits ────────────────────────────────────
+	if fish_id == "final_boss" and _caught_successfully:
+		if overworld_music:
+			overworld_music.on_exit_rhythm_level()
+		ScreenTransition.transition_to_scene("res://scenes/credits/end_credits.tscn")
+		return
+
+	# ── All other levels → return to overworld ───────────────────────────
 	var return_scene: String
 	if GameStateManager.pending_transition.from_scene != "":
 		return_scene = GameStateManager.pending_transition.from_scene
 	else:
 		return_scene = "res://scenes/overworld/terrain/tutorial_lake.tscn"
 
-	var overworld_music = get_node_or_null("/root/OverworldMusic")
 	if overworld_music:
 		overworld_music.on_exit_rhythm_level()
 

@@ -26,6 +26,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				_toggle_pause()
 				get_viewport().set_input_as_handled()
 		KEY_ENTER, KEY_KP_ENTER:
+			# Don't steal Enter if the tutorial handler is currently waiting for it
+			if _tutorial_is_waiting():
+				return
 			if is_paused:
 				_resume()
 				get_viewport().set_input_as_handled()
@@ -33,6 +36,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _in_rhythm_level() -> bool:
 	return get_tree().get_nodes_in_group("Rhythm").size() > 0
+
+
+## Returns true if any Tutorial node is currently waiting for player input.
+## Prevents this menu from consuming the Enter key during tutorial prompts.
+func _tutorial_is_waiting() -> bool:
+	for t in get_tree().get_nodes_in_group("Tutorial"):
+		if t.has_method("is_waiting") and t.is_waiting():
+			return true
+	return false
 
 
 func _toggle_pause() -> void:

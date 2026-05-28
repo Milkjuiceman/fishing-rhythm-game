@@ -4,7 +4,7 @@ extends Node
 ## fish_id must exactly match what is set on the rhythm level scene's root node.
 ## Display names follow the format: "(Song Name) Fish"
 ## Author: Tyler Schauermann
-## Date of last update: 05/23/2026
+## Date of last update: 05/24/2026
 
 const FISH_DATA: Array = [
 	# ── Tutorial Lake ────────────────────────────────────────────────────
@@ -76,7 +76,7 @@ const FISH_DATA: Array = [
 		]
 	},
 	# ── Delta Bosses ─────────────────────────────────────────────────────
-	# Scenes: Delta5 (Rgmp_07)
+	# Scenes: Delta5 (Rgmp_07), finalfish (fish_2 / Lord Mavras)
 	{
 		"area": "Delta Bosses",
 		"fish": [

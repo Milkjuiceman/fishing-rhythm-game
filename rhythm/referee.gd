@@ -138,6 +138,7 @@ func _process(delta: float) -> void:
 func _on_judge_song_finished() -> void:
 	# If the fish was already caught mid-song, _catch_fish already fired — do nothing
 	if not catchable and judge.progress_bar._failed:
+		print_debug("[Referee] song ended - player didn't reel in, failing")
 		return  # bar-depletion loss already handled
 	
 	var performance = _calculate_performance()

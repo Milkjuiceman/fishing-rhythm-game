@@ -3,7 +3,7 @@ class_name inventory_ui
 ## Fish Encyclopedia UI
 ## Displays all fish in the game grouped by area.
 ## Caught fish show green with catch count; uncaught fish show red.
-## Wraps into multiple columns, keeping area blocks together.
+## Fills all available columns evenly, keeping area blocks together.
 
 # ========================================
 # NODE REFERENCES
@@ -12,7 +12,7 @@ class_name inventory_ui
 @onready var panel = $Panel
 @onready var items_container: VBoxContainer = $Panel/VBoxContainer/VBoxContainer
 
-const ITEMS_PER_COLUMN := 10
+const ITEMS_PER_COLUMN := 18  # raised from 10 to fill the full panel height
 const FONT_SIZE := 8
 
 # ========================================
@@ -53,7 +53,7 @@ func _refresh(_items: Dictionary) -> void:
 			block.append({ "type": "fish", "text": "%s x%d" % [fish["display_name"], count], "caught": count > 0 })
 		blocks.append(block)
 
-	# Outer HBoxContainer fills the full width
+	# Outer HBoxContainer fills the full width and height
 	var hbox := HBoxContainer.new()
 	hbox.add_theme_constant_override("separation", 0)
 	hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -65,7 +65,7 @@ func _refresh(_items: Dictionary) -> void:
 	var col_count := 0
 
 	for block in blocks:
-		# If this block won't fit, start a new column
+		# If this block won't fit in the current column, start a new one
 		if col_count > 0 and col_count + block.size() > ITEMS_PER_COLUMN:
 			col = _new_column()
 			hbox.add_child(col)
@@ -98,5 +98,5 @@ func _new_column() -> VBoxContainer:
 	var vbox := VBoxContainer.new()
 	vbox.add_theme_constant_override("separation", 0)
 	vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	vbox.size_flags_vertical = Control.SIZE_SHRINK_BEGIN
+	vbox.size_flags_vertical = Control.SIZE_EXPAND_FILL  # changed from SHRINK_BEGIN to fill full height
 	return vbox

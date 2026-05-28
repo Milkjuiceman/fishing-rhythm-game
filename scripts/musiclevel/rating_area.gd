@@ -2,16 +2,16 @@ extends Control
 
 var rating_scene = preload("uid://wuqf1ag86k")
 
-var is_connected = false
+var flag: bool = false
 
 func _on_referee_process(frame_state: FrameState) -> void:
 	var scorecard = frame_state.scorecard
 	if scorecard == null:
 		return
-		
-	if not is_connected:
+	
+	if not flag:
 		scorecard.connect("rating_hit", Callable(self, "show_rating"))
-		is_connected = true
+		flag = true
 		
 
 func show_rating(text: String, side: int):
