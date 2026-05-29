@@ -59,6 +59,7 @@ func _pause() -> void:
 	get_tree().paused = true
 	visible = true
 	panel.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func _resume() -> void:
@@ -66,3 +67,4 @@ func _resume() -> void:
 	get_tree().paused = false
 	visible = false
 	panel.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

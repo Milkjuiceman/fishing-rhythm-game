@@ -59,9 +59,6 @@ func _ready() -> void:
 	if not DirAccess.dir_exists_absolute(SAVE_DIR):
 		DirAccess.make_dir_absolute(SAVE_DIR)
 	
-	# Load autosave if available
-	load_autosave()
-	
 	if QuestManager:
 		QuestManager.quest_started.connect(_on_quest_started)
 		
@@ -167,6 +164,12 @@ func save_player_state(player: Player) -> void:
 	current_save_data.current_scene_path = player.get_tree().current_scene.scene_file_path
 	current_save_data.last_saved = Time.get_datetime_string_from_system()
 	
+	# Snapshot inventory into save data before writing
+	current_save_data.inventory = InventoryManager.items.duplicate(true)
+	
+	# Snapshot quest progress into save data before writing
+	current_save_data.current_quest_id = QuestManager.current_quest_id
+	
 	# Emit signal (keeps same inventory instance)
 	player_state_changed.emit(current_save_data)
 	
@@ -230,7 +233,14 @@ func load_game(save_path: String = AUTO_SAVE_FILE) -> Error:
 		return ERR_FILE_CORRUPT
 	
 	current_save_data = loaded_data
-	is_first_spawn = false  # ✅ ADD THIS LINE!
+	is_first_spawn = false
+
+	# Restore inventory from save data into the live manager
+	InventoryManager.load_from_save(current_save_data.inventory)
+	
+	# Restore quest progress into the live manager
+	QuestManager.load_from_save(current_save_data.current_quest_id)
+
 	print("Game loaded successfully from: %s" % save_path)
 	
 	return OK
@@ -270,9 +280,10 @@ func start_new_game() -> void:
 	if FileAccess.file_exists(AUTO_SAVE_FILE):
 		delete_save(AUTO_SAVE_FILE)
 		print_debug("[gamestatemanager]: deleted old autosave for fresh start")
-		current_save_data = PlayerSaveData.new()
-		is_first_spawn = true
-		reset_inventory()
+	current_save_data = PlayerSaveData.new()
+	is_first_spawn = true
+	reset_inventory()
+	QuestManager.load_from_save("q1")
 
 # ========================================
 # HELPER FUNCTIONS

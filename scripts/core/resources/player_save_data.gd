@@ -42,6 +42,9 @@ class_name PlayerSaveData
 # inventory data
 @export var inventory: Dictionary = {}
 
+# quest progress
+@export var current_quest_id: String = "q1"
+
 # ========================================
 # FUTURE EXPANSION (Commented Examples)
 # ========================================

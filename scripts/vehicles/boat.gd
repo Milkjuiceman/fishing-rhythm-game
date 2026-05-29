@@ -26,7 +26,6 @@ func _ready():
 	
 	# Configure boat performance stats
 	forward_speed = 30
-	boost_speed = 100
 	turn_strength = 6
 	
 	# Capture mouse for camera control
@@ -146,16 +145,10 @@ func _physics_process(_delta):
 	angular_velocity.x = 0
 	angular_velocity.z = 0
 	
-	# --- Speed Control ---
-	# Check for boost input (spacebar)
-	var current_speed = forward_speed
-	if Input.is_action_pressed("ui_accept"):
-		current_speed = boost_speed
-	
 	# --- Forward Movement (W) ---
 	# Apply forward force and handle turning
 	if Input.is_action_pressed("w"):
-		apply_central_force(global_transform.basis * Vector3.LEFT * current_speed)
+		apply_central_force(global_transform.basis * Vector3.LEFT * forward_speed)
 		if Input.is_action_pressed("a"):
 			apply_torque(Vector3(0, 1, 0) * turn_strength)
 		if Input.is_action_pressed("d"):
@@ -164,7 +157,7 @@ func _physics_process(_delta):
 	# --- Backward Movement (S) ---
 	# Apply reverse force with reversed turning
 	if Input.is_action_pressed("s"):
-		apply_central_force(global_transform.basis * Vector3.RIGHT * current_speed * 0.5)
+		apply_central_force(global_transform.basis * Vector3.RIGHT * forward_speed * 0.5)
 		if Input.is_action_pressed("a"):
 			apply_torque(Vector3(0, -1, 0) * turn_strength)
 		if Input.is_action_pressed("d"):

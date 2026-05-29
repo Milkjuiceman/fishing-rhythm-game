@@ -31,15 +31,6 @@ func _on_countdown_finished() -> void:
 	referee.play_chart_now.emit(referee.chart)
 	emit_signal("action_required", 0)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if _level_ended:
-		return
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_W:
-			_on_fishing_finished(1.0, "legendary")
-		elif event.keycode == KEY_E:
-			_on_fishing_finished(0.0, "")
-
 func _on_fishing_finished(_performance: float, rarity: String) -> void:
 	if _level_ended:
 		return

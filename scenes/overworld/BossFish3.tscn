@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://op8fso3cp01h"]
+[gd_scene load_steps=5 format=3 uid="uid://op8fso3cp01h"]
 
 [ext_resource type="Script" uid="uid://cgasxmgt7j3pq" path="res://scripts/environment/rippling_water.gd" id="1_eqnxf"]
 [ext_resource type="PackedScene" uid="uid://bs4ldqi7wrvvl" path="res://assets/models/Animated Fish Bundle-glb/Puffer.glb" id="2_eqnxf"]
+[ext_resource type="Texture2D" uid="uid://bh3dvc4g8ptjb" path="res://assets/characters/Muscular_Gorilla.png" id="3_lsf8j"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3cpqv"]
 height = 2.4902344
 radius = 1.8105469
 
 [node name="BossFish1" type="Area3D"]
-transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+transform = Transform3D(21.13, 0, 0, 0, 21.13, 0, 0, 0, 21.13, 0, 0, 0)
 script = ExtResource("1_eqnxf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -16,3 +17,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2451172, 0)
 shape = SubResource("CylinderShape3D_3cpqv")
 
 [node name="Root Scene" parent="." instance=ExtResource("2_eqnxf")]
+
+[node name="PrimateLeaderNPC" type="Sprite3D" parent="."]
+transform = Transform3D(0.0024514347, 0, 0.0017292973, 0, 0.0030000003, 0, -0.0017292973, 0, 0.0024514347, 0, 1.1721785, 1.0547885)
+pixel_size = 1.0
+billboard = 2
+alpha_cut = 1
+texture_filter = 0
+render_priority = 1
+texture = ExtResource("3_lsf8j")
