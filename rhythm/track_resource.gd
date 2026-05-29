@@ -61,4 +61,4 @@ func _get_beat(t: float) -> int:
 
 
 func load_stream() -> AudioStream:
-	return AudioStreamOggVorbis.load_from_file(audio_location)
+	return load(audio_location)

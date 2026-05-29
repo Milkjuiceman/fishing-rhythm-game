@@ -15,4 +15,4 @@ script = ExtResource("1_eqnxf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2451172, 0)
 shape = SubResource("CylinderShape3D_3cpqv")
 
-[node name="Root Scene2" parent="." instance=ExtResource("2_eqnxf")]
+[node name="Root Scene" parent="." instance=ExtResource("2_eqnxf")]

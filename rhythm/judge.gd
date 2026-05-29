@@ -112,6 +112,8 @@ func process_and_fill_frame_state(frame_state: FrameState) -> void:
 			if frame_state.k_key_press or frame_state.j_key_press \
 					or frame_state.f_key_press or frame_state.d_key_press:
 				scorecard.penalty(chart.note_column[i])
+				if i == chart.note_timings.size() - 1:
+					lowest_judgment_index += 1
 			break
 
 		# Already judged in a previous frame — skip

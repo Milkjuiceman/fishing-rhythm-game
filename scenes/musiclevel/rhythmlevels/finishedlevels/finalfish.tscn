@@ -21,7 +21,7 @@
 script = ExtResource("1_xy065")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
-fish_id = "final_boss"
+fish_id = "lord_mavras_boss"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
 script = ExtResource("2_strl1")

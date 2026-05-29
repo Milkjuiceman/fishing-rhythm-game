@@ -72,6 +72,7 @@ const FISH_DATA: Array = [
 			{ "fish_id": "paulyudin_happy_fish",        "display_name": "Paulyudin Happy Fish" },
 			{ "fish_id": "rgmp_04_fish",                "display_name": "Rgmp_04 Fish" },
 			{ "fish_id": "rgmp_06_fish",                "display_name": "Rgmp_06 Fish" },
+			{ "fish_id": "rgmp_07_fish",                "display_name": "Rgmp_07 Fish" },
 		]
 	},
 	# ── Delta Bosses ─────────────────────────────────────────────────────
@@ -79,7 +80,7 @@ const FISH_DATA: Array = [
 	{
 		"area": "Delta Bosses",
 		"fish": [
-			{ "fish_id": "final_boss",                      "display_name": "Lord Mavras" },
+			{ "fish_id": "lord_mavras_boss",                "display_name": "Lord Mavras Boss (Final)" },
 		]
 	},
 ]
