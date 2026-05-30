@@ -28,117 +28,117 @@ const QUEST_ORDER: Array = [
 var quests: Dictionary = {
 	# ── Tutorial Area ────────────────────────────────────────────────────
 	"q1": {
-		"title": "meet gramps",
-		"description": "head to the dock and talk to Gramps.",
+		"title": "Old Gramps",
+		"description": "There's a fisherman at the dock on the home lake. Might be worth talking to him.",
 		"hint": "talk to Gramps at the dock",
 		"type": "talk",
 		"npc": "gramps",
 	},
 	"q2": {
-		"title": "first catch",
-		"description": "catch 1 fish in the tutorial lake.",
-		"hint": "catch a fish",
+		"title": "First Blood",
+		"description": "Gramps wants to see you catch something before he takes you seriously. Look for the ripples.",
+		"hint": "catch a fish in the home lake",
 		"type": "catch_in_area",
 		"check_area": "Tutorial Lake",
 		"goal": 1,
 	},
 	"q3": {
-		"title": "go find paul",
-		"description": "head across the lake and talk to Paul.",
-		"hint": "talk to Paul across the lake",
+		"title": "The Far Bank",
+		"description": "Gramps mentioned a fisherman named Paul on the other side of the lake. Go introduce yourself.",
+		"hint": "find Paul across the lake",
 		"type": "talk",
 		"npc": "paul",
 	},
 	"q4": {
-		"title": "three of a kind",
-		"description": "catch 3 different fish in the tutorial lake.",
-		"hint": "catch 3 different fish in the tutorial lake",
+		"title": "Three Kinds",
+		"description": "Paul says this lake holds three different species. He wants to see if you can find all of them.",
+		"hint": "catch 3 different fish in the home lake",
 		"type": "catch_in_area",
 		"check_area": "Tutorial Lake",
 		"goal": 3,
 	},
 	"q5": {
-		"title": "head to the intersection",
-		"description": "travel to the lake intersection and talk to Tim.",
-		"hint": "talk to Tim at the intersection",
+		"title": "The Intersection",
+		"description": "Paul says the waters get bigger past here. Head to the lake intersection and find Tim.",
+		"hint": "find Tim at the intersection dock",
 		"type": "talk",
 		"npc": "tim",
 	},
 	# ── Intersection Area ────────────────────────────────────────────────
 	"q6": {
-		"title": "intersection catch",
-		"description": "catch 2 fish in the intersection area.",
-		"hint": "catch 2 fish in the intersection area",
+		"title": "Crosswater",
+		"description": "Tim won't talk about what's further out until you've proven yourself in the intersection waters.",
+		"hint": "catch 2 fish in the intersection",
 		"type": "catch_in_area",
 		"check_area": "Intersection Area",
 		"goal": 2,
 	},
 	"q7": {
-		"title": "meet chad",
-		"description": "head to the market and talk to Chad.",
-		"hint": "talk to Chad at the market dock",
+		"title": "The Supplier",
+		"description": "Tim sent you to Chad at the market dock. He runs supplies to the outer areas and knows the fjord.",
+		"hint": "find Chad at the market dock",
 		"type": "talk",
 		"npc": "chad",
 	},
 	"q8": {
-		"title": "fjord fishing",
-		"description": "catch 2 fish in the fjord area.",
-		"hint": "catch 2 fish in the fjord area",
+		"title": "Something's Off",
+		"description": "Chad's noticed the fjord hauls have been wrong lately. He wants you to go up there and see for yourself.",
+		"hint": "catch 2 fish in the fjord",
 		"type": "catch_in_area",
 		"check_area": "Fjord Area",
 		"goal": 2,
 	},
 	"q9": {
-		"title": "fjord bosses",
-		"description": "defeat 3 boss fish in the fjord area.",
-		"hint": "defeat 3 fjord boss fish (0/3)",
+		"title": "The Big Ones",
+		"description": "Chad knows something is wrong in the fjord. Three large creatures have appeared in the deep water.",
+		"hint": "defeat 3 boss fish in the fjord",
 		"type": "catch_in_area",
 		"check_area": "Fjord Bosses",
 		"goal": 3,
 	},
 	"q10": {
-		"title": "meet george",
-		"description": "talk to George at the small dock.",
-		"hint": "talk to George at the small dock",
+		"title": "George",
+		"description": "Chad says a man named George has been watching the quarry waters. He might know more.",
+		"hint": "find George at the small dock",
 		"type": "talk",
 		"npc": "george",
 	},
 	"q11": {
-		"title": "quarry fishing",
-		"description": "catch 2 fish in the quarry area.",
-		"hint": "catch 2 fish in the quarry area",
+		"title": "Quarry Water",
+		"description": "George is logging the quarry fish. He wants a sample — two fish from the dark water below.",
+		"hint": "catch 2 fish in the quarry",
 		"type": "catch_in_area",
 		"check_area": "Quarry Area",
 		"goal": 2,
 	},
 	"q12": {
-		"title": "quarry boss",
-		"description": "defeat the boss fish in the quarry area.",
-		"hint": "defeat the quarry boss fish",
+		"title": "The Shelf Boss",
+		"description": "Something old has been sitting at the bottom of the quarry for a long time. George calls it the Shelf Boss.",
+		"hint": "defeat the quarry boss",
 		"type": "catch_in_area",
 		"check_area": "Quarry Bosses",
 		"goal": 1,
 	},
 	"q13": {
-		"title": "find bob",
-		"description": "head to the tower dock in the intersection and talk to Bob.",
-		"hint": "talk to Bob at the tower dock",
+		"title": "Tower 1",
+		"description": "George says the source is in the delta. A man named Bob has been living out there alone, watching the deep water.",
+		"hint": "find Bob at Tower 1 dock in the delta",
 		"type": "talk",
 		"npc": "bob",
 	},
 	# ── Delta Area ───────────────────────────────────────────────────────
 	"q14": {
-		"title": "delta fishing",
-		"description": "catch 4 fish in the delta area.",
-		"hint": "catch 4 fish in the delta area",
+		"title": "The Real Ones",
+		"description": "Bob says the delta fish aren't what they used to be. He wants to see four of them before he'll tell you what he knows.",
+		"hint": "catch 4 fish in the delta",
 		"type": "catch_in_area",
 		"check_area": "Delta Area",
 		"goal": 4,
 	},
 	"q15": {
-		"title": "final boss",
-		"description": "defeat the final boss in the delta.",
-		"hint": "defeat the final boss",
+		"title": "End of the Line",
+		"description": "Bob's been watching the wake of something in the deep delta for three years. It's time to find out what it is.",
+		"hint": "defeat the final boss in the delta",
 		"type": "catch_in_area",
 		"check_area": "Delta Bosses",
 		"goal": 1,
@@ -157,6 +157,17 @@ var current_quest_id: String = "q1"
 
 func _ready() -> void:
 	print_debug("[QuestManager] Game started. First quest: %s" % current_quest_id)
+	emit_signal("active_quests_changed", get_active_quests())
+
+# ========================================
+# SAVE / LOAD
+# ========================================
+
+func load_from_save(quest_id: String) -> void:
+	if quest_id != "" and QUEST_ORDER.has(quest_id):
+		current_quest_id = quest_id
+	else:
+		push_warning("[QuestManager] Invalid quest_id in save data: '%s', keeping default" % quest_id)
 	emit_signal("active_quests_changed", get_active_quests())
 
 # ========================================
