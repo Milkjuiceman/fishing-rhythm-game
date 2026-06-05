@@ -73,7 +73,7 @@ size = Vector2(1.7, 1.7)
 script = ExtResource("1_lnxsh")
 referee = NodePath("MusicPlayer/Referee")
 judge = NodePath("Judge")
-fish_id = "rgmp_07_boss"
+fish_id = "rgmp_07_fish"
 
 [node name="Judge" type="Node" parent="." node_paths=PackedStringArray("progress_bar", "referee")]
 script = ExtResource("2_knitx")
