@@ -58,7 +58,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_glbon")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dy7ct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
-text = "Start"
+text = "Start New Game"
 
 [node name="load_button" type="Button" parent="."]
 layout_mode = 1
@@ -83,7 +83,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_fu7sn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8qtwp")
 theme_override_styles/hover = SubResource("StyleBoxTexture_dy7ct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jix8l")
-text = "Load"
+text = "Load Game"
 
 [node name="options_button" type="Button" parent="."]
 layout_mode = 1
