@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cnsrrlfnxcxuq"]
+[gd_scene load_steps=30 format=3 uid="uid://cnsrrlfnxcxuq"]
 
 [ext_resource type="Script" uid="uid://bxo3of0wq27a1" path="res://scripts/levels/delta_area_level.gd" id="1_kcvgw"]
 [ext_resource type="Script" uid="uid://0sijhong0njw" path="res://addons/zylann.hterrain/hterrain.gd" id="1_tjtdi"]
@@ -71,13 +71,13 @@ fog_density = 0.106
 [sub_resource type="Resource" id="Resource_1it6v"]
 resource_name = "Basic Fish"
 script = ExtResource("15_jc4vh")
-scene_path = "uid://ca4cbo0gm01bs"
+scene_path = "uid://d27qypw8hcjwq"
 fish_id = "intersection_fish_1"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
-[sub_resource type="Resource" id="Resource_go5iy"]
+[sub_resource type="Resource" id="Resource_t8jhf"]
 script = ExtResource("15_jc4vh")
-scene_path = "uid://d22hs1qi6jbdw"
+scene_path = "uid://ca4cbo0gm01bs"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="Resource" id="Resource_1teww"]
@@ -88,6 +88,11 @@ metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 [sub_resource type="Resource" id="Resource_jcvyx"]
 script = ExtResource("15_jc4vh")
 scene_path = "uid://d22hs1qi6jbdw"
+metadata/_custom_type_script = "uid://ce4v05iayj5lp"
+
+[sub_resource type="Resource" id="Resource_q4ofs"]
+script = ExtResource("15_jc4vh")
+scene_path = "uid://ca4cbo0gm01bs"
 metadata/_custom_type_script = "uid://ce4v05iayj5lp"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q4ofs"]
@@ -285,7 +290,7 @@ spawn_height = -6.4879999999999995
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q14"
-rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_go5iy")])
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_t8jhf")])
 
 [node name="RipplingWaterSpawner3" type="Node3D" parent="."]
 transform = Transform3D(0.028600072, 0, 0.02017515, 0, 0.035000004, 0, -0.02017515, 0, 0.028600072, 300.78387, -6.488, 747.3849)
@@ -329,7 +334,7 @@ spawn_height = -6.4879999999999995
 use_lifetime = true
 lifetime = 10.0
 require_quest_id = "q14"
-rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_1it6v")])
+rhythm_levels = Array[ExtResource("15_jc4vh")]([SubResource("Resource_q4ofs")])
 
 [node name="SpawnPoints" type="Node3D" parent="."]
 
