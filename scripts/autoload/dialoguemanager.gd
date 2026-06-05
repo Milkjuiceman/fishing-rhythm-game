@@ -41,116 +41,113 @@ var dialogue: Dictionary = {
 	# ── GRAMPS (dock NPC, tutorial lake) ──────────────────────────────────
 	"gramps": {
 		"pre": [
-			"Hold on — you haven't even gotten your feet wet yet. Come back once you've had a look around.",
+			"Whoa there, youngster. You haven't even gotten your feet wet yet. Go have a look around first.",
 		],
 		"complete": [
 			# q1 complete: player talked to Gramps. Give q2 (catch 1 fish).
-			"There you are. Was starting to think you'd gotten lost on a lake you can see across.",
-			"She's not much, your boat. But she floats, and that's half the job done.",
-			"Look for the ripples out there. Fish always give themselves away if you watch long enough.",
-			"Hook me something. Anything. Let's see if you've got the patience for this.",
+			"Oh good, you found me. I was starting to wonder.",
+			"So you want to catch the largest fish in the land, huh? Ha. I love the ambition.",
+			"Alright, but you gotta start somewhere. See those ripples out on the water? Fish can't help giving themselves away.",
+			"Go catch a fish. Come back and show me when you've caught one.",
 		],
 		"waiting": [
 			# q2 active, player back before catching anything
-			"Nothing yet? The fish aren't going to climb in on their own.",
-			"Watch the surface. When the water moves wrong — that's your moment.",
+			"Not yet, youngster. The fish aren't gonna jump in the boat for you.",
+			"Keep your eyes on the water. When something moves wrong out there, that's your shot.",
 		],
 		"q2_done": [
 			# q2 complete: player caught 1 fish, talks to Gramps. Give q3 (talk to Paul).
-			"Well. Look at that.",
-			"I've seen plenty of first catches. Most people freeze up, miss their shot. You didn't.",
-			"There's a man on the far side of the lake. Name's Paul. Been fishing here longer than I have.",
-			"Go introduce yourself. Tell him I sent you — he'll give you the time of day.",
+			"Hey, would you look at that. You actually did it.",
+			"Most folks freeze up on their first catch. You didn't. That's a good sign.",
+			"There's a fella named Paul on the far side of the lake. Go introduce yourself and tell him I sent you.",
+			"Oh, and if you want to see your current objective, press Q at any time to check your quests.",
 		],
 		"idle": [
-			"Paul's over on the far bank. Don't keep him waiting on my account.",
+			"Paul's over on the far bank, youngster.",
 		],
 	},
 
 	# ── PAUL (lake NPC, tutorial lake) ────────────────────────────────────
 	"paul": {
 		"pre": [
-			"Don't mind me. I'm in the middle of something. Go talk to the fellow at the dock first.",
+			"Sorry, not a great time. Go check in with Gramps first.",
 		],
 		"complete": [
 			# q3 complete: player talked to Paul. Give q4 (catch 3 fish).
-			"Gramps sent you over? Good. He doesn't do that for just anyone.",
-			"This lake's got more variety than it looks. Three different fish hiding in it — each one in its own spot.",
-			"Most people never find all three. Too impatient.",
-			"Catch one of each. Then come back. I want to see what you're working with.",
+			"Gramps sent you? Alright, then.",
+			"There are 4 fish in this lake. Most people never find all of them — they get impatient.",
+			"I want you to catch three different fish and come back. You can check how many you've got by pressing I for your inventory.",
 		],
 		"waiting": [
-			"Three different species. Not three of the same one.",
-			"Each ripple spot is different. Keep moving until you've found them all.",
+			"Three fish total. Don't just catch the same one three times.",
+			"Move around the lake. Each spot's got something different if you're patient enough.",
 		],
 		"q4_done": [
 			# q4 complete: player caught 3 fish, talks to Paul. Give q5 (talk to Tim).
-			"All three. You actually got all three.",
-			"I'll be honest — I didn't expect that on your first day.",
-			"There's more water past this lake. A lot more. Head to the intersection — it's where everything branches off.",
-			"Find Tim at the main dock there. Tell him you came from the home lake. He'll know what that means.",
+			"All three. Huh. I genuinely didn't expect that today.",
+			"There's a lot more water past this lake — you should go check it out.",
+			"Head to the intersection lake and find a guy named Tim at the main dock. Tell him I sent you.",
 		],
 		"idle": [
-			"Tim's at the intersection dock. He runs the place — hard to miss.",
+			"Tim's running the intersection dock. You can't really miss him.",
 		],
 	},
 
 	# ── TIM (main dock NPC, lake intersection) ─────────────────────────────
 	"tim": {
 		"pre": [
-			"Busy dock. Come back once Paul's had a look at you.",
+			"It's a busy dock. Come back once Paul's had a look at you.",
 		],
 		"complete": [
 			# q5 complete: player talked to Tim. Give q6 (catch 2 fish in intersection).
-			"Home lake, huh. Paul doesn't send many people this way.",
-			"The intersection is where the water gets complicated. Currents from four directions — the fish here behave differently.",
-			"Before you go any further, prove you can handle it. Two fish from this stretch.",
-			"Don't rush. The intersection rewards patience more than speed.",
+			"Paul sent you? Well then you must be something pretty special.",
+			"I'll be straight with you — I hold the record for the largest fish ever caught around here. Have for years now.",
+			"You want to beat that? You've got a long way to go. But I can help point you in the right direction.",
+			"First, show me you can fish here. Catch me two fish from the intersection area.",
 		],
 		"waiting": [
-			"Two from the intersection waters. You're close.",
-			"The fish here run deeper than back home. Give it time.",
+			"Still need two from the intersection. Take your time.",
+			"The fish here run deeper than you're used to. Give it a minute.",
 		],
 		"q6_done": [
 			# q6 complete: player caught 2 intersection fish, talks to Tim. Give q7 (talk to Chad).
-			"Two intersection fish. You adjusted fast — most people struggle with the currents at first.",
-			"There's a man at the market dock named Chad. Runs supplies to the outer areas.",
-			"He knows the fjord better than anyone who'll admit it. Go have a word.",
-			"Tell him Tim cleared you. He's particular about who he talks to.",
+			"Nice job! Most people don't adapt that fast.",
+			"There's a guy named Chad over at the market dock. Runs supplies out to the fjord.",
+			"He knows the fjord better than just about anyone, though he won't admit it.",
+			"Tell him I cleared you. He's picky about who he talks to.",
 		],
 		"idle": [
-			"Chad's at the market dock. He's not the friendliest but he's straight with people he respects.",
+			"Chad's at the market dock. He's gruff but fair — just tell him Tim sent you.",
 		],
 	},
 
 	# ── CHAD (market dock NPC, lake intersection) ──────────────────────────
 	"chad": {
 		"pre": [
-			"I don't talk shop with strangers. Come back when Tim vouches for you.",
+			"I don't really talk to strangers. Come back when Tim vouches for you.",
 		],
 		"complete": [
 			# q7 complete: player talked to Chad. Give q8 (catch 2 fish in Fjord).
-			"Tim cleared you. Alright.",
-			"The fjord's north of here. Cold water, strange currents, fish you won't find anywhere else.",
-			"I've been running supplies up there for six years. Lately the hauls have been... off.",
-			"Catch two fjord fish. I want to know if you notice what I've been noticing.",
+			"Tim cleared you. Fine.",
+			"Look, I've got a problem and I'm not sure you're the right person for it. But let's see.",
+			"The fjord's upstream — cold water, weird currents. I've been running supplies up there for years.",
+			"Go catch two fish up there and come back. I want to know if you notice anything off.",
 		],
 		"waiting": [
-			"Two from the fjord. Take your time — rushing up there never ends well.",
+			"Two from the fjord. Don't rush it up there — the place bites back.",
 		],
 		"q8_done": [
 			# q8 complete: player caught 2 fjord fish, talks to Chad. Give q9 (beat fjord bosses).
-			"Two fjord fish. Did anything seem strange to you up there?",
-			"The ones I've been seeing lately are bigger. Faster. Not right for the season.",
-			"There are things in the deep part of the fjord that weren't there two years ago.",
-			"Three of them. Big ones. Take them down and come back. I need to know if they're what I think they are.",
+			"Two fjord fish. Did anything seem weird to you up there?",
+			"There are things living in the deep part of the fjord that weren't there before. Big ones.",
+			"Boss fish, you'll know them when you see them. They're way bigger than anything regular. Approach one to take it on.",
+			"I need you to go deal with three of them. Then come back and tell me what you saw.",
 		],
 		"q9_done": [
 			# q9 complete: fjord bosses caught, talks to Chad. Give q10 (talk to George).
-			"Three fjord bosses. So it's not just the fjord.",
-			"I've heard the same thing from the quarry side. There's a man named George — works the docks near the quarry entrance.",
-			"Quiet guy. Doesn't say much, but he's been watching the water longer than most.",
-			"Go find him at the small dock. Tell him what you found in the fjord.",
+			"Three fjord bosses. Okay. You've proved your worth — I'll admit I had my doubts.",
+			"There's a quiet guy named George over at the small dock near the quarry. He's been watching that water for a long time.",
+			"Go find him and tell him what you ran into up in the fjord. I think he'll want to hear it.",
 		],
 		"idle": [
 			"George is at the small dock near the quarry. He's expecting someone — might as well be you.",
@@ -160,64 +157,57 @@ var dialogue: Dictionary = {
 	# ── GEORGE (small dock NPC, lake intersection) ─────────────────────────
 	"george": {
 		"pre": [
-			"Not yet. Chad needs to send you first.",
+			"Not yet. Chad needs to be the one to send you.",
 		],
 		"complete": [
 			# q10 complete: player talked to George. Give q11 (catch 2 quarry fish).
-			"The fjord. Yeah. I've been watching the quarry side.",
-			"It's the same thing. Fish that don't belong there. Too big, too aggressive.",
-			"The quarry water is dark and loud — machines running day and night nearby. The fish learned to be mean to survive it.",
-			"Get two of them. I want to compare what you pull out with what I've been logging.",
+			"Honestly? I'm pretty impressed with what you've done so far. Not many people make it this far.",
+			"The mine area's got its own thing going on. Loud, dark, rough water. The fish that live there are mean.",
+			"Catch two of them for me. I want to get a look at what's coming out of there.",
 		],
 		"waiting": [
-			"Two quarry fish. It's rough water down there. Take it steady.",
+			"Two from the mine. It's rough water — take it slow.",
 		],
 		"q11_done": [
 			# q11 complete: 2 quarry fish caught, talks to George. Give q12 (beat quarry boss).
-			"Those match what I've been seeing. Something's pushing them up from deeper water.",
-			"There's one in particular that's been down there a long time. Old. The quarry workers call it the Shelf Boss.",
-			"Nobody's touched it. I don't think anyone's tried.",
-			"You've handled the fjord bosses. See if you can bring this one up.",
+			"Good. Those match what I've been seeing.",
+			"There's one more down there — been sitting in the deep part of the mine for a long time. Bigger than the rest.",
+			"Take it down and come back. Then I'll tell you where to go next.",
 		],
 		"q12_done": [
 			# q12 complete: quarry boss caught, talks to George. Give q13 (talk to Bob).
-			"The Shelf Boss. I didn't think that was possible.",
-			"Whatever's causing this — it's coming from further out. The delta.",
-			"There's a man named Bob at Tower 1 dock, out in the delta. He's been living out there alone for years.",
-			"If anyone knows what's happening at the source, it's him. Go find him.",
+			"You got the mine boss fish. Didn't think that was actually possible.",
+			"There's an orangutan named Bob. He lives near the market dock.",
+			"If anyone knows where the largest fish in the land is hiding, it's him. Go find him.",
 		],
 		"idle": [
-			"Bob's at Tower 1 in the delta. He doesn't come in much, so you'll have to go to him.",
+			"Bob's near the market dock. You'll have to go to him.",
 		],
 	},
 
 	# ── BOB (Tower 1 dock NPC, delta area) ─────────────────────────────────
 	"bob": {
 		"pre": [
-			"I'm not receiving visitors. Come back when George sends you.",
+			"Not taking visitors. Come back when George sends you.",
 		],
 		"complete": [
-			# q13 complete: player talked to Bob. Give q14 (catch 4 delta fish).
-			"George's fisher. Took you long enough.",
-			"I've been watching the delta for eleven years. What's happening here isn't natural.",
-			"The deep current changed about three years back. Something down there is wrong — has been wrong.",
-			"Before I tell you what I know, I need to see what you're made of. Four delta fish.",
-			"Not the ones near the surface. The real ones. You'll know them when you find them.",
+			# q13 complete: player talked to Bob. Give q14 (catch 3 delta fish).
+			"George's fisher. Alright, you made it out here.",
+			"Yeah, I know where the largest fish in the land is. But I'm not just gonna tell you.",
+			"Catch three fish in the delta area downstream first. Then we'll talk.",
 		],
 		"waiting": [
-			"Four delta fish. The real ones.",
-			"Don't come back until you've got four. I mean it.",
+			"Three delta fish. I'm not budging until you've got them.",
+			"Take your time. The delta doesn't reward people who rush.",
 		],
 		"q14_done": [
-			# q14 complete: 4 delta fish caught, talks to Bob. Give q15 (final boss).
-			"Four. And you made it back.",
-			"You've seen it by now. The water out there isn't right. The fish aren't right.",
-			"There's something at the bottom of the delta. I've been watching its wake for three years.",
-			"I don't know what it is. I don't think it matters what it is.",
-			"What matters is that it ends. Go finish this.",
+			# q14 complete: 3 delta fish caught, talks to Bob. Give q15 (final boss).
+			"Three fish. Nice job.",
+			"Alright. The largest fish in the land — it's at the far end of the delta.",
+			"Head out there. Tim said he'd be waiting for you when you get close.",
 		],
 		"idle": [
-			"The deep delta. You know what's down there. Go end it.",
+			"The far end of the delta. You know where to go.",
 		],
 	},
 }
